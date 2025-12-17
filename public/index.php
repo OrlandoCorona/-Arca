@@ -1,11 +1,6 @@
 <?php
 declare(strict_types=1);
 
-if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '') {
-    header('Location: /?view=login');
-    exit;
-}
-
 require __DIR__ . '/../vendor/autoload.php';
 
 $view = $_GET['view'] ?? 'login';
