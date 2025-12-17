@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Exitoso</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlazar el archivo CSS externo -->
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url("fondoBorroso.jpg") no-repeat center center; /* Ajuste del fondo */
+        background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
+        color: #f2efef; /* Color del texto */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      /* Estilos para el mensaje flotante */
+      .mensaje-flotante {
+        width: 300px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        color:black;
+      }
+      .mensaje-flotante p {
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+      .boton-aceptar {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .boton-aceptar:hover {
+        background-color: #0056b3;
+      }
+      /* Estilos para el footer */
+      footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mensaje-flotante">
+      <p>Al parecer ya hay una cuenta con el correo electronico.</p>
+      <a href="registro.html" class="boton-aceptar">Aceptar</a>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Enlazar el archivo JavaScript externo -->
+  </body>
+  <footer>
+    <p style="background-color: black; color:white; text-align: center;">© 2024 Todos los derechos reservados. Restaurante-Bar El Arca  <br>  <img src="inconoB.jpg" width="30px" height="30px" alt="Copyright"></p>
+  </footer>
+</html>

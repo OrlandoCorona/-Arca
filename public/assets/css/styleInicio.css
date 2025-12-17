@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Color de fondo predeterminado */
+    color: #333; /* Color de texto predeterminado */
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* Color de fondo del menú */
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    align-items: center; /* Centrar verticalmente los elementos del menú */
+}
+
+.menu img.avatar {
+    width: 32px; /* Tamaño de la imagen */
+    height: 32px; /* Tamaño de la imagen */
+    border-radius: 50%; /* Para que la imagen sea redonda */
+    margin-right: 10px; /* Espaciado entre la imagen y los elementos del menú */
+    position: relative; /* Posición relativa para permitir posicionar el elemento span dentro */
+}
+
+.perfil-option {
+    position: absolute; /* Posición absoluta para ubicar el elemento dentro de la imagen */
+    bottom: -20px; /* Ajustar la posición verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    background-color: #333; /* Color de fondo del elemento */
+    color: #fff; /* Color del texto del elemento */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Borde redondeado */
+    opacity: 0; /* Ocultar el elemento inicialmente */
+    transition: opacity 0.3s; /* Transición suave */
+}
+
+.menu a:hover .perfil-option {
+    opacity: 1; /* Mostrar el elemento al pasar el cursor sobre la imagen */
+}
+
+.menu a {
+    color: #fff; /* Color de texto del menú */
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: transform 0.3s; /* Animación de expansión al pasar el cursor */
+}
+
+.menu a:hover {
+    transform: scale(1.7); /* Escalar al 110% al pasar el cursor */
+}
+
+.content {
+    padding: 20px;
+    margin-top: 50px; /* Ajustar el margen superior para evitar que el contenido quede detrás del menú */
+}
+
+/* Estilos para la nueva sección de perfil */
+.perfil-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la nueva sección de reservaciones */
+.reservaciones {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.reservaciones h2 {
+    margin-top: 0;
+}
+
+.reservaciones p {
+    margin-bottom: 10px;
+}
+

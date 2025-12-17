@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comida - Restaurante-Bar El Arca</title>
+    <link rel="stylesheet" href="styleInicio.css"> <!-- Enlazar el archivo CSS externo -->
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background: url("fondoBorroso.jpg") no-repeat center center;
+            background-size: cover;
+            color: #f2efef;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .menu {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product {
+            background: rgba(0, 0, 0, 0.7);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+            color: black;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="inicio.html">Inicio</a>
+        <a href="menu.html">Menú</a>
+        <a href="reservaciones.php">Reservaciones</a>
+        <a href="perfil.php">
+            <img src="user.png" alt="Avatar de Usuario" class="avatar" width="30px" height="30px">
+        </a>
+        <a href="cerrar_sesion.php">
+            <img src="logout.png" alt="Cerrar sesión" class="cerrar" width="30px" height="30px">
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Comida</h1>
+        <div class="product-list">
+            <div class="product" data-name="Ensalada de Mariscos" data-price="$99" data-desc="Camarón y/o Pulpo." data-img="ensalada.png">
+                <h2>Ensalada de Mariscos</h2>
+                <p>$99</p>
+                <p>Camarón y/o Pulpo.</p>
+            </div>
+            <div class="product" data-name="Gringa" data-price="$55" data-desc="Descripción del producto." data-img="gringas.png">
+                <h2>Gringa</h2>
+                <p>$55</p>
+                <p>Descripción del producto.</p>
+            </div>
+            <div class="product" data-name="Club Sandwich" data-price="$110" data-desc="Descripción del producto." data-img="sand.png">
+                <h2>Club Sandwich</h2>
+                <p>$110</p>
+                <p>Descripción del producto.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalName"></h2>
+            <img id="modalImg" src="" alt="Imagen del producto">
+            <p id="modalDesc"></p>
+            <p id="modalPrice"></p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener todos los elementos de producto
+        const products = document.querySelectorAll('.product');
+        
+        // Añadir el evento de click a cada producto
+        products.forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('modalName').innerText = item.getAttribute('data-name');
+                document.getElementById('modalImg').src = item.getAttribute('data-img');
+                document.getElementById('modalDesc').innerText = item.getAttribute('data-desc');
+                document.getElementById('modalPrice').innerText = item.getAttribute('data-price');
+                document.getElementById('myModal').style.display = 'block';
+            });
+        });
+
+        // Cerrar el modal cuando se hace clic en el botón de cerrar
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        // Cerrar el modal cuando se hace clic fuera del contenido del modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

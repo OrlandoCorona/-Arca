@@ -1,0 +1,283 @@
+<?php
+session_start();
+
+// Verificar si se ha iniciado sesión
+if (!isset($_SESSION["id_usuario"])) {
+    // Si no se ha iniciado sesión, redirigir a la página de inicio de sesión
+    header("Location: index.html");
+    exit();
+}
+
+$contrasena = isset($_SESSION['contrasena']) ? $_SESSION['contrasena'] : '';
+
+// Eliminar la contraseña de la sesión después de mostrarla
+unset($_SESSION['contrasena']);
+
+// Habilitar la visualización de errores en PHP
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Obtener el ID del usuario de la sesión
+$idUsuario = $_SESSION["id_usuario"];
+
+// Establecer las credenciales de la base de datos
+$servername = "localhost";
+$username = "root";
+$password = ""; // Contraseña vacía
+$dbname = "arca";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
+// Crear una conexión a la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error en la conexión: " . $conn->connect_error);
+}
+
+// Preparar la consulta SQL para obtener el correo del usuario
+$sqlCorreo = "SELECT correo FROM usuarios WHERE id = ?";
+$stmtCorreo = $conn->prepare($sqlCorreo);
+$stmtCorreo->bind_param("i", $idUsuario);
+$stmtCorreo->execute();
+$stmtCorreo->bind_result($correo);
+$stmtCorreo->fetch();
+$stmtCorreo->close();
+
+// Preparar la consulta SQL para obtener la contraseña del usuario
+$sql = "SELECT contrasena FROM usuarios WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $idUsuario);
+$stmt->execute();
+$stmt->bind_result($contrasena);
+$stmt->fetch();
+$stmt->close();
+
+// Preparar la consulta SQL para obtener la contraseña del usuario
+$sql = "SELECT correo FROM usuarios WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $idUsuario);
+$stmt->execute();
+$stmt->bind_result($correo);
+$stmt->fetch();
+$stmt->close();
+
+// Enviar la contraseña por correo electrónico
+$mail = new PHPMailer(true); // Instanciar un objeto PHPMailer
+
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'rodriguezromanojoseantonio@gmail.com'; //SMTP username
+    $mail->Password   = 'hqwa nokd pnzj udkh';                  //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable explicit TLS encryption
+    $mail->Port       = 587;                                    //TCP port to connect to
+    
+    // Configurar remitente y destinatario
+    $mail->setFrom('rodriguezromanojoseantonio@gmail.com', 'Restaurante Bar- El Arca');
+    $mail->addAddress($correo);        // Correo del destinatario
+    // Configurar el correo electrónico como HTML
+    $mail->isHTML(true);
+    // Asunto del correo electrónico
+    $mail->Subject = 'Recuperación de Contraseña'; // Aquí coloca el texto completo con acentos y caracteres especiales si es necesario
+    $mail->Subject = '=?UTF-8?B?' . base64_encode('Recuperación de Contraseña') . '?='; // Codificación UTF-8 para caracteres especiales
+    // Cuerpo del correo electrónico en HTML
+    $mail->Body = '
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recuperación de contraseña</title>
+        <link rel="stylesheet" href="styleInicio.css"> <!-- Enlazar el archivo CSS externo -->
+
+        <style>
+            /* Estilos generales */
+            body {
+                font-family: "Arial", sans-serif;
+                margin: 0;
+                padding: 0;
+                background: url("https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/415070902_934332435017269_9104447290964671712_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH-7HnIcdQl7VPHqM3V4nhV3UykusB1wRTdTKS6wHXBFJBojTbuLIR9FgjRB8-1-K8RbP6Exyvqd7wsuTOok1TU&_nc_ohc=n4TSlk0rklUAb5rPgmg&_nc_ht=scontent.fpbc4-1.fna&oh=00_AfDk4Gl7xnWTZjybvII9hmMkeFWbSOwSrsXXIDFZ52-OAQ&oe=66217847") center center/160px fixed; /* Ajuste del fondo */
+                color: #f2efef; /* Color del texto */
+            }
+
+            /* Estilo para el contenedor del texto */
+            .text-container {
+                background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semi-transparente */
+                padding: 20px; /* Espaciado interno */
+                border-radius: 10px; /* Bordes redondeados */
+            }
+
+            /* Contenedor principal */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            /* Encabezado */
+            .header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                font-size: 36px;
+                font-weight: bold;
+                color: #f3eeee;
+            }
+
+            .header p {
+                font-size: 18px;
+                color: #fefafa;
+            }
+
+            /* Menú de navegación */
+            .menu {
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .menu a {
+                color: white;
+                text-decoration: none;
+                margin: 0 20px;
+                font-size: 18px;
+            }
+
+            .menu a:hover {
+                text-decoration: underline;
+            }
+
+            /* Contenido principal */
+            .content {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .content .card {
+                background: rgb(0, 0, 0) url(editables/bg-verde.png) bottom right no-repeat;
+                border: none;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .content .card h2 {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .content .card p {
+                text-justify: justify;
+                font-size: 18px;
+                color: #ffffff;
+            }
+
+            .content .card img {
+                max-width: 100%;
+                height: auto;
+                margin-top: 20px;
+                border-radius: 5px;
+            }
+
+            /* Estilos para las promociones */
+            .promociones {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .promocion-container {
+                text-align: center;
+                margin-right: 20px;
+            }
+
+            .promocion-container img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 5px;
+            }
+
+            /* Estilos para la imagen adicional */
+            .imagen-adicional {
+                margin-top: 40px;
+            }
+
+            .imagen-adicional img {
+                max-width: 300px; /* Ajusta el ancho deseado para la imagen adicional */
+                height: auto;
+                border-radius: 10px;
+            }
+            /* Estilos para el footer */
+            footer {
+                background-color: black;
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+              }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div class="header">
+                    <div class="card">
+                        <h1>Restaurante-Bar El Arca</h1>
+                        <img src="https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/452738504_884782967003640_3655966942076179277_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NbXYm3nuepAQ7kNvgGlwja1&_nc_ht=scontent.fpbc4-1.fna&oh=00_AYDd9hKsXBFcplQmGXnOtqF5NVzRfzSLUTQP1TwJFTxl9A&oe=66A68E60" width="80px" height="80px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content">
+                <div class="header">
+                    <div class="card">
+                        <p>Usted ha realizado una recuperación de contraseña</p>
+                        <ul>
+                            <li><h3 style="color: white"><strong>Contraseña:</strong> "' . $contrasena . '" <strong>corresponde al correo:</strong> ' . $correo . '</h3></li>
+                        </ul>
+                        <img src="https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/452505154_884782973670306_481101616068897865_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vFpVkuhKADIQ7kNvgF9Ormn&_nc_ht=scontent.fpbc4-1.fna&oh=00_AYDC0Vj0IVQKoNMRJBR0JAfETJ2CvAVMRG6dAnHDK6zpsQ&oe=66A670C6" width="200px" height="200px">
+                        <p>Gracias por su preferencia. (No responda a este mensaje)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+    <p style="background-color: black; color:white; text-align: center;">© 2024 Todos los derechos reservados. Restaurante-Bar El Arca  <br>  <img src="https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/452738504_884782967003640_3655966942076179277_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NbXYm3nuepAQ7kNvgGlwja1&_nc_ht=scontent.fpbc4-1.fna&oh=00_AYDd9hKsXBFcplQmGXnOtqF5NVzRfzSLUTQP1TwJFTxl9A&oe=66A68E60" width="30px" height="30px" alt="Copyright"></p>
+    </footer>
+    </html>
+
+    ';
+    header("Location: contrasena_recuperada.html");
+    // Enviar el correo electrónico
+    $mail->send();
+    
+} catch (Exception $e) {
+    echo "Error al enviar el correo electrónico: {$mail->ErrorInfo}";
+}
+
+// Cerrar la conexión
+$conn->close();
+?>

@@ -1,0 +1,144 @@
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+
+.mobile-screen {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #00ff80;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.other-options {
+    margin-top: 20px;
+}
+
+.option {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.option-text {
+    color: #00ff80;
+    text-decoration: none;
+}
+
+/* Estilos para el formulario */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilos para el logo */
+.logo {
+    width: 100px;
+    height: 100px;
+    background-color: #00ff80;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Estilos para el menú */
+.menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilos para el contenido */
+.content {
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    color: #666;
+}
+/* Estilos para el mensaje flotante */
+.mensaje-flotante {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 2px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Estilos para el botón Aceptar */
+.boton-aceptar {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.boton-aceptar:hover {
+    background-color: #0056b3;
+}
