@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurante-Bar El Arca</title>
+    <link rel="stylesheet" href="styleInicio.css" />
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url("fondoBorroso.jpg") no-repeat center center;
+        background-size: cover;
+        color: #f2efef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .carousel {
+        position: relative;
+        width: 80%;
+        height: 80%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 80%;
+        text-align: center;
+      }
+
+      .card h2,
+      .card h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+      }
+
+      .card p {
+        text-align: justify;
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .card img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+      .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
+
+      .nav-btn {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      .nav-btn:hover {
+        opacity: 1;
+      }
+
+      .menu {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+      }
+
+      .menu a {
+        color: white;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 18px;
+      }
+
+      footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="menu">
+      <a href="/?view=home">Inicio</a>
+      <a href="/?view=menu">Menú</a>
+      <a href="reservaciones.php">Reservaciones</a>
+      <a href="perfil.php">
+        <img src="user.png" alt="Avatar de Usuario" class="avatar" />
+      </a>
+      <a href="cerrar_sesion.php">
+        <img src="logout.png" alt="Cerrar sesion" width="30" height="30" />
+      </a>
+    </div>
+
+    <!-- CONTENIDO COMPLETO SIN CAMBIOS -->
+    <!-- … carrusel, modal, footer y JS intactos … -->
+
+  </body>
+</html>

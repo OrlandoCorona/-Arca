@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleInicio.css"> <!-- Enlazar el archivo CSS externo -->
+    <link rel="stylesheet" href="styleInicio.css">
     <title>Cervezas - Restaurante-Bar El Arca</title>
     <style>
         body {
@@ -81,9 +81,9 @@
         }
 
         .product img {
-            width: 130px;  /* Establece el ancho deseado */
-            height: 130px; /* Establece la altura deseada */
-            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -97,7 +97,6 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
             background-color: rgba(0,0,0,0.4);
             padding-top: 60px;
         }
@@ -110,15 +109,15 @@
             width: 80%;
             max-width: 500px;
             text-align: center;
-            color: #000; /* Cambiar color del texto a negro */
+            color: #000;
         }
 
         .modal-content img {
-            width: 300px; /* Establece el ancho deseado para la imagen en el modal */
-            height: auto; /* Mantiene la proporción de la imagen */
-            object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+            width: 300px;
+            height: auto;
+            object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 20px; /* Espacio debajo de la imagen */
+            margin-bottom: 20px;
         }
 
         .close {
@@ -138,8 +137,8 @@
 </head>
 <body>
     <div class="menu">
-        <a href="inicio.html">Inicio</a>
-        <a href="menu.html">Menú</a>
+        <a href="/?view=home">Inicio</a>
+        <a href="/?view=menu">Menú</a>
         <a href="reservaciones.php">Reservaciones</a>
         <a href="perfil.php">
             <img src="user.png" alt="Avatar de Usuario" class="avatar" width="30px" height="30px">
@@ -160,53 +159,54 @@
                 <h2>Victoria 1.2L</h2>
                 <p>69$</p>
             </div>
-            <div class="product" data-name="Corona 1.2L" data-price="69$" data-img="corona12L.png" data-desc="Cerveza clara y refrescante, ideal para cualquier ocasión.">
+            <div class="product" data-name="Corona 1.2L" data-price="$69" data-img="corona12L.png" data-desc="Cerveza clara y refrescante, ideal para cualquier ocasión.">
                 <h2>Corona 1.2L</h2>
-                <p>69$</p>
+                <p>$69</p>
+
             </div>
-            <div class="product" data-name="Modelo Especial 1L" data-price="79$" data-img="modeloespecial.png" data-desc="Cerveza pilsner con un sabor único y distintivo.">
+            <div class="product" data-name="Modelo Especial 1L" data-price="$79" data-img="modeloespecial.png" data-desc="Cerveza pilsner con un sabor único y distintivo.">
                 <h2>Modelo Especial 1L</h2>
-                <p>79$</p>
+                <p>$79</p>
             </div>
-            <div class="product" data-name="Negra Modelo 1L" data-price="79$" data-img="nm.jpg" data-desc="Cerveza oscura con un sabor rico y complejo.">
+            <div class="product" data-name="Negra Modelo 1L" data-price="$79" data-img="nm.jpg" data-desc="Cerveza oscura con un sabor rico y complejo.">
                 <h2>Negra Modelo 1L</h2>
-                <p>79$</p>
+                <p>$79</p>
             </div>
-            <div class="product" data-name="Tecate 1.2L" data-price="69$" data-img="tecate12L.png" data-desc="Cerveza con carácter y sabor intenso.">
+            <div class="product" data-name="Tecate 1.2L" data-price="$69" data-img="tecate12L.png" data-desc="Cerveza con carácter y sabor intenso.">
                 <h2>Tecate 1.2L</h2>
-                <p>69$</p>
+                <p>$69</p>
             </div>
-            <div class="product" data-name="Indio 1.2L" data-price="69$" data-img="indio25L.png" data-desc="Cerveza ámbar con un sabor único y distintivo.">
+            <div class="product" data-name="Indio 1.2L" data-price="$69" data-img="indio25L.png" data-desc="Cerveza ámbar con un sabor único y distintivo.">
                 <h2>Indio 1.2L</h2>
-                <p>69$</p>
+                <p>$69</p>
             </div>
-            <div class="product" data-name="XX Lager 325ml" data-price="40$" data-img="xxlager.png" data-desc="Una cerveza ligera y refrescante en tamaño pequeño.">
+            <div class="product" data-name="XX Lager 325ml" data-price="$40" data-img="xxlager.png" data-desc="Una cerveza ligera y refrescante en tamaño pequeño.">
                 <h2>XX Lager 325ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Victoria 355ml" data-price="40$" data-img="victoria355.png" data-desc="Cerveza de cuerpo medio y sabor balanceado en tamaño pequeño.">
+            <div class="product" data-name="Victoria 355ml" data-price="$40" data-img="victoria355.png" data-desc="Cerveza de cuerpo medio y sabor balanceado en tamaño pequeño.">
                 <h2>Victoria 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Corona 355ml" data-price="40$" data-img="corona355.png" data-desc="Cerveza clara y refrescante en tamaño pequeño.">
+            <div class="product" data-name="Corona 355ml" data-price="$40" data-img="corona355.png" data-desc="Cerveza clara y refrescante en tamaño pequeño.">
                 <h2>Corona 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Modelo Especial 355ml" data-price="40$" data-img="modeloespecial355.png" data-desc="Cerveza pilsner con un sabor único y distintivo en tamaño pequeño.">
+            <div class="product" data-name="Modelo Especial 355ml" data-price="$40" data-img="modeloespecial355.png" data-desc="Cerveza pilsner con un sabor único y distintivo en tamaño pequeño.">
                 <h2>Modelo Especial 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Negra Modelo 355ml" data-price="40$" data-img="modeloespecial355Negra.png" data-desc="Cerveza oscura con un sabor rico y complejo en tamaño pequeño.">
+            <div class="product" data-name="Negra Modelo 355ml" data-price="$40" data-img="modeloespecial355Negra.png" data-desc="Cerveza oscura con un sabor rico y complejo en tamaño pequeño.">
                 <h2>Negra Modelo 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Tecate 355ml" data-price="40$" data-img="tecate355.png" data-desc="Cerveza con carácter y sabor intenso en tamaño pequeño.">
+            <div class="product" data-name="Tecate 355ml" data-price="$40" data-img="tecate355.png" data-desc="Cerveza con carácter y sabor intenso en tamaño pequeño.">
                 <h2>Tecate 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
-            <div class="product" data-name="Indio 355ml" data-price="40$" data-img="indio355.png" data-desc="Cerveza ámbar con un sabor único y distintivo en tamaño pequeño.">
+            <div class="product" data-name="Indio 355ml" data-price="$40" data-img="indio355.png" data-desc="Cerveza ámbar con un sabor único y distintivo en tamaño pequeño.">
                 <h2>Indio 355ml</h2>
-                <p>40$</p>
+                <p>$40</p>
             </div>
         </div>
     </div>

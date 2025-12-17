@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante-Bar El Arca</title>
-    <link rel="stylesheet" href="styleInicio.css"> <!-- Enlazar el archivo CSS externo -->
+    <link rel="stylesheet" href="/assets/css/menu.css">
     <style>
-        /* Estilos generales */
         body {
             font-family: "Arial", sans-serif;
             margin: 0;
@@ -43,7 +42,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            padding: 100px 20px; /* Ajustar el padding para evitar la superposición con el menú fijo */
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -82,31 +81,18 @@
             transform: scale(1.05);
         }
 
-        .desayunos {
-            background-color: #f39c12;
-        }
+        .desayunos { background-color: #f39c12; }
 
-        .comidas-cenas {
-            background-color: #c0392b;
-        }
+        .comidas-cenas { background-color: #c0392b; }
 
-        .vips-kids {
-            background-color: #8e44ad;
-        }
+        .vips-kids { background-color: #8e44ad; }
 
-        .milanesas-vips {
-            background-color: #f39c12;
-        }
+        .milanesas-vips { background-color: #f39c12; }
 
-        .clasicos-vips {
-            background-color: #e74c3c;
-        }
+        .clasicos-vips { background-color: #e74c3c; }
+        
+        .menu-dia { background-color: #e74c3c; }
 
-        .menu-dia {
-            background-color: #e74c3c;
-        }
-
-        /* Estilos para el footer */
         footer {
             background-color: black;
             color: white;
@@ -122,41 +108,46 @@
 
 <body>
     <div class="menu">
-        <a href="inicio.html">Inicio</a>
-        <a href="menu.html">Menú</a>
+        <a href="/?view=home">Inicio</a>
+        <a href="/?view=menu">Menú</a>
         <a href="reservaciones.php">Reservaciones</a>
         <a href="perfil.php">
-            <img src="user.png" alt="Avatar de Usuario" class="avatar" width="30px" height="30px">
+            <img src="user.png" alt="Avatar de Usuario" width="30" height="30">
         </a>
         <a href="cerrar_sesion.php">
-            <img src="logout.png" alt="Cerrar sesión" class="cerrar" width="30px" height="30px">
+            <img src="logout.png" alt="Cerrar sesión" width="30" height="30">
         </a>
     </div>
 
     <div class="menu-grid">
         <div class="menu-item">
             <img src="cerveza.jpg" alt="Cervezas">
-            <button class="desayunos" onclick="location.href='cervezas.html'">CERVEZAS</button>
+            <button class="desayunos" onclick="location.href='/?view=cervezas'">CERVEZAS</button>
         </div>
+
         <div class="menu-item">
             <img src="comida.jpg" alt="Comidas y Cenas">
-            <button class="comidas-cenas" onclick="location.href='comida.html'">COMIDA</button>
+            <button class="comidas-cenas" onclick="location.href='/?view=comida'">COMIDA</button>
         </div>
+
         <div class="menu-item">
             <img src="tacos.jpg" alt="Tacos">
-            <button class="vips-kids" onclick="location.href='tacos.html'">TACOS</button>
+            <button class="vips-kids" onclick="location.href='/?view=tacos'">TACOS</button>
         </div>
+
         <div class="menu-item">
             <img src="micheladas.jpg" alt="Micheladas">
-            <button class="milanesas-vips" onclick="location.href='micheladas.html'">MICHELADAS</button>
+            <button class="milanesas-vips" onclick="location.href='/?view=micheladas'">MICHELADAS</button>
         </div>
+
         <div class="menu-item">
             <img src="botellas.jpg" alt="Botellas y Copeo">
-            <button class="clasicos-vips" onclick="location.href='botellas.html'">BOTELLAS Y COPEO</button>
+            <button class="clasicos-vips" onclick="location.href='/?view=botellas'">BOTELLAS Y COPEO</button>
         </div>
+
         <div class="menu-item">
             <img src="extras.jpg" alt="Extras y Otros">
-            <button class="menu-dia" onclick="location.href='otros.html'">EXTRAS Y OTROS</button>
+            <button class="menu-dia" onclick="location.href='/?view=otros'">EXTRAS Y OTROS</button>
         </div>
     </div>
 
@@ -164,5 +155,4 @@
         <p>Restaurante-Bar El Arca &copy; 2024</p>
     </footer>
 </body>
-
 </html>
