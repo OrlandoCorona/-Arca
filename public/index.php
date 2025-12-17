@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../vendor/autoload.php';
 
+session_start();
+
 /*
 |--------------------------------------------------------------------------
 | Vista solicitada
@@ -66,6 +68,7 @@ $routes = [
     'incorrect-password' => __DIR__ . '/../app/views/incorrect-password.html',
 
     // ──────────────── CONTROLADORES ────────────────
+    'login_submit' => __DIR__ . '/../app/controllers/login.php',
     'registro' => __DIR__ . '/../app/controllers/registro.php',
     'recuperar_contrasena' => __DIR__ . '/../app/controllers/recuperar_contrasena.php',
     'reservaciones' => __DIR__ . '/../app/controllers/reservaciones.php',

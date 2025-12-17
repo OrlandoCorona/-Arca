@@ -1,37 +1,27 @@
-<?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = $_POST["correo"];
-    $contrasena = $_POST["contrasena"];
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "arca";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Error en la conexión: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $_SESSION["id_usuario"] = $row["id"];
-        header("Location: /?view=home");
-        exit();
-    } else {
-        header("Location: /?view=incorrect-password");
-        exit();
-    }
-
-    $conn->close();
-} else {
-    header("Location: /?view=home");
-    exit();
-}
-?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Restaurante Bar El Arca</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form action="/?view=login_submit" method="POST">
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <p>¿No tienes cuenta? <a href="/?view=register">Regístrate aquí</a></p>
+        <p>¿Olvidaste tu contraseña? <a href="/?view=recover">Recupérala aquí</a></p>
+    </div>
+</body>
+</html>
