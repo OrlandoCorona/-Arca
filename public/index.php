@@ -9,7 +9,6 @@ $routes = [
     'login'    => __DIR__ . '/../app/views/auth/login.php',
     'register' => __DIR__ . '/../app/views/auth/register.html',
     'recover'  => __DIR__ . '/../app/views/auth/recover-password.html',
-    'home'     => __DIR__ . '/../app/views/home.html',
     'menu'     => __DIR__ . '/../app/views/menu.html',
 ];
 
