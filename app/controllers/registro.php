@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si los campos obligatorios están completos
     if (empty($_POST["correo"]) || empty($_POST["nombre"]) || empty($_POST["apellido_paterno"]) || empty($_POST["apellido_materno"]) || empty($_POST["telefono"]) || empty($_POST["contrasena"]) || empty($_POST["repass"])) {
-        echo "Todos los campos son obligatorios.";
+        header("Location: /?view=register");
         exit();
     }
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql_check = "SELECT correo FROM usuarios WHERE correo = '$correo'";
     $result = $conn->query($sql_check);
     if ($result->num_rows > 0) {
-        header("Location: correo_ya_registrado.html");
+        header("Location: /?view=email-already-registered");
         exit();
     }
 
@@ -43,17 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
         // Redirigir a la página de registro exitoso
-        header("Location: registro_exitoso.html");
+        header("Location: /?view=successful_registration");
         exit();
     } else {
-        echo "Error al registrar el usuario: " . $conn->error;
+        header("Location: /?view=register");
+        exit();
     }
-
-    // Cerrar la conexión
-    $conn->close();
 } else {
     // Si se intenta acceder al archivo directamente sin enviar datos, redirigir a inicio.html
-    header("Location: inicio.html");
+    header("Location: /?view=home");
     exit();
 }
 ?>

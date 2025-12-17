@@ -4,7 +4,7 @@ session_start();
 // Verificar si se ha iniciado sesión
 if (!isset($_SESSION["id_usuario"])) {
     // Si no se ha iniciado sesión, redirigir a la página de inicio de sesión
-    header("Location: index.html");
+    header("Location: /?view=login");
     exit();
 }
 
@@ -41,7 +41,8 @@ if ($result->num_rows > 0) {
     $correo = $row["correo"];
     $telefono = $row["telefono"];
 } else {
-    echo "No se encontró información del perfil del usuario.";
+    header("Location: /?view=login");
+    exit();
 }
 
 // Cerrar la conexión
@@ -85,8 +86,8 @@ $conn->close();
 </head>
 <body>
     <div class="menu">
-        <a href="inicio.html">Inicio</a>
-        <a href="menu.html">Menú</a>
+        <a href="/?view=home">Inicio</a>
+        <a href="/?view=menu">Menú</a>
         <a href="reservaciones.php";>Reservaciones</a>
         <a href="perfil.php">
             <img src="user.png" alt="Avatar de Usuario" class="avatar">

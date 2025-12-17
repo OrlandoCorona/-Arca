@@ -35,14 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: recuperacion_de_contraseña.php");
         exit();
     } else {
-        echo "El correo electrónico no está registrado en nuestro sistema.";
+        header("Location: /?view=recover-password");
+        exit();
     }
-
-    // Cerrar la conexión
-    $conn->close();
 } else {
     // Si se intenta acceder al archivo directamente sin enviar datos, redirigir a la página de inicio
-    header("Location: index.html");
+    header("Location: /?view=home");
     exit();
 }
 ?>

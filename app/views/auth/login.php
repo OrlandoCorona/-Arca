@@ -22,16 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $_SESSION["id_usuario"] = $row["id"];
-        header("Location: inicio.html?id_usuario=" . $row["id"]);
+        header("Location: /?view=home");
         exit();
     } else {
-        header("Location: contraseña_incorrecta.html");
+        header("Location: /?view=incorrect-password");
         exit();
     }
 
     $conn->close();
 } else {
-    header("Location: index.html");
+    header("Location: /?view=home");
     exit();
 }
 ?>

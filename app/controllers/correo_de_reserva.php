@@ -4,7 +4,7 @@ session_start();
 // Verificar si se ha iniciado sesión
 if (!isset($_SESSION["id_usuario"])) {
     // Si no se ha iniciado sesión, redirigir a la página de inicio de sesión
-    header("Location: index.html");
+    header("Location: /?view=login");
     exit();
 }
 
@@ -22,17 +22,9 @@ $username = "root";
 $password = ""; // Contraseña vacía
 $dbname = "arca";
 
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
 
 // Verificar si se han recibido los datos del formulario
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -77,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -95,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Enviar el correo electrónico
             $mail->send();
 
-            echo "Correo enviado Exitosamente";
+            header("Location: /?view=reservation-success");
             exit(); // Agregar esta línea para evitar que el script siga ejecutándose después de la redirección
         } catch (Exception $e) {
             echo "Error al enviar el correo de confirmación: {$mail->ErrorInfo}";
@@ -111,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $conn->close();
 } else {
     // Si no se han recibido datos del formulario, redirigir a alguna página de error
-    header("Location: error.html");
+    header("Location: /?view=home");
     exit();
 }
 ?>

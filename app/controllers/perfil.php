@@ -4,7 +4,7 @@ session_start();
 // Verificar si se ha iniciado sesión
 if (!isset($_SESSION["id_usuario"])) {
     // Si no se ha iniciado sesión, redirigir a la página de inicio de sesión
-    header("Location: index.html");
+    header("Location: /?view=login");
     exit();
 }
 
@@ -51,10 +51,12 @@ if ($stmt->execute()) {
         $correo = $row["correo"];
         $telefono = $row["telefono"];
     } else {
-        echo "No se encontró información del perfil del usuario.";
+        header("Location: /?view=login");
+        exit();
     }
 } else {
-    echo "Error al ejecutar la consulta: " . $stmt->error;
+    header("Location: /?view=home");
+    exit();
 }
 
 // Cerrar la sentencia
@@ -77,7 +79,8 @@ if ($stmt->execute()) {
     // Obtener el resultado de la consulta
     $result = $stmt->get_result();
 } else {
-    echo "Error al ejecutar la consulta: " . $stmt->error;
+    header("Location: /?view=home");
+    exit();
 }
 
 // Cerrar la sentencia
@@ -201,8 +204,8 @@ $conn->close();
 <body>
     <div class="content-wrapper">
         <div class="menu">
-            <a href="inicio.html">Inicio</a>
-            <a href="menu.html">Menú</a>
+            <a href="/?view=home">Inicio</a>
+            <a href="/?view=menu">Menú</a>
             <a href="reservaciones.php">Reservaciones</a>
             <a href="perfil.php">
                 <img src="user.png" alt="Avatar de Usuario" class="avatar">
