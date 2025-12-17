@@ -206,12 +206,12 @@ $conn->close();
         <div class="menu">
             <a href="/?view=home">Inicio</a>
             <a href="/?view=menu">Menú</a>
-            <a href="reservaciones.php">Reservaciones</a>
-            <a href="perfil.php">
-                <img src="user.png" alt="Avatar de Usuario" class="avatar">
+            <a href="/?view=reservaciones">Reservaciones</a>
+            <a href="/?view=perfil">
+                <img src="/assets/images/user.png" alt="Avatar de Usuario" class="avatar">
             </a>
-            <a href="cerrar_sesion.php">
-                <img src="logout.png" alt="Cerrar sesión" width="30px" height="30px">
+            <a href="/?view=cerrar_sesion">
+                <img src="/assets/images/logout.png" alt="Cerrar sesión" width="30px" height="30px">
             </a>
         </div>
 

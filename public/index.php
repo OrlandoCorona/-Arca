@@ -23,6 +23,15 @@ $routes = [
     'successful_registration' => __DIR__ . '/../app/views/successful_registration.html',
     'email-already-registered' => __DIR__ . '/../app/views/email-already-registered.html',
     'incorrect-password' => __DIR__ . '/../app/views/incorrect-password.html',
+    // Controladores
+    'registro' => __DIR__ . '/../app/controllers/registro.php',
+    'recuperar_contrasena' => __DIR__ . '/../app/controllers/recuperar_contrasena.php',
+    'recuperacion_de_contraseña' => __DIR__ . '/../app/controllers/recuperacion_de_contrase+¦a.php',
+    'reservaciones' => __DIR__ . '/../app/controllers/reservaciones.php',
+    'realizar_reserva' => __DIR__ . '/../app/controllers/realizar_reserva.php',
+    'perfil' => __DIR__ . '/../app/controllers/perfil.php',
+    'cerrar_sesion' => __DIR__ . '/../app/controllers/cerrar_sesion.php',
+    'correo_de_reserva' => __DIR__ . '/../app/controllers/correo_de_reserva.php',
 ];
 
 if (!array_key_exists($view, $routes)) {
