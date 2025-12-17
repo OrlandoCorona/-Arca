@@ -24,4 +24,5 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE 10000
 
 # 7. Arrancar servidor PHP
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "public", "public/index.php"]
+
