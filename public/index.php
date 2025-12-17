@@ -1,6 +1,11 @@
 <?php
 declare(strict_types=1);
 
+if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '') {
+    header('Location: /?view=login');
+    exit;
+}
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $view = $_GET['view'] ?? 'login';
@@ -10,7 +15,6 @@ $routes = [
     'register' => __DIR__ . '/../app/views/auth/register.html',
     'recover'  => __DIR__ . '/../app/views/auth/recover-password.html',
     'menu'     => __DIR__ . '/../app/views/menu.html',
-    'home'     => __DIR__ . '/../app/views/home.html',
 ];
 
 if (!array_key_exists($view, $routes)) {
