@@ -1,0 +1,5 @@
+/vendor/
+/.env
+*.code-workspace
+.vscode/
+.idea/
