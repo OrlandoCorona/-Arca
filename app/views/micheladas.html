@@ -6,77 +6,22 @@
     <title>Micheladas - Restaurante-Bar El Arca</title>
 <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
-        body {
-            font-family: "Arial", sans-serif;
-            background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
-            background-size: cover;
-            color: #f2efef;
-            margin: 0;
-            padding: 0;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .menu {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1;
-        }
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-        }
-        .menu a:hover { text-decoration: underline; }
-        h1 { text-align: center; margin-top: 80px; }
-        .product-list { display: flex; flex-wrap: wrap; justify-content: center; }
-        .product {
-            background: rgba(0, 0, 0, 0.7);
-            margin: 10px;
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-        .product:hover { transform: scale(1.05); }
-        .product h2 { font-size: 20px; margin-bottom: 10px; color: #fff; }
-        .product p { font-size: 16px; color: #ddd; }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-            color: black;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover, .close:focus {
-            color: black;
-            cursor: pointer;
-        }
+      :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
+      body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; }
+      .container{ max-width:1200px; margin:0 auto; padding:20px; }
+      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position:fixed; top:0; z-index:10; }
+      .menu a{ color:#fff; text-decoration:none; margin:0 16px; font-size:18px; }
+      .menu a:hover{ opacity:0.95; }
+      h1{ text-align:center; margin-top:80px; }
+      .product-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+      .product{ background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.35)); margin:10px; padding:20px; border-radius:10px; width:200px; text-align:center; transition:transform 0.25s ease, box-shadow .2s; cursor:pointer; }
+      .product:hover{ transform:translateY(-6px); box-shadow:0 8px 24px rgba(3,12,30,0.25); }
+      .modal{ display:none; position:fixed; inset:0; background: rgba(0,0,0,0.45); align-items:center; justify-content:center; }
+      .modal-content{ background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); margin:0 16px; padding:18px; border-radius:12px; width:90%; max-width:520px; text-align:center; }
+      .close{ color:#222; font-size:28px; font-weight:bold; float:right; cursor:pointer; }
+      .mensaje-flotante{ width:320px; background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); border-radius:12px; padding:22px; text-align:center; box-shadow:0 10px 30px rgba(5,20,60,0.12); color:var(--text-dark); }
+      .boton-aceptar, .btn-primary{ display:inline-block; padding:10px 22px; background: linear-gradient(180deg,var(--primary),var(--primary-dark)); color:#fff; text-decoration:none; border-radius:8px; box-shadow:0 6px 18px rgba(0,123,255,0.22); transition:transform .12s ease; }
+      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; position:fixed; bottom:0; width:100%; }
     </style>
 </head>
 <body>

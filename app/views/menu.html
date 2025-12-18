@@ -7,102 +7,25 @@
     <title>Restaurante-Bar El Arca</title>
 <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
-        body {
-            font-family: "Arial", sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
-            background-size: cover;
-            color: #f2efef;
-        }
-
-        .menu {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 2;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-        }
-
-        .menu a img {
-            vertical-align: middle;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .menu-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 10px;
-        }
-
-        .menu-item button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.5);
-            transition: background-color 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: scale(1.05);
-        }
-
-        .desayunos { background-color: #f39c12; }
-
-        .comidas-cenas { background-color: #c0392b; }
-
-        .vips-kids { background-color: #8e44ad; }
-
-        .milanesas-vips { background-color: #f39c12; }
-
-        .clasicos-vips { background-color: #e74c3c; }
-        
-        .menu-dia { background-color: #e74c3c; }
-
-        footer {
-            background-color: black;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 2;
-        }
+      :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
+      body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; }
+      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position:fixed; top:0; z-index:20; }
+      .menu a{ color:#fff; text-decoration:none; margin:0 16px; font-size:18px; }
+      .menu a img{ vertical-align:middle; }
+      .menu-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:20px; padding:100px 18px; max-width:1200px; margin:0 auto; }
+      .menu-item{ position:relative; overflow:hidden; border-radius:12px; box-shadow:0 8px 20px rgba(3,12,30,0.12); transition:transform .22s ease; }
+      .menu-item img{ width:100%; height:auto; display:block; border-radius:12px; }
+      .menu-item button{ position:absolute; bottom:18px; left:50%; transform:translateX(-50%); padding:10px 20px; font-size:1rem; color:#fff; border:none; border-radius:8px; cursor:pointer; background: rgba(0,0,0,0.45); transition:background .18s, transform .12s; }
+      .menu-item:hover{ transform:translateY(-6px); }
+      .menu-item button:hover{ transform:translateY(-4px); }
+      /* category color helpers (kept for semantics) */
+      .desayunos{ background:#f39c12 }
+      .comidas-cenas{ background:#c0392b }
+      .vips-kids{ background:#8e44ad }
+      .milanesas-vips{ background:#f39c12 }
+      .clasicos-vips{ background:#e74c3c }
+      .menu-dia{ background:#e74c3c }
+      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; position:fixed; bottom:0; width:100%; z-index:20; }
     </style>
 </head>
 
