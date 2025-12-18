@@ -1,136 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Registrar</title>
-<link rel="stylesheet" href="/assets/css/styles.css">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+
     <style>
-      /* Estilos generales */
       body {
-        font-family: "Arial", sans-serif;
+        font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background: url("/assets/images/fondoBorroso.jpg") no-repeat center center; /* Ajuste del fondo */
-        background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
-        color: #f2efef; /* Color del texto */
+        background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
+        background-size: cover;
+        color: #f2efef;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
-      /* Botones */
+      .mobile-screen {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
       .login-btn {
-        background-color: green; /* Color de fondo del botón */
-        color: white; /* Color del texto */
+        background-color: green;
+        color: white;
         border: none;
         padding: 10px 20px;
-        margin: 10px;
+        margin-top: 10px;
         border-radius: 5px;
         cursor: pointer;
-        font-weight: bold; /* Texto en negrita */
+        font-weight: bold;
+        width: 100%;
       }
 
       .login-btn:hover {
-        background-color: darkgreen; /* Color de fondo cuando se pasa el mouse */
+        background-color: darkgreen;
       }
 
-      /* Opciones adicionales */
       .other-options {
         text-align: center;
         margin-top: 20px;
       }
 
-      .option-text {
-        text-decoration: none;
-        font-weight: bold; /* Texto en negrita */
+      footer {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
       }
     </style>
   </head>
 
   <body>
+
     <div class="mobile-screen">
-      <div class="header">
-        <h1 style="color: black">Registrar</h1>
-      </div>
+      <h1 style="color:black;">Registrar</h1>
 
-      <div style="text-align: center">
-        <img
-          src="/assets/images/user_avatar.png"
-          alt="Avatar de Usuario"
-          class="avatar"
-          width="120px"
-          height="70px"
-        />
-      </div>
+      <img
+        src="/assets/images/user_avatar.png"
+        alt="Avatar de Usuario"
+        width="120"
+        height="70"
+      />
 
-     <form id="registration-form" method="post" action="/?view=registro">
+      <form id="registration-form" method="post" action="/?view=registro">
 
-  <!-- Correo -->
-  <input
-    type="email"
-    name="correo"
-    placeholder="Correo electrónico"
-    autocomplete="username"
-    required
-  />
+        <input type="email" name="correo" placeholder="Correo electrónico" required />
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="text" name="apellido_paterno" placeholder="Apellido Paterno" required />
+        <input type="text" name="apellido_materno" placeholder="Apellido Materno" required />
+        <input type="text" name="telefono" placeholder="Número de teléfono" required />
+        <input type="password" name="password" placeholder="Contraseña" required />
+        <input type="password" name="repass" placeholder="Repetir contraseña" required />
 
-  <!-- Contraseña -->
-  <input
-    type="password"
-    name="password"
-    placeholder="Contraseña"
-    autocomplete="new-password"
-    required
-  />
+        <button type="submit" class="login-btn">
+          Registrarse
+        </button>
 
-  <!-- Apellido paterno -->
-  <input
-    type="text"
-    name="apellido_paterno"
-    placeholder="Apellido Paterno"
-    required
-  />
-
-  <!-- Apellido materno -->
-  <input
-    type="text"
-    name="apellido_materno"
-    placeholder="Apellido Materno"
-    required
-  />
-
-  <!-- Teléfono -->
-  <input
-    type="text"
-    name="telefono"
-    placeholder="Número de teléfono"
-    required
-  />
-
-  <!-- Repetir contraseña -->
-  <input
-    type="password"
-    name="repass"
-    placeholder="Repetir contraseña"
-    required
-  />
-
-  <button type="submit" class="login-btn">
-    Registrarse
-  </button>
-
-</form>
-
+      </form>
 
       <div class="other-options">
-        <div class="option" id="newUser">
-          <a href="/?view=register" class="option-text" style="color: black">
-            Iniciar Sesión
-          </a>
-        </div>
+        <a href="/?view=login" class="option-text" style="color:black;">
+          Iniciar Sesión
+        </a>
       </div>
     </div>
+
+    <footer>
+      <p>
+        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+        <img src="/assets/images/inconoB.jpg" width="30" height="30">
+      </p>
+    </footer>
+
   </body>
 </html>
