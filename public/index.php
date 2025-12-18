@@ -46,20 +46,27 @@ if (!in_array($view, $publicViews, true) && !isset($_SESSION['id_usuario'])) {
 $routes = [
 
     // ──────────────── AUTH ────────────────
-    'login'   => __DIR__ . '/../app/views/auth/login.php',
+    'login' => function () {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require __DIR__ . '/../app/controllers/login.php';
+        } else {
+            require __DIR__ . '/../app/views/auth/login.php';
+        }
+    },
+
     'register' => __DIR__ . '/../app/views/auth/register.html',
     'recover' => __DIR__ . '/../app/views/auth/recover-password.html',
     'recover-password-success' => __DIR__ . '/../app/views/auth/recover-password-success.html',
 
     // ──────────────── VISTAS PRINCIPALES ────────────────
-    'home'   => __DIR__ . '/../app/views/home.html',
-    'menu'   => __DIR__ . '/../app/views/menu.html',
-    'beers'  => __DIR__ . '/../app/views/beers.html',
+    'home' => __DIR__ . '/../app/views/home.html',
+    'menu' => __DIR__ . '/../app/views/menu.html',
+    'beers' => __DIR__ . '/../app/views/beers.html',
     'bottles' => __DIR__ . '/../app/views/bottles.html',
     'extras' => __DIR__ . '/../app/views/extras.html',
-    'food'   => __DIR__ . '/../app/views/food.html',
+    'food' => __DIR__ . '/../app/views/food.html',
     'micheladas' => __DIR__ . '/../app/views/micheladas.html',
-    'tacos'  => __DIR__ . '/../app/views/tacos.html',
+    'tacos' => __DIR__ . '/../app/views/tacos.html',
 
     // ──────────────── RESULTADOS / MENSAJES ────────────────
     'reservation-success' => __DIR__ . '/../app/views/reservation-success.html',
@@ -68,7 +75,6 @@ $routes = [
     'incorrect-password' => __DIR__ . '/../app/views/incorrect-password.html',
 
     // ──────────────── CONTROLADORES ────────────────
-    'login_submit' => __DIR__ . '/../app/controllers/login.php',
     'registro' => __DIR__ . '/../app/controllers/registro.php',
     'recuperar_contrasena' => __DIR__ . '/../app/controllers/recuperar_contrasena.php',
     'reservaciones' => __DIR__ . '/../app/controllers/reservaciones.php',
@@ -77,6 +83,7 @@ $routes = [
     'perfil' => __DIR__ . '/../app/controllers/perfil.php',
     'cerrar_sesion' => __DIR__ . '/../app/controllers/cerrar_sesion.php',
 ];
+
 
 /*
 |--------------------------------------------------------------------------
