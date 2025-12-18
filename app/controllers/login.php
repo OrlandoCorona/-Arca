@@ -1,37 +1,33 @@
 <?php
 session_start();
+require __DIR__ . '/../config/database.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $correo = $_POST["correo"];
-    $contrasena = $_POST["contrasena"];
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "arca";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Error en la conexión: " . $conn->connect_error);
-    }
-
-    $sql = "SELECT id FROM usuarios WHERE correo = '$correo' AND contrasena = '$contrasena'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $_SESSION["id_usuario"] = $row["id"];
-        header("Location: /?view=home");
-        exit();
-    } else {
-        header("Location: /?view=incorrect-password");
-        exit();
-    }
-
-    $conn->close();
-} else {
-    header("Location: /?view=login");
-    exit();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /?view=login');
+    exit;
 }
-?>
+
+$correo = trim($_POST['correo'] ?? '');
+$password = $_POST['password'] ?? '';
+
+if ($correo === '' || $password === '') {
+    header('Location: /?view=login');
+    exit;
+}
+
+$sql = "SELECT id, nombre, password FROM usuarios WHERE correo = :correo LIMIT 1";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['correo' => $correo]);
+
+$usuario = $stmt->fetch();
+
+if (!$usuario || !password_verify($password, $usuario['password'])) {
+    header('Location: /?view=incorrect-password');
+    exit;
+}
+
+$_SESSION['id_usuario'] = $usuario['id'];
+$_SESSION['nombre'] = $usuario['nombre'];
+
+header('Location: /?view=home');
+exit;

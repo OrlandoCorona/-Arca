@@ -1,57 +1,39 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar si los campos obligatorios están completos
-    if (empty($_POST["correo"]) || empty($_POST["nombre"]) || empty($_POST["apellido_paterno"]) || empty($_POST["apellido_materno"]) || empty($_POST["telefono"]) || empty($_POST["contrasena"]) || empty($_POST["repass"])) {
-        header("Location: /?view=register");
-        exit();
-    }
+require __DIR__ . '/../config/database.php';
 
-    // Obtener los datos del formulario
-    $correo = $_POST["correo"];
-    $nombre = $_POST["nombre"];
-    $apellido_paterno = $_POST["apellido_paterno"];
-    $apellido_materno = $_POST["apellido_materno"];
-    $telefono = $_POST["telefono"];
-    $contrasena = $_POST["contrasena"];
-
-    // Establecer las credenciales de la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = ""; // Contraseña vacía
-    $dbname = "arca";
-
-    // Crear una conexión a la base de datos
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar la conexión
-    if ($conn->connect_error) {
-        die("Error en la conexión: " . $conn->connect_error);
-    }
-
-    // Verificar si el correo ya está registrado
-    $sql_check = "SELECT correo FROM usuarios WHERE correo = '$correo'";
-    $result = $conn->query($sql_check);
-    if ($result->num_rows > 0) {
-        header("Location: /?view=email-already-registered");
-        exit();
-    }
-
-    // Preparar la consulta SQL para insertar los datos en la tabla
-    $sql = "INSERT INTO usuarios (correo, nombre, apellido_paterno, apellido_materno, telefono, contrasena)
-            VALUES ('$correo', '$nombre', '$apellido_paterno', '$apellido_materno', '$telefono', '$contrasena')";
-
-    // Ejecutar la consulta
-    if ($conn->query($sql) === TRUE) {
-        // Redirigir a la página de registro exitoso
-        header("Location: /?view=successful_registration");
-        exit();
-    } else {
-        header("Location: /?view=register");
-        exit();
-    }
-} else {
-    // Si se intenta acceder al archivo directamente sin enviar datos, redirigir a inicio.html
-    header("Location: /?view=home");
-    exit();
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /?view=register');
+    exit;
 }
-?>
+
+$nombre = trim($_POST['nombre'] ?? '');
+$correo = trim($_POST['correo'] ?? '');
+$password = $_POST['password'] ?? '';
+
+if ($nombre === '' || $correo === '' || $password === '') {
+    header('Location: /?view=register');
+    exit;
+}
+
+$sql = "SELECT id FROM usuarios WHERE correo = :correo";
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['correo' => $correo]);
+
+if ($stmt->fetch()) {
+    header('Location: /?view=email-already-registered');
+    exit;
+}
+
+$hash = password_hash($password, PASSWORD_BCRYPT);
+
+$sql = "INSERT INTO usuarios (nombre, correo, password)
+        VALUES (:nombre, :correo, :password)";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'nombre' => $nombre,
+    'correo' => $correo,
+    'password' => $hash
+]);
+
+header('Location: /?view=successful_registration');
+exit;
