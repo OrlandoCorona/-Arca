@@ -1,110 +1,57 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Registrar</title>
-<link rel="stylesheet" href="/assets/css/styles.css">
-    <style>
-      /* Estilos generales */
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url("/assets/images/fondoBorroso.jpg") no-repeat center center; /* Ajuste del fondo */
-        background-size: cover; /* Ajusta la imagen de fondo para que cubra toda la pantalla */
-        color: #f2efef; /* Color del texto */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
+<form id="registration-form" method="post" action="/?view=registro">
 
-      /* Botones */
-      .login-btn {
-        background-color: green; /* Color de fondo del botón */
-        color: white; /* Color del texto */
-        border: none;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold; /* Texto en negrita */
-      }
+  <!-- Correo -->
+  <input
+    type="email"
+    name="correo"
+    placeholder="Correo electrónico"
+    autocomplete="username"
+    required
+  />
 
-      .login-btn:hover {
-        background-color: darkgreen; /* Color de fondo cuando se pasa el mouse */
-      }
+  <!-- Contraseña -->
+  <input
+    type="password"
+    name="password"
+    placeholder="Contraseña"
+    autocomplete="new-password"
+    required
+  />
 
-      /* Opciones adicionales */
-      .other-options {
-        text-align: center;
-        margin-top: 20px;
-      }
+  <!-- Apellido paterno -->
+  <input
+    type="text"
+    name="apellido_paterno"
+    placeholder="Apellido Paterno"
+    required
+  />
 
-      .option-text {
-        text-decoration: none;
-        font-weight: bold; /* Texto en negrita */
-      }
-    </style>
-  </head>
+  <!-- Apellido materno -->
+  <input
+    type="text"
+    name="apellido_materno"
+    placeholder="Apellido Materno"
+    required
+  />
 
-  <body>
-    <div class="mobile-screen">
-      <div class="header">
-        <h1 style="color: black">Registrar</h1>
-      </div>
+  <!-- Teléfono -->
+  <input
+    type="text"
+    name="telefono"
+    placeholder="Número de teléfono"
+    required
+  />
 
-      <div style="text-align: center">
-        <img
-          src="/assets/images/user_avatar.png"
-          alt="Avatar de Usuario"
-          class="avatar"
-          width="120px"
-          height="70px"
-        />
-      </div>
+  <!-- Repetir contraseña -->
+  <input
+    type="password"
+    name="repass"
+    placeholder="Repetir contraseña"
+    required
+  />
 
-      <form id="registration-form" method="post" action="/?view=registro">
-       <input type="email" name="correo" autocomplete="username" required>
-       <input type="password" name="password" autocomplete="new-password" required>
-        <input
-          type="text"
-          name="apellido_paterno"
-          placeholder="Apellido Paterno"
-          required
-        />
-        <input
-          type="text"
-          name="apellido_materno"
-          placeholder="Apellido Materno"
-          required
-        />
-        <input
-          type="text"
-          name="telefono"
-          placeholder="Número de teléfono"
-          required
-     <input type="password" name="password" placeholder="Contraseña" required />
-<input type="password" name="password_confirm" placeholder="Repetir contraseña" required />
+  <button type="submit" class="login-btn">
+    Registrarse
+  </button>
 
-        <button
-          type="submit"
-          class="login-btn"
-          id="signup-btn"
-          style="background-color: lightslategrey; color: black"
-        >
-          Registrarse
-        </button>
-      </form>
-
-      <div class="other-options">
-        <div class="option" id="newUser">
-          <a href="/?view=register" class="option-text" style="color: black">
-            Iniciar Sesión
-          </a>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+</form>
