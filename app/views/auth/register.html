@@ -66,8 +66,8 @@
       </div>
 
       <form id="registration-form" method="post" action="/?view=registro">
-        <input type="email" name="correo" placeholder="Correo" required />
-        <input type="text" name="nombre" placeholder="Nombre" required />
+       <input type="email" name="correo" autocomplete="username" required>
+       <input type="password" name="password" autocomplete="new-password" required>
         <input
           type="text"
           name="apellido_paterno"
@@ -85,19 +85,9 @@
           name="telefono"
           placeholder="Número de teléfono"
           required
-        />
-        <input
-          type="password"
-          name="contrasena"
-          placeholder="Contraseña"
-          required
-        />
-        <input
-          type="password"
-          name="repass"
-          placeholder="Repetir contraseña"
-          required
-        />
+     <input type="password" name="password" placeholder="Contraseña" required />
+<input type="password" name="password_confirm" placeholder="Repetir contraseña" required />
+
         <button
           type="submit"
           class="login-btn"

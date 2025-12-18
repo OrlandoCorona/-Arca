@@ -228,7 +228,7 @@ try {
                 color: white;
                 text-align: center;
                 padding: 10px 0;
-                position: fixed;
+                position:relative;
                 bottom: 0;
                 width: 100%;
               }

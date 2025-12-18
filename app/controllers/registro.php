@@ -1,10 +1,11 @@
 <?php
 require __DIR__ . '/../config/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ($_POST['password'] !== $_POST['password_confirm']) {
     header('Location: /?view=register');
     exit;
 }
+
 
 $nombre = trim($_POST['nombre'] ?? '');
 $correo = trim($_POST['correo'] ?? '');

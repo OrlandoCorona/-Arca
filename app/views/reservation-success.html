@@ -1,35 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservacion Exitosa</title>
-<link rel="stylesheet" href="/assets/css/styles.css">
-    <style>
-      :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
-      body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; min-height:100vh; display:flex; align-items:center; justify-content:center; }
-      .mensaje-flotante{ width:320px; background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); border-radius:12px; padding:22px; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; box-shadow:0 10px 30px rgba(5,20,60,0.12); color:var(--text-dark); }
-      .mensaje-flotante p{ margin-bottom:16px; font-size:1rem; }
-      .boton-aceptar, .btn-primary{ display:inline-block; padding:10px 22px; background: linear-gradient(180deg,var(--primary),var(--primary-dark)); color:#fff; text-decoration:none; border-radius:8px; box-shadow:0 6px 18px rgba(0,123,255,0.22); transition:transform .12s ease; }
-      .boton-aceptar:hover, .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,123,255,0.28); }
-      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; position:fixed; bottom:0; width:100%; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservación Exitosa</title>
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
+
+  <style>
+    :root{
+      --primary:#007bff;
+      --primary-dark:#0056b3;
+      --bg-soft: rgba(255,255,255,0.92);
+      --text-dark:#0b1a2b;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      margin:0;
+      padding:0;
+      background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat;
+      color:#f2efef;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .mensaje-flotante{
+      width:320px;
+      background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86));
+      backdrop-filter: blur(8px);
+      border-radius:12px;
+      padding:22px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(5,20,60,0.12);
+      color:var(--text-dark);
+    }
+
+    .mensaje-flotante p{
+      margin-bottom:16px;
+      font-size:1rem;
+    }
+
+    .boton-aceptar{
+      display:inline-block;
+      padding:10px 22px;
+      background: linear-gradient(180deg,var(--primary),var(--primary-dark));
+      color:#fff;
+      text-decoration:none;
+      border-radius:8px;
+      box-shadow:0 6px 18px rgba(0,123,255,0.22);
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+
+    .boton-aceptar:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(0,123,255,0.28);
+    }
+
+    footer{
+      position:relative;
+      bottom:0;
+      width:100%;
+      background:black;
+      color:white;
+      text-align:center;
+      padding:10px 0;
+    }
+  </style>
+</head>
+
 <body>
+<body>
+  <div class="mensaje-flotante">
+    <p>Reserva realizada correctamente. La información fue enviada a tu correo.</p>
+    <a href="/?view=reservaciones" class="boton-aceptar">Aceptar</a>
+  </div>
+</body>
 
-<div class="mensaje-flotante">
-    <p>Reserva realizada correctamente. La información ya fue mandada a tu correo electronico</p>
-    <a href="/?view=reservations" class="boton-aceptar">Aceptar</a>
-</div>
-
-<script src="/assets/js/script.js"></script>
+  <footer>
+    © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+    <img src="https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/432892893_992596902524155_1700280449571927625_n.jpg"
+         width="30" height="30" alt="Copyright">
+  </footer>
 
 </body>
-<footer>
-    <p style="background-color: black; color:white; text-align: center;">
-        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-        <img src="https://scontent.fpbc4-1.fna.fbcdn.net/v/t39.30808-6/432892893_992596902524155_1700280449571927625_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEsb7_gtxYVeEHVQlHv3vT5r1tclxNx-aKvW1yXE3H5ojjPJQLi940soz27QUTBWlBJGJ6PDhCplwO2LIc8RL_e&_nc_ohc=K8m5qqr0ZxcAb51YYa7&_nc_ht=scontent.fpbc4-1.fna&oh=00_AfBye8fTBHqCjKSapYVEXEVAFl05wDy9GnKK6yXWJJX4Rg&oe=662173E8"
-             width="30px" height="30px" alt="Copyright">
-    </p>
-</footer>
 </html>

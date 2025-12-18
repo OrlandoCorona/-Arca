@@ -167,8 +167,8 @@ $conn->close();
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
-            position: fixed;
-            bottom: 100px; /* Ajustar la posición desde la parte inferior */
+             position:relative;
+             bottom: 100px; /* Ajustar la posición desde la parte inferior */
             left: 50%;
             transform: translateX(-50%); /* Centrar horizontalmente */
             text-align: center;
@@ -195,7 +195,7 @@ $conn->close();
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            positionposition:relative;
             bottom: 0;
             width: 100%;
         }

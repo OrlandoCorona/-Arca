@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require __DIR__ . '/../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -8,24 +9,30 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $correo = trim($_POST['correo'] ?? '');
-$password = $_POST['password'] ?? '';
+$contrasena = $_POST['contrasena'] ?? '';
 
-if ($correo === '' || $password === '') {
+if ($correo === '' || $contrasena === '') {
     header('Location: /?view=login');
     exit;
 }
 
-$sql = "SELECT id, nombre, password FROM usuarios WHERE correo = :correo LIMIT 1";
+$sql = "SELECT id, nombre, correo, password FROM usuarios WHERE correo = :correo";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
 
 $usuario = $stmt->fetch();
 
-if (!$usuario || !password_verify($password, $usuario['password'])) {
+if (!$usuario) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
+if (!password_verify($contrasena, $usuario['password'])) {
+    header('Location: /?view=incorrect-password');
+    exit;
+}
+
+// ✅ Login correcto
 $_SESSION['id_usuario'] = $usuario['id'];
 $_SESSION['nombre'] = $usuario['nombre'];
 

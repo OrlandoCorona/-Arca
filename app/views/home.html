@@ -10,7 +10,7 @@
     <style>
       :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
       body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; min-height:100vh; }
-      .carousel{ position:relative; width:90%; max-width:1200px; height:auto; margin:100px auto 40px; overflow:hidden; }
+      .carousel{ position: relative; width:90%; max-width:1200px; height:auto; margin:100px auto 40px; overflow:hidden; }
       .carousel-container{ display:flex; transition: transform 0.5s ease-in-out; }
       .carousel-item{ min-width:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; }
       .card{ background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.38)); padding:20px; border-radius:12px; box-shadow:0 8px 24px rgba(3,12,30,0.12); max-width:100%; text-align:center; }
@@ -18,10 +18,10 @@
       .card p{ font-size:clamp(0.95rem,1.6vw,1.1rem); color:#eee; text-align:justify; }
       .carousel-nav{ position:absolute; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; width:100%; padding:0 10px; box-sizing:border-box; }
       .nav-btn{ width:36px; height:36px; cursor:pointer; opacity:0.95; }
-      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position:fixed; top:0; z-index:20; }
+      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position: relative; top:0; z-index:20; }
       .menu a{ color:#fff; text-decoration:none; margin:0 14px; font-size:16px; }
-      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; width:100%; position:fixed; bottom:0; left:0; }
-      .modal{ display:none; position:fixed; inset:0; background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; }
+      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; width:100%; position:relative; bottom:0; left:0; }
+      .modal{ display:none; position: relative; inset:0; background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; }
       .modal-content{ background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); margin:0 16px; padding:18px; border-radius:12px; width:90%; max-width:800px; color:var(--text-dark); }
       .modal-footer button{ background: linear-gradient(180deg,var(--primary),var(--primary-dark)); color:#fff; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; }
     </style>
@@ -35,7 +35,7 @@
       <a href="/?view=perfil">
         <img src="/assets/images/user.png" alt="Avatar de Usuario" class="avatar" />
       </a>
-      <a href="/app/controllers/cerrar_sesion.php">
+      <a href="/?view=cerrar_sesion">
         <img
           src="/assets/images/logout.png"
           alt="Cerrar sesion"
