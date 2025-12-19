@@ -39,10 +39,13 @@ $view = $_GET['view'] ?? 'login';
 $publicViews = [
     'login',
     'login_submit',
+
     'register',
     'registro',
+
     'recover',
     'recuperar_contrasena',
+
     'recover-password-success',
     'successful_registration',
     'email-already-registered',
