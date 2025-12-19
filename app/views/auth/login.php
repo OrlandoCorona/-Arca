@@ -1,40 +1,36 @@
-<?php
-declare(strict_types=1);
+<h2 id="login-title">Iniciar Sesión</h2>
+<form action="/?view=login_submit" method="POST" autocomplete="on">
+    <div class="form-group">
+        <label for="correo">Correo Electrónico</label>
+        <input
+            type="email"
+            id="correo"
+            name="correo"
+            required
+            autocomplete="username"
+        >
+    </div>
 
-require __DIR__ . '/../config/database.php';
+    <div class="form-group">
+        <label for="contrasena">Contraseña</label>
+        <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            required
+            autocomplete="current-password"
+        >
+    </div>
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /?view=login');
-    exit;
-}
+    <button type="submit">Iniciar Sesión</button>
+</form>
 
-$correo     = trim($_POST['correo'] ?? '');
-$contrasena = $_POST['contrasena'] ?? '';
+<p>
+    ¿No tienes cuenta?
+    <a href="/?view=register">Regístrate aquí</a>
+</p>
 
-if ($correo === '' || $contrasena === '') {
-    header('Location: /?view=login');
-    exit;
-}
-
-// Buscar usuario
-$sql = "SELECT id, nombre, correo, password FROM usuarios WHERE correo = :correo";
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['correo' => $correo]);
-$usuario = $stmt->fetch();
-
-// Validar
-if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
-    header('Location: /?view=incorrect-password');
-    exit;
-}
-
-// Seguridad
-session_regenerate_id(true);
-
-// SESIÓN ÚNICA Y CONSISTENTE
-$_SESSION['id_usuario'] = $usuario['id'];
-$_SESSION['nombre']     = $usuario['nombre'];
-$_SESSION['correo']     = $usuario['correo'];
-
-header('Location: /?view=home');
-exit;
+<p>
+    ¿Olvidaste tu contraseña?
+    <a href="/?view=recover">Recupérala aquí</a>
+</p>
