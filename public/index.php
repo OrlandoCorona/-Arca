@@ -1,87 +1,55 @@
 <?php
-declare(strict_types=1);
-
-/*
-|--------------------------------------------------------------------------
-| Front Controller único
-|--------------------------------------------------------------------------
-| TODAS las peticiones pasan por aquí
-*/
-
 session_start();
 
-/*
-|--------------------------------------------------------------------------
-| Autoload de Composer
-|--------------------------------------------------------------------------
-*/
-require __DIR__ . '/../vendor/autoload.php';
-
-/*
-|--------------------------------------------------------------------------
-| Rutas del sistema
-|--------------------------------------------------------------------------
-*/
 require __DIR__ . '/../app/routes.php';
 
-/*
-|--------------------------------------------------------------------------
-| Vista solicitada
-|--------------------------------------------------------------------------
-*/
-$view = $_GET['view'] ?? 'login';
+$view   = $_GET['view']   ?? null;
+$action = $_GET['action'] ?? null;
 
 /*
 |--------------------------------------------------------------------------
-| Vistas públicas (NO requieren sesión)
+| ACCIONES (POST)
+|--------------------------------------------------------------------------
+*/
+if ($action) {
+    $actions = [
+        'login',
+        'register',
+        'recover',
+        'logout'
+    ];
+
+    if (!in_array($action, $actions, true)) {
+        http_response_code(404);
+        exit('Acción no válida');
+    }
+
+    require $actionsMap[$action];
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
+| VISTAS (GET)
 |--------------------------------------------------------------------------
 */
 $publicViews = [
     'login',
-    'login_submit',
-
     'register',
-    'registro',
-
     'recover',
-    'recuperar_contrasena',
-
-    'recover-password-success',
     'successful_registration',
-    'email-already-registered',
-    'incorrect-password'
+    'recover-password-success',
+    'incorrect-password',
+    'email-already-registered'
 ];
 
-/*
-|--------------------------------------------------------------------------
-| Protección de vistas privadas
-|--------------------------------------------------------------------------
-*/
-if (
-    !in_array($view, $publicViews, true)
-    && !isset($_SESSION['id_usuario'])
-) {
+if (!$view) {
+    $view = 'login';
+}
+
+if (!isset($_SESSION['id_usuario']) && !in_array($view, $publicViews, true)) {
     header('Location: /?view=login');
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| Validación de ruta
-|--------------------------------------------------------------------------
-*/
-if (!isset($routes[$view])) {
-    http_response_code(404);
-    echo 'Vista no encontrada';
-    exit;
-}
-
-$route = $routes[$view];
-
-/*
-|--------------------------------------------------------------------------
-| Ejecución
-|--------------------------------------------------------------------------
-*/
-require $route;
-exit;
+require $viewsMap[$view] ?? exit('Vista no encontrada');
