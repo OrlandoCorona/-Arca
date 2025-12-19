@@ -1,31 +1,83 @@
 <?php
 declare(strict_types=1);
 
+/*
+|--------------------------------------------------------------------------
+| Front Controller único
+|--------------------------------------------------------------------------
+| TODAS las peticiones pasan por aquí
+*/
+
 session_start();
 
+/*
+|--------------------------------------------------------------------------
+| Autoload de Composer
+|--------------------------------------------------------------------------
+*/
 require __DIR__ . '/../vendor/autoload.php';
+
+/*
+|--------------------------------------------------------------------------
+| Rutas del sistema
+|--------------------------------------------------------------------------
+*/
 require __DIR__ . '/../app/routes.php';
 
-$view = $_GET['view'] ?? 'login';
+/*
+|--------------------------------------------------------------------------
+| Ruta solicitada
+|--------------------------------------------------------------------------
+*/
+$routeKey = $_GET['view'] ?? $_GET['action'] ?? 'login';
 
-if (!isset($routes[$view])) {
+/*
+|--------------------------------------------------------------------------
+| Rutas públicas (NO requieren sesión)
+|--------------------------------------------------------------------------
+*/
+$publicRoutes = [
+    'login',
+    'login_submit',
+    'register',
+    'recover',
+    'recuperar_contrasena',
+    'recover-password-success',
+    'successful_registration',
+    'email-already-registered',
+    'incorrect-password'
+];
+
+/*
+|--------------------------------------------------------------------------
+| Protección de rutas privadas
+|--------------------------------------------------------------------------
+*/
+if (
+    !in_array($routeKey, $publicRoutes, true)
+    && !isset($_SESSION['user_id'])
+) {
+    header('Location: /?view=login');
+    exit;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Validación de ruta
+|--------------------------------------------------------------------------
+*/
+if (!array_key_exists($routeKey, $routes)) {
     http_response_code(404);
     echo 'Vista no encontrada';
     exit;
 }
 
-$route = $routes[$view];
+$route = $routes[$routeKey];
 
-if (is_callable($route)) {
-    $route();
-    exit;
-}
-
-if (is_string($route)) {
-    require $route;
-    exit;
-}
-
-http_response_code(500);
-echo 'Ruta mal configurada';
+/*
+|--------------------------------------------------------------------------
+| Ejecución de vista o controlador
+|--------------------------------------------------------------------------
+*/
+require $route;
 exit;

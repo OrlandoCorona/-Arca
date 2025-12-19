@@ -1,8 +1,8 @@
 <?php
-session_start();
 
 require __DIR__ . '/../config/database.php';
 
+// Validar método
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=login');
     exit;
@@ -16,25 +16,26 @@ if ($correo === '' || $contrasena === '') {
     exit;
 }
 
+// Buscar usuario
 $sql = "SELECT id, nombre, correo, password FROM usuarios WHERE correo = :correo";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
-
 $usuario = $stmt->fetch();
 
-if (!$usuario) {
+// Validar credenciales
+if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-if (!password_verify($contrasena, $usuario['password'])) {
-    header('Location: /?view=incorrect-password');
-    exit;
-}
+// 🔐 Seguridad: regenerar ID de sesión
+session_regenerate_id(true);
 
-// ✅ Login correcto
-$_SESSION['id_usuario'] = $usuario['id'];
-$_SESSION['nombre'] = $usuario['nombre'];
+// Crear sesión
+$_SESSION['usuario_id'] = $usuario['id'];
+$_SESSION['nombre']     = $usuario['nombre'];
+$_SESSION['correo']     = $usuario['correo'];
 
+// Redirigir
 header('Location: /?view=home');
 exit;

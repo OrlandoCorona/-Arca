@@ -1,35 +1,106 @@
 <?php
-session_start();
+declare(strict_types=1);
 
-if (!isset($_SESSION['id_usuario'])) {
+/*
+|--------------------------------------------------------------------------
+| REALIZAR RESERVA
+|--------------------------------------------------------------------------
+| session_start() YA se ejecuta en public/index.php
+*/
+
+if (!isset($_SESSION['user_id'])) {
     header('Location: /?view=login');
     exit;
 }
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require __DIR__ . '/../config/database.php';
 
-$idUsuario = $_SESSION['id_usuario'];
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /?view=reservaciones');
+    exit;
+}
 
-$host = 'localhost';
-$db   = 'arca';
-$user = 'postgres';
-$pass = 'TU_PASSWORD_DE_POSTGRES';
-$port = '5432';
+$idUsuario = $_SESSION['user_id'];
+
+/*
+|--------------------------------------------------------------------------
+| Sanitizar datos
+|--------------------------------------------------------------------------
+*/
+$nombre   = trim($_POST['nombre'] ?? '');
+$telefono = trim($_POST['telefono'] ?? '');
+$correo   = trim($_POST['correo'] ?? '');
+$fecha    = trim($_POST['fecha'] ?? '');
+$hora     = trim($_POST['hora'] ?? '');
+$zona     = trim($_POST['zona'] ?? '');
+
+/*
+|--------------------------------------------------------------------------
+| Validaciones básicas
+|--------------------------------------------------------------------------
+*/
+if (
+    $nombre === '' ||
+    $correo === '' ||
+    $fecha === '' ||
+    $hora === '' ||
+    $zona === ''
+) {
+    header('Location: /?view=reservaciones');
+    exit;
+}
+
+if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+    header('Location: /?view=reservaciones');
+    exit;
+}
+
+$fechaObj = DateTime::createFromFormat('Y-m-d', $fecha);
+if (!$fechaObj || $fechaObj->format('Y-m-d') !== $fecha) {
+    header('Location: /?view=reservaciones');
+    exit;
+}
+
+$horaObj = DateTime::createFromFormat('H:i', $hora);
+if (!$horaObj || $horaObj->format('H:i') !== $hora) {
+    header('Location: /?view=reservaciones');
+    exit;
+}
 
 try {
-    $pdo = new PDO(
-        "pgsql:host=$host;port=$port;dbname=$db",
-        $user,
-        $pass,
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-} catch (PDOException $e) {
-    die('Error de conexión: ' . $e->getMessage());
-}
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $sql = "
+    /*
+    |--------------------------------------------------------------------------
+    | Control de duplicados (misma fecha / hora / zona)
+    |--------------------------------------------------------------------------
+    */
+    $sqlDuplicado = "
+        SELECT 1
+        FROM reservaciones
+        WHERE fecha = :fecha
+          AND hora  = :hora
+          AND zona  = :zona
+        LIMIT 1
+    ";
+
+    $stmt = $pdo->prepare($sqlDuplicado);
+    $stmt->execute([
+        ':fecha' => $fecha,
+        ':hora'  => $hora,
+        ':zona'  => $zona
+    ]);
+
+    if ($stmt->fetch()) {
+        header('Location: /?view=reservaciones');
+        exit;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Insertar reservación
+    |--------------------------------------------------------------------------
+    */
+    $sqlInsert = "
         INSERT INTO reservaciones (
             id_usuario,
             nombre_cliente,
@@ -49,18 +120,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         )
     ";
 
-    $stmt = $pdo->prepare($sql);
-
+    $stmt = $pdo->prepare($sqlInsert);
     $stmt->execute([
         ':id_usuario' => $idUsuario,
-        ':nombre'     => $_POST['nombre'],
-        ':telefono'   => $_POST['telefono'],
-        ':correo'     => $_POST['correo'],
-        ':fecha'      => $_POST['fecha'],
-        ':hora'       => $_POST['hora'],
-        ':zona'       => $_POST['zona'],
+        ':nombre'     => $nombre,
+        ':telefono'   => $telefono,
+        ':correo'     => $correo,
+        ':fecha'      => $fecha,
+        ':hora'       => $hora,
+        ':zona'       => $zona
     ]);
 
     header('Location: /?view=reservation-success');
+    exit;
+
+} catch (PDOException $e) {
+    // error_log($e->getMessage());
+    header('Location: /?view=reservaciones');
     exit;
 }

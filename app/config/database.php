@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 $host = $_ENV['DB_HOST'] ?? 'localhost';
 $port = $_ENV['DB_PORT'] ?? '5432';

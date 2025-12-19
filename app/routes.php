@@ -25,10 +25,17 @@ $routes = [
     'incorrect-password' => __DIR__ . '/views/incorrect-password.html',
 
     // ───────── CONTROLADORES ─────────
-    'login_submit' => __DIR__ . '/controllers/login.php',
-    'registro' => __DIR__ . '/controllers/registro.php',
-    'recuperar_contrasena' => __DIR__ . '/controllers/recuperar_contrasena.php',
-    'realizar_reserva' => __DIR__ . '/controllers/realizar_reserva.php',
-    'reservaciones' => __DIR__ . '/controllers/reservaciones.php',
-    'cerrar_sesion' => __DIR__ . '/controllers/cerrar_sesion.php',
+    /*
+|--------------------------------------------------------------------------
+| CONTROLLERS (acciones / vistas protegidas)
+|--------------------------------------------------------------------------
+*/
+'login_submit'        => __DIR__ . '/controllers/login.php',
+'registro'            => __DIR__ . '/controllers/registro.php',
+'recuperar_contrasena'=> __DIR__ . '/controllers/recuperar_contrasena.php',
+'realizar_reserva'    => __DIR__ . '/controllers/realizar_reserva.php',
+'reservaciones'       => __DIR__ . '/controllers/reservaciones.php',
+'perfil'              => __DIR__ . '/controllers/perfil.php',
+'cerrar_sesion'       => __DIR__ . '/controllers/cerrar_sesion.php',
+
 ];
