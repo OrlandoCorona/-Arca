@@ -15,7 +15,7 @@ session_start();
 | Autoload de Composer
 |--------------------------------------------------------------------------
 */
-
+require __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,20 +26,21 @@ require __DIR__ . '/../app/routes.php';
 
 /*
 |--------------------------------------------------------------------------
-| Ruta solicitada
+| Vista solicitada
 |--------------------------------------------------------------------------
 */
-$routeKey = $_GET['view'] ?? $_GET['action'] ?? 'login';
+$view = $_GET['view'] ?? 'login';
 
 /*
 |--------------------------------------------------------------------------
-| Rutas públicas (NO requieren sesión)
+| Vistas públicas (NO requieren sesión)
 |--------------------------------------------------------------------------
 */
-$publicRoutes = [
+$publicViews = [
     'login',
     'login_submit',
     'register',
+    'registro',
     'recover',
     'recuperar_contrasena',
     'recover-password-success',
@@ -50,7 +51,7 @@ $publicRoutes = [
 
 /*
 |--------------------------------------------------------------------------
-| Protección de rutas privadas
+| Protección de vistas privadas
 |--------------------------------------------------------------------------
 */
 if (
@@ -66,17 +67,17 @@ if (
 | Validación de ruta
 |--------------------------------------------------------------------------
 */
-if (!array_key_exists($routeKey, $routes)) {
+if (!isset($routes[$view])) {
     http_response_code(404);
     echo 'Vista no encontrada';
     exit;
 }
 
-$route = $routes[$routeKey];
+$route = $routes[$view];
 
 /*
 |--------------------------------------------------------------------------
-| Ejecución de vista o controlador
+| Ejecución
 |--------------------------------------------------------------------------
 */
 require $route;
