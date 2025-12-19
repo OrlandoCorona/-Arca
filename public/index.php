@@ -54,8 +54,8 @@ $publicRoutes = [
 |--------------------------------------------------------------------------
 */
 if (
-    !in_array($routeKey, $publicRoutes, true)
-    && !isset($_SESSION['user_id'])
+    !in_array($view, $publicViews, true)
+    && !isset($_SESSION['id_usuario'])
 ) {
     header('Location: /?view=login');
     exit;

@@ -1,76 +1,53 @@
 <?php
+declare(strict_types=1);
 
 require __DIR__ . '/../config/database.php';
 
-// Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=register');
     exit;
 }
 
-// Obtener datos
-$nombre            = trim($_POST['nombre'] ?? '');
-$correo            = trim($_POST['correo'] ?? '');
-$password          = $_POST['password'] ?? '';
-$passwordConfirm   = $_POST['password_confirm'] ?? '';
+$nombre   = trim($_POST['nombre'] ?? '');
+$correo   = trim($_POST['correo'] ?? '');
+$password = $_POST['password'] ?? '';
+$repass   = $_POST['repass'] ?? '';
 
-// Validar campos obligatorios
-if (
-    $nombre === '' ||
-    $correo === '' ||
-    $password === '' ||
-    $passwordConfirm === ''
-) {
+if ($nombre === '' || $correo === '' || $password === '' || $repass === '') {
     header('Location: /?view=register');
     exit;
 }
 
-// Validar coincidencia de contraseñas
-if (
-    !isset($_POST['password'], $_POST['repass']) ||
-    $_POST['password'] !== $_POST['repass']
-) {
+if ($password !== $repass) {
     header('Location: /?view=register');
     exit;
 }
 
-// Validar formato de correo
-if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    header('Location: /?view=register');
+// Verificar correo duplicado
+$stmt = $pdo->prepare('SELECT id FROM usuarios WHERE correo = :correo');
+$stmt->execute(['correo' => $correo]);
+
+if ($stmt->fetch()) {
+    header('Location: /?view=email-already-registered');
     exit;
 }
 
-try {
-    // Verificar si el correo ya existe
-    $sql = "SELECT id FROM usuarios WHERE correo = :correo LIMIT 1";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':correo' => $correo]);
+// Hash seguro
+$hash = password_hash($password, PASSWORD_BCRYPT);
 
-    if ($stmt->fetch()) {
-        header('Location: /?view=email-already-registered');
-        exit;
-    }
+// Insertar usuario
+$sql = "
+    INSERT INTO usuarios (nombre, correo, password)
+    VALUES (:nombre, :correo, :password)
+";
 
-    // Hashear contraseña
-    $hash = password_hash($password, PASSWORD_BCRYPT);
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'nombre'   => $nombre,
+    'correo'   => $correo,
+    'password' => $hash
+]);
 
-    // Insertar usuario
-    $sql = "
-        INSERT INTO usuarios (nombre, correo, password)
-        VALUES (:nombre, :correo, :password)
-    ";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':nombre'   => $nombre,
-        ':correo'   => $correo,
-        ':password' => $hash
-    ]);
-
-    header('Location: /?view=successful_registration');
-    exit;
-
-} catch (PDOException $e) {
-    // Error interno, no exponer
-    header('Location: /?view=register');
-    exit;
-}
+// Registro exitoso
+header('Location: /?view=successful_registration');
+exit;

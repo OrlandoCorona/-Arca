@@ -1,15 +1,11 @@
 <?php
 declare(strict_types=1);
 
-$host = getenv('DB_HOST');
-$port = getenv('DB_PORT') ?: '5432';
-$dbname = getenv('DB_NAME');
-$user = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-
-if (!$host || !$dbname || !$user || !$password) {
-    die('Variables de entorno de base de datos no definidas');
-}
+$host     = $_ENV['DB_HOST'] ?? 'localhost';
+$port     = $_ENV['DB_PORT'] ?? '5432';
+$dbname   = $_ENV['DB_NAME'] ?? 'arca';
+$user     = $_ENV['DB_USER'] ?? 'postgres';
+$password = $_ENV['DB_PASSWORD'] ?? '030899';
 
 try {
     $pdo = new PDO(
