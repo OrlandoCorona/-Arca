@@ -11,7 +11,8 @@
 
 <h2 id="login-title">Iniciar Sesión</h2>
 
-<form action="/?=login_submit" method="POST" autocomplete="on">
+<form action="/?action=login" method="POST">
+
     <div class="form-group">
         <label for="correo">Correo Electrónico:</label>
         <input
