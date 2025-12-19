@@ -1,4 +1,5 @@
 <?php
+
 $viewsMap = [
     'login'                    => __DIR__ . '/views/auth/login.php',
     'register'                 => __DIR__ . '/views/auth/register.html',
@@ -9,7 +10,6 @@ $viewsMap = [
     'email-already-registered' => __DIR__ . '/views/email-already-registered.html',
     'home'                     => __DIR__ . '/views/home.html',
 ];
-
 
 $actionsMap = [
     'login'    => __DIR__ . '/controllers/login.php',

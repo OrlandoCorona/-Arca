@@ -1,55 +1,37 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * Front Controller
+ */
 session_start();
 
 require __DIR__ . '/../app/routes.php';
 
-$view   = $_GET['view']   ?? null;
+/**
+ * Detectar acción o vista
+ */
 $action = $_GET['action'] ?? null;
+$view   = $_GET['view'] ?? null;
 
-/*
-|--------------------------------------------------------------------------
-| ACCIONES (POST)
-|--------------------------------------------------------------------------
-*/
-if ($action) {
-    $actions = [
-        'login',
-        'register',
-        'recover',
-        'logout'
-    ];
-
-    if (!in_array($action, $actions, true)) {
-        http_response_code(404);
-        exit('Acción no válida');
-    }
-
+/**
+ * Acciones (POST)
+ */
+if ($action && isset($actionsMap[$action])) {
     require $actionsMap[$action];
     exit;
 }
 
-/*
-|--------------------------------------------------------------------------
-| VISTAS (GET)
-|--------------------------------------------------------------------------
-*/
-$publicViews = [
-    'login',
-    'register',
-    'recover',
-    'successful_registration',
-    'recover-password-success',
-    'incorrect-password',
-    'email-already-registered'
-];
-
-if (!$view) {
-    $view = 'login';
-}
-
-if (!isset($_SESSION['id_usuario']) && !in_array($view, $publicViews, true)) {
-    header('Location: /?view=login');
+/**
+ * Vistas (GET)
+ */
+if ($view && isset($viewsMap[$view])) {
+    require $viewsMap[$view];
     exit;
 }
 
-require $viewsMap[$view] ?? exit('Vista no encontrada');
+/**
+ * Default
+ */
+require $viewsMap['login'];
+exit;

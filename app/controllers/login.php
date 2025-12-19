@@ -1,12 +1,10 @@
 <?php
 declare(strict_types=1);
 
-session_start();
-
 require __DIR__ . '/../config/database.php';
 
 /**
- * Solo acepta POST
+ * Solo POST
  */
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=login');
@@ -16,9 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $correo     = trim($_POST['correo'] ?? '');
 $contrasena = $_POST['contrasena'] ?? '';
 
-/**
- * Validación básica
- */
 if ($correo === '' || $contrasena === '') {
     header('Location: /?view=login');
     exit;
@@ -27,15 +22,15 @@ if ($correo === '' || $contrasena === '') {
 /**
  * Buscar usuario
  */
-$sql = "SELECT id, nombre, correo, password 
-        FROM usuarios 
-        WHERE correo = :correo
-        LIMIT 1";
+$sql = "
+    SELECT id, nombre, correo, password
+    FROM usuarios
+    WHERE correo = :correo
+    LIMIT 1
+";
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute([
-    'correo' => $correo
-]);
+$stmt->execute(['correo' => $correo]);
 
 $usuario = $stmt->fetch();
 
