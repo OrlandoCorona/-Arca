@@ -26,7 +26,10 @@ if (
 }
 
 // Validar coincidencia de contraseñas
-if ($password !== $passwordConfirm) {
+if (
+    !isset($_POST['password'], $_POST['repass']) ||
+    $_POST['password'] !== $_POST['repass']
+) {
     header('Location: /?view=register');
     exit;
 }
