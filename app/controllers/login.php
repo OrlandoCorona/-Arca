@@ -1,41 +1,37 @@
-<?php
+<h2 id="login-title">Iniciar Sesión</h2>
 
-require __DIR__ . '/../config/database.php';
+<form action="/?view=login_submit" method="POST" autocomplete="on">
+    <div class="form-group">
+        <label for="correo">Correo Electrónico:</label>
+        <input
+            type="email"
+            id="correo"
+            name="correo"
+            required
+            autocomplete="username"
+        >
+    </div>
 
-// Validar método
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /?view=login');
-    exit;
-}
+    <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            required
+            autocomplete="current-password"
+        >
+    </div>
 
-$correo = trim($_POST['correo'] ?? '');
-$contrasena = $_POST['contrasena'] ?? '';
+    <button type="submit">Iniciar Sesión</button>
+</form>
 
-if ($correo === '' || $contrasena === '') {
-    header('Location: /?view=login');
-    exit;
-}
+<p>
+    ¿No tienes cuenta?
+    <a class="option-text" href="/?view=register">Regístrate aquí</a>
+</p>
 
-// Buscar usuario
-$sql = "SELECT id, nombre, correo, password FROM usuarios WHERE correo = :correo";
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['correo' => $correo]);
-$usuario = $stmt->fetch();
-
-// Validar credenciales
-if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
-    header('Location: /?view=incorrect-password');
-    exit;
-}
-
-// 🔐 Seguridad: regenerar ID de sesión
-session_regenerate_id(true);
-
-// Crear sesión
-$_SESSION['usuario_id'] = $usuario['id'];
-$_SESSION['nombre']     = $usuario['nombre'];
-$_SESSION['correo']     = $usuario['correo'];
-
-// Redirigir
-header('Location: /?view=home');
-exit;
+<p>
+    ¿Olvidaste tu contraseña?
+    <a class="option-text" href="/?view=recover">Recupérala aquí</a>
+</p>
