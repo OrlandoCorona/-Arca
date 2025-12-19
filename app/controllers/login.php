@@ -1,37 +1,66 @@
-<h2 id="login-title">Iniciar Sesión</h2>
+<?php
+declare(strict_types=1);
 
-<form action="/?view=login_submit" method="POST" autocomplete="on">
-    <div class="form-group">
-        <label for="correo">Correo Electrónico:</label>
-        <input
-            type="email"
-            id="correo"
-            name="correo"
-            required
-            autocomplete="username"
-        >
-    </div>
+session_start();
 
-    <div class="form-group">
-        <label for="contrasena">Contraseña:</label>
-        <input
-            type="password"
-            id="contrasena"
-            name="contrasena"
-            required
-            autocomplete="current-password"
-        >
-    </div>
+require __DIR__ . '/../config/database.php';
 
-    <button type="submit">Iniciar Sesión</button>
-</form>
+/**
+ * Solo acepta POST
+ */
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /?view=login');
+    exit;
+}
 
-<p>
-    ¿No tienes cuenta?
-    <a class="option-text" href="/?view=register">Regístrate aquí</a>
-</p>
+$correo     = trim($_POST['correo'] ?? '');
+$contrasena = $_POST['contrasena'] ?? '';
 
-<p>
-    ¿Olvidaste tu contraseña?
-    <a class="option-text" href="/?view=recover">Recupérala aquí</a>
-</p>
+/**
+ * Validación básica
+ */
+if ($correo === '' || $contrasena === '') {
+    header('Location: /?view=login');
+    exit;
+}
+
+/**
+ * Buscar usuario
+ */
+$sql = "SELECT id, nombre, correo, password 
+        FROM usuarios 
+        WHERE correo = :correo
+        LIMIT 1";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'correo' => $correo
+]);
+
+$usuario = $stmt->fetch();
+
+/**
+ * Validar contraseña
+ */
+if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
+    header('Location: /?view=incorrect-password');
+    exit;
+}
+
+/**
+ * Seguridad de sesión
+ */
+session_regenerate_id(true);
+
+/**
+ * Guardar sesión
+ */
+$_SESSION['id_usuario'] = $usuario['id'];
+$_SESSION['nombre']     = $usuario['nombre'];
+$_SESSION['correo']     = $usuario['correo'];
+
+/**
+ * Login exitoso
+ */
+header('Location: /?view=home');
+exit;
