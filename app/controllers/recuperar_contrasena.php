@@ -1,16 +1,16 @@
 <?php
-
+declare(strict_types=1);
 require __DIR__ . '/../config/database.php';
 
 // Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /?view=login');
+    header('Location: /?view=recover');
     exit;
 }
 
 $correo = trim($_POST['correo'] ?? '');
 
-// Validar vacío
+// Validación básica
 if ($correo === '') {
     header('Location: /?view=recover');
     exit;
@@ -29,9 +29,9 @@ try {
     $usuario = $stmt->fetch();
 
     if (!$usuario) {
-        // Correo no registrado
-        header('Location: /?view=login');
-        exit;
+    header('Location: /?view=recover-password-success');
+    exit;
+
     }
 
     /*
@@ -46,6 +46,6 @@ try {
 
 } catch (PDOException $e) {
     // Error interno, no exponer
-    header('Location: /?view=login');
-    exit;
+ header('Location: /?view=recover-password-success');
+exit;
 }
