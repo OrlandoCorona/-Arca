@@ -96,28 +96,28 @@
         <h2>Iniciar Sesión</h2>
 
         <!-- FORMULARIO CORRECTO -->
-        <form method="post" action="/?view=login_submit" autocomplete="on">
+        <form method="post" action="/?action=login" autocomplete="on">
 
-            <input
-                type="email"
-                name="correo"
-                placeholder="Correo electrónico"
-                autocomplete="username"
-                required
-            >
+    <input
+        type="email"
+        name="correo"
+        placeholder="Correo electrónico"
+        autocomplete="username"
+        required
+    >
 
-            <input
-                type="password"
-                name="contrasena"
-                placeholder="Contraseña"
-                autocomplete="current-password"
-                required
-            >
+    <input
+        type="password"
+        name="contrasena"
+        placeholder="Contraseña"
+        autocomplete="current-password"
+        required
+    >
 
-            <button type="submit" class="login-btn">
-                Iniciar sesión
-            </button>
-        </form>
+    <button type="submit" class="login-btn">
+        Iniciar sesión
+    </button>
+</form>
 
         <div class="links">
             <p>

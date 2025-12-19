@@ -34,4 +34,7 @@ if ($view && isset($viewsMap[$view])) {
  * Default
  */
 require $viewsMap['login'];
+        
+
+
 exit;
