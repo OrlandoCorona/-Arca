@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Obtener datos
-$Usuarioid = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 $nombre   = trim($_POST['nombre'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
@@ -39,14 +39,14 @@ if (
 // Insertar reservación
 $sql = "
     INSERT INTO reservaciones
-        (Usuarioid, nombre_cliente, telefono, correo, fecha, hora, zona)
+        (user_id, nombre_cliente, telefono, correo, fecha, hora, zona)
     VALUES
-        (:Usuarioid, :nombre, :telefono, :correo, :fecha, :hora, :zona)
+        (:user_id, :nombre, :telefono, :correo, :fecha, :hora, :zona)
 ";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    ':Usuarioid' => $Usuarioid,
+    ':user_id' => $user_id,
     ':nombre'     => $nombre,
     ':telefono'   => $telefono,
     ':correo'     => $correo,

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 require __DIR__ . '/../config/database.php';
 
-$Usuarioid = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 $sqlUsuario = "
     SELECT nombre, correo
@@ -17,7 +17,7 @@ $sqlUsuario = "
 ";
 
 $stmt = $pdo->prepare($sqlUsuario);
-$stmt->execute(['id' => $Usuarioid]);
+$stmt->execute(['id' => $user_id]);
 $usuario = $stmt->fetch();
 
 if (!$usuario) {
@@ -34,7 +34,7 @@ $sqlReservas = "
 ";
 
 $stmt = $pdo->prepare($sqlReservas);
-$stmt->execute(['id' => $Usuarioid]);
+$stmt->execute(['id' => $user_id]);
 $reservaciones = $stmt->fetchAll();
 
 require __DIR__ . '/../views/perfil.php';
