@@ -15,7 +15,7 @@ $viewsMap = [
     'register'                  => __DIR__ . '/views/auth/register.php',
     'recover'                   => __DIR__ . '/views/auth/recover-password.php',
     'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.php',
-    'successful_registration'   => __DIR__ . '/views/auth/successful_registration.php',
+    'successful_registration' => __DIR__ . '/views/successful_registration.php',
     'incorrect-password'        => __DIR__ . '/views/incorrect-password.php',
     'email-already-registered'  => __DIR__ . '/views/email-already-registered.php',
 
