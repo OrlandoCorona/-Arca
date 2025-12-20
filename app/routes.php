@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 /**
  * ============================
- * MAPA DE VISTAS (GET)
+ * MAPA DE VISTAS (GET públicas)
  * ============================
- * ?view=xxxx
  */
 $viewsMap = [
     'login'                     => __DIR__ . '/views/auth/login.php',
@@ -16,39 +15,33 @@ $viewsMap = [
     'incorrect-password'        => __DIR__ . '/views/incorrect-password.html',
     'email-already-registered'  => __DIR__ . '/views/email-already-registered.html',
 
-    // App
-    'home'          => __DIR__ . '/views/home.html',
-    'menu'          => __DIR__ . '/views/menu.html',
-    'reservaciones' => __DIR__ . '/views/reservaciones.php',
-
-   
-    // otras vistas públicas
+    // Públicas
     'home' => __DIR__ . '/views/home.html',
     'menu' => __DIR__ . '/views/menu.html',
 ];
 
-    
 /**
+ * ============================
  * MAPA DE ACCIONES (POST)
  * ============================
- * ?action=xxxx
  */
-
-    
-;$actionsMap = [
-    'login'      => __DIR__ . '/controllers/login.php',
-    'register'          => __DIR__ . '/controllers/registro.php',
-    'recover'           => __DIR__ . '/controllers/recuperar_contrasena.php',
-    'logout'            => __DIR__ . '/controllers/cerrar_sesion.php',
-    'realizar_reserva'  => __DIR__ . '/controllers/realizar_reserva.php',
+$actionsMap = [
+    'login'            => __DIR__ . '/controllers/login.php',
+    'register'         => __DIR__ . '/controllers/registro.php',
+    'recover'          => __DIR__ . '/controllers/recuperar_contrasena.php',
+    'logout'           => __DIR__ . '/controllers/cerrar_sesion.php',
+    'realizar_reserva' => __DIR__ . '/controllers/realizar_reserva.php',
 ];
+
 /**
  * ============================
  * ROUTER CENTRAL
  * ============================
  */
 
-// Acción (POST)
+// ----------------------------
+// ACCIONES (POST)
+// ----------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
     $action = $_GET['action'];
 
@@ -61,17 +54,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
     exit('Acción no encontrada');
 }
 
-$view = $_GET['view'] ?? 'login';
+// ----------------------------
+// PÁGINAS PROTEGIDAS (GET)
+// ----------------------------
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $view = $_GET['view'] ?? 'login';
 
-if (isset($viewsMap[$view])) {
-    require $viewsMap[$view];
-    exit;
-}
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['view'] ?? '') === 'perfil') {
-    require __DIR__ . '/controllers/perfil.php';
-    exit;
+    if ($view === 'perfil') {
+        require __DIR__ . '/controllers/perfil.php';
+        exit;
+    }
+
+    if ($view === 'reservaciones') {
+        require __DIR__ . '/controllers/reservaciones.php';
+        exit;
+    }
+
+    // ----------------------------
+    // VISTAS PÚBLICAS
+    // ----------------------------
+    if (isset($viewsMap[$view])) {
+        require $viewsMap[$view];
+        exit;
+    }
 }
 
-// Vista no encontrada → redirigir limpiamente
+// ----------------------------
+// FALLBACK
+// ----------------------------
 header('Location: /?view=login');
 exit;
