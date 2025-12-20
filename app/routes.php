@@ -8,13 +8,17 @@ declare(strict_types=1);
  * ?view=xxxx
  */
 $viewsMap = [
-    'login'                    => __DIR__ . '/views/auth/login.php',
-    'register'                 => __DIR__ . '/views/auth/register.html',
-    'recover'                  => __DIR__ . '/views/auth/recover-password.html',
-    'recover-password-success' => __DIR__ . '/views/auth/recover-password-success.html',
-    'successful_registration'  => __DIR__ . '/views/auth/successful_registration.html',
-    'home'                     => __DIR__ . '/views/home.html',
-    'menu'                     => __DIR__ . '/views/menu.html',
+    'login'                     => __DIR__ . '/views/auth/login.php',
+    'register'                  => __DIR__ . '/views/auth/register.html',
+    'recover'                   => __DIR__ . '/views/auth/recover-password.html',
+    'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.html',
+    'successful_registration'   => __DIR__ . '/views/auth/successful_registration.html',
+    'incorrect-password'        => __DIR__ . '/views/incorrect-password.html',
+    'email-already-registered'  => __DIR__ . '/views/email-already-registered.html',
+
+    // App
+    'home'          => __DIR__ . '/views/home.html',
+    'menu'          => __DIR__ . '/views/menu.html',
 ];
 
     
@@ -35,8 +39,6 @@ $viewsMap = [
     'perfil'       => __DIR__ . '/controllers/perfil.php',
     'reservaciones'=> __DIR__ . '/controllers/reservaciones.php',
 ];
-
-
 /**
  * ============================
  * ROUTER CENTRAL
