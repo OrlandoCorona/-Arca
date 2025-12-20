@@ -1,11 +1,5 @@
 <?php
 declare(strict_types=1);
-
-// Si ya hay sesión, redirigir
-if (isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=home');
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
