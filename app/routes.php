@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
  */
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $view = $_GET['view'] ?? 'login';
+    $view = $_GET['view'] ?? '/auth/login.php';
 
     if ($view === 'perfil') {
         require __DIR__ . '/controllers/perfil.php';
