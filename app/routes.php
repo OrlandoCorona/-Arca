@@ -64,9 +64,6 @@ if (isset($viewsMap[$view])) {
     exit;
 }
 
-http_response_code(404);
-echo 'Vista no encontrada';
-
-// Vista no encontrada
+// Vista no encontrada → redirigir limpiamente
 header('Location: /?view=login');
 exit;
