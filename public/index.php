@@ -6,18 +6,22 @@ declare(strict_types=1);
  * FRONT CONTROLLER ÚNICO
  * ======================================
  * - Inicia sesión
+ * - Carga Composer (si existe)
  * - Carga el router central
- * - NO contiene lógica de rutas
- * - NO valida sesión
+ * - NO contiene lógica de negocio
  */
 
 session_start();
 
-// Autoload (si usas Composer)
+/**
+ * Autoload de Composer (si existe)
+ */
 $autoload = __DIR__ . '/../vendor/autoload.php';
 if (file_exists($autoload)) {
     require $autoload;
 }
 
-// Router central
+/**
+ * Router central
+ */
 require __DIR__ . '/../app/routes.php';
