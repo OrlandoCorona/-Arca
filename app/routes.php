@@ -32,7 +32,7 @@ $viewsMap = [
 
     
 ;$actionsMap = [
-    'login_submit'      => __DIR__ . '/controllers/login.php',
+    'login'      => __DIR__ . '/controllers/login.php',
     'register'          => __DIR__ . '/controllers/registro.php',
     'recover'           => __DIR__ . '/controllers/recuperar_contrasena.php',
     'logout'            => __DIR__ . '/controllers/cerrar_sesion.php',
