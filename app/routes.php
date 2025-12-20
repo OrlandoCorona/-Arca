@@ -19,6 +19,8 @@ $viewsMap = [
     // App
     'home'          => __DIR__ . '/views/home.html',
     'menu'          => __DIR__ . '/views/menu.html',
+     'perfil'        => __DIR__ . '/views/perfil.php',
+    'reservaciones' => __DIR__ . '/views/reservaciones.php',
 ];
 
     
@@ -30,14 +32,11 @@ $viewsMap = [
 
     
 ;$actionsMap = [
-    'login' => __DIR__ . '/controllers/login.php',
-    'register'     => __DIR__ . '/controllers/registro.php',
-    'recover'      => __DIR__ . '/controllers/recuperar_contrasena.php',
-    'logout'       => __DIR__ . '/controllers/cerrar_sesion.php',
-
-    // dinámicos
-    'perfil'       => __DIR__ . '/controllers/perfil.php',
-    'reservaciones'=> __DIR__ . '/controllers/reservaciones.php',
+    'login_submit'      => __DIR__ . '/controllers/login.php',
+    'register'          => __DIR__ . '/controllers/registro.php',
+    'recover'           => __DIR__ . '/controllers/recuperar_contrasena.php',
+    'logout'            => __DIR__ . '/controllers/cerrar_sesion.php',
+    'realizar_reserva'  => __DIR__ . '/controllers/realizar_reserva.php',
 ];
 /**
  * ============================
@@ -54,18 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
         exit;
     }
 
-    // Acción no encontrada
-    header('Location: /?view=login');
-    exit;
+    http_response_code(404);
+    exit('Acción no encontrada');
 }
 
-// Vista (GET)
 $view = $_GET['view'] ?? 'login';
 
 if (isset($viewsMap[$view])) {
     require $viewsMap[$view];
     exit;
 }
+
+http_response_code(404);
+echo 'Vista no encontrada';
 
 // Vista no encontrada
 header('Location: /?view=login');
