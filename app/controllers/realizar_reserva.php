@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /?view=login');
     exit;
 }
@@ -10,13 +10,13 @@ require __DIR__ . '/../config/database.php';
 
 $sql = "
     INSERT INTO reservaciones (
-        id_usuario, nombre_cliente, telefono, correo, fecha, hora, zona
+        user_id, nombre_cliente, telefono, correo, fecha, hora, zona
     ) VALUES (
-        :id_usuario, :nombre, :telefono, :correo, :fecha, :hora, :zona";
+        :user_id, :nombre, :telefono, :correo, :fecha, :hora, :zona";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    'id_usuario' => $_SESSION['id_usuario'],
+    'user_id' => $_SESSION['user_id'],
     'nombre'     => $_POST['nombre'],
     'telefono'   => $_POST['telefono'],
     'correo'     => $_POST['correo'],

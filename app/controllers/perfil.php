@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: /?view=login');
     exit;
 }
 
 require __DIR__ . '/../config/database.php';
 
-$Usuarioid = $_SESSION['id_usuario'];
+$Usuarioid = $_SESSION['user_id'];
 
 $sqlUsuario = "
     SELECT nombre, correo
@@ -29,7 +29,7 @@ if (!$usuario) {
 $sqlReservas = "
     SELECT fecha, hora, zona
     FROM reservaciones
-    WHERE id_usuario = :id
+    WHERE user_id = :id
     ORDER BY fecha DESC
 ";
 

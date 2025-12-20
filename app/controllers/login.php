@@ -50,7 +50,7 @@ session_regenerate_id(true);
 /**
  * Guardar sesión
  */
-$_SESSION['id_usuario'] = $usuario['id'];
+$_SESSION['user_id'] = $usuario['id'];
 $_SESSION['nombre']     = $usuario['nombre'];
 $_SESSION['correo']     = $usuario['correo'];
 
