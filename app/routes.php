@@ -11,7 +11,7 @@ declare(strict_types=1);
 $viewsMap = [
 
     // Auth
-    'login'                     => __DIR__ . '/views/auth/login.php',
+    'login'                     => __DIR__ . '/views/login.php',
     'register'                  => __DIR__ . '/views/auth/register.php',
     'recover'                   => __DIR__ . '/views/auth/recover-password.php',
     'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.php',
