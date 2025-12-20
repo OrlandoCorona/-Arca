@@ -29,7 +29,7 @@ try {
     $usuario = $stmt->fetch();
 
     if (!$usuario) {
-    header('Location: /?view=recover-password-success');
+    header ('Location: /?view=recover-password-success');
     exit;
 
     }

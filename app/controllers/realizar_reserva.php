@@ -12,9 +12,7 @@ $sql = "
     INSERT INTO reservaciones (
         id_usuario, nombre_cliente, telefono, correo, fecha, hora, zona
     ) VALUES (
-        :id_usuario, :nombre, :telefono, :correo, :fecha, :hora, :zona
-    )
-";
+        :id_usuario, :nombre, :telefono, :correo, :fecha, :hora, :zona";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
