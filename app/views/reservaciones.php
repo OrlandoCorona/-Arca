@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS GLOBAL -->
-    <link rel="stylesheet" href="/ElArcaWeb/public/assets/css/styles.css">
-
+     <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
         body {
             margin: 0;
