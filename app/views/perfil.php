@@ -1,3 +1,5 @@
+
+
 <p><strong>Nombre:</strong> <?= htmlspecialchars($usuario['nombre']) ?></p>
 <p><strong>Correo:</strong> <?= htmlspecialchars($usuario['correo']) ?></p>
 

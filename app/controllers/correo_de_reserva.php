@@ -9,13 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Validar sesión
-if (!isset($_SESSION['Usuario_id'])) {
+if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
 }
 
 // Obtener datos
-$Usuarioid = $_SESSION['Usuario_id'];
+$Usuarioid = $_SESSION['id_usuario'];
 
 $nombre   = trim($_POST['nombre'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
