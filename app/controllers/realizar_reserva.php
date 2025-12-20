@@ -27,6 +27,7 @@ $idUsuario = $_SESSION['user_id'];
 | Sanitizar datos
 |--------------------------------------------------------------------------
 */
+
 $nombre   = trim($_POST['nombre'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
 $correo   = trim($_POST['correo'] ?? '');
