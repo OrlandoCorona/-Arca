@@ -19,8 +19,12 @@ $viewsMap = [
     // App
     'home'          => __DIR__ . '/views/home.html',
     'menu'          => __DIR__ . '/views/menu.html',
-     'perfil'        => __DIR__ . '/views/perfil.php',
     'reservaciones' => __DIR__ . '/views/reservaciones.php',
+
+   
+    // otras vistas públicas
+    'home' => __DIR__ . '/views/home.html',
+    'menu' => __DIR__ . '/views/menu.html',
 ];
 
     
@@ -61,6 +65,10 @@ $view = $_GET['view'] ?? 'login';
 
 if (isset($viewsMap[$view])) {
     require $viewsMap[$view];
+    exit;
+}
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && ($_GET['view'] ?? '') === 'perfil') {
+    require __DIR__ . '/controllers/perfil.php';
     exit;
 }
 
