@@ -13,14 +13,14 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Directorio de trabajo
 WORKDIR /var/www/html
 
-# Copiar archivos del proyecto
+# Copiar proyecto
 COPY . .
 
 # Instalar dependencias PHP
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader || true
 
-# Puerto Render
+# Puerto usado por Render
 EXPOSE 10000
 
-# Servir desde public
+# Servir desde public/
 CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]

@@ -28,6 +28,8 @@ $viewsMap = [
     'micheladas'  => __DIR__ . '/views/micheladas.php',
     'bottles'     => __DIR__ . '/views/bottles.php',
     'extras'      => __DIR__ . '/views/extras.php',
+    'reservation-success' => __DIR__ . '/views/reservation-success.php',
+
 ];
 
 /**
