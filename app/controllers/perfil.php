@@ -37,5 +37,5 @@ $stmt = $pdo->prepare($sqlReservas);
 $stmt->execute(['id' => $user_id]);
 $reservaciones = $stmt->fetchAll();
 
-require __DIR__ . '/../views/perfil.php';
+require __DIR__ . '"elarcaweb/../views/perfil.php';
 exit;

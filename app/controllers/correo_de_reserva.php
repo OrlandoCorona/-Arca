@@ -44,7 +44,7 @@ $sql = "
         (:user_id, :nombre, :telefono, :correo, :fecha, :hora, :zona)
 ";
 
-$stmt = $pdo->prepare($sql);
+$stmt = $pdo->prepare($sql);+
 $stmt->execute([
     ':user_id' => $user_id,
     ':nombre'     => $nombre,
