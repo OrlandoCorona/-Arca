@@ -1,55 +1,26 @@
 <?php
 declare(strict_types=1);
 
-/*
-|--------------------------------------------------------------------------
-| RESERVACIONES - CONTROLLER
-|--------------------------------------------------------------------------
-| session_start() YA fue ejecutado en public/index.php
-*/
-
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
 }
 
 require __DIR__ . '/../config/database.php';
 
-$idUsuario = $_SESSION['user_id'];
+$idUsuario = $_SESSION['id_usuario'];
 
-/*
-|--------------------------------------------------------------------------
-| Obtener datos del usuario
-|--------------------------------------------------------------------------
-*/
-$sqlUsuario = "
-    SELECT nombre, correo
-    FROM usuarios
-    WHERE id = :id
-    LIMIT 1
+// Obtener reservaciones del usuario
+$sql = "
+    SELECT nombre_cliente, telefono, correo, fecha, hora, zona
+    FROM reservaciones
+    WHERE id_usuario = :id
+    ORDER BY fecha DESC, hora DESC
 ";
 
-$stmt = $pdo->prepare($sqlUsuario);
-$stmt->execute([':id' => $idUsuario]);
-$usuario = $stmt->fetch();
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['id' => $idUsuario]);
+$reservaciones = $stmt->fetchAll();
 
-if (!$usuario) {
-    $_SESSION = [];
-    session_destroy();
-    header('Location: /?view=login');
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Exponer datos a la vista
-|--------------------------------------------------------------------------
-*/
-$_SESSION['reservaciones_usuario'] = $usuario;
-
-/*
-|--------------------------------------------------------------------------
-| Cargar vista
-|--------------------------------------------------------------------------
-*/
 require __DIR__ . '/../views/reservaciones.php';
+exit;

@@ -11,7 +11,7 @@
    BASE
 ================================ */
 body {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
     background-color: #f4f6fb;
     color: #222;
     font-size: 16px;
@@ -57,55 +57,50 @@ h2 {
 /* ==============================
    FORMULARIOS
 ================================ */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-label {
-    font-weight: 500;
-    color: #222;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid #bfc9d9;
-    border-radius: 6px;
-    font-size: 1rem;
-    background: #f9fafc;
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
 }
 
 input:focus {
-    outline: none;
-    border-color: #007bff;
-    background: #fff;
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
 }
+
 
 /* ==============================
    BOTONES
 ================================ */
 button,
-.login-btn,
-button[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.btn {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: var(--primary-dark);
 }
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(0,123,255,0.4);
+}
+
 
 /* ==============================
    MENÚ SUPERIOR
@@ -208,4 +203,27 @@ footer a {
 }
 footer a:hover {
     text-decoration: underline;
+}
+:root {
+  --primary: #007bff;
+  --primary-dark: #0056b3;
+  --bg-light: #f8fafc;
+  --text-dark: #1f2933;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.25)
+  ),
+  url("/assets/images/fondoBorroso.jpg") center/cover no-repeat;
+  min-height: 100vh;
 }

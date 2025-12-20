@@ -8,36 +8,34 @@ declare(strict_types=1);
  * ?view=xxxx
  */
 $viewsMap = [
-
-    // Auth
-    'login'                     => __DIR__ . '/views/auth/login.php',
-    'register'                  => __DIR__ . '/views/auth/register.html',
-    'recover'                   => __DIR__ . '/views/auth/recover-password.html',
-    'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.html',
-    'successful_registration'   => __DIR__ . '/views/auth/successful_registration.html',
-    'incorrect-password'        => __DIR__ . '/views/incorrect-password.html',
-    'email-already-registered'  => __DIR__ . '/views/email-already-registered.html',
-
-    // App
-    'home'          => __DIR__ . '/views/home.html',
-    'menu'          => __DIR__ . '/views/menu.html',
-    'reservaciones' => __DIR__ . '/views/reservaciones.html',
-    'perfil'        => __DIR__ . '/views/perfil.html',
-
+    'login'                    => __DIR__ . '/views/auth/login.php',
+    'register'                 => __DIR__ . '/views/auth/register.html',
+    'recover'                  => __DIR__ . '/views/auth/recover-password.html',
+    'recover-password-success' => __DIR__ . '/views/auth/recover-password-success.html',
+    'successful_registration'  => __DIR__ . '/views/auth/successful_registration.html',
+    'home'                     => __DIR__ . '/views/home.html',
+    'menu'                     => __DIR__ . '/views/menu.html',
 ];
 
+    
 /**
- * ============================
  * MAPA DE ACCIONES (POST)
  * ============================
  * ?action=xxxx
  */
-$actionsMap = [
-    'login'    => __DIR__ . '/controllers/login.php',
-    'register' => __DIR__ . '/controllers/registro.php',
-    'recover'  => __DIR__ . '/controllers/recuperar_contrasena.php',
-    'logout'   => __DIR__ . '/controllers/cerrar_sesion.php',
+
+    
+;$actionsMap = [
+    'login_submit' => __DIR__ . '/controllers/login.php',
+    'register'     => __DIR__ . '/controllers/registro.php',
+    'recover'      => __DIR__ . '/controllers/recuperar_contrasena.php',
+    'logout'       => __DIR__ . '/controllers/cerrar_sesion.php',
+
+    // dinámicos
+    'perfil'       => __DIR__ . '/controllers/perfil.php',
+    'reservaciones'=> __DIR__ . '/controllers/reservaciones.php',
 ];
+
 
 /**
  * ============================
