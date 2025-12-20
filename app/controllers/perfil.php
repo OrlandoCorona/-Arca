@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_SESSION['id_usuario'])) {
+if (!isset($_SESSION['Usuario_id'])) {
     header('Location: /?view=login');
     exit;
 }
 
 require __DIR__ . '/../config/database.php';
 
-$idUsuario = $_SESSION['id_usuario'];
+$Usuarioid = $_SESSION['Usuario_id'];
 
 $sqlUsuario = "
     SELECT nombre, correo
@@ -17,7 +17,7 @@ $sqlUsuario = "
 ";
 
 $stmt = $pdo->prepare($sqlUsuario);
-$stmt->execute(['id' => $idUsuario]);
+$stmt->execute(['id' => $Usuarioid]);
 $usuario = $stmt->fetch();
 
 if (!$usuario) {
@@ -29,12 +29,12 @@ if (!$usuario) {
 $sqlReservas = "
     SELECT fecha, hora, zona
     FROM reservaciones
-    WHERE id_usuario = :id
+    WHERE usuario_id = :id
     ORDER BY fecha DESC
 ";
 
 $stmt = $pdo->prepare($sqlReservas);
-$stmt->execute(['id' => $idUsuario]);
+$stmt->execute(['id' => $Usuarioid]);
 $reservaciones = $stmt->fetchAll();
 
 require __DIR__ . '/../views/perfil.php';

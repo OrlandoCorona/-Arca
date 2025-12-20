@@ -30,7 +30,7 @@ $publicRoutes = [
 | Protección de rutas privadas
 |--------------------------------------------------------------------------
 */
-if (!in_array($routeKey, $publicRoutes, true) && !isset($_SESSION['usuario_id'])) {
+if (!in_array($routeKey, $publicRoutes, true) && !isset($_SESSION['Usuario_id'])) {
     header('Location: /?view=login');
     exit;
 }

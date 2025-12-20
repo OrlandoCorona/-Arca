@@ -9,13 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Validar sesión
-if (!isset($_SESSION['usuario_id'])) {
+if (!isset($_SESSION['Usuario_id'])) {
     header('Location: /?view=login');
     exit;
 }
 
 // Obtener datos
-$idUsuario = $_SESSION['usuario_id'];
+$Usuarioid = $_SESSION['Usuario_id'];
 
 $nombre   = trim($_POST['nombre'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
@@ -39,14 +39,14 @@ if (
 // Insertar reservación
 $sql = "
     INSERT INTO reservaciones
-        (id_usuario, nombre_cliente, telefono, correo, fecha, hora, zona)
+        (Usuarioid, nombre_cliente, telefono, correo, fecha, hora, zona)
     VALUES
-        (:id_usuario, :nombre, :telefono, :correo, :fecha, :hora, :zona)
+        (:Usuarioid, :nombre, :telefono, :correo, :fecha, :hora, :zona)
 ";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    ':id_usuario' => $idUsuario,
+    ':Usuarioid' => $Usuarioid,
     ':nombre'     => $nombre,
     ':telefono'   => $telefono,
     ':correo'     => $correo,
