@@ -1,6 +1,16 @@
 <?php
 declare(strict_types=1);
-?>
+ if (!isset($_SESSION['id_usuario'])): ?>
+  <p>
+    ¿No tienes cuenta?
+    <a href="/?view=register">Regístrate aquí</a>
+  </p>
+
+  <p>
+    ¿Olvidaste tu contraseña?
+    <a href="/?view=recover">Recupérala aquí</a>
+  </p>
+<?php endif; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
