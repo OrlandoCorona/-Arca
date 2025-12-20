@@ -48,9 +48,9 @@ if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
 session_regenerate_id(true);
 
 /**
- * Guardar sesión
+ * Guardar sesión (CLAVE ÚNICA DEL PROYECTO)
  */
-$_SESSION['user_id'] = $usuario['id'];
+$_SESSION['id_usuario'] = $usuario['id'];
 $_SESSION['nombre']     = $usuario['nombre'];
 $_SESSION['correo']     = $usuario['correo'];
 

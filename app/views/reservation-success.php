@@ -1,3 +1,7 @@
+<?php
+declare(strict_types=1);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,6 +26,7 @@
         color:#f2efef;
         min-height:100vh;
         display:flex;
+        flex-direction:column;
         align-items:center;
         justify-content:center;
       }
@@ -32,10 +37,6 @@
         backdrop-filter: blur(8px);
         border-radius:12px;
         padding:22px;
-        position: relative;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
         text-align:center;
         box-shadow:0 10px 30px rgba(5,20,60,0.12);
         color:var(--text-dark);
@@ -61,6 +62,15 @@
         transform:translateY(-2px);
         box-shadow:0 10px 24px rgba(0,123,255,0.28);
       }
+
+      footer{
+        margin-top:20px;
+        width:100%;
+        background:black;
+        color:white;
+        text-align:center;
+        padding:10px 0;
+      }
     </style>
 </head>
 
@@ -69,14 +79,15 @@
 <div class="mensaje-flotante">
     <p>Correo o contraseña incorrectos.</p>
     <a href="/?view=login" class="boton-aceptar">Aceptar</a>
+</div>
+
 <footer>
-    <p style="background-color: black; color:white; text-align: center;">
+    <p>
         © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30px" height="30px" alt="Copyright">
+        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="Copyright">
     </p>
 </footer>
 
 <script src="/assets/js/script.js"></script>
-
 </body>
 </html>

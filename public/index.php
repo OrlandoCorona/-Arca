@@ -1,50 +1,23 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * ======================================
+ * FRONT CONTROLLER ÚNICO
+ * ======================================
+ * - Inicia sesión
+ * - Carga el router central
+ * - NO contiene lógica de rutas
+ * - NO valida sesión
+ */
+
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+// Autoload (si usas Composer)
+$autoload = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($autoload)) {
+    require $autoload;
+}
+
+// Router central
 require __DIR__ . '/../app/routes.php';
-
-$routeKey = $_GET['view'] ?? 'login';
-
-/*
-|--------------------------------------------------------------------------
-| Rutas públicas (NO requieren sesión)
-|--------------------------------------------------------------------------
-*/
-$publicRoutes = [
-    'login',
-    'login_submit',
-    'register',
-    'recover',
-    'recuperar_contrasena',
-    'recover-password-success',
-    'successful_registration',
-    'email-already-registered',
-    'incorrect-password'
-];
-
-/*
-|--------------------------------------------------------------------------
-| Protección de rutas privadas
-|--------------------------------------------------------------------------
-*/
-if (!in_array($routeKey, $publicRoutes, true) && !isset($_SESSION['user_id'])) {
-    header('Location: /?view=login');
-    exit;
-}
-
-/*
-|--------------------------------------------------------------------------
-| Validar ruta
-|--------------------------------------------------------------------------
-*/
-if (!isset($routes[$routeKey])) {
-    http_response_code(404);
-    echo 'Vista no encontrada';
-    exit;
-}
-
-require $routes[$routeKey];
-exit;

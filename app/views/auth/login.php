@@ -1,3 +1,12 @@
+<?php
+declare(strict_types=1);
+
+// Si ya hay sesión, redirigir
+if (isset($_SESSION['id_usuario'])) {
+    header('Location: /?view=home');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +14,7 @@
     <title>Iniciar sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS GLOBAL -->
-     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
         body {
             margin: 0;
@@ -16,14 +24,12 @@
             flex-direction: column;
             font-family: Arial, sans-serif;
         }
-
         .page {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
         .card {
             background: #fff;
             width: 100%;
@@ -33,12 +39,10 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.15);
             text-align: center;
         }
-
         .card h2 {
             margin-bottom: 20px;
             color: #007bff;
         }
-
         .card input {
             width: 100%;
             padding: 12px;
@@ -47,7 +51,6 @@
             border: 1px solid #ccc;
             font-size: 1rem;
         }
-
         .login-btn {
             width: 100%;
             padding: 12px;
@@ -59,26 +62,21 @@
             cursor: pointer;
             margin-top: 8px;
         }
-
         .login-btn:hover {
             background: #0056b3;
         }
-
         .links {
             margin-top: 16px;
             font-size: 0.95rem;
         }
-
         .links a {
             color: #007bff;
             text-decoration: none;
             font-weight: 500;
         }
-
         .links a:hover {
             text-decoration: underline;
         }
-
         footer {
             background: black;
             color: white;
@@ -87,36 +85,29 @@
         }
     </style>
 </head>
-
 <body>
 
 <div class="page">
     <div class="card">
         <h2>Iniciar Sesión</h2>
 
-        <!-- FORMULARIO CORRECTO -->
         <form method="post" action="/?action=login" autocomplete="on">
-
-    <input
-        type="email"
-        name="correo"
-        placeholder="Correo electrónico"
-        autocomplete="username"
-        required
-    >
-
-    <input
-        type="password"
-        name="contrasena"
-        placeholder="Contraseña"
-        autocomplete="current-password"
-        required
-    >
-
-    <button type="submit" class="login-btn">
-        Iniciar sesión
-    </button>
-</form>
+            <input
+                type="email"
+                name="correo"
+                placeholder="Correo electrónico"
+                autocomplete="username"
+                required
+            >
+            <input
+                type="password"
+                name="contrasena"
+                placeholder="Contraseña"
+                autocomplete="current-password"
+                required
+            >
+            <button type="submit" class="login-btn">Iniciar sesión</button>
+        </form>
 
         <div class="links">
             <p>

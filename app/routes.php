@@ -3,34 +3,45 @@ declare(strict_types=1);
 
 /**
  * ============================
- * MAPA DE VISTAS (GET públicas)
+ * MAPA DE VISTAS PÚBLICAS (GET)
  * ============================
+ * Estas vistas NO validan sesión
+ * Solo muestran contenido
  */
 $viewsMap = [
+
+    // Auth
     'login'                     => __DIR__ . '/views/auth/login.php',
-    'register'                  => __DIR__ . '/views/auth/register.html',
-    'recover'                   => __DIR__ . '/views/auth/recover-password.html',
-    'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.html',
-    'successful_registration'   => __DIR__ . '/views/auth/successful_registration.html',
-    'incorrect-password'        => __DIR__ . '/views/incorrect-password.html',
-    'email-already-registered'  => __DIR__ . '/views/email-already-registered.html',
+    'register'                  => __DIR__ . '/views/auth/register.php',
+    'recover'                   => __DIR__ . '/views/auth/recover-password.php',
+    'recover-password-success'  => __DIR__ . '/views/auth/recover-password-success.php',
+    'successful_registration'   => __DIR__ . '/views/auth/successful_registration.php',
+    'incorrect-password'        => __DIR__ . '/views/incorrect-password.php',
+    'email-already-registered'  => __DIR__ . '/views/email-already-registered.php',
 
     // Públicas
-    'home' => __DIR__ . '/views/home.html',
-    'menu' => __DIR__ . '/views/menu.html',
+    'home'        => __DIR__ . '/views/home.php',
+    'menu'        => __DIR__ . '/views/menu.php',
+    'beers'       => __DIR__ . '/views/beers.php',
+    'food'        => __DIR__ . '/views/food.php',
+    'tacos'       => __DIR__ . '/views/tacos.php',
+    'micheladas'  => __DIR__ . '/views/micheladas.php',
+    'bottles'     => __DIR__ . '/views/bottles.php',
+    'extras'      => __DIR__ . '/views/extras.php',
 ];
 
 /**
  * ============================
  * MAPA DE ACCIONES (POST)
  * ============================
+ * Estas rutas ejecutan lógica
  */
 $actionsMap = [
-    'login'            => __DIR__ . '/controllers/login.php',
-    'register'         => __DIR__ . '/controllers/registro.php',
-    'recover'          => __DIR__ . '/controllers/recuperar_contrasena.php',
-    'logout'           => __DIR__ . '/controllers/cerrar_sesion.php',
-    'realizar_reserva' => __DIR__ . '/controllers/realizar_reserva.php',
+    'login'             => __DIR__ . '/controllers/login.php',
+    'register'          => __DIR__ . '/controllers/registro.php',
+    'recover'           => __DIR__ . '/controllers/recuperar_contrasena.php',
+    'logout'            => __DIR__ . '/controllers/cerrar_sesion.php',
+    'realizar_reserva'  => __DIR__ . '/controllers/realizar_reserva.php',
 ];
 
 /**
@@ -39,10 +50,13 @@ $actionsMap = [
  * ============================
  */
 
-// ----------------------------
-// ACCIONES (POST)
-// ----------------------------
+/**
+ * ----------------------------
+ * ACCIONES (POST)
+ * ----------------------------
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
+
     $action = $_GET['action'];
 
     if (isset($actionsMap[$action])) {
@@ -54,10 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
     exit('Acción no encontrada');
 }
 
-// ----------------------------
-// PÁGINAS PROTEGIDAS (GET)
-// ----------------------------
+/**
+ * ----------------------------
+ * PÁGINAS PROTEGIDAS (GET)
+ * ----------------------------
+ * Aquí SÍ se valida sesión
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
     $view = $_GET['view'] ?? 'login';
 
     if ($view === 'perfil') {
@@ -70,17 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit;
     }
 
-    // ----------------------------
-    // VISTAS PÚBLICAS
-    // ----------------------------
+    /**
+     * ----------------------------
+     * VISTAS PÚBLICAS (GET)
+     * ----------------------------
+     */
     if (isset($viewsMap[$view])) {
         require $viewsMap[$view];
         exit;
     }
 }
 
-// ----------------------------
-// FALLBACK
-// ----------------------------
+/**
+ * ----------------------------
+ * FALLBACK SEGURO
+ * ----------------------------
+ */
 header('Location: /?view=login');
 exit;

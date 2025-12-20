@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../config/database.php';
 
+// Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=register');
     exit;
@@ -13,7 +14,13 @@ $correo   = trim($_POST['correo'] ?? '');
 $password = $_POST['password'] ?? '';
 $repass   = $_POST['repass'] ?? '';
 
+// Validación básica
 if ($nombre === '' || $correo === '' || $password === '' || $repass === '') {
+    header('Location: /?view=register');
+    exit;
+}
+
+if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     header('Location: /?view=register');
     exit;
 }

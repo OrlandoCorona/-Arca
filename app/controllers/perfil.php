@@ -1,24 +1,35 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_SESSION['user_id'])) {
+/**
+ * ============================
+ * VALIDAR SESIÓN
+ * ============================
+ */
+if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
 }
 
 require __DIR__ . '/../config/database.php';
 
-$user_id = $_SESSION['user_id'];
+$id_usuario = (int) $_SESSION['id_usuario'];
 
+/**
+ * ============================
+ * DATOS DEL USUARIO
+ * ============================
+ */
 $sqlUsuario = "
     SELECT nombre, correo
     FROM usuarios
     WHERE id = :id
+    LIMIT 1
 ";
 
 $stmt = $pdo->prepare($sqlUsuario);
-$stmt->execute(['id' => $user_id]);
-$usuario = $stmt->fetch();
+$stmt->execute(['id' => $id_usuario]);
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$usuario) {
     session_destroy();
@@ -26,16 +37,26 @@ if (!$usuario) {
     exit;
 }
 
+/**
+ * ============================
+ * RESERVACIONES DEL USUARIO
+ * ============================
+ */
 $sqlReservas = "
     SELECT fecha, hora, zona
     FROM reservaciones
-    WHERE user_id = :id
+    WHERE id_usuario = :id
     ORDER BY fecha DESC
 ";
 
 $stmt = $pdo->prepare($sqlReservas);
-$stmt->execute(['id' => $user_id]);
-$reservaciones = $stmt->fetchAll();
+$stmt->execute(['id' => $id_usuario]);
+$reservaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-require __DIR__ . '"elarcaweb/../views/perfil.php';
+/**
+ * ============================
+ * CARGAR VISTA
+ * ============================
+ */
+require __DIR__ . '/../views/perfil.php';
 exit;

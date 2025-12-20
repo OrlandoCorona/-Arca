@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 require __DIR__ . '/../config/database.php';
 
 // Solo POST
@@ -25,27 +26,15 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
 try {
     $sql = "SELECT id FROM usuarios WHERE correo = :correo LIMIT 1";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([':correo' => $correo]);
+    $stmt->execute(['correo' => $correo]);
     $usuario = $stmt->fetch();
 
-    if (!$usuario) {
-    header ('Location: /?view=recover-password-success');
-    exit;
-
-    }
-
-    /*
-      En esta etapa del proyecto:
-      - NO se cambia contraseña
-      - NO se envía correo real
-      - Solo se confirma que el correo existe
-    */
-
+    // Independientemente de si existe o no, no revelamos información
     header('Location: /?view=recover-password-success');
     exit;
 
 } catch (PDOException $e) {
-    // Error interno, no exponer
- header('Location: /?view=recover-password-success');
-exit;
+    // No exponer errores internos
+    header('Location: /?view=recover-password-success');
+    exit;
 }

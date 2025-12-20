@@ -1,50 +1,63 @@
+<?php
+declare(strict_types=1);
+
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: /?view=login');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurante-Bar El Arca</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">    <!-- Enlazar el archivo CSS externo -->
-
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
-      :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
-      body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; min-height:100vh; }
-      .carousel{ position: relative; width:90%; max-width:1200px; height:auto; margin:100px auto 40px; overflow:hidden; }
-      .carousel-container{ display:flex; transition: transform 0.5s ease-in-out; }
-      .carousel-item{ min-width:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; }
-      .card{ background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.38)); padding:20px; border-radius:12px; box-shadow:0 8px 24px rgba(3,12,30,0.12); max-width:100%; text-align:center; }
-      .card h1, .card h2{ font-size: clamp(1.25rem, 2.5vw, 2rem); font-weight:700; color:#fff; }
-      .card p{ font-size:clamp(0.95rem,1.6vw,1.1rem); color:#eee; text-align:justify; }
-      .carousel-nav{ position:absolute; top:50%; transform:translateY(-50%); display:flex; justify-content:space-between; width:100%; padding:0 10px; box-sizing:border-box; }
-      .nav-btn{ width:36px; height:36px; cursor:pointer; opacity:0.95; }
-      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position: relative; top:0; z-index:20; }
-      .menu a{ color:#fff; text-decoration:none; margin:0 14px; font-size:16px; }
-      footer.site-footer{ background: linear-gradient(90deg,#071428,#0b1a2b); color:white; text-align:center; padding:12px 0; width:100%; position:relative; bottom:0; left:0; }
-      .modal{ display:none; position: relative; inset:0; background: rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; }
-      .modal-content{ background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); margin:0 16px; padding:18px; border-radius:12px; width:90%; max-width:800px; color:var(--text-dark); }
-      .modal-footer button{ background: linear-gradient(180deg,var(--primary),var(--primary-dark)); color:#fff; border:none; padding:10px 18px; border-radius:8px; cursor:pointer; }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
+        background-size: cover;
+        color: #f2efef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .menu {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+      }
+      .menu a {
+        color: white;
+        text-decoration: none;
+        margin: 0 20px;
+        font-size: 18px;
+      }
     </style>
-  </head>
+</head>
+<body>
 
-  <body>
-    <div class="menu">
-      <a href="/?view=home">Inicio</a>
-      <a href="/?view=menu">Menú</a>
-  <a href="/?view=reservaciones">Reservaciones</a>
-      <a href="/?view=perfil">
-
-        <img src="/assets/images/user.png" alt="Avatar de Usuario" class="avatar" />
-      </a>
-      <a href="/?action=logout">
-        <img
-          src="/assets/images/logout.png"
-          alt="Cerrar sesion"
-          class="cerrar"
-          width="30px"
-          height="30px"
-        />
-      </a>
-    </div>
+<div class="menu">
+    <a href="/?view=home">Inicio</a>
+    <a href="/?view=menu">Menú</a>
+    <a href="/?view=reservaciones">Reservaciones</a>
+    <a href="/?view=perfil">
+        <img src="/assets/images/user.png" width="30" alt="Usuario">
+    </a>
+    <a href="/?action=logout">
+        <img src="/assets/images/logout.png" width="30" alt="Salir">
+    </a>
+</div>
 
     <div class="carousel">
       <div class="carousel-container">

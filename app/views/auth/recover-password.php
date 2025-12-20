@@ -1,3 +1,12 @@
+<?php
+declare(strict_types=1);
+
+// Si ya hay sesión, redirigir a home
+if (isset($_SESSION['id_usuario'])) {
+    header('Location: /?view=home');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,14 +24,12 @@
       display:flex;
       flex-direction:column;
     }
-
     .page{
       flex:1;
       display:flex;
       align-items:center;
       justify-content:center;
     }
-
     .card{
       background:white;
       padding:32px;
@@ -32,12 +39,10 @@
       text-align:center;
       box-shadow:0 8px 30px rgba(0,0,0,0.15);
     }
-
     .card h1{
       color:#000;
       margin-bottom:20px;
     }
-
     .card input{
       width:100%;
       padding:12px;
@@ -46,7 +51,6 @@
       border-radius:6px;
       font-size:16px;
     }
-
     .login-btn{
       width:100%;
       padding:12px;
@@ -58,11 +62,9 @@
       font-weight:bold;
       margin-top:10px;
     }
-
     .login-btn:hover{
       background:#0056b3;
     }
-
     footer{
       background:black;
       color:white;
@@ -71,33 +73,31 @@
     }
   </style>
 </head>
-
 <body>
 
   <div class="page">
     <div class="card">
       <h1>Recuperar Contraseña</h1>
 
-<form method="POST" action="/?action=recover">
-    <input
-        type="email"
-        name="correo"
-        placeholder="Correo electrónico"
-        required
-    >
+      <form method="post" action="/?action=recover">
+        <input
+            type="email"
+            name="correo"
+            placeholder="Correo electrónico"
+            required
+        >
 
-    <button type="submit" class="login-btn">
-        Recuperar contraseña
-    </button>
+        <button type="submit" class="login-btn">
+            Recuperar contraseña
+        </button>
 
-    <button
-        type="button"
-        class="login-btn"
-        onclick="location.href='/?view=login'">
-        Iniciar sesión
-    </button>
-</form>
-
+        <button
+            type="button"
+            class="login-btn"
+            onclick="location.href='/?view=login'">
+            Iniciar sesión
+        </button>
+      </form>
 
     </div>
   </div>
@@ -105,7 +105,7 @@
   <footer>
     <p>
       © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-      <img src="/assets/images/inconoB.jpg" width="30" height="30">
+      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
     </p>
   </footer>
 

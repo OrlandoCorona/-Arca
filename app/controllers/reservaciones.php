@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_SESSION['User_id'])) {
+if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
 }

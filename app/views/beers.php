@@ -1,9 +1,17 @@
+<?php
+declare(strict_types=1);
+
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: /?view=login');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
     <title>Cervezas - Restaurante-Bar El Arca</title>
     <style>
       :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
@@ -28,14 +36,12 @@
   <a href="/?view=menu">Menú</a>
   <a href="/?view=reservaciones">Reservaciones</a>
   <a href="/?view=perfil">
-    <img src="/assets/images/user.png" width="30">
+    <img src="/assets/images/user.png" width="30" alt="Usuario">
   </a>
   <a href="/?action=logout">
-
-    <img src="/assets/images/logout.png" width="30">
+    <img src="/assets/images/logout.png" width="30" alt="Salir">
   </a>
 </div>
-
     <div class="container">
         <h1>Cervezas</h1>
         <div class="product-list">
@@ -99,8 +105,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
+<div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modalName"></h2>
@@ -112,7 +117,7 @@
 
     <script>
         document.querySelectorAll('.product').forEach(item => {
-            item.addEventListener('click', event => {
+            item.addEventListener('click', () => {
                 document.getElementById('modalName').innerText = item.getAttribute('data-name');
                 document.getElementById('modalImg').src = item.getAttribute('data-img');
                 document.getElementById('modalDesc').innerText = item.getAttribute('data-desc');
@@ -121,12 +126,12 @@
             });
         });
 
-        document.querySelector('.close').addEventListener('click', event => {
+        document.querySelector('.close').addEventListener('click', () => {
             document.getElementById('myModal').style.display = 'none';
         });
 
         window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
+            if (event.target === document.getElementById('myModal')) {
                 document.getElementById('myModal').style.display = 'none';
             }
         }
