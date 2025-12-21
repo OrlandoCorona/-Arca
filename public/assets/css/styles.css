@@ -1,22 +1,17 @@
 /* =========================
-   VARIABLES GLOBALES
+   VARIABLES
 ========================= */
 :root {
-  --primary: #0d6efd;
-  --primary-dark: #0a58ca;
-  --bg-dark: #0b1220;
-  --bg-overlay: rgba(11,18,32,0.75);
-  --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.15);
-  --text-light: #f1f5f9;
-  --text-muted: #cbd5e1;
-  --radius: 18px;
-  --transition: all 0.35s ease;
-  --shadow: 0 25px 60px rgba(0,0,0,0.45);
+  --black: #0f172a;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --accent: #2563eb;
+  --radius: 14px;
+  --transition: all .3s ease;
 }
 
 /* =========================
-   RESET BÁSICO
+   RESET
 ========================= */
 * {
   margin: 0;
@@ -25,187 +20,113 @@
 }
 
 html, body {
-  min-height: 100%;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  color: var(--text-light);
-  background:
-    linear-gradient(var(--bg-overlay), var(--bg-overlay)),
-    url('/assets/images/fondoBorroso.jpg') center / cover no-repeat fixed;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--light);
+  color: var(--black);
 }
 
 /* =========================
-   NAVBAR
+   NAV
 ========================= */
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 14px 40px;
-  background: rgba(5,10,25,0.75);
-  backdrop-filter: blur(12px);
+  padding: 18px 60px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .navbar a {
-  color: var(--text-light);
-  text-decoration: none;
+  color: var(--black);
   margin: 0 14px;
+  text-decoration: none;
   font-weight: 500;
-  transition: var(--transition);
 }
 
 .navbar a:hover {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 /* =========================
-   CONTENEDOR PRINCIPAL
+   LAYOUT
 ========================= */
-.main-container {
+.container {
   max-width: 1200px;
   margin: 60px auto;
-  padding: 30px;
-}
-
-/* =========================
-   HOME – TARJETAS IMAGEN
-========================= */
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 28px;
-}
-
-.home-card {
-  position: relative;
-  height: 260px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  cursor: pointer;
-}
-
-.home-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .6s ease;
-}
-
-.home-card:hover img {
-  transform: scale(1.08);
-}
-
-.home-card .overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
-  display: flex;
-  align-items: flex-end;
   padding: 20px;
 }
 
-.home-card .overlay h3 {
-  font-size: 1.4rem;
+/* =========================
+   HERO
+========================= */
+.hero {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--gray);
 }
 
 /* =========================
-   LOGIN / REGISTER
+   CARDS
 ========================= */
-.auth-card {
-  max-width: 420px;
-  margin: 80px auto;
-  padding: 40px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 32px;
+}
+
+.card {
+  padding: 30px;
   border-radius: var(--radius);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow);
+  border: 1px solid #e5e7eb;
+  transition: var(--transition);
 }
 
-.auth-card h2 {
-  text-align: center;
-  margin-bottom: 25px;
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
 }
 
-.auth-card input {
+/* =========================
+   FORMULARIOS
+========================= */
+.form {
+  max-width: 420px;
+  margin: auto;
+}
+
+.form input {
   width: 100%;
   padding: 14px;
   margin-bottom: 14px;
   border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: var(--text-light);
+  border: 1px solid #e5e7eb;
 }
 
-.auth-card button {
+.form button {
   width: 100%;
   padding: 14px;
-  border-radius: 12px;
+  background: var(--accent);
+  color: white;
   border: none;
-  background: var(--primary);
-  color: #fff;
+  border-radius: 10px;
   font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.auth-card button:hover {
-  background: var(--primary-dark);
-}
-
-/* =========================
-   MENÚ
-========================= */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 24px;
-}
-
-.menu-card {
-  position: relative;
-  background: var(--glass);
-  border-radius: var(--radius);
-  padding: 22px;
-  text-align: center;
-  transition: var(--transition);
-}
-
-.menu-card:hover {
-  transform: translateY(-6px);
-}
-
-.menu-card h4 {
-  margin-bottom: 8px;
-}
-
-.menu-card span {
-  color: var(--text-muted);
-}
-
-/* =========================
-   PERFIL / RESERVACIONES
-========================= */
-.panel {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 35px;
-  background: var(--glass);
-  border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-}
-
-.panel h2 {
-  text-align: center;
-  margin-bottom: 20px;
 }
 
 /* =========================
    FOOTER
 ========================= */
 footer {
+  margin-top: 120px;
+  padding: 40px;
   text-align: center;
-  padding: 30px;
-  margin-top: 80px;
-  background: rgba(0,0,0,0.65);
+  color: var(--gray);
 }
