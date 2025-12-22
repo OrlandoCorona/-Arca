@@ -227,3 +227,38 @@ body {
   url("/assets/images/fondoBorroso.jpg") center/cover no-repeat;
   min-height: 100vh;
 }
+h2 {
+  font-family: "noto-sans", sans-serif ;
+  background-image: url();
+  background-size:cover ;
+  background-clip: text;
+  color: transparent;
+  animation: animate 20s linear infinite;
+}
+@keyframes animate {
+  to{
+    background-position-x:-500;
+}
+}
+
+h1
+{
+  font-size: 1.5rem;
+  font-weight: 700;
+
+}
+.title span:after {
+  content: "El Arca";
+  animation: words 6s infinite;
+}
+
+@keyframes words {
+  0%,30% {
+    content: "El Arca";
+    color: #03dbbebe;
+  }
+  34%,66% {
+    content: "100% Ecologico";
+    color: #1260b4;
+  }
+}
