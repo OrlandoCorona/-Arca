@@ -13,37 +13,23 @@ if (!isset($_SESSION['id_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Restaurante-Bar El Arca</title>
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
-        background-size: cover;
-        color: #f2efef;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        overflow: hidden;
-      }
-      .menu {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        z-index: 1;
-      }
-      .menu a {
-        color: white;
-        text-decoration: none;
-        margin: 0 20px;
-        font-size: 18px;
-      }
-    </style>
+    <section class="home">
+  <div class="hero">
+    <h1 class="title">
+      <span></span>
+    </h1>
+
+    <p class="subtitle">
+      Restaurante · Bar · Naturaleza · Experiencia Premium
+    </p>
+
+    <div class="hero-actions">
+      <a href="/?view=menu" class="btn">Ver menú</a>
+      <a href="/?view=reservaciones" class="btn">Reservar ahora</a>
+    </div>
+  </div>
+</section>
+
 </head>
 <body>
 
