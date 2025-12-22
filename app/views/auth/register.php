@@ -1,109 +1,95 @@
 <?php
 declare(strict_types=1);
-
-// Si ya hay sesión, redirigir a home
-if (isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=home');
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Registrar</title>
-
-  <link rel="stylesheet" href="/assets/css/styles.css">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url("/assets/images/fondoBorroso.jpg") no-repeat center center;
-      background-size: cover;
-      color: #f2efef;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .mobile-screen {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .login-btn {
-      background-color: green;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      width: 100%;
-    }
-
-    .login-btn:hover {
-      background-color: darkgreen;
-    }
-
-    .other-options {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    footer {
-      background-color: black;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-
 <body>
 
-  <div class="mobile-screen">
-    <h1 style="color:black;">Registrar</h1>
+<div class="form-container">
+    <h2>Crear cuenta</h2>
 
-    <img
-      src="/assets/images/user_avatar.png"
-      alt="Avatar de Usuario"
-      width="120"
-      height="70"
-    />
+    <form method="post" action="/?action=register" autocomplete="on">
 
-    <!-- FORMULARIO CORREGIDO -->
-    <form method="post" action="/?action=register">
-      <input type="text" name="nombre" placeholder="Nombre" required />
-      <input type="email" name="correo" placeholder="Correo electrónico" required />
-      <input type="password" name="password" placeholder="Contraseña" required />
-      <input type="password" name="repass" placeholder="Repetir contraseña" required />
+        <input
+            type="email"
+            name="correo"
+            placeholder="Correo electrónico"
+            autocomplete="email"
+            required
+        >
 
-      <button type="submit" class="login-btn">
-        Registrarse
-      </button>
+        <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            autocomplete="given-name"
+            required
+        >
+
+        <input
+            type="text"
+            name="apellido_paterno"
+            placeholder="Apellido paterno"
+            autocomplete="family-name"
+            required
+        >
+
+        <input
+            type="text"
+            name="apellido_materno"
+            placeholder="Apellido materno"
+            autocomplete="additional-name"
+        >
+
+        <input
+            type="tel"
+            name="telefono"
+            placeholder="Teléfono"
+            autocomplete="tel"
+            required
+        >
+
+        <input
+            type="password"
+            name="contrasena"
+            placeholder="Contraseña"
+            autocomplete="new-password"
+            required
+        >
+
+        <input
+            type="password"
+            name="repetir_contrasena"
+            placeholder="Repetir contraseña"
+            autocomplete="new-password"
+            required
+        >
+
+        <button type="submit" class="btn">
+            Registrarme
+        </button>
     </form>
 
-    <div class="other-options">
-      <a href="/?view=login" class="option-text" style="color:black;">
-        Iniciar Sesión
-      </a>
+    <div class="links">
+        <p>
+            ¿Ya tienes cuenta?
+            <a href="/?view=login">Inicia sesión</a>
+        </p>
     </div>
-  </div>
+</div>
 
-  <footer>
+<footer>
     <p>
-      © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
+        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
     </p>
-  </footer>
+</footer>
 
 </body>
 </html>

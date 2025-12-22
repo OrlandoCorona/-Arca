@@ -61,13 +61,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action'])) {
 
     $action = $_GET['action'];
 
-    if (isset($actionsMap[$action])) {
-        require $actionsMap[$action];
-        exit;
+    if (!isset($actionsMap[$action])) {
+        http_response_code(404);
+        exit('Acción no encontrada');
     }
 
-    http_response_code(404);
-    exit('Acción no encontrada');
+    // Ejecuta el controlador
+    require $actionsMap[$action];
+
+    /**
+     * IMPORTANTE:
+     * Un POST nunca debe continuar al router GET
+     * El controlador DEBE redirigir y terminar.
+     */
+    exit;
 }
 
 /**

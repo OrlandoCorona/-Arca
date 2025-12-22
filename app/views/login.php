@@ -1,15 +1,7 @@
 <?php
 declare(strict_types=1);
  if (!isset($_SESSION['id_usuario'])): ?>
-  <p>
-    ¿No tienes cuenta?
-    <a href="/?view=register">Regístrate aquí</a>
-  </p>
-
-  <p>
-    ¿Olvidaste tu contraseña?
-    <a href="/?view=recover">Recupérala aquí</a>
-  </p>
+ 
 <?php endif; ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,77 +9,8 @@ declare(strict_types=1);
     <meta charset="UTF-8">
     <title>Iniciar sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: url("/assets/images/fondoBorroso.jpg") center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-        }
-        .page {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .card {
-            background: #fff;
-            width: 100%;
-            max-width: 380px;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            text-align: center;
-        }
-        .card h2 {
-            margin-bottom: 20px;
-            color: #007bff;
-        }
-        .card input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 14px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-        .login-btn:hover {
-            background: #0056b3;
-        }
-        .links {
-            margin-top: 16px;
-            font-size: 0.95rem;
-        }
-        .links a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background: black;
-            color: white;
-            text-align: center;
-            padding: 12px 0;
-        }
-    </style>
+    
 </head>
 <body>
 

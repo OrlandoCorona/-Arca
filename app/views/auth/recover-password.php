@@ -1,113 +1,51 @@
 <?php
 declare(strict_types=1);
-
-// Si ya hay sesión, redirigir a home
-if (isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=home');
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recuperar Contraseña</title>
-
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      margin:0;
-      min-height:100vh;
-      background: url("/assets/images/fondoBorroso.jpg") center/cover no-repeat;
-      display:flex;
-      flex-direction:column;
-    }
-    .page{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .card{
-      background:white;
-      padding:32px;
-      border-radius:12px;
-      max-width:380px;
-      width:100%;
-      text-align:center;
-      box-shadow:0 8px 30px rgba(0,0,0,0.15);
-    }
-    .card h1{
-      color:#000;
-      margin-bottom:20px;
-    }
-    .card input{
-      width:100%;
-      padding:12px;
-      margin-bottom:16px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      font-size:16px;
-    }
-    .login-btn{
-      width:100%;
-      padding:12px;
-      background:#007bff;
-      color:white;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-      font-weight:bold;
-      margin-top:10px;
-    }
-    .login-btn:hover{
-      background:#0056b3;
-    }
-    footer{
-      background:black;
-      color:white;
-      text-align:center;
-      padding:12px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Recuperar contraseña</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
 
-  <div class="page">
-    <div class="card">
-      <h1>Recuperar Contraseña</h1>
+<div class="form-container">
+    <h2>Recuperar contraseña</h2>
 
-      <form method="post" action="/?action=recover">
+    <p class="form-description">
+        Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.
+    </p>
+
+    <form method="post" action="/?action=recover" autocomplete="on">
+
         <input
             type="email"
             name="correo"
             placeholder="Correo electrónico"
+            autocomplete="email"
             required
         >
 
-        <button type="submit" class="login-btn">
-            Recuperar contraseña
+        <button type="submit" class="btn">
+            Restablecer contraseña
         </button>
+    </form>
 
-        <button
-            type="button"
-            class="login-btn"
-            onclick="location.href='/?view=login'">
-            Iniciar sesión
-        </button>
-      </form>
-
+    <div class="links">
+        <p>
+            <a href="/?view=login">Volver a iniciar sesión</a>
+        </p>
     </div>
-  </div>
+</div>
 
-  <footer>
+<footer>
     <p>
-      © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
+        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
     </p>
-  </footer>
+</footer>
 
 </body>
 </html>
