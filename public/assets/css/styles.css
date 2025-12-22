@@ -229,7 +229,7 @@ body {
 }
 h2 {
   font-family: "noto-sans", sans-serif ;
-  background-image: url();
+  background-image: image(assets);
   background-size:cover ;
   background-clip: text;
   color: transparent;
