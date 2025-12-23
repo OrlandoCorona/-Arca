@@ -8,7 +8,6 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,66 +17,83 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
+<main class="app-container">
 
-    <section class="menu-section">
-      <header class="menu-header">
-        <h1>Menú</h1>
-        <p>Explora nuestras opciones disponibles</p>
-      </header>
+  <section class="menu-section">
+    <header class="menu-header">
+      <h1>Menú</h1>
+      <p>Selecciona una categoría para explorar nuestros productos</p>
+    </header>
 
-      <div class="menu-grid">
+    <div class="menu-grid">
 
-        <!-- CARD 1 -->
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio10.png" alt="Platillo destacado">
-          </div>
-          <div class="menu-body">
-            <h3>Platillo Especial</h3>
-            <p>
-              Una combinación perfecta de ingredientes frescos y sabor único,
-              ideal para disfrutar en cualquier momento.
-            </p>
-            <span class="menu-price">$120</span>
-          </div>
-        </article>
+      <!-- CATEGORÍA -->
+      <a href="/?view=food" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio1.jpg" alt="Comida">
+        </div>
+        <div class="menu-body">
+          <h3>Comida</h3>
+          <p>Platillos preparados al momento</p>
+        </div>
+      </a>
 
-        <!-- CARD 2 -->
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/of1.jpg" alt="Bebida">
-          </div>
-          <div class="menu-body">
-            <h3>Bebida Refrescante</h3>
-            <p>
-              Refrescante, bien fría y perfecta para acompañar tus platillos.
-            </p>
-            <span class="menu-price">$60</span>
-          </div>
-        </article>
+      <a href="/?view=beers" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio5.jpg" alt="Cervezas">
+        </div>
+        <div class="menu-body">
+          <h3>Cervezas</h3>
+          <p>Selección de cervezas bien frías</p>
+        </div>
+      </a>
 
-        <!-- CARD 3 -->
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio3.jpg" alt="Postre">
-          </div>
-          <div class="menu-body">
-            <h3>Postre de la Casa</h3>
-            <p>
-              El toque dulce ideal para cerrar tu experiencia en El Arca.
-            </p>
-            <span class="menu-price">$75</span>
-          </div>
-        </article>
+      <a href="/?view=micheladas" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio6.jpg" alt="Micheladas">
+        </div>
+        <div class="menu-body">
+          <h3>Micheladas</h3>
+          <p>Clásicas y especiales</p>
+        </div>
+      </a>
 
-      </div>
-    </section>
+      <a href="/?view=tacos" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio3.jpg" alt="Tacos">
+        </div>
+        <div class="menu-body">
+          <h3>Tacos</h3>
+          <p>Sabores tradicionales</p>
+        </div>
+      </a>
 
-  </main>
+      <a href="/?view=bottles" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio7.jpg" alt="Botellas">
+        </div>
+        <div class="menu-body">
+          <h3>Botellas</h3>
+          <p>Para compartir</p>
+        </div>
+      </a>
 
-  <script src="/assets/js/script.js"></script>
+      <a href="/?view=extras" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio2.jpg" alt="Extras">
+        </div>
+        <div class="menu-body">
+          <h3>Extras</h3>
+          <p>Complementos y adicionales</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
 </body>
 </html>
