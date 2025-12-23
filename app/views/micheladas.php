@@ -17,60 +17,55 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-<?php require __DIR__ . '/partials/navbar.php'; ?>
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+  <main class="app-container">
 
-  <!-- Header + Back -->
-  <div class="section-top">
-    <a href="/?view=menu" class="btn-back">← Volver al menú</a>
-  </div>
+    <section class="menu-section">
+      <header class="menu-header">
+        <h1>Micheladas</h1>
+        <p>Refrescantes, picositas y perfectas para compartir</p>
+      </header>
 
-  <section class="menu-section">
-    <header class="menu-header">
-      <h1>Micheladas</h1>
-      <p>Refrescantes, clásicas y especiales</p>
-    </header>
+      <div class="menu-grid">
 
-    <div class="menu-grid">
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/michelada1.jpg" alt="Michelada clásica">
+          </div>
+          <div class="menu-body">
+            <h3>Michelada Clásica</h3>
+            <p>Cerveza, limón, salsas y escarchado tradicional.</p>
+            <span class="menu-price">$70</span>
+          </div>
+        </article>
 
-      <article class="menu-card">
-        <div class="menu-media">
-          <img src="/assets/images/inicio5.jpg" alt="Michelada clásica">
-        </div>
-        <div class="menu-body">
-          <h3>Michelada Clásica</h3>
-          <p>Limón, sal y salsas tradicionales.</p>
-          <span class="menu-price">$70</span>
-        </div>
-      </article>
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/michelada2.jpg" alt="Michelada especial">
+          </div>
+          <div class="menu-body">
+            <h3>Michelada Especial</h3>
+            <p>Preparación especial con mix de salsas premium.</p>
+            <span class="menu-price">$85</span>
+          </div>
+        </article>
 
-      <article class="menu-card">
-        <div class="menu-media">
-          <img src="/assets/images/inicio6.jpg" alt="Michelada especial">
-        </div>
-        <div class="menu-body">
-          <h3>Michelada Especial</h3>
-          <p>Mezcla premium con ingredientes únicos.</p>
-          <span class="menu-price">$90</span>
-        </div>
-      </article>
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/michelada3.jpg" alt="Michelada con camarón">
+          </div>
+          <div class="menu-body">
+            <h3>Michelada con Camarón</h3>
+            <p>La favorita: potente, fresca y con carácter.</p>
+            <span class="menu-price">$110</span>
+          </div>
+        </article>
 
-      <article class="menu-card">
-        <div class="menu-media">
-          <img src="/assets/images/inicio7.jpg" alt="Michelada preparada">
-        </div>
-        <div class="menu-body">
-          <h3>Michelada Preparada</h3>
-          <p>Ideal para los que buscan algo diferente.</p>
-          <span class="menu-price">$100</span>
-        </div>
-      </article>
+      </div>
+    </section>
 
-    </div>
-  </section>
-
-</main>
+  </main>
 
 </body>
 </html>
