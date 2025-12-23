@@ -12,79 +12,71 @@ if (!isset($_SESSION['id_usuario'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Comida — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?view=perfil">
-        <img src="/assets/images/user.png" width="30">
-    </a>
-    <a href="/?action=logout">
-        <img src="/assets/images/logout.png" width="30">
-    </a>
-</div>
 
-    <div class="container">
+  <main class="app-container">
+
+    <section class="menu-section">
+      <header class="menu-header">
         <h1>Comida</h1>
-        <div class="product-list">
-            <div class="product" data-name="Ensalada de Mariscos" data-price="$99" data-desc="Camarón y/o Pulpo." data-img="/assets/images/ensalada.png">
-                <h2>Ensalada de Mariscos</h2>
-                <p>$99</p>
-                <p>Camarón y/o Pulpo.</p>
-            </div>
-            <div class="product" data-name="Gringa" data-price="$55" data-desc="Descripción del producto." data-img="/assets/images/gringas.png">
-                <h2>Gringa</h2>
-                <p>$55</p>
-                <p>Descripción del producto.</p>
-            </div>
-            <div class="product" data-name="Club Sandwich" data-price="$110" data-desc="Descripción del producto." data-img="/assets/images/sand.png">
-                <h2>Club Sandwich</h2>
-                <p>$110</p>
-                <p>Descripción del producto.</p>
-            </div>
-        </div>
-    </div>
+        <p>Platillos preparados al momento con ingredientes frescos</p>
+      </header>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalName"></h2>
-            <img id="modalImg" src="" alt="Imagen del producto">
-            <p id="modalDesc"></p>
-            <p id="modalPrice"></p>
-        </div>
-    </div>
+      <div class="menu-grid">
 
-    <script>
-        const products = document.querySelectorAll('.product');
+        <!-- CARD 1 -->
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio1.jpg" alt="Platillo principal">
+          </div>
+          <div class="menu-body">
+            <h3>Platillo Tradicional</h3>
+            <p>
+              Receta clásica preparada con el sabor característico de El Arca.
+            </p>
+            <span class="menu-price">$140</span>
+          </div>
+        </article>
 
-        products.forEach(item => {
-            item.addEventListener('click', () => {
-                document.getElementById('modalName').innerText = item.getAttribute('data-name');
-                document.getElementById('modalImg').src = item.getAttribute('data-img');
-                document.getElementById('modalDesc').innerText = item.getAttribute('data-desc');
-                document.getElementById('modalPrice').innerText = item.getAttribute('data-price');
-                document.getElementById('myModal').style.display = 'block';
-            });
-        });
+        <!-- CARD 2 -->
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio2.jpg" alt="Platillo especial">
+          </div>
+          <div class="menu-body">
+            <h3>Especial de la Casa</h3>
+            <p>
+              Una opción ideal para quienes buscan algo diferente y delicioso.
+            </p>
+            <span class="menu-price">$160</span>
+          </div>
+        </article>
 
-        document.querySelector('.close').addEventListener('click', () => {
-            document.getElementById('myModal').style.display = 'none';
-        });
+        <!-- CARD 3 -->
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio3.jpg" alt="Complemento">
+          </div>
+          <div class="menu-body">
+            <h3>Complemento</h3>
+            <p>
+              Perfecto para acompañar cualquier platillo principal.
+            </p>
+            <span class="menu-price">$80</span>
+          </div>
+        </article>
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('myModal')) {
-                document.getElementById('myModal').style.display = 'none';
-            }
-        }
-    </script>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>
