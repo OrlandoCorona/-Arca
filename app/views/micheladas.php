@@ -8,64 +8,69 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Micheladas — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?view=perfil"><img src="/assets/images/user.png" width="30"></a>
-    <a href="/?action=logout"><img src="/assets/images/logout.png" width="30"></a>
-</div>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<div class="container">
-    <h1>Micheladas</h1>
-    <div class="product-list">
-        <!-- productos sin cambios -->
+<main class="app-container">
+
+  <!-- Header + Back -->
+  <div class="section-top">
+    <a href="/?view=menu" class="btn-back">← Volver al menú</a>
+  </div>
+
+  <section class="menu-section">
+    <header class="menu-header">
+      <h1>Micheladas</h1>
+      <p>Refrescantes, clásicas y especiales</p>
+    </header>
+
+    <div class="menu-grid">
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio5.jpg" alt="Michelada clásica">
+        </div>
+        <div class="menu-body">
+          <h3>Michelada Clásica</h3>
+          <p>Limón, sal y salsas tradicionales.</p>
+          <span class="menu-price">$70</span>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio6.jpg" alt="Michelada especial">
+        </div>
+        <div class="menu-body">
+          <h3>Michelada Especial</h3>
+          <p>Mezcla premium con ingredientes únicos.</p>
+          <span class="menu-price">$90</span>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio7.jpg" alt="Michelada preparada">
+        </div>
+        <div class="menu-body">
+          <h3>Michelada Preparada</h3>
+          <p>Ideal para los que buscan algo diferente.</p>
+          <span class="menu-price">$100</span>
+        </div>
+      </article>
+
     </div>
-</div>
+  </section>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modalName"></h2>
-        <img id="modalImg" style="width:100%">
-        <p id="modalDesc"></p>
-        <p id="modalPrice"></p>
-    </div>
-</div>
-
-<script>
-document.querySelectorAll('.product').forEach(item => {
-    item.addEventListener('click', () => {
-        document.getElementById('modalName').innerText = item.getAttribute('data-name');
-        document.getElementById('modalImg').src = item.getAttribute('data-img');
-        document.getElementById('modalDesc').innerText = item.getAttribute('data-desc');
-        document.getElementById('modalPrice').innerText = item.getAttribute('data-price');
-        document.getElementById('myModal').style.display = 'block';
-    });
-});
-document.querySelector('.close').onclick = () => {
-    document.getElementById('myModal').style.display = 'none';
-};
-window.onclick = e => {
-    if (e.target == document.getElementById('myModal')) {
-        document.getElementById('myModal').style.display = 'none';
-    }
-};
-</script>
-<footer class="site-footer">
-    <p>&copy; 2024 Restaurante-Bar El Arca. Todos los derechos reservados.</p>
-</footer>
+</main>
 
 </body>
 </html>

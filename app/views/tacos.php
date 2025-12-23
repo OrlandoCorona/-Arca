@@ -8,79 +8,69 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Tacos — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?view=perfil"><img src="/assets/images/user.png" width="30"></a>
-    <a href="/?action=logout"><img src="/assets/images/logout.png" width="30"></a>
-</div>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<div class="container">
-    <h1>Tacos</h1>
-    <div class="product-list">
-        <div class="product" data-name="Taco de Pastor" data-price="$25" data-desc="Tacos de pastor." data-img="/assets/images/pastor.png">
-            <h2>Taco de Pastor</h2>
-            <p>$25</p>
+<main class="app-container">
+
+  <!-- Header + Back -->
+  <div class="section-top">
+    <a href="/?view=menu" class="btn-back">← Volver al menú</a>
+  </div>
+
+  <section class="menu-section">
+    <header class="menu-header">
+      <h1>Tacos</h1>
+      <p>Sabores tradicionales preparados al momento</p>
+    </header>
+
+    <div class="menu-grid">
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio1.jpg" alt="Tacos al pastor">
         </div>
-        <div class="product" data-name="Taco de Bistec" data-price="$30" data-desc="Tacos de bistec." data-img="/assets/images/bistec.png">
-            <h2>Taco de Bistec</h2>
-            <p>$30</p>
+        <div class="menu-body">
+          <h3>Tacos al Pastor</h3>
+          <p>Carne marinada, piña y cebolla.</p>
+          <span class="menu-price">$25 c/u</span>
         </div>
-        <div class="product" data-name="Taco de Asada" data-price="$25" data-desc="Tacos de asada." data-img="/assets/images/asada.png">
-            <h2>Taco de Asada</h2>
-            <p>$25</p>
+      </article>
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio2.jpg" alt="Tacos de arrachera">
         </div>
+        <div class="menu-body">
+          <h3>Tacos de Arrachera</h3>
+          <p>Corte premium asado al carbón.</p>
+          <span class="menu-price">$35 c/u</span>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio3.jpg" alt="Tacos especiales">
+        </div>
+        <div class="menu-body">
+          <h3>Tacos Especiales</h3>
+          <p>Receta exclusiva de la casa.</p>
+          <span class="menu-price">$40 c/u</span>
+        </div>
+      </article>
+
     </div>
-</div>
+  </section>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modalName"></h2>
-        <img id="modalImg">
-        <p id="modalDesc"></p>
-        <p id="modalPrice"></p>
-    </div>
-</div>
+</main>
 
-<script>
-const products = document.querySelectorAll('.product');
-
-products.forEach(item => {
-    item.addEventListener('click', () => {
-        document.getElementById('modalName').innerText = item.dataset.name;
-        document.getElementById('modalImg').src = item.dataset.img;
-        document.getElementById('modalDesc').innerText = item.dataset.desc;
-        document.getElementById('modalPrice').innerText = item.dataset.price;
-        document.getElementById('myModal').style.display = 'block';
-    });
-});
-
-document.querySelector('.close').onclick = () => {
-    document.getElementById('myModal').style.display = 'none';
-};
-
-window.onclick = e => {
-    if (e.target === document.getElementById('myModal')) {
-        document.getElementById('myModal').style.display = 'none';
-    }
-};
-</script>
-<footer>
-    <p style="background-color: black; color:white; text-align: center;">
-        &copy; 2024 Restaurante-Bar El Arca. Todos los derechos reservados.
-    </p>
 </body>
 </html>
