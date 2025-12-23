@@ -1,31 +1,24 @@
 <?php
 declare(strict_types=1);
+
+if (!isset($_SESSION['id_usuario'])) {
+  header('Location: /?view=login');
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <title>Cervezas - Restaurante-Bar El Arca</title>
-    <style>
-      :root{ --primary:#007bff; --primary-dark:#0056b3; --bg-soft: rgba(255,255,255,0.92); --text-dark:#0b1a2b; }
-      body{ font-family: Arial, sans-serif; margin:0; padding:0; background: url('/assets/images/fondoBorroso.jpg') center/cover no-repeat; color:#f2efef; }
-      .container{ max-width:1200px; margin:0 auto; padding:20px; }
-      .menu{ background: linear-gradient(90deg,#071428,#0b1a2b); color:#fff; text-align:center; padding:10px 0; width:100%; position: relative; top:0; z-index:20; }
-      .menu a{ color:#fff; text-decoration:none; margin:0 14px; font-size:16px; }
-      h1{ text-align:center; margin-top:80px; }
-      .product-list{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-      .product{ background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.35)); margin:10px; padding:20px; border-radius:10px; width:200px; text-align:center; transition:transform .25s ease, box-shadow .2s; cursor:pointer; }
-      .product:hover{ transform:translateY(-6px); box-shadow:0 8px 24px rgba(3,12,30,0.25); }
-      .product img{ width:130px; height:130px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
-      .modal{ display:none; position:relative; inset:0; background: rgba(0,0,0,0.45); align-items:center; justify-content:center; }
-      .modal-content{ background: linear-gradient(135deg,var(--bg-soft), rgba(240,246,255,0.86)); backdrop-filter: blur(8px); margin:0 16px; padding:18px; border-radius:12px; width:90%; max-width:520px; text-align:center; color:var(--text-dark); }
-      .modal-content img{ width:300px; height:auto; object-fit:cover; border-radius:10px; margin-bottom:14px; }
-      .close{ color:#222; font-size:28px; font-weight:bold; float:right; cursor:pointer; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
+
 <body>
+
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
  <div class="menu">
   <a href="/?view=home">Inicio</a>
   <a href="/?view=menu">Menú</a>

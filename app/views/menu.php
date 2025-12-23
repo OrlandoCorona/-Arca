@@ -2,20 +2,23 @@
 declare(strict_types=1);
 
 if (!isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=login');
-    exit;
+  header('Location: /?view=login');
+  exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú - El Arca</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
+
 <body>
 
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
 <div class="menu">
     <a href="/?view=home">Inicio</a>
     <a href="/?view=menu">Menú</a>

@@ -3,14 +3,17 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Error de inicio de sesión</title>
+  <title>El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<body>
 
+<body class="auth-page">
+
+  <main class="auth-container">
 <div class="mensaje-flotante">
   <h2>Error de inicio de sesión</h2>
   <p>Correo o contraseña incorrectos.</p>

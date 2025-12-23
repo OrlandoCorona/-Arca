@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
- if (!isset($_SESSION['id_usuario'])): ?>
- 
-<?php endif; ?>
+?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesión</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    
-</head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-container">
 <div class="page">
     <div class="card">
         <h2>Iniciar Sesión</h2>

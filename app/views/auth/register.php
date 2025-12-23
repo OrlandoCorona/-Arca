@@ -3,14 +3,17 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body class="auth-page">
+
+  <main class="auth-container">
 <div class="form-container">
     <h2>Crear cuenta</h2>
 
