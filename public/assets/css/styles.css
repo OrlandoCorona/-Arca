@@ -219,7 +219,7 @@ body.auth-page {
     var(--accent-primary),
     var(--accent-secondary)
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -303,3 +303,212 @@ body.auth-page {
     display: flex;
   }
 }
+/* =====================================================
+   HOME — HERO PREMIUM
+   ===================================================== */
+
+.home .hero {
+  position: relative;
+  min-height: 70vh;
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.hero-content {
+  max-width: 720px;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-title span {
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-md);
+}
+
+/* Acciones */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =====================================================
+   BOTONES (BASE HOME)
+   ===================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background var(--transition-fast);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  color: #04121c;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface-strong);
+}
+
+/* =====================================================
+   INTRO — GRID
+   ===================================================== */
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.intro-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-soft);
+
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.intro-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
+}
+
+.intro-card h3 {
+  margin-bottom: var(--space-xs);
+}
+
+/* =====================================================
+   FEATURED / DESTACADOS
+   ===================================================== */
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.featured-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.featured-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+}
+
+.featured-media img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.featured-body {
+  padding: var(--space-md);
+}
+
+.featured-body h3 {
+  margin-bottom: var(--space-xs);
+}
+
+/* =====================================================
+   CTA FINAL
+   ===================================================== */
+
+.section-cta {
+  display: grid;
+  place-items: center;
+}
+
+.cta-box {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(31, 211, 198, 0.12),
+    rgba(31, 140, 211, 0.12)
+  );
+
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.cta-box h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.cta-box p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* =====================================================
+   RESPONSIVE HOME
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+  }
+
+  .featured-media img {
+    height: 180px;
+  }
+}
+
