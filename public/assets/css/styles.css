@@ -48,7 +48,7 @@ body {
 }
 
 /* ======================================================
-   BUTTON – ANIMATED PREMIUM
+   BUTTON – ANIMATED PREMIUM (CORREGIDO)
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -58,10 +58,9 @@ body {
 
 .btn-animated {
   position: relative;
-  width: 100%;
   padding: 3px;
   border-radius: 12px;
-  background: #0b1220;
+  background: transparent; /* CLAVE */
   overflow: hidden;
 }
 
@@ -69,14 +68,10 @@ body {
   position: relative;
   z-index: 2;
   display: block;
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 9px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  color: #042f33;
+  background: transparent;
+  color: #ffffff;
   font-weight: 600;
   text-align: center;
 }
@@ -112,7 +107,7 @@ body.auth-page {
   margin: 0;
 }
 
-/* OCULTAR TODO LO QUE NO SEA AUTH */
+/* Ocultar todo lo que NO sea auth */
 body.auth-page .navbar,
 body.auth-page .app-container,
 body.auth-page .home,
@@ -174,10 +169,11 @@ body.auth-page .menu {
   height: 56px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.6);
+  object-fit: cover;
 }
 
 /* ======================================================
-   AUTH – FORM
+   AUTH – FORM (FIX DEFINITIVO INPUTS)
 ====================================================== */
 .auth-form {
   margin-top: 1.5rem;
@@ -192,22 +188,31 @@ body.auth-page .menu {
 
 .auth-form input {
   width: 100%;
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.25);
+  background-color: transparent !important; /* CLAVE */
+  background-image: none !important;
+  border: 1px solid rgba(255,255,255,.35);
   border-radius: 10px;
-  padding: .7rem .75rem;
-  color: var(--text-main);
+  padding: .75rem;
+  color: #ffffff;
   margin-bottom: 1rem;
+  outline: none;
 }
 
 .auth-form input::placeholder {
   color: rgba(255,255,255,.65);
 }
 
-.auth-form input:focus-visible {
-  outline: none;
+.auth-form input:focus {
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px rgba(34,197,196,.35);
+}
+
+/* Botón auth (tamaño correcto) */
+.auth-form .btn {
+  margin: 1.5rem auto 0;
+  min-width: 160px;
+  display: flex;
+  justify-content: center;
 }
 
 /* ======================================================
