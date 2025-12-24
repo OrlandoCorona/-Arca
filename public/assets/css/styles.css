@@ -99,6 +99,20 @@ body {
   border: none;
   background: transparent;
 }
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  color: #042f33;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--text-main);
+}
+
 
 /* ======================================================
    BUTTON – ANIMATED BORDER (PREMIUM / PALETA FRÍA)
@@ -254,4 +268,12 @@ body.auth-page input:focus-visible {
 }
 .auth-form .btn {
   margin: 1rem auto 0;
+}
+.auth-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(5,9,20,0.65), rgba(5,9,20,0.65)),
+    url("/assets/images/login.jpg") center / cover no-repeat;
+  display: grid;
+  place-items: center;
 }
