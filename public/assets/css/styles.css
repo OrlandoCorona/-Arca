@@ -9,113 +9,46 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  height: 100%;
 }
 
 body {
-  min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Ubuntu, sans-serif;
-  background: radial-gradient(
-      circle at top,
-      rgba(34, 197, 196, 0.08),
-      transparent 55%
-    ),
-    linear-gradient(180deg, #0b1220, #050914);
+  background: #050914;
   color: #e5e7eb;
   line-height: 1.6;
 }
 
 /* ======================================================
-   VARIABLES (PALETA APROBADA)
+   VARIABLES
 ====================================================== */
 :root {
-  --bg-main: #050914;
-  --bg-surface: rgba(255, 255, 255, 0.05);
-  --bg-glass: rgba(255, 255, 255, 0.08);
-
+  --accent-primary: #22c5c4;
+  --accent-secondary: #0ea5a4;
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
 
-  --accent-primary: #22c5c4;   /* cyan suave */
-  --accent-secondary: #0ea5a4; /* teal */
-  --accent-dark: #0b3c45;      /* azul/verde profundo */
-
-  --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
 
-  --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.45);
-
-  --space-sm: 0.5rem;
-  --space-md: 1.25rem;
-  --space-lg: 3rem;
+  --shadow-soft: 0 20px 50px rgba(0,0,0,.45);
 }
 
 /* ======================================================
-   LAYOUT GLOBAL
-====================================================== */
-.app-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
-}
-
-/* ======================================================
-   NAVBAR
-====================================================== */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(14px);
-  background: rgba(5, 9, 20, 0.7);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.navbar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* ======================================================
-   BUTTONS BASE
+   BUTTON BASE (NEUTRO)
 ====================================================== */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-md);
-  padding: 0.6rem 1.4rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
   border: none;
   background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
 }
-.btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  color: #042f33;
-}
-
-.btn-secondary {
-  border: 1px solid rgba(255,255,255,0.25);
-  color: var(--text-main);
-}
-
 
 /* ======================================================
-   BUTTON – ANIMATED BORDER (PREMIUM / PALETA FRÍA)
+   BUTTON – ANIMATED PREMIUM
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -125,6 +58,7 @@ body {
 
 .btn-animated {
   position: relative;
+  width: 100%;
   padding: 3px;
   border-radius: 12px;
   background: #0b1220;
@@ -159,8 +93,8 @@ body {
     var(--accent-primary)
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
   animation: rotate 2s linear infinite;
+  transition: opacity .3s ease;
 }
 
 .btn-animated:hover::before {
@@ -168,32 +102,56 @@ body {
 }
 
 @keyframes rotate {
-  to {
-    --angle: 360deg;
-  }
+  to { --angle: 360deg; }
 }
 
 /* ======================================================
-   AUTH PAGES (LOGIN + AUTH/*)
+   AUTH – PAGE ISOLATION
 ====================================================== */
 body.auth-page {
+  margin: 0;
+}
+
+/* OCULTAR TODO LO QUE NO SEA AUTH */
+body.auth-page .navbar,
+body.auth-page .app-container,
+body.auth-page .home,
+body.auth-page .menu {
+  display: none !important;
+}
+
+/* ======================================================
+   AUTH – BACKGROUND
+====================================================== */
+.auth-bg {
   min-height: 100vh;
+  width: 100%;
+  background:
+    linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.65)),
+    url("/assets/images/login.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+/* ======================================================
+   AUTH – FORM WRAPPER
+====================================================== */
+.form-container {
   display: grid;
   place-items: center;
+  padding: 2rem;
 }
 
-/* CONTENEDOR */
-body.auth-page .form-container,
-body.auth-page .auth-container {
-  max-width: 380px;
+.auth-glass {
   width: 100%;
-}
-
-/* GLASS */
-.auth-glass,
-.auth-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255,255,255,0.8);
+  max-width: 380px;
+  background: rgba(255,255,255,.08);
+  border: 2px solid rgba(255,255,255,.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
@@ -202,116 +160,81 @@ body.auth-page .auth-container {
   text-align: center;
 }
 
-/* LOGO */
+/* ======================================================
+   AUTH – LOGO
+====================================================== */
 .auth-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: .75rem;
 }
 
 .auth-logo img {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,.6);
 }
 
-/* FORM */
+/* ======================================================
+   AUTH – FORM
+====================================================== */
 .auth-form {
   margin-top: 1.5rem;
   text-align: left;
 }
 
-body.auth-page input {
-  width: 100%;
-  background: rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 10px;
-  padding: 0.7rem 0.75rem;
-  color: var(--text-main);
+.auth-form label {
+  font-size: .85rem;
+  margin-bottom: .25rem;
+  display: block;
 }
 
-body.auth-page input:focus-visible {
+.auth-form input {
+  width: 100%;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  padding: .7rem .75rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.auth-form input::placeholder {
+  color: rgba(255,255,255,.65);
+}
+
+.auth-form input:focus-visible {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(34,197,196,0.35);
-}
-
-/* LINKS */
-.auth-links a {
-  color: var(--accent-primary);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.auth-links a:hover {
-  text-decoration: underline;
+  box-shadow: 0 0 0 2px rgba(34,197,196,.35);
 }
 
 /* ======================================================
-   FOOTER
+   AUTH – LINKS
 ====================================================== */
-.site-footer {
-  padding: 2rem 1rem;
-  text-align: center;
-  color: var(--text-muted);
-}
-
-/* ======================================================
-   RESPONSIVE
-====================================================== */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-}
-.auth-form .btn {
-  margin: 1rem auto 0;
-}
-/* ======================================================
-   AUTH – BACKGROUND WRAPPER (ACTIVADO DESDE HTML)
-====================================================== */
-.auth-bg {
-  min-height: 100vh;
-  width: 100%;
-  background:
-    linear-gradient(
-      rgba(5, 9, 20, 0.65),
-      rgba(5, 9, 20, 0.65)
-    ),
-    url("/assets/images/login.jpg");
-
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  flex-direction: column;
-}
-.auth-form .btn {
-  width: 100%;
-}
-
-.auth-form .btn .text {
-  display: block;
-  text-align: center;
-}
 .auth-links {
   margin-top: 1rem;
   text-align: center;
 }
 
 .auth-links a {
-  color: #7dd3fc; /* azul verdoso */
+  color: #7dd3fc;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .auth-links a:hover {
   text-decoration: underline;
 }
-body.auth-page .app-container,
-body.auth-page .home,
-body.auth-page .menu {
-  display: none !important;
+
+/* ======================================================
+   FOOTER AUTH
+====================================================== */
+.site-footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .85rem;
 }

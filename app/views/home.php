@@ -8,7 +8,6 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +23,10 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <!-- HERO -->
     <section class="hero">
-
       <div class="hero-content">
-        <h1 class="hero-title"> <span> Restaurante Bar </span> "<span>El Arca</span>"
+
+        <h1 class="hero-title">
+          <span>Restaurante Bar</span> “<span>El Arca</span>”
         </h1>
 
         <p class="hero-subtitle">
@@ -37,64 +37,52 @@ if (!isset($_SESSION['id_usuario'])) {
           <a href="/?view=menu" class="btn btn-primary">Ver menú</a>
           <a href="/?view=reservaciones" class="btn btn-secondary">Reservar ahora</a>
         </div>
+
       </div>
     </section>
 
-    <!-- INTRO / EXPERIENCIA -->
+    <!-- INTRO -->
     <section class="section section-intro">
       <header class="section-header">
         <h2>Una experiencia diferente</h2>
         <p>
-          En El Arca combinamos gastronomía, naturaleza y momentos memorables
-          en un entorno pensado para disfrutar sin prisas.
+          En El Arca combinamos gastronomía, naturaleza y momentos memorables.
         </p>
       </header>
 
       <div class="intro-grid">
         <article class="intro-card">
           <h3>Ambiente natural</h3>
-          <p>
-            Espacios abiertos, jardines y zonas familiares diseñadas para
-            relajarte y convivir.
-          </p>
+          <p>Espacios abiertos y zonas familiares.</p>
         </article>
 
         <article class="intro-card">
           <h3>Cocina de calidad</h3>
-          <p>
-            Ingredientes frescos, recetas cuidadas y sabores que se recuerdan.
-          </p>
+          <p>Ingredientes frescos y recetas cuidadas.</p>
         </article>
 
         <article class="intro-card">
           <h3>Momentos especiales</h3>
-          <p>
-            Celebraciones, reuniones y eventos en un entorno único.
-          </p>
+          <p>Celebraciones y eventos únicos.</p>
         </article>
       </div>
     </section>
 
-    <!-- DESTACADOS / PROMOCIONES -->
+    <!-- DESTACADOS -->
     <section class="section section-featured">
       <header class="section-header">
         <h2>Lo más destacado</h2>
-        <p>
-          Descubre algunas de las razones por las que nuestros clientes
-          regresan.
-        </p>
       </header>
 
       <div class="featured-grid">
+
         <article class="featured-card">
           <div class="featured-media">
-            <img src="/assets/images/inicio10.png" alt="Ambiente del restaurante">
+            <img src="/assets/images/inicio10.png" alt="Ambiente">
           </div>
           <div class="featured-body">
             <h3>El ambiente</h3>
-            <p>
-              Un espacio pensado para disfrutar de día o de noche.
-            </p>
+            <p>Un espacio pensado para disfrutar.</p>
           </div>
         </article>
 
@@ -104,9 +92,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
           <div class="featured-body">
             <h3>Promociones</h3>
-            <p>
-              Ofertas especiales y eventos durante todo el año.
-            </p>
+            <p>Eventos y ofertas todo el año.</p>
           </div>
         </article>
 
@@ -116,31 +102,26 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
           <div class="featured-body">
             <h3>Eventos</h3>
-            <p>
-              Celebraciones familiares y reuniones en un entorno ideal.
-            </p>
+            <p>Reuniones y celebraciones.</p>
           </div>
         </article>
+
       </div>
     </section>
 
-    <!-- LLAMADO FINAL -->
+    <!-- CTA FINAL -->
     <section class="section section-cta">
       <div class="cta-box">
         <h2>¿Listo para visitarnos?</h2>
-        <p>
-          Reserva tu mesa y vive la experiencia El Arca.
-        </p>
-        <a class="btn btn-animated" href="#">
+        <p>Reserva tu mesa y vive la experiencia El Arca.</p>
+
+        <a href="/?view=reservaciones" class="btn btn-animated">
           <span class="text">Reservar ahora</span>
         </a>
-
       </div>
     </section>
 
   </main>
 
-  <script src="/assets/js/script.js"></script>
 </body>
-
 </html>

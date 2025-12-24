@@ -28,7 +28,10 @@ declare(strict_types=1);
         <h1 class="auth-title">Iniciar sesión</h1>
 
         <!-- FORMULARIO -->
-        <form method="POST" action="/?action=login" autocomplete="on" class="auth-form">
+        <form method="POST"
+              action="/?action=login"
+              autocomplete="on"
+              class="auth-form">
 
           <label for="correo">Correo electrónico</label>
           <input
@@ -76,6 +79,7 @@ declare(strict_types=1);
     <footer class="site-footer">
       <p>© 2024 Restaurante-Bar El Arca</p>
     </footer>
+
   </div>
 </body>
 </html>
