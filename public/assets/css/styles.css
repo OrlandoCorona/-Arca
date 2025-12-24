@@ -28,7 +28,7 @@ body {
 }
 
 /* ======================================================
-   VARIABLES
+   VARIABLES (PALETA APROBADA)
 ====================================================== */
 :root {
   --bg-main: #050914;
@@ -38,9 +38,9 @@ body {
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
 
-  --accent-primary: #22c5c4;
-  --accent-secondary: #3b82f6;
-  --accent-warm: #f97316; /* preparado para promos */
+  --accent-primary: #22c5c4;   /* cyan suave */
+  --accent-secondary: #0ea5a4; /* teal */
+  --accent-dark: #0b3c45;      /* azul/verde profundo */
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -60,24 +60,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
-}
-
-.section {
-  margin-bottom: 4rem;
-}
-
-.section-header {
-  max-width: 640px;
-  margin-bottom: 2rem;
-}
-
-.section-header h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header p {
-  color: var(--text-muted);
 }
 
 /* ======================================================
@@ -101,79 +83,10 @@ body {
   justify-content: space-between;
 }
 
-.brand {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-main);
-  text-decoration: none;
-}
-
-.brand-mark {
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.nav-links a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 0.95rem;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-
-.nav-links a:hover {
-  opacity: 1;
-}
-
-.nav-icons {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.nav-icons img {
-  width: 24px;
-  height: 24px;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #e5e7eb;
-  margin: 5px 0;
-}
-
-.nav-cta {
-  margin-left: 1rem;
-  font-size: 0.9rem;
-  padding: 0.55rem 1.2rem;
-}
-
 /* ======================================================
-   BUTTONS
+   BUTTONS BASE
 ====================================================== */
-.btn,
-.btn-primary,
-.btn-secondary {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -183,166 +96,144 @@ body {
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.15s ease, background 0.25s ease;
+  border: none;
+  background: transparent;
 }
 
-.btn-primary {
+/* ======================================================
+   BUTTON – ANIMATED BORDER (PREMIUM / PALETA FRÍA)
+====================================================== */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-animated {
+  position: relative;
+  padding: 3px;
+  border-radius: 12px;
+  background: #0b1220;
+  overflow: hidden;
+}
+
+.btn-animated .text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 12px 20px;
+  border-radius: 9px;
   background: linear-gradient(
     135deg,
     var(--accent-primary),
     var(--accent-secondary)
   );
-  color: #1f609d;
-}
-
-.btn-secondary {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--text-main);
-  background: transparent;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-large {
-  padding: 0.9rem 2.2rem;
-  font-size: 1.05rem;
-}
-
-.btn-back {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #e5e7eb;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.25s ease, transform 0.15s ease;
-}
-
-.btn-back:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(-2px);
-}
-
-/* ======================================================
-   HERO (HOME)
-====================================================== */
-.hero {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-}
-
-.hero-content {
-  max-width: 720px;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 6vw, 3.8rem);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-
-.hero-title span {
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-/* ======================================================
-   INTRO / FEATURED
-====================================================== */
-.intro-grid,
-.featured-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.intro-card,
-.featured-card {
-  background: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-soft);
-}
-
-.featured-media img {
-  width: 100%;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.75rem;
-}
-
-/* ======================================================
-   MENU (CATEGORIES + PRODUCTS)
-====================================================== */
-.menu-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.menu-card {
-  background: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  text-decoration: none;
-  color: inherit;
-}
-
-.menu-media img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.menu-body {
-  padding: 1rem 1.25rem 1.5rem;
-}
-
-.menu-price {
-  display: inline-block;
-  margin-top: 0.5rem;
+  color: #042f33;
   font-weight: 600;
-  color: var(--accent-primary);
-}
-/* =========================
-   AUTH – GLASSMORPHISM REAL
-========================= */
-body.auth-page .form-container {
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
+  text-align: center;
 }
 
-body.auth-page .auth-glass {
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-primary),
+    #67e8f9,
+    var(--accent-primary)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rotate 2s linear infinite;
+}
+
+.btn-animated:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* ======================================================
+   AUTH PAGES (LOGIN + AUTH/*)
+====================================================== */
+body.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+/* CONTENEDOR */
+body.auth-page .form-container,
+body.auth-page .auth-container {
+  max-width: 380px;
+  width: 100%;
+}
+
+/* GLASS */
+.auth-glass,
+.auth-card {
   background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255,255,255,0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-soft);
+  text-align: center;
 }
 
+/* LOGO */
+.auth-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.auth-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* FORM */
+.auth-form {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+body.auth-page input {
+  width: 100%;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 0.7rem 0.75rem;
+  color: var(--text-main);
+}
+
+body.auth-page input:focus-visible {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(34,197,196,0.35);
+}
+
+/* LINKS */
+.auth-links a {
+  color: var(--accent-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
 
 /* ======================================================
    FOOTER
@@ -360,203 +251,4 @@ body.auth-page .auth-glass {
   .nav-toggle {
     display: block;
   }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: rgba(32, 89, 214, 0.95);
-    position: absolute;
-    top: 100%;
-    right: 0;
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .navbar.open .nav-links {
-    display: flex;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 2rem;
-  }
-}
-/* =========================
-   INPUT STATES (UX)
-========================= */
-body.auth-page input:focus-visible {
-  outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(34, 197, 196, 0.35);
-}
-/* ======================================================
-   BUTTON – ANIMATED BORDER (PREMIUM)
-====================================================== */
-
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.btn-animated {
-  position: relative;
-  padding: 3px;
-  border-radius: 12px;
-  background: #120909;
-  overflow: hidden;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.btn-animated .text {
-  position: relative;
-  z-index: 2;
-  display: block;
-  padding: 12px 20px;
-  border-radius: 9px;
-  background: #120909;
-  color: #ffffff;
-  font-weight: 600;
-  text-align: center;
-}
-
-.btn-animated::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent-primary),
-    rgb(32, 220, 195),
-    var(--accent-primary)
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  animation: rotate 2s linear infinite;
-}
-
-.btn-animated:hover::before {
-  opacity: 1;
-}
-
-@keyframes rotate {
-  to {
-    --angle: 360deg;
-  }
-}
-body.auth-page {
-  min-height: 100vh;
-  background:
-    linear-gradient(
-      rgba(5, 9, 20, 0.65),
-      rgba(5, 9, 20, 0.65)
-    ),
-    url("/assets/images/login.jpg") center / cover no-repeat;
-  display: grid;
-  place-items: center;
-}
-.auth-logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.75rem;
-}
-
-.auth-logo img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.6);
-}
-/* ======================================================
-   AUTH PAGE – BACKGROUND IMAGE
-====================================================== */
-body.auth-page {
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(5,9,20,0.65), rgba(5,9,20,0.65)),
-    url(/public/assets/images/login.jpg) center / cover no-repeat;
-  display: grid;
-  place-items: center;
-}
-/* ======================================================
-   AUTH – GLASS CONTAINER
-====================================================== */
-body.auth-page .form-container {
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
-  max-width: 380px;
-}
-
-body.auth-page .auth-glass {
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255,255,255,0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-}
-/* ======================================================
-   AUTH – LOGO
-====================================================== */
-.auth-logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.75rem;
-}
-
-.auth-logo img {
-  width: 56px;
-  height: 56px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.6);
-}
-/* ======================================================
-   AUTH – FORM LAYOUT
-====================================================== */
-.auth-form {
-  margin-top: 1.5rem;
-  text-align: left;
-}
-
-body.auth-page input {
-  background: rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 10px;
-  padding: 0.7rem 0.75rem;
-}
-
-body.auth-page input:focus-visible {
-  outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(34,197,196,0.35);
-}
-/* ======================================================
-   AUTH – LINKS
-====================================================== */
-.auth-links a {
-  color: var(--accent-primary);
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.auth-links a:hover {
-  text-decoration: underline;
-}
-/* ======================================================
-   BUTTON ANIMATED – WARM VARIANT
-====================================================== */
-.btn-animated .text {
-  background: linear-gradient(
-    135deg,
-    var(--accent-warm),
-    #63e434
-  );
-  color: #38c2f9;
 }
