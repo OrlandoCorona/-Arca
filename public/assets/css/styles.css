@@ -282,7 +282,7 @@ body.auth-page input:focus-visible {
     ),
     url("/assets/images/login.jpg");
 
-  background-size: contain;
+  background-size: contain cover;
   background-position: center center;
   background-repeat: no-repeat;
 
