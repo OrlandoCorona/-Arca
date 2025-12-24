@@ -192,7 +192,7 @@ body {
     var(--accent-primary),
     var(--accent-secondary)
   );
-  color: #020617;
+  color: #1f609d;
 }
 
 .btn-secondary {
@@ -364,7 +364,7 @@ body.auth-page .auth-glass {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: rgba(5, 9, 20, 0.95);
+    background: rgba(32, 89, 214, 0.95);
     position: absolute;
     top: 100%;
     right: 0;
@@ -429,7 +429,7 @@ body.auth-page input:focus-visible {
   background: conic-gradient(
     from var(--angle),
     var(--accent-primary),
-    hotpink,
+    rgb(32, 220, 195),
     var(--accent-primary)
   );
   opacity: 0;
@@ -477,7 +477,7 @@ body.auth-page {
   min-height: 100vh;
   background:
     linear-gradient(rgba(5,9,20,0.65), rgba(5,9,20,0.65)),
-    url("/assets/images/Login_Arca.jpg") center / cover no-repeat;
+    url("C:7Arca/ElArcaWeb/public/assets/images/Login_Arca.JPG") center / cover no-repeat;
   display: grid;
   place-items: center;
 }
@@ -556,7 +556,7 @@ body.auth-page input:focus-visible {
   background: linear-gradient(
     135deg,
     var(--accent-warm),
-    #ffb703
+    #63e434
   );
-  color: #1a1a1a;
+  color: #38c2f9;
 }
