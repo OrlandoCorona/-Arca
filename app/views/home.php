@@ -24,6 +24,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <!-- HERO -->
     <section class="hero">
+
       <div class="hero-content">
         <h1 class="hero-title"> <span> Restaurante Bar </span> "<span>El Arca</span>"
         </h1>

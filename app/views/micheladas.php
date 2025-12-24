@@ -19,8 +19,11 @@ if (!isset($_SESSION['id_usuario'])) {
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
 
+  <main class="app-container">
+<button class="btn-back" onclick="history.back()">
+  ← Volver
+</button>
     <section class="menu-section">
       <header class="menu-header">
         <h1>Micheladas</h1>

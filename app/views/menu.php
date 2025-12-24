@@ -21,7 +21,11 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <main class="app-container">
 
+
   <section class="menu-section">
+    <button class="btn-back" onclick="history.back()">
+  ← Volver
+</button>
     <header class="menu-header">
       <h1>Menú</h1>
       <p>Selecciona una categoría para explorar nuestros productos</p>

@@ -10,6 +10,16 @@ if (!isset($_SESSION['id_usuario'])) {
 <html lang="es">
 
 <head>
+    <body>
+
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
+
+
+  <main class="app-container">
+    <button class="btn-back" onclick="history.back()">
+  ← Volver
+</button>
+  </main>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El Arca</title>

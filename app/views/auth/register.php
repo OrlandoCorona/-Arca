@@ -3,96 +3,68 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Crear cuenta — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="auth-page">
 
   <main class="auth-container">
-<div class="form-container">
-    <h2>Crear cuenta</h2>
 
-    <form method="post" action="/?action=register" autocomplete="on">
+    <div class="auth-card">
 
-        <input
-            type="email"
-            name="correo"
-            placeholder="Correo electrónico"
-            autocomplete="email"
-            required
-        >
+      <div class="auth-logo">
+        <img src="/assets/images/inconoB.jpg" alt="El Arca">
+      </div>
 
-        <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre"
-            autocomplete="given-name"
-            required
-        >
+      <h1 class="auth-title">Crear cuenta</h1>
 
-        <input
-            type="text"
-            name="apellido_paterno"
-            placeholder="Apellido paterno"
-            autocomplete="family-name"
-            required
-        >
+      <form method="POST" action="/?action=register" class="auth-form" autocomplete="on">
 
-        <input
-            type="text"
-            name="apellido_materno"
-            placeholder="Apellido materno"
-            autocomplete="additional-name"
-        >
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" autocomplete="email" required>
 
-        <input
-            type="tel"
-            name="telefono"
-            placeholder="Teléfono"
-            autocomplete="tel"
-            required
-        >
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="given-name" required>
 
-        <input
-            type="password"
-            name="contrasena"
-            placeholder="Contraseña"
-            autocomplete="new-password"
-            required
-        >
+        <label for="apellido_paterno">Apellido paterno</label>
+        <input type="text" id="apellido_paterno" name="apellido_paterno" autocomplete="family-name" required>
 
-        <input
-            type="password"
-            name="repetir_contrasena"
-            placeholder="Repetir contraseña"
-            autocomplete="new-password"
-            required
-        >
+        <label for="apellido_materno">Apellido materno</label>
+        <input type="text" id="apellido_materno" name="apellido_materno">
 
-        <button type="submit" class="btn">
-            Registrarme
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="contrasena" autocomplete="new-password" required>
+
+        <label for="repetir_contrasena">Repetir contraseña</label>
+        <input type="password" id="repetir_contrasena" name="repetir_contrasena" autocomplete="new-password" required>
+
+        <button type="submit" class="btn btn-primary btn-large">
+          Registrarme
         </button>
-    </form>
 
-    <div class="links">
+      </form>
+
+      <div class="auth-links">
         <p>
-            ¿Ya tienes cuenta?
-            <a href="/?view=login">Inicia sesión</a>
+          ¿Ya tienes cuenta?
+          <a href="/?view=login">Inicia sesión</a>
         </p>
-    </div>
-</div>
+      </div>
 
-<footer>
-    <p>
-        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-    </p>
-</footer>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 Restaurante-Bar El Arca</p>
+  </footer>
 
 </body>
 </html>

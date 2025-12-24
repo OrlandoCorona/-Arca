@@ -20,8 +20,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
 
+  <main class="app-container">
+<!-- Botón volver -->
+    <div class="section-top">
+      <button class="btn-back" onclick="history.back()">← Volver</button>
+    </div>
     <section class="menu-section">
       <header class="menu-header">
         <h1>Cervezas</h1>

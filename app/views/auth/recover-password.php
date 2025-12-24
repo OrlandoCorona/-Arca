@@ -3,47 +3,54 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Arca</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar contraseña — El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="auth-page">
 
-    <main class="auth-container">
-        <div class="form-container">
-            <h2>Recuperar contraseña</h2>
+  <main class="auth-container">
 
-            <p class="form-description">
-                Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.
-            </p>
+    <div class="auth-card">
 
-            <form method="post" action="/?action=recover" autocomplete="on">
+      <div class="auth-logo">
+        <img src="/assets/images/inconoB.jpg" alt="El Arca">
+      </div>
 
-                <input type="email" name="correo" placeholder="Correo electrónico" autocomplete="email" required>
+      <h1 class="auth-title">Recuperar contraseña</h1>
 
-                <button type="submit" class="btn">
-                    Restablecer contraseña
-                </button>
-            </form>
+      <p class="auth-description">
+        Ingresa tu correo electrónico y te enviaremos instrucciones
+        para restablecer tu contraseña.
+      </p>
 
-            <div class="links">
-                <p>
-                    <a href="/?view=login">Volver a iniciar sesión</a>
-                </p>
-            </div>
-        </div>
+      <form method="POST" action="/?action=recover" class="auth-form" autocomplete="on">
 
-        <footer>
-            <p>
-                © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-                <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-            </p>
-        </footer>
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" autocomplete="email" required>
+
+        <button type="submit" class="btn btn-primary btn-large">
+          Enviar instrucciones
+        </button>
+
+      </form>
+
+      <div class="auth-links">
+        <p>
+          <a href="/?view=login">Volver a iniciar sesión</a>
+        </p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 Restaurante-Bar El Arca</p>
+  </footer>
 
 </body>
-
 </html>

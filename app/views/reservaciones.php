@@ -8,11 +8,10 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Reservaciones — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
@@ -20,38 +19,68 @@ if (!isset($_SESSION['id_usuario'])) {
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?view=perfil">Perfil</a>
-    <a href="/?action=logout">Salir</a>
-</div>
+  <main class="app-container">
 
-<div class="container">
-    <h2>Mis Reservaciones</h2>
+    <!-- Top actions -->
+    <div class="section-top">
+      <button class="btn-back" onclick="history.back()">← Volver</button>
+    </div>
 
-    <?php if (empty($reservaciones)): ?>
-        <p style="text-align:center;">No tienes reservaciones registradas.</p>
-    <?php else: ?>
+    <!-- Formulario de reservación -->
+    <section class="section reservation-section">
+      <header class="section-header">
+        <h2>Realizar reservación</h2>
+        <p>Selecciona la fecha para tu visita</p>
+      </header>
+
+      <form method="POST" action="/?action=realizar_reserva" class="reservation-form">
+        <label for="fecha">Fecha de la reserva</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fecha"
+          required
+          min="<?= date('Y-m-d') ?>"
+        >
+
+        <button type="submit" class="btn btn-primary">
+          Confirmar reserva
+        </button>
+      </form>
+    </section>
+
+    <!-- Listado de reservaciones -->
+    <section class="section reservations-list">
+      <header class="section-header">
+        <h2>Mis reservaciones</h2>
+      </header>
+
+      <?php if (empty($reservaciones)): ?>
+        <p class="empty-state">
+          No tienes reservaciones registradas.
+        </p>
+      <?php else: ?>
         <?php foreach ($reservaciones as $r): ?>
-            <div class="reserva">
-                <p><strong>Nombre:</strong> <?= htmlspecialchars($r['nombre_cliente']) ?></p>
-                <p><strong>Teléfono:</strong> <?= htmlspecialchars($r['telefono']) ?></p>
-                <p><strong>Correo:</strong> <?= htmlspecialchars($r['correo']) ?></p>
-                <p><strong>Fecha:</strong> <?= htmlspecialchars($r['fecha']) ?></p>
-                <p><strong>Hora:</strong> <?= htmlspecialchars($r['hora']) ?></p>
-                <p><strong>Zona:</strong> <?= htmlspecialchars($r['zona']) ?></p>
-            </div>
+          <article class="reserva-card">
+            <p><strong>Nombre:</strong> <?= htmlspecialchars($r['nombre_cliente']) ?></p>
+            <p><strong>Teléfono:</strong> <?= htmlspecialchars($r['telefono']) ?></p>
+            <p><strong>Correo:</strong> <?= htmlspecialchars($r['correo']) ?></p>
+            <p><strong>Fecha:</strong> <?= htmlspecialchars($r['fecha']) ?></p>
+            <p><strong>Hora:</strong> <?= htmlspecialchars($r['hora']) ?></p>
+            <p><strong>Zona:</strong> <?= htmlspecialchars($r['zona']) ?></p>
+          </article>
         <?php endforeach; ?>
-    <?php endif; ?>
-</div>
-<footer>
+      <?php endif; ?>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
     <p>
-        © 2024 Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
+      © 2024 Restaurante-Bar El Arca<br>
+      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
     </p>
-</footer>
+  </footer>
 
 </body>
 </html>

@@ -11,9 +11,13 @@ declare(strict_types=1);
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
-<body class="auth-page">
+
 
   <main class="auth-container">
+    <body class="auth-page">
+<button class="btn-back" onclick="history.back()">
+  ← Volver
+</button>
     <div class="mensaje-flotante">
       <h2>Correo ya registrado</h2>
       <p>

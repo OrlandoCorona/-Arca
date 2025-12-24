@@ -8,80 +8,70 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Extras — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?view=perfil">
-        <img src="/assets/images/user.png" width="30">
-    </a>
-    <a href="/?action=logout">
-        <img src="/assets/images/logout.png" width="30">
-    </a>
-</div>
 
-<div class="container">
-    <h1>Otros y Extras</h1>
-    <div class="product-list">
-        <div class="product" data-name="Guacamole" data-price="$50" data-desc="Delicioso guacamole fresco." data-img="/assets/images/guacamole.png">
-            <h2>Guacamole</h2>
-            <p>$50</p>
-        </div>
-        <div class="product" data-name="Nachos" data-price="$70" data-desc="Nachos con queso fundido." data-img="/assets/images/nachos.png">
-            <h2>Nachos</h2>
-            <p>$70</p>
-        </div>
-        <div class="product" data-name="Queso Fundido" data-price="$80" data-desc="Queso fundido para compartir." data-img="/assets/images/queso.png">
-            <h2>Queso Fundido</h2>
-            <p>$80</p>
-        </div>
+
+  <main class="app-container">
+
+    <!-- Botón volver -->
+    <div class="section-top">
+      <button class="btn-back" onclick="history.back()">← Volver</button>
     </div>
-</div>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modalName"></h2>
-        <img id="modalImg">
-        <p id="modalDesc"></p>
-        <p id="modalPrice"></p>
-    </div>
-</div>
+    <section class="menu-section">
+      <header class="menu-header">
+        <h1>Extras</h1>
+        <p>Complementos para personalizar tu experiencia</p>
+      </header>
 
-<script>
-const products = document.querySelectorAll('.product');
+      <div class="menu-grid">
 
-products.forEach(item => {
-    item.addEventListener('click', () => {
-        document.getElementById('modalName').innerText = item.dataset.name;
-        document.getElementById('modalImg').src = item.dataset.img;
-        document.getElementById('modalDesc').innerText = item.dataset.desc;
-        document.getElementById('modalPrice').innerText = item.dataset.price;
-        document.getElementById('myModal').style.display = 'block';
-    });
-});
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio2.jpg" alt="Guacamole">
+          </div>
+          <div class="menu-body">
+            <h3>Guacamole</h3>
+            <p>Preparado al momento con aguacate fresco.</p>
+            <span class="menu-price">$60</span>
+          </div>
+        </article>
 
-document.querySelector('.close').onclick = () => {
-    document.getElementById('myModal').style.display = 'none';
-};
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio3.jpg" alt="Papas">
+          </div>
+          <div class="menu-body">
+            <h3>Papas a la Francesa</h3>
+            <p>Crujientes y perfectas para acompañar.</p>
+            <span class="menu-price">$50</span>
+          </div>
+        </article>
 
-window.onclick = e => {
-    if (e.target === document.getElementById('myModal')) {
-        document.getElementById('myModal').style.display = 'none';
-    }
-};
-</script>
+        <article class="menu-card">
+          <div class="menu-media">
+            <img src="/assets/images/inicio1.jpg" alt="Salsas extra">
+          </div>
+          <div class="menu-body">
+            <h3>Salsas Extra</h3>
+            <p>Variedad de salsas para intensificar el sabor.</p>
+            <span class="menu-price">$20</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>
