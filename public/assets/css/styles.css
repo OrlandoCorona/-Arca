@@ -269,11 +269,18 @@ body.auth-page input:focus-visible {
 .auth-form .btn {
   margin: 1rem auto 0;
 }
+/* ======================================================
+   AUTH – BACKGROUND WRAPPER (ACTIVADO DESDE HTML)
+====================================================== */
 .auth-bg {
   min-height: 100vh;
   background:
-    linear-gradient(rgba(5,9,20,0.65), rgba(5,9,20,0.65)),
+    linear-gradient(
+      rgba(5, 9, 20, 0.65),
+      rgba(5, 9, 20, 0.65)
+    ),
     url("/assets/images/login.jpg") center / cover no-repeat;
   display: grid;
   place-items: center;
 }
+

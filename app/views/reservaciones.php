@@ -43,9 +43,10 @@ if (!isset($_SESSION['id_usuario'])) {
           min="<?= date('Y-m-d') ?>"
         >
 
-        <button type="submit" class="btn btn-primary">
-          Confirmar reserva
-        </button>
+        <button type="submit" class="btn btn-animated">
+  <span class="text">Registrarme</span>
+</button>
+
       </form>
     </section>
 

@@ -14,6 +14,10 @@ declare(strict_types=1);
 <body class="auth-page">
 
   <main class="auth-container">
+    <a href="/?view=login" class="btn btn-animated">
+  <span class="text">Iniciar sesión</span>
+</a>
+
 <div class="mensaje-flotante">
   <h2>Registro exitoso</h2>
   <p>

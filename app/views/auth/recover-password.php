@@ -12,45 +12,48 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <main class="auth-container">
+  <div class="auth-bg">
 
-    <div class="auth-card">
+    <main class="form-container">
+      <div class="auth-glass">
 
-      <div class="auth-logo">
-        <img src="/assets/images/inconoB.jpg" alt="El Arca">
-      </div>
+        <div class="auth-logo">
+          <img src="/assets/images/inconoB.jpg" alt="El Arca">
+        </div>
 
-      <h1 class="auth-title">Recuperar contraseña</h1>
+        <h1 class="auth-title">Recuperar contraseña</h1>
 
-      <p class="auth-description">
-        Ingresa tu correo electrónico y te enviaremos instrucciones
-        para restablecer tu contraseña.
-      </p>
-
-      <form method="POST" action="/?action=recover" class="auth-form" autocomplete="on">
-
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" name="correo" autocomplete="email" required>
-
-        <button type="submit" class="btn btn-primary btn-large">
-          Enviar instrucciones
-        </button>
-
-      </form>
-
-      <div class="auth-links">
-        <p>
-          <a href="/?view=login">Volver a iniciar sesión</a>
+        <p class="auth-description">
+          Ingresa tu correo electrónico y te enviaremos instrucciones
+          para restablecer tu contraseña.
         </p>
+
+        <form method="POST" action="/?action=recover" class="auth-form" autocomplete="on">
+
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" autocomplete="email" required>
+
+         <button type="submit" class="btn btn-animated">
+  <span class="text">Registrarme</span>
+</button>
+
+
+        </form>
+
+        <div class="auth-links">
+          <p>
+            <a href="/?view=login">Volver a iniciar sesión</a>
+          </p>
+        </div>
+
       </div>
+    </main>
 
-    </div>
+    <footer class="site-footer">
+      <p>© 2024 Restaurante-Bar El Arca</p>
+    </footer>
 
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2024 Restaurante-Bar El Arca</p>
-  </footer>
+  </div>
 
 </body>
 </html>
