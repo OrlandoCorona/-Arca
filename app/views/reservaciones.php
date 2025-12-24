@@ -76,12 +76,13 @@ if (!isset($_SESSION['id_usuario'])) {
 
   </main>
 
-  <footer class="site-footer">
+  <<footer class="site-footer">
     <p>
       © 2024 Restaurante-Bar El Arca<br>
       <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
     </p>
-  </footer>
+  </footer>>
+   
 
 </body>
 </html>

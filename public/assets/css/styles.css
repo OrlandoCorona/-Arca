@@ -14,8 +14,8 @@ html, body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-               "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Ubuntu, sans-serif;
   background: #050914;
   color: #e5e7eb;
   line-height: 1.6;
@@ -38,7 +38,7 @@ body {
 }
 
 /* ======================================================
-   BUTTON BASE (NEUTRO)
+   BUTTON BASE
 ====================================================== */
 .btn {
   border: none;
@@ -49,7 +49,7 @@ body {
 }
 
 /* ======================================================
-   BUTTON – ANIMATED PREMIUM (BORDE FINO)
+   BUTTON – ANIMATED PREMIUM (FINO)
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -59,17 +59,18 @@ body {
 
 .btn-animated {
   position: relative;
-  padding: 2px;
+  padding: 1px; /* MÁS DELGADO */
   border-radius: 12px;
   background: transparent;
   overflow: hidden;
+  display: inline-block;
 }
 
 .btn-animated .text {
   position: relative;
   z-index: 2;
   display: block;
-  padding: 12px 22px;
+  padding: 10px 18px;
   border-radius: 9px;
   background: linear-gradient(
     135deg,
@@ -78,6 +79,7 @@ body {
   );
   color: #042f33;
   font-weight: 600;
+  font-size: .95rem;
   text-align: center;
 }
 
@@ -94,7 +96,7 @@ body {
   );
   opacity: 0;
   animation: rotate 4s linear infinite;
-  transition: opacity .3s ease;
+  transition: opacity .25s ease;
 }
 
 .btn-animated:hover::before {
@@ -108,11 +110,6 @@ body {
 /* ======================================================
    AUTH – PAGE ISOLATION
 ====================================================== */
-body.auth-page {
-  margin: 0;
-}
-
-/* Ocultar todo lo que NO sea auth */
 body.auth-page .navbar,
 body.auth-page .app-container,
 body.auth-page .home,
@@ -129,7 +126,6 @@ body.auth-page .menu {
   background:
     linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.65)),
     url("/assets/images/login.jpg");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -139,7 +135,7 @@ body.auth-page .menu {
 }
 
 /* ======================================================
-   AUTH – FORM WRAPPER
+   AUTH – FORM
 ====================================================== */
 .form-container {
   display: grid;
@@ -151,42 +147,45 @@ body.auth-page .menu {
   width: 100%;
   max-width: 380px;
   background: rgba(255,255,255,.08);
-  border: 2px solid rgba(255,255,255,.8);
+  border: 1px solid rgba(255,255,255,.6);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
 
-/* ======================================================
-   AUTH – LOGO (ARRIBA LOGIN)
-====================================================== */
+/* LOGO */
 .auth-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: .75rem;
+  margin-bottom: 1rem;
 }
 
 .auth-logo img {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.6);
   object-fit: cover;
+  border: 1px solid rgba(255,255,255,.6);
 }
 
-/* ======================================================
-   AUTH – FORM (INPUTS TRANSPARENTES DEFINITIVO)
-====================================================== */
+/* TITULO */
+.auth-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: .75rem;
+}
+
+/* FORM INPUTS */
 .auth-form {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   text-align: left;
 }
 
 .auth-form label {
   font-size: .85rem;
+  font-weight: 500;
   margin-bottom: .25rem;
   display: block;
 }
@@ -198,6 +197,7 @@ body.auth-page .menu {
   border-radius: 10px;
   padding: .75rem;
   color: #ffffff;
+  font-weight: 500;
   margin-bottom: 1rem;
   outline: none;
 }
@@ -217,21 +217,16 @@ body.auth-page .menu {
 .auth-form input:-webkit-autofill:focus {
   -webkit-text-fill-color: #ffffff;
   caret-color: #ffffff;
-  box-shadow: inset 0 0 0 1000px transparent !important;
   transition: background-color 9999s ease-out 0s;
+  box-shadow: inset 0 0 0 1000px transparent !important;
 }
 
-/* Botón tamaño correcto */
-.auth-form .btn {
-  margin: 1.5rem auto 0;
-  min-width: 160px;
-  display: flex;
-  justify-content: center;
+/* BOTÓN LOGIN */
+.auth-form .btn-animated {
+  margin: 1.25rem auto 0;
 }
 
-/* ======================================================
-   AUTH – LINKS
-====================================================== */
+/* LINKS */
 .auth-links {
   margin-top: 1rem;
   text-align: center;
@@ -248,25 +243,20 @@ body.auth-page .menu {
 }
 
 /* ======================================================
-   FOOTER AUTH (LOGO CENTRADO Y CIRCULAR)
+   FOOTER GLOBAL (LOGIN + VISTAS)
 ====================================================== */
 .site-footer {
-  margin-top: auto;
   padding: 1.5rem;
   text-align: center;
   color: var(--text-muted);
   font-size: .85rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
 }
 
 .site-footer img {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
+  display: block;
+  margin: 0 auto .5rem;
   object-fit: cover;
-  border: 1px solid rgba(255,255,255,.6);
 }
