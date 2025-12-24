@@ -131,9 +131,10 @@ if (!isset($_SESSION['id_usuario'])) {
         <p>
           Reserva tu mesa y vive la experiencia El Arca.
         </p>
-        <a href="/?view=reservaciones" class="btn btn-primary btn-large">
-          Reservar ahora
+        <a class="btn btn-animated" href="#">
+          <span class="text">Reservar ahora</span>
         </a>
+
       </div>
     </section>
 
@@ -141,4 +142,5 @@ if (!isset($_SESSION['id_usuario'])) {
 
   <script src="/assets/js/script.js"></script>
 </body>
+
 </html>

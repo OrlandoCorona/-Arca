@@ -3,6 +3,7 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,52 +13,32 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <main class="auth-container">
+  <main class="form-container">
 
-    <div class="auth-card">
+    <div class="auth-glass">
 
       <!-- LOGO / IDENTIDAD -->
       <div class="auth-logo">
-        <img
-          src="/assets/images/inconoB.jpg"
-          alt="El Arca"
-        >
+        <img src="/assets/images/inconoB.jpg" alt="El Arca">
       </div>
 
       <!-- TÍTULO -->
       <h1 class="auth-title">Iniciar sesión</h1>
 
       <!-- FORMULARIO LOGIN -->
-      <form
-        method="POST"
-        action="/?action=login"
-        autocomplete="on"
-        class="auth-form"
-      >
+      <form method="POST" action="/?action=login" autocomplete="on" class="auth-form">
 
         <label for="correo">Correo electrónico</label>
-        <input
-          type="email"
-          id="correo"
-          name="correo"
-          placeholder="correo@ejemplo.com"
-          autocomplete="username"
-          required
-        >
+        <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" autocomplete="username" required>
 
         <label for="contrasena">Contraseña</label>
-        <input
-          type="password"
-          id="contrasena"
-          name="contrasena"
-          placeholder="••••••••"
-          autocomplete="current-password"
-          required
-        >
+        <input type="password" id="contrasena" name="contrasena" placeholder="••••••••" autocomplete="current-password"
+          required>
 
-        <button type="submit" class="btn btn-primary btn-large">
-          Iniciar sesión
-        </button>
+        <a class="btn btn-animated" href="#">
+          <span class="text">Iniciar Sesión</span>
+        </a>
+
 
       </form>
 
@@ -85,4 +66,5 @@ declare(strict_types=1);
   </footer>
 
 </body>
+
 </html>
