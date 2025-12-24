@@ -98,6 +98,12 @@ if (!isset($_SESSION['id_usuario'])) {
   </section>
 
 </main>
+   <footer>
+      <p>
+        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
+      </p>
+    </footer>
 
 </body>
 </html>

@@ -76,10 +76,12 @@ declare(strict_types=1);
 
     </main>
 
-    <footer class="site-footer">
-      <p>© 2024 Restaurante-Bar El Arca</p>
+      <footer>
+      <p>
+        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
+        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
+      </p>
     </footer>
-
   </div>
 </body>
 </html>
