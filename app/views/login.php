@@ -34,10 +34,10 @@ declare(strict_types=1);
         <label for="contrasena">Contraseña</label>
         <input type="password" id="contrasena" name="contrasena" placeholder="••••••••" autocomplete="current-password"
           required>
-
-        <a class="btn btn-animated" href="#">
+        <button type="submit" class="btn btn-animated">
           <span class="text">Iniciar Sesión</span>
-        </a>
+        </button>
+
 
 
       </form>
