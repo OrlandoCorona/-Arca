@@ -252,3 +252,6 @@ body.auth-page input:focus-visible {
     display: block;
   }
 }
+.auth-form .btn {
+  margin: 1rem auto 0;
+}
