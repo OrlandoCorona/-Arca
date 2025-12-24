@@ -25,6 +25,18 @@ if (!isset($_SESSION['id_usuario'])) {
         <button class="btn-back" onclick="history.back()">
   ← Volver
 </button>
+<div class="taco-card">
+  <img src="/assets/images/taco1.jpg" class="taco-thumb">
+</div>
+
+<div class="taco-modal">
+  <img src="/assets/images/taco1.jpg">
+  <p>Tacos al pastor con piña...</p>
+  <button class="btn-animated">
+    <span class="text">Añadir al carrito</span>
+  </button>
+</div>
+
       <header class="menu-header">
         <h1>Tacos</h1>
         <p>Los clásicos que nunca fallan, preparados al momento</p>
