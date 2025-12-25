@@ -88,11 +88,11 @@ body {
   border-radius: inherit;
   background: conic-gradient(from var(--angle),
       var(--accent-primary),
-      #18e061,
+      #31a2ff,
       var(--accent-secondary),
-      #09d9d9,
+      #05183b,
       var(--accent-tertiary),
-      #c254e3);
+      #13d273);
   opacity: 0;
   animation: rotate 3s linear infinite;
   transition: opacity .3s ease;
