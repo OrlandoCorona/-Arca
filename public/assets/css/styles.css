@@ -45,7 +45,7 @@ body {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: negrita, sans-serif;
 }
 
 /* ======================================================
@@ -90,7 +90,7 @@ body {
   background: conic-gradient(
     from var(--angle),
     var(--accent-primary),
-    #08da39,
+    #084bda,
     var(--accent-primary)
   );
   opacity: 0;
@@ -251,7 +251,7 @@ body.auth-page .menu {
 }
 
 .auth-links a {
-  color: #036390;
+  color: #2193c8;
   text-decoration: none;
   font-weight: 500;
 }
