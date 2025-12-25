@@ -1,9 +1,14 @@
 <?php
 declare(strict_types=1);
+session_start();
 
-// Si ya hay sesión, redirigir a home
+/*
+|--------------------------------------------------------------------------
+| SI YA HAY SESIÓN → NO MOSTRAR LOGIN
+|--------------------------------------------------------------------------
+*/
 if (isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=login');
+    header('Location: /?view=home');
     exit;
 }
 ?>
@@ -18,35 +23,26 @@ if (isset($_SESSION['id_usuario'])) {
 
 <body class="auth-page">
 
-  <!-- CONTENEDOR DE FONDO AUTH -->
   <div class="auth-bg">
 
-    <!-- CONTENEDOR CENTRAL -->
     <main class="form-container">
 
-      <!-- TARJETA GLASS -->
       <div class="auth-glass">
 
-        <!-- LOGO SUPERIOR -->
+        <!-- LOGO -->
         <div class="auth-logo">
           <img src="/assets/images/inconoB.jpg" alt="El Arca">
         </div>
 
-        <!-- TÍTULO -->
         <h1 class="auth-title">Iniciar sesión</h1>
 
-        <!-- FORMULARIO -->
-        <form method="POST"
-              action="/?action=login"
-              autocomplete="on"
-              class="auth-form">
+        <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
 
           <label for="correo">Correo electrónico</label>
           <input
             type="email"
             id="correo"
             name="correo"
-            placeholder="correo@ejemplo.com"
             autocomplete="username"
             required
           >
@@ -56,7 +52,6 @@ if (isset($_SESSION['id_usuario'])) {
             type="password"
             id="contrasena"
             name="contrasena"
-            placeholder="••••••••"
             autocomplete="current-password"
             required
           >
@@ -67,7 +62,6 @@ if (isset($_SESSION['id_usuario'])) {
 
         </form>
 
-        <!-- LINKS -->
         <div class="auth-links">
           <p>
             ¿No tienes cuenta?
@@ -75,20 +69,18 @@ if (isset($_SESSION['id_usuario'])) {
           </p>
           <p>
             ¿Olvidaste tu contraseña?
-            <a href="/?view=recover">Recupérala aquí</a>
+            <a href="/?view=recover-password">Recupérala aquí</a>
           </p>
         </div>
 
       </div>
     </main>
 
-    <!-- FOOTER AUTH -->
     <footer class="site-footer">
       <img src="/assets/images/inconoB.jpg" alt="El Arca">
       <p>© 2024 Restaurante Bar El Arca</p>
     </footer>
 
   </div>
-
 </body>
 </html>
