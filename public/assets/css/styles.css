@@ -155,7 +155,7 @@ body.auth-page .menu {
   width: 100%;
   max-width: 410px;
   background: rgba(245, 236, 236, 0);
-  border: 1.9px solid rgba(186, 175, 175, 0.8);
+  border: 1.9px solid rgba(186, 175, 175, 0.034);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   border-radius: var(--radius-lg);
