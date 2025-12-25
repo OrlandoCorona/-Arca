@@ -155,7 +155,7 @@ body.auth-page .menu {
   width: 100%;
   max-width: 410px;
   background: rgba(245, 236, 236, 0);
-  border: 1.9px solid rgba(186, 175, 175, 0.034);
+  border: 1.9px solid rgb(186, 175, 175);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   border-radius: var(--radius-lg);
@@ -177,7 +177,7 @@ body.auth-page .menu {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0);
+  border: 1px solid rgb(255, 255, 255);
   object-fit: cover;
 }
 
@@ -213,14 +213,14 @@ body.auth-page .menu {
   padding: .8rem;
   font-size: .95rem;
   font-weight: 500;
-  color: #e5e7eb02;
+  color: #42424228;
   /* visible, acorde al diseño */
   margin-bottom: 1rem;
   outline: none;
 }
 
 .auth-form input::placeholder {
-  color: rgba(255, 247, 247, 0.983);
+  color: rgba(108, 106, 106, 0.433);
 }
 
 /* Focus */
