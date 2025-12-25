@@ -154,8 +154,8 @@ body.auth-page .menu {
 .auth-glass {
   width: 100%;
   max-width: 410px;
-  background: rgba(252, 244, 244, 0.338);
-  border: 1.9px solid rgba(64, 63, 63, 0.19);
+  background: rgba(252, 244, 244, 0);
+  border: 1.9px solid rgba(158, 151, 151, 0.708);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   border-radius: var(--radius-lg);
