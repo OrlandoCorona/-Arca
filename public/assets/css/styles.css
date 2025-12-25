@@ -150,13 +150,13 @@ body.auth-page .menu {
 
 .auth-glass {
   width: 100%;
-  max-width: 410px;
-  background: rgb(47 39 39 / 34%);
-  border: 1.9px solid rgba(255, 255, 255, 60%);
+  max-width: 490px;
+  background: rgb(94 94 94 / 34%);
+  border: 2.3px solid rgb(255 255 255 / 60%);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   border-radius: var(--radius-lg);
-  padding: 2.45rem;
+  padding: 3.5rem;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
@@ -167,14 +167,14 @@ body.auth-page .menu {
 .auth-logo {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
 }
 
 .auth-logo img {
-  width: 80px;
-  height: 80px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(0 0 0);
   object-fit: cover;
 }
 
