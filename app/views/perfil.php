@@ -8,67 +8,54 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <body>
-
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
-
-
-  <main class="app-container">
-    <button class="btn-back" onclick="history.back()">
-  ← Volver
-</button>
-  </main>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca</title>
+  <title>Mi Perfil — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
+  <!-- NAVBAR -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
-<div class="menu">
-    <a href="/?view=home">Inicio</a>
-    <a href="/?view=menu">Menú</a>
-    <a href="/?view=reservaciones">Reservaciones</a>
-    <a href="/?action=logout">Salir</a>
-</div>
 
-<div class="container">
-    <h2>Mi Perfil</h2>
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="app-container">
 
-    <div class="perfil-datos">
-        <p><strong>Nombre:</strong> <?= htmlspecialchars($usuario['nombre']) ?></p>
-        <p><strong>Correo:</strong> <?= htmlspecialchars($usuario['correo']) ?></p>
-    </div>
+    <section class="profile-section">
 
-    <hr>
+      <button class="btn-back" onclick="history.back()">← Volver</button>
 
-    <h2>Mis Reservaciones</h2>
+      <header class="profile-header">
+        <h1>Mi perfil</h1>
+        <p>Información de tu cuenta</p>
+      </header>
 
-    <?php if (empty($reservaciones)): ?>
-        <p style="text-align:center;">
-            No tienes reservaciones registradas.
-        </p>
-    <?php else: ?>
-        <?php foreach ($reservaciones as $reserva): ?>
-            <div class="reserva">
-                <p><strong>Fecha:</strong> <?= htmlspecialchars($reserva['fecha']) ?></p>
-                <p><strong>Hora:</strong> <?= htmlspecialchars($reserva['hora']) ?></p>
-                <p><strong>Zona:</strong> <?= htmlspecialchars($reserva['zona']) ?></p>
-            </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-</div>
+      <div class="profile-card">
 
-<footer>
-    <p>
-        © 2024 Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-    </p>
-</footer>
+        <div class="profile-avatar">
+          <img src="/assets/images/inconoB.jpg" alt="Usuario El Arca">
+        </div>
 
+        <div class="profile-info">
+          <p><strong>Nombre:</strong> <?= htmlspecialchars($_SESSION['nombre'] ?? '—') ?></p>
+          <p><strong>Correo:</strong> <?= htmlspecialchars($_SESSION['correo'] ?? '—') ?></p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>

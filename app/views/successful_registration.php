@@ -26,13 +26,10 @@ declare(strict_types=1);
   </p>
   <a href="/?view=login" class="btn">Iniciar sesión</a>
 </div>
-
-<<footer class="site-footer">
-    >>
+  </main>
+  <footer class="site-footer">
   <img src="/assets/images/inconoB.jpg" alt="El Arca">
   <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
-
-
 </body>
 </html>

@@ -26,14 +26,11 @@ declare(strict_types=1);
       </p>
       <a href="/?view=login" class="btn">Iniciar sesión</a>
     </div>
-
-    <footer>
-      <p>
-        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-      </p>
-    </footer>
+  </main>
+<footer class="site-footer">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
 
 </body>
-
 </html>
