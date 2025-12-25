@@ -1,9 +1,5 @@
-<?php
-declare(strict_types=1);
-?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +55,7 @@ declare(strict_types=1);
           </p>
           <p>
             ¿Olvidaste tu contraseña?
-            <a href="/?view=recover-password">Recupérala aquí</a>
+            <a href="/?view=recover">Recupérala aquí</a>
           </p>
         </div>
 
@@ -72,5 +68,6 @@ declare(strict_types=1);
     </footer>
 
   </div>
+
 </body>
 </html>
