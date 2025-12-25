@@ -14,11 +14,10 @@ html, body {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Ubuntu, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   background: #050914;
   color: #e5e7eb;
-  line-height: 1.6;
+  line-height: 2.1;
 }
 
 /* ======================================================
@@ -31,8 +30,8 @@ body {
   --text-main: #a2aaba;
   --text-muted: #a4b1c7;
 
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-md: 13px;
+  --radius-lg: 19px;
 
   --shadow-soft: 0 20px 50px rgba(0,0,0,.45);
 }
@@ -45,7 +44,7 @@ body {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
-  font-family: negrita, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* ======================================================
@@ -78,7 +77,7 @@ body {
   );
   color: #d5d9de;
   font-weight: 600;
-  font-size: 1.35rem;
+  font-size: 1.65rem;
   text-align: center;
 }
 
@@ -90,8 +89,9 @@ body {
   background: conic-gradient(
     from var(--angle),
     var(--accent-primary),
-    #084bda,
+    #4ebfe8,
     var(--accent-primary)
+    #09de82
   );
   opacity: 0;
   animation: rotate 2s linear infinite;
