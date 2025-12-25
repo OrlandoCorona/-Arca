@@ -25,8 +25,8 @@ body {
    VARIABLES GLOBALES
 ====================================================== */
 :root {
-  --accent-primary: #27cfcf;
-  --accent-secondary: #2cdada;
+  --accent-primary: #2052a2;
+  --accent-secondary: #0c6464;
 
   --text-main: #a2aaba;
   --text-muted: #a4b1c7;
@@ -45,7 +45,7 @@ body {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
-  font-family: inherit;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* ======================================================
@@ -78,7 +78,7 @@ body {
   );
   color: #d5d9de;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.35rem;
   text-align: center;
 }
 
@@ -94,7 +94,7 @@ body {
     var(--accent-primary)
   );
   opacity: 0;
-  animation: rotate 4s linear infinite;
+  animation: rotate 2s linear infinite;
   transition: opacity .3s ease;
 }
 
@@ -251,7 +251,7 @@ body.auth-page .menu {
 }
 
 .auth-links a {
-  color: #7dd3fc;
+  color: #036390;
   text-decoration: none;
   font-weight: 500;
 }
