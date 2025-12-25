@@ -220,7 +220,7 @@ body.auth-page .menu {
 }
 
 .auth-form input::placeholder {
-  color: rgba(80, 76, 76, 0);
+  color: rgb(255, 247, 247);
 }
 
 /* Focus */
