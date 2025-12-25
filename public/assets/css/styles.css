@@ -156,10 +156,10 @@ body.auth-page .menu {
   max-width: 390px;
   background: rgba(255, 255, 255, .08);
   border: 1.6px solid rgba(230, 221, 221, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
   border-radius: var(--radius-lg);
-  padding: 2.35rem;
+  padding: 2.45rem;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
