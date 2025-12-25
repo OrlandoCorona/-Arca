@@ -28,8 +28,8 @@ body {
   --accent-primary: #27cfcf;
   --accent-secondary: #2cdada;
 
-  --text-main: #e5e7eb;
-  --text-muted: #b3c1d8;
+  --text-main: #a2aaba;
+  --text-muted: #a4b1c7;
 
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -78,7 +78,7 @@ body {
   );
   color: #d5d9de;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;
   text-align: center;
 }
 
@@ -182,9 +182,9 @@ body.auth-page .menu {
    AUTH – TITLES
 ====================================================== */
 .auth-title {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  letter-spacing: .3px;
 }
 
 /* ======================================================
@@ -210,13 +210,13 @@ body.auth-page .menu {
   padding: .8rem;
   font-size: .95rem;
   font-weight: 500;
-  color: #ffffff;
-  margin-bottom: 1.2rem;
+  color: #7b787800;
+  margin-bottom: 1rem;
   outline: none;
 }
 
 .auth-form input::placeholder {
-  color: rgba(255,255,255,.6);
+  color: rgba(117, 107, 107, 0.187);
 }
 
 /* Focus */
@@ -278,3 +278,5 @@ body.auth-page .menu {
   margin-bottom: .5rem;
   object-fit: cover;
 }
+
+
