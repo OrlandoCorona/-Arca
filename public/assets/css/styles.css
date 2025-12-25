@@ -153,7 +153,7 @@ body.auth-page .menu {
 
 .auth-glass {
   width: 100%;
-  max-width: 380px;
+  max-width: 390px;
   background: rgba(255, 255, 255, .08);
   border: 1.6px solid rgba(230, 221, 221, 0.8);
   backdrop-filter: blur(8px);
@@ -208,7 +208,7 @@ body.auth-page .menu {
 .auth-form input {
   width: 100%;
   background-color: transparent !important;
-  border: 1px solid rgba(255, 255, 255, .35);
+  border: 1px solid rgba(26, 25, 25, 0.35);
   border-radius: 10px;
   padding: .8rem;
   font-size: .95rem;
@@ -220,7 +220,7 @@ body.auth-page .menu {
 }
 
 .auth-form input::placeholder {
-  color: rgba(119, 109, 109, 0);
+  color: rgba(49, 46, 46, 0);
 }
 
 /* Focus */
