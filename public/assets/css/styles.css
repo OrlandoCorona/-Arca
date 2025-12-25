@@ -32,8 +32,8 @@ body {
   --text-main: #a2aaba;
   --text-muted: #a4b1c7;
 
-  --radius-md: 16px;
-  --radius-lg: 19px;
+  --radius-md: 18px;
+  --radius-lg: 21px;
 
   --shadow-soft: 0 25px 55px rgba(0, 0, 0, .45);
 }
@@ -155,11 +155,11 @@ body.auth-page .menu {
   width: 100%;
   max-width: 380px;
   background: rgba(255, 255, 255, .08);
-  border: 2px solid rgba(255, 255, 255, .8);
+  border: 1.6px solid rgba(230, 221, 221, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
-  padding: 2.25rem;
+  padding: 2.35rem;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
@@ -174,8 +174,8 @@ body.auth-page .menu {
 }
 
 .auth-logo img {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, .6);
   object-fit: cover;
