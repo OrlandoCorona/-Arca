@@ -35,7 +35,7 @@ body {
   --radius-md: 18px;
   --radius-lg: 21px;
 
-  --shadow-soft: 0 25px 55px rgba(0, 0, 0, .45);
+  --shadow-soft: 0 25px 55px rgba(255, 247, 247, 0.45);
 }
 
 /* ======================================================
@@ -154,7 +154,7 @@ body.auth-page .menu {
 .auth-glass {
   width: 100%;
   max-width: 410px;
-  background: rgba(65, 64, 64, 0);
+  background: rgba(36, 35, 35, 0);
   border: 1.9px solid rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
