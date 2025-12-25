@@ -24,7 +24,7 @@ body {
 }
 
 /* ======================================================
-   VARIABLES GLOBALES
+   VARIABLES
 ====================================================== */
 :root {
   --accent-primary: #001e54;
@@ -53,7 +53,7 @@ body {
 }
 
 /* ======================================================
-   BUTTON – ANIMATED PREMIUM (BORDE FINO)
+   BUTTON – ANIMATED PREMIUM
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -67,12 +67,13 @@ body {
   border-radius: 12px;
   background: transparent;
   overflow: hidden;
+  display: inline-flex;
 }
 
 .btn-animated .text {
   position: relative;
   z-index: 2;
-  display: block;
+  display: inline-block;
   padding: 10px 20px;
   border-radius: 7px;
   background: linear-gradient(
@@ -125,7 +126,7 @@ body.auth-page .menu {
 }
 
 /* ======================================================
-   AUTH – BACKGROUND (CORREGIDO)
+   AUTH – BACKGROUND
 ====================================================== */
 .auth-bg {
   min-height: 100vh;
@@ -146,7 +147,6 @@ body.auth-page .menu {
 /* ======================================================
    AUTH – FORM WRAPPER
 ====================================================== */
-
 .form-container {
   display: grid;
   place-items: center;
@@ -159,7 +159,6 @@ body.auth-page .menu {
   background: rgba(94, 94, 94, 0.34);
   border: 2.3px solid rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
   border-radius: var(--radius-lg);
   padding: 3.5rem;
   box-shadow: var(--shadow-soft);
@@ -167,7 +166,7 @@ body.auth-page .menu {
 }
 
 /* ======================================================
-   AUTH – LOGO
+   AUTH – LOGO / TITLE
 ====================================================== */
 .auth-logo {
   display: flex;
@@ -179,34 +178,21 @@ body.auth-page .menu {
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border: 1px solid rgb(15 15 15);
   object-fit: cover;
 }
 
-/* ======================================================
-   AUTH – TITLES
-====================================================== */
 .auth-title {
   font-size: 2.5rem;
   font-weight: 600;
-  letter-spacing: .3px;
 }
 
 /* ======================================================
-   AUTH – FORM
+   AUTH – FORM (FIX DEFINITIVO)
 ====================================================== */
-/* Botón auth – centrado real */
-body.auth-page {
-  margin: 0;
+.auth-form {
+  margin-top: 1.5rem;
+  text-align: left;
 }
-
-.auth-form .btn {
-  margin: 2rem auto 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 .auth-form label {
   font-size: 1.3rem;
@@ -232,19 +218,11 @@ body.auth-page {
   color: rgba(255,255,255,0.55);
 }
 
-.auth-form input:focus {
-  border-color: var(--accent-secondary);
-  box-shadow: 0 0 0 2px rgba(0,157,214,0.35);
-}
-
-/* Autofill FIX */
-.auth-form input:-webkit-autofill,
-.auth-form input:-webkit-autofill:hover,
-.auth-form input:-webkit-autofill:focus {
-  -webkit-text-fill-color: #ffffff;
-  caret-color: #ffffff;
-  transition: background-color 9999s ease-out 0s;
-  box-shadow: inset 0 0 0 1000px transparent !important;
+/* BOTÓN: SOLO ÉL CENTRADO */
+.auth-form .btn {
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: center;
 }
 
 /* ======================================================
@@ -258,15 +236,10 @@ body.auth-page {
 .auth-links a {
   color: #72d2ebdb;
   text-decoration: none;
-  font-weight: 500;
-}
-
-.auth-links a:hover {
-  text-decoration: underline;
 }
 
 /* ======================================================
-   FOOTER (GLOBAL)
+   FOOTER
 ====================================================== */
 .site-footer {
   margin-top: auto;
@@ -281,50 +254,30 @@ body.auth-page {
   height: 48px;
   border-radius: 50%;
   margin-bottom: .5rem;
-  object-fit: cover;
-}
-/* ======================================================
-   HOME – AJUSTE DE BOTONES GRANDES
-====================================================== */
-.home .btn-animated .text,
-.app-container .btn-animated .text {
-  font-size: 1rem;
-  padding: 8px 16px;
 }
 
-.home .btn-animated {
-  max-width: 220px;
-}
 /* ======================================================
-   HOME – CONTROL DE IMÁGENES
-====================================================== */
-/* ======================================================
-   HOME – IMÁGENES EN CARDS (CONTROLADAS)
+   HOME – IMÁGENES
 ====================================================== */
 .home .featured-media img,
 .home .menu-card img {
   width: 100%;
-  max-width: 100%;
   height: 220px;
   object-fit: cover;
   display: block;
 }
 
 /* ======================================================
-   HOME – BOTÓN RESERVAR AHORA
-====================================================== */
-/* ======================================================
-   HOME – REDUCCIÓN DEFINITIVA DE BOTONES ANIMADOS
+   HOME – BOTONES (CONTROLADOS)
 ====================================================== */
 .home .btn-animated {
-  padding: 2px;
-  max-width: 200px;
+  max-width: 220px;
+  width: auto;
 }
 
 .home .btn-animated .text {
-  font-size: 0.95rem;
-  padding: 8px 14px;
-  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
 }
 
 /* ======================================================
