@@ -62,7 +62,7 @@ body {
 }
 
 .btn-animated {
-  position: relative;
+  position: center;
   padding: 3px;
   border-radius: 12px;
   background: transparent;
@@ -70,7 +70,7 @@ body {
 }
 
 .btn-animated .text {
-  position: relative;
+  position: center;
   z-index: 2;
   display: block;
   padding: 10px 20px;
@@ -273,4 +273,44 @@ body.auth-page .menu {
   border-radius: 50%;
   margin-bottom: .5rem;
   object-fit: cover;
+}
+/* ======================================================
+   HOME – AJUSTE DE BOTONES GRANDES
+====================================================== */
+.home .btn-animated .text,
+.app-container .btn-animated .text {
+  font-size: 1rem;
+  padding: 8px 16px;
+}
+
+.home .btn-animated {
+  max-width: 220px;
+}
+/* ======================================================
+   HOME – CONTROL DE IMÁGENES
+====================================================== */
+.home img,
+.home .featured-media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+/* ======================================================
+   HOME – BOTÓN RESERVAR AHORA
+====================================================== */
+.home .btn-animated {
+  margin: 2rem auto;
+  width: auto;
+}
+
+.home .btn-animated .text {
+  padding: 10px 24px;
+  font-size: 1.05rem;
+}
+/* ======================================================
+   HOME – OCULTAR BOTÓN VOLVER
+====================================================== */
+.home .btn-back {
+  display: none !important;
 }
