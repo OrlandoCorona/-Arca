@@ -85,5 +85,5 @@
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
+  <script src="\assets\js\script.js"></script>
 </body>
