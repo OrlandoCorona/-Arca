@@ -146,6 +146,7 @@ body.auth-page .menu {
 /* ======================================================
    AUTH – FORM WRAPPER
 ====================================================== */
+
 .form-container {
   display: grid;
   place-items: center;
@@ -195,6 +196,10 @@ body.auth-page .menu {
    AUTH – FORM
 ====================================================== */
 /* Botón auth – centrado real */
+body.auth-page {
+  margin: 0;
+}
+
 .auth-form .btn {
   margin: 2rem auto 0;
   display: flex;
