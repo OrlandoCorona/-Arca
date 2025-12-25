@@ -25,11 +25,11 @@ body {
    VARIABLES GLOBALES
 ====================================================== */
 :root {
-  --accent-primary: #149292;
-  --accent-secondary: #138e8e;
+  --accent-primary: #27cfcf;
+  --accent-secondary: #2cdada;
 
   --text-main: #e5e7eb;
-  --text-muted: #6b7483;
+  --text-muted: #b3c1d8;
 
   --radius-md: 12px;
   --radius-lg: 18px;
@@ -76,7 +76,7 @@ body {
     var(--accent-primary),
     var(--accent-secondary)
   );
-  color: #0a60ab;
+  color: #d5d9de;
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
@@ -90,7 +90,7 @@ body {
   background: conic-gradient(
     from var(--angle),
     var(--accent-primary),
-    #15def8,
+    #08da39,
     var(--accent-primary)
   );
   opacity: 0;
