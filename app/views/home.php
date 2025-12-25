@@ -20,21 +20,24 @@ if (!isset($_SESSION['id_usuario'])) {
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
   <main class="app-container home">
+
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
 
         <h1 class="hero-title">
-          <span>Restaurante Bar</span> “<span>El Arca</span>”
+          Restaurante Bar <span>“El Arca”</span>
         </h1>
 
         <p class="hero-subtitle">
-          Restaurante · Bar · Naturaleza · Experiencia Premium
+          Naturaleza · Gastronomía · Experiencia Premium
         </p>
 
+        <!-- CTA ÚNICO -->
         <div class="hero-actions">
-          <a href="/?view=menu" class="btn btn-primary">Ver menú</a>
-          <a href="/?view=reservaciones" class="btn btn-secondary">Reservar ahora</a>
+          <a href="/?view=reservaciones" class="btn btn-animated">
+            <span class="text">Reservar ahora</span>
+          </a>
         </div>
 
       </div>
@@ -52,17 +55,17 @@ if (!isset($_SESSION['id_usuario'])) {
       <div class="intro-grid">
         <article class="intro-card">
           <h3>Ambiente natural</h3>
-          <p>Espacios abiertos y zonas familiares.</p>
+          <p>Espacios abiertos y zonas familiares para disfrutar sin prisas.</p>
         </article>
 
         <article class="intro-card">
           <h3>Cocina de calidad</h3>
-          <p>Ingredientes frescos y recetas cuidadas.</p>
+          <p>Ingredientes frescos y recetas cuidadosamente preparadas.</p>
         </article>
 
         <article class="intro-card">
           <h3>Momentos especiales</h3>
-          <p>Celebraciones y eventos únicos.</p>
+          <p>Eventos, reuniones y celebraciones en un entorno único.</p>
         </article>
       </div>
     </section>
@@ -77,11 +80,11 @@ if (!isset($_SESSION['id_usuario'])) {
 
         <article class="featured-card">
           <div class="featured-media">
-            <img src="/assets/images/inicio10.png" alt="Ambiente">
+            <img src="/assets/images/inicio10.png" alt="Ambiente del restaurante">
           </div>
           <div class="featured-body">
             <h3>El ambiente</h3>
-            <p>Un espacio pensado para disfrutar.</p>
+            <p>Un espacio pensado para disfrutar de día y de noche.</p>
           </div>
         </article>
 
@@ -91,7 +94,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
           <div class="featured-body">
             <h3>Promociones</h3>
-            <p>Eventos y ofertas todo el año.</p>
+            <p>Eventos y ofertas especiales durante todo el año.</p>
           </div>
         </article>
 
@@ -101,7 +104,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
           <div class="featured-body">
             <h3>Eventos</h3>
-            <p>Reuniones y celebraciones.</p>
+            <p>Celebraciones y reuniones inolvidables.</p>
           </div>
         </article>
 
@@ -119,13 +122,13 @@ if (!isset($_SESSION['id_usuario'])) {
         </a>
       </div>
     </section>
- </main>
+
+  </main>
 
   <footer class="site-footer">
     <img src="/assets/images/inconoB.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>
