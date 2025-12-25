@@ -205,7 +205,7 @@ body.auth-page .menu {
    AUTH – TITLES
 ====================================================== */
 .auth-title {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 600;
   letter-spacing: .3px;
 }
@@ -233,13 +233,13 @@ body.auth-page .menu {
   padding: .8rem;
   font-size: .95rem;
   font-weight: 500;
-  color: #7b787800;
+  color: #e5e7eb; /* visible, acorde al diseño */
   margin-bottom: 1rem;
   outline: none;
 }
 
 .auth-form input::placeholder {
-  color: rgba(117, 107, 107, 0.187);
+  color: rgba(241, 238, 238, 0.794);
 }
 
 /* Focus */
@@ -263,6 +263,9 @@ body.auth-page .menu {
   margin: 1.8rem auto 0;
   display: flex;
   justify-content: center;
+}
+.auth-form input:focus-visible {
+  -webkit-text-fill-color: #ffffff;
 }
 
 /* ======================================================
