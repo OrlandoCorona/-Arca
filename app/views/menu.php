@@ -1,31 +1,13 @@
-<?php
-declare(strict_types=1);
-
-if (!isset($_SESSION['id_usuario'])) {
-  header('Location: /?view=login');
-  exit;
-}
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú — El Arca</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-
 <body>
 
-<?php require __DIR__ . '/partials/navbar.php'; ?>
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+  <main class="app-container">
 
+    <button class="btn-back" onclick="history.back()">← Volver</button>
 
-  <section class="menu-section">
-    <button class="btn-back" onclick="history.back()">
-  ← Volver
-</button>
+    <section class="menu-section">
+
     <header class="menu-header">
       <h1>Menú</h1>
       <p>Selecciona una categoría para explorar nuestros productos</p>
@@ -96,12 +78,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
     </div>
   </section>
+ </main>
 
-</main>
- <footer class="site-footer">
-  <img src="/assets/images/inconoB.jpg" alt="El Arca">
-  <p>© 2024 Restaurante Bar El Arca</p>
-</footer>
+  <footer class="site-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
 
+  <script src="/assets/js/script.js"></script>
 </body>
-</html>

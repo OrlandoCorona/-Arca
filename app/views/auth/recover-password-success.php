@@ -12,37 +12,34 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <main class="auth-container">
+  <div class="auth-bg">
 
-    <div class="auth-card">
+    <main class="form-container">
+      <div class="auth-glass">
 
-      <div class="auth-logo">
-        <img src="/assets/images/inconoB.jpg" alt="El Arca">
+        <div class="auth-logo">
+          <img src="/assets/images/inconoB.jpg" alt="El Arca">
+        </div>
+
+        <h1 class="auth-title">Correo enviado</h1>
+
+        <p style="text-align:center;">
+          Si el correo existe en nuestro sistema, recibirás instrucciones
+          para restablecer tu contraseña.
+        </p>
+
+        <a href="/?view=login" class="btn btn-animated">
+          <span class="text">Aceptar</span>
+        </a>
+
       </div>
+    </main>
 
-      <h1 class="auth-title">Correo enviado</h1>
+    <footer class="site-footer">
+      <img src="/assets/images/inconoB.jpg" alt="El Arca">
+      <p>© 2024 Restaurante Bar El Arca</p>
+    </footer>
 
-      <p class="auth-description">
-        Si el correo existe en nuestro sistema, recibirás instrucciones
-        para recuperar tu contraseña.
-      </p>
-
-      <a href="/?view=login" class="btn btn-primary btn-large">
-        Volver al inicio de sesión
-      </a>
-
-    </div>
-
-  </main>
-
-  <<footer class="site-footer">
-    <p>
-      © 2024 Restaurante-Bar El Arca<br>
-      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-    </p>
-  </footer>>
-    <p>© 2024 Restaurante-Bar El Arca</p>
-  </footer>
-
+  </div>
 </body>
 </html>

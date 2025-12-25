@@ -2,77 +2,87 @@
 declare(strict_types=1);
 
 if (!isset($_SESSION['id_usuario'])) {
-  header('Location: /?view=login');
-  exit;
+    header('Location: /?view=login');
+    exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comida — El Arca</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Tacos — El Arca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
+<main class="app-container">
+
+    <button class="btn-back" onclick="history.back()">← Volver</button>
+
     <section class="menu-section">
+        <header class="menu-header">
+            <h1>Tacos</h1>
+            <p>Tacos preparados al momento con recetas tradicionales</p>
+        </header>
 
-      <button class="btn-back" onclick="history.back()">← Volver</button>
+        <div class="menu-grid">
 
-      <header class="menu-header">
-        <h1>Comida</h1>
-        <p>Platillos preparados al momento con ingredientes frescos</p>
-      </header>
+            <article class="menu-card taco-card" data-name="Taco al Pastor" data-price="25" data-img="/assets/images/taco1.jpg">
+                <div class="menu-media">
+                    <img src="/assets/images/taco1.jpg" alt="Taco al Pastor">
+                </div>
+                <div class="menu-body">
+                    <h3>Taco al Pastor</h3>
+                    <p>Carne marinada con piña y especias tradicionales.</p>
+                    <span class="menu-price">$25</span>
+                    <button class="btn btn-animated open-modal">
+                        <span class="text">Añadir al carrito</span>
+                    </button>
+                </div>
+            </article>
 
-      <div class="menu-grid">
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio1.jpg" alt="Platillo principal">
-          </div>
-          <div class="menu-body">
-            <h3>Platillo Tradicional</h3>
-            <p>Receta clásica preparada con el sabor característico de El Arca.</p>
-            <span class="menu-price">$140</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio2.jpg" alt="Platillo especial">
-          </div>
-          <div class="menu-body">
-            <h3>Especial de la Casa</h3>
-            <p>Una opción ideal para quienes buscan algo diferente y delicioso.</p>
-            <span class="menu-price">$160</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio3.jpg" alt="Complemento">
-          </div>
-          <div class="menu-body">
-            <h3>Complemento</h3>
-            <p>Perfecto para acompañar cualquier platillo principal.</p>
-            <span class="menu-price">$80</span>
-          </div>
-        </article>
-
-      </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <img id="modalImg" src="" alt="">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <button class="btn btn-animated">
+            <span class="text">Añadir al carrito</span>
+        </button>
+        <button class="btn-back" id="closeModal">Cerrar</button>
+    </div>
+</div>
+
+<footer class="site-footer">
     <img src="/assets/images/inconoB.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
-  </footer>
+</footer>
 
-  <script src="/assets/js/script.js"></script>
+<script>
+document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+        const card = e.target.closest('.menu-card');
+        document.getElementById('modalImg').src = card.dataset.img;
+        document.getElementById('modalTitle').textContent = card.dataset.name;
+        document.getElementById('modalDesc').textContent = 'Delicioso taco recién preparado.';
+        document.getElementById('productModal').style.display = 'flex';
+    });
+});
+
+document.getElementById('closeModal').onclick = () => {
+    document.getElementById('productModal').style.display = 'none';
+};
+</script>
+
 </body>
 </html>

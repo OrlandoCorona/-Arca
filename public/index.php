@@ -13,13 +13,6 @@ declare(strict_types=1);
 
 session_start();
 
-/**
- * Autoload de Composer (si existe)
- */
-$autoload = __DIR__ . '/../vendor/autoload.php';
-if (file_exists($autoload)) {
-    require $autoload;
-}
 
 /**
  * Router central

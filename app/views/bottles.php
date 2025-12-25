@@ -17,64 +17,53 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
+<main class="app-container">
 
-    <!-- Botón volver -->
-    <div class="section-top">
-      <button class="btn-back" onclick="history.back()">← Volver</button>
+  <section class="menu-section">
+
+    <button class="btn-back" onclick="history.back()">← Volver</button>
+
+    <header class="menu-header">
+      <h1>Botellas</h1>
+      <p>Selección de botellas para compartir</p>
+    </header>
+
+    <div class="menu-grid">
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio8.jpg" alt="Botella premium">
+        </div>
+        <div class="menu-body">
+          <h3>Botella Premium</h3>
+          <p>Sabor intenso y calidad garantizada.</p>
+          <span class="menu-price">$950</span>
+        </div>
+      </article>
+
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio9.jpg" alt="Botella especial">
+        </div>
+        <div class="menu-body">
+          <h3>Botella Especial</h3>
+          <p>Ideal para celebraciones.</p>
+          <span class="menu-price">$1,200</span>
+        </div>
+      </article>
+
     </div>
+  </section>
 
-    <section class="menu-section">
-      <header class="menu-header">
-        <h1>Botellas</h1>
-        <p>Opciones ideales para compartir en grupo</p>
-      </header>
+</main>
 
-      <div class="menu-grid">
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio7.jpg" alt="Botella nacional">
-          </div>
-          <div class="menu-body">
-            <h3>Botella Nacional</h3>
-            <p>Perfecta para reuniones y celebraciones.</p>
-            <span class="menu-price">$750</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio6.jpg" alt="Botella premium">
-          </div>
-          <div class="menu-body">
-            <h3>Botella Premium</h3>
-            <p>Selección especial con mayor cuerpo y carácter.</p>
-            <span class="menu-price">$1,200</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio5.jpg" alt="Botella especial">
-          </div>
-          <div class="menu-body">
-            <h3>Botella Especial</h3>
-            <p>Ideal para ocasiones especiales.</p>
-            <span class="menu-price">$1,500</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-  <footer class="site-footer">
+<footer class="site-footer">
   <img src="/assets/images/inconoB.jpg" alt="El Arca">
   <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
 
+<script src="/assets/js/script.js"></script>
 </body>
 </html>

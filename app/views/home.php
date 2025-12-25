@@ -20,7 +20,6 @@ if (!isset($_SESSION['id_usuario'])) {
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
   <main class="app-container home">
-
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
@@ -120,12 +119,13 @@ if (!isset($_SESSION['id_usuario'])) {
         </a>
       </div>
     </section>
+ </main>
 
-  </main>
-<footer class="site-footer">
-  <img src="/assets/images/inconoB.jpg" alt="El Arca">
-  <p>© 2024 Restaurante Bar El Arca</p>
-</footer>
+  <footer class="site-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
 
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>

@@ -17,68 +17,33 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
+<main class="app-container">
 
-    <!-- Top actions -->
-    <div class="section-top">
-      <button class="btn-back" onclick="history.back()">← Volver</button>
-    </div>
+  <button class="btn-back" onclick="history.back()">← Volver</button>
 
-    <!-- Formulario de reservación -->
-    <section class="section reservation-section">
-      <header class="section-header">
-        <h2>Realizar reservación</h2>
-        <p>Selecciona la fecha para tu visita</p>
-      </header>
+  <section class="reservation-section">
+    <h1>Reservar mesa</h1>
 
-      <form method="POST" action="/?action=realizar_reserva" class="reservation-form">
-        <label for="fecha">Fecha de la reserva</label>
-        <input
-          type="date"
-          id="fecha"
-          name="fecha"
-          required
-          min="<?= date('Y-m-d') ?>"
-        >
+    <form method="POST" action="/?action=realizar_reserva" class="reservation-form">
+      <label for="fecha">Fecha</label>
+      <input type="date" name="fecha" id="fecha" required min="<?= date('Y-m-d') ?>">
 
-        <button type="submit" class="btn btn-animated">
-  <span class="text">Registrarme</span>
-</button>
+      <button type="submit" class="btn btn-animated">
+        <span class="text">Confirmar reserva</span>
+      </button>
+    </form>
 
-      </form>
-    </section>
+  </section>
 
-    <!-- Listado de reservaciones -->
-    <section class="section reservations-list">
-      <header class="section-header">
-        <h2>Mis reservaciones</h2>
-      </header>
+</main>
 
-      <?php if (empty($reservaciones)): ?>
-        <p class="empty-state">
-          No tienes reservaciones registradas.
-        </p>
-      <?php else: ?>
-        <?php foreach ($reservaciones as $r): ?>
-          <article class="reserva-card">
-            <p><strong>Nombre:</strong> <?= htmlspecialchars($r['nombre_cliente']) ?></p>
-            <p><strong>Teléfono:</strong> <?= htmlspecialchars($r['telefono']) ?></p>
-            <p><strong>Correo:</strong> <?= htmlspecialchars($r['correo']) ?></p>
-            <p><strong>Fecha:</strong> <?= htmlspecialchars($r['fecha']) ?></p>
-            <p><strong>Hora:</strong> <?= htmlspecialchars($r['hora']) ?></p>
-            <p><strong>Zona:</strong> <?= htmlspecialchars($r['zona']) ?></p>
-          </article>
-        <?php endforeach; ?>
-      <?php endif; ?>
-    </section>
-
-  </main>
 <footer class="site-footer">
   <img src="/assets/images/inconoB.jpg" alt="El Arca">
   <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
 
+<script src="/assets/js/script.js"></script>
 </body>
 </html>

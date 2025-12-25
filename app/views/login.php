@@ -1,5 +1,11 @@
 <?php
 declare(strict_types=1);
+
+// Si ya hay sesión, redirigir a home
+if (isset($_SESSION['id_usuario'])) {
+    header('Location: /?view=home');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,14 +18,16 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <!-- FONDO EXCLUSIVO AUTH -->
+  <!-- CONTENEDOR DE FONDO AUTH -->
   <div class="auth-bg">
 
+    <!-- CONTENEDOR CENTRAL -->
     <main class="form-container">
 
+      <!-- TARJETA GLASS -->
       <div class="auth-glass">
 
-        <!-- LOGO -->
+        <!-- LOGO SUPERIOR -->
         <div class="auth-logo">
           <img src="/assets/images/inconoB.jpg" alt="El Arca">
         </div>
@@ -65,7 +73,6 @@ declare(strict_types=1);
             ¿No tienes cuenta?
             <a href="/?view=register">Regístrate aquí</a>
           </p>
-
           <p>
             ¿Olvidaste tu contraseña?
             <a href="/?view=recover">Recupérala aquí</a>
@@ -73,13 +80,15 @@ declare(strict_types=1);
         </div>
 
       </div>
-
     </main>
-<footer class="site-footer">
-  <img src="/assets/images/inconoB.jpg" alt="El Arca">
-  <p>© 2024 Restaurante Bar El Arca</p>
-</footer>
+
+    <!-- FOOTER AUTH -->
+    <footer class="site-footer">
+      <img src="/assets/images/inconoB.jpg" alt="El Arca">
+      <p>© 2024 Restaurante Bar El Arca</p>
+    </footer>
 
   </div>
+
 </body>
 </html>

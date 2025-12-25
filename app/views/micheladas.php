@@ -17,63 +17,43 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
+<main class="app-container">
 
-  <main class="app-container">
-<button class="btn-back" onclick="history.back()">
-  ← Volver
-</button>
-    <section class="menu-section">
-      <header class="menu-header">
-        <h1>Micheladas</h1>
-        <p>Refrescantes, picositas y perfectas para compartir</p>
-      </header>
+  <div class="section-top">
+    <button class="btn-back" onclick="history.back()">← Volver</button>
+  </div>
 
-      <div class="menu-grid">
+  <section class="menu-section">
+    <header class="menu-header">
+      <h1>Micheladas</h1>
+      <p>Refrescantes, preparadas al momento</p>
+    </header>
 
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/michelada1.jpg" alt="Michelada clásica">
-          </div>
-          <div class="menu-body">
-            <h3>Michelada Clásica</h3>
-            <p>Cerveza, limón, salsas y escarchado tradicional.</p>
-            <span class="menu-price">$70</span>
-          </div>
-        </article>
+    <div class="menu-grid">
 
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/michelada2.jpg" alt="Michelada especial">
-          </div>
-          <div class="menu-body">
-            <h3>Michelada Especial</h3>
-            <p>Preparación especial con mix de salsas premium.</p>
-            <span class="menu-price">$85</span>
-          </div>
-        </article>
+      <article class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/inicio5.jpg" alt="Michelada clásica">
+        </div>
+        <div class="menu-body">
+          <h3>Michelada Clásica</h3>
+          <p>La tradicional con limón, sal y salsas.</p>
+          <span class="menu-price">$75</span>
+        </div>
+      </article>
 
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/michelada3.jpg" alt="Michelada con camarón">
-          </div>
-          <div class="menu-body">
-            <h3>Michelada con Camarón</h3>
-            <p>La favorita: potente, fresca y con carácter.</p>
-            <span class="menu-price">$110</span>
-          </div>
-        </article>
+    </div>
+  </section>
 
-      </div>
-    </section>
+</main>
 
-  </main>
-   <footer>
-      <p>
-        © 2024 Todos los derechos reservados. Restaurante-Bar El Arca<br>
-        <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-      </p>
-    </footer>
+<footer class="site-footer">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
+
+<script src="/assets/js/script.js"></script>
 </body>
 </html>

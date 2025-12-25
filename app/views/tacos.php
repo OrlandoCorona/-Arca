@@ -2,90 +2,87 @@
 declare(strict_types=1);
 
 if (!isset($_SESSION['id_usuario'])) {
-  header('Location: /?view=login');
-  exit;
+    header('Location: /?view=login');
+    exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tacos — El Arca</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Tacos — El Arca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container">
+<main class="app-container">
+
+    <button class="btn-back" onclick="history.back()">← Volver</button>
 
     <section class="menu-section">
-        <button class="btn-back" onclick="history.back()">
-  ← Volver
-</button>
-<div class="taco-card">
-  <img src="/assets/images/taco1.jpg" class="taco-thumb">
-</div>
+        <header class="menu-header">
+            <h1>Tacos</h1>
+            <p>Tacos preparados al momento con recetas tradicionales</p>
+        </header>
 
-<div class="taco-modal">
-  <img src="/assets/images/taco1.jpg">
-  <p>Tacos al pastor con piña...</p>
-  <button class="btn-animated">
-    <span class="text">Añadir al carrito</span>
-  </button>
-</div>
+        <div class="menu-grid">
 
-      <header class="menu-header">
-        <h1>Tacos</h1>
-        <p>Los clásicos que nunca fallan, preparados al momento</p>
-      </header>
+            <article class="menu-card taco-card" data-name="Taco al Pastor" data-price="25" data-img="/assets/images/taco1.jpg">
+                <div class="menu-media">
+                    <img src="/assets/images/taco1.jpg" alt="Taco al Pastor">
+                </div>
+                <div class="menu-body">
+                    <h3>Taco al Pastor</h3>
+                    <p>Carne marinada con piña y especias tradicionales.</p>
+                    <span class="menu-price">$25</span>
+                    <button class="btn btn-animated open-modal">
+                        <span class="text">Añadir al carrito</span>
+                    </button>
+                </div>
+            </article>
 
-      <div class="menu-grid">
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/taco1.jpg" alt="Taco al pastor">
-          </div>
-          <div class="menu-body">
-            <h3>Taco al Pastor</h3>
-            <p>Carne marinada, piña y salsa de la casa.</p>
-            <span class="menu-price">$25</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/taco2.jpg" alt="Taco de bistec">
-          </div>
-          <div class="menu-body">
-            <h3>Taco de Bistec</h3>
-            <p>Jugoso bistec asado con guarniciones frescas.</p>
-            <span class="menu-price">$30</span>
-          </div>
-        </article>
-
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/taco3.jpg" alt="Taco de arrachera">
-          </div>
-          <div class="menu-body">
-            <h3>Taco de Arrachera</h3>
-            <p>Corte premium, sabor intenso y suave.</p>
-            <span class="menu-price">$40</span>
-          </div>
-        </article>
-
-      </div>
+        </div>
     </section>
 
-  </main>
-  <<footer class="site-footer">
-    <p>
-      © 2024 Restaurante-Bar El Arca<br>
-      <img src="/assets/images/inconoB.jpg" width="30" height="30" alt="El Arca">
-    </p>
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <img id="modalImg" src="" alt="">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <button class="btn btn-animated">
+            <span class="text">Añadir al carrito</span>
+        </button>
+        <button class="btn-back" id="closeModal">Cerrar</button>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
+
+<script>
+document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+        const card = e.target.closest('.menu-card');
+        document.getElementById('modalImg').src = card.dataset.img;
+        document.getElementById('modalTitle').textContent = card.dataset.name;
+        document.getElementById('modalDesc').textContent = 'Delicioso taco recién preparado.';
+        document.getElementById('productModal').style.display = 'flex';
+    });
+});
+
+document.getElementById('closeModal').onclick = () => {
+    document.getElementById('productModal').style.display = 'none';
+};
+</script>
 
 </body>
 </html>
