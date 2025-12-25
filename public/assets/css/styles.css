@@ -15,76 +15,43 @@ html, body {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Open Sans', 'Helvetica Neue', sans-serif;
-  background: #d5e0ff;
+    "Segoe UI", Roboto, Ubuntu, sans-serif;
+  background: #0f172a;
   color: #e5e7eb;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ======================================================
    VARIABLES
 ====================================================== */
 :root {
-  --accent-primary: #001e54;
-  --accent-secondary: #009dd6;
-  --accent-tertiary: #b541d8;
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+  --accent: #22d3ee;
 
-  --radius-md: 18px;
-  --radius-lg: 21px;
+  --bg-dark: #020617;
+  --bg-soft: #020617cc;
 
-  --shadow-soft: 0 25px 55px rgba(255,255,255,.61);
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-soft: 0 20px 45px rgba(0,0,0,.45);
 }
 
 /* ======================================================
-   BOTÓN BASE (GLOBAL)
+   BUTTON BASE
 ====================================================== */
 .btn {
-  border: none;
   background: none;
+  border: none;
   cursor: pointer;
   text-decoration: none;
   font-family: inherit;
+  color: inherit;
 }
 
 /* ======================================================
-   LOGIN – AISLAMIENTO TOTAL
-====================================================== */
-body.auth-page .navbar,
-body.auth-page .home,
-body.auth-page .menu,
-body.auth-page .app-container {
-  display: none !important;
-}
-
-/* ======================================================
-   LOGIN – FONDO
-====================================================== */
-body.auth-page .auth-bg {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  background:
-    linear-gradient(rgba(5,9,20,.6), rgba(5,9,20,.8)),
-    url("/assets/images/login.jpg") center / cover no-repeat;
-}
-
-/* ======================================================
-   LOGIN – CARD
-====================================================== */
-body.auth-page .auth-glass {
-  max-width: 490px;
-  background: rgba(94,94,94,.34);
-  border: 2.3px solid rgba(255,255,255,.6);
-  backdrop-filter: blur(7px);
-  border-radius: var(--radius-lg);
-  padding: 3.5rem;
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-}
-
-/* ======================================================
-   LOGIN – BOTÓN ANIMADO (SOLO LOGIN)
+   CTA BUTTON – ANIMATED (SOLO CTA)
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -92,48 +59,37 @@ body.auth-page .auth-glass {
   inherits: false;
 }
 
-body.auth-page .btn-animated {
+.btn-animated {
   position: relative;
-  padding: 3px;
+  padding: 2px;
   border-radius: 12px;
   overflow: hidden;
+  display: inline-flex;
 }
 
-body.auth-page .btn-animated .text {
-  display: block;
-  padding: 10px 20px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  border-radius: 7px;
-  color: #fff;
-  font-size: 1.35rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-body.auth-page .btn-animated::before {
+.btn-animated::before {
   content: "";
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   background: conic-gradient(
     from var(--angle),
-    var(--accent-primary),
-    #31a2ff,
-    var(--accent-secondary),
-    var(--accent-tertiary),
-    var(--accent-primary)
+    var(--primary),
+    var(--accent),
+    var(--primary)
   );
-  opacity: 0;
   animation: rotate 3s linear infinite;
-  transition: opacity .3s;
 }
 
-body.auth-page .btn-animated:hover::before {
-  opacity: 1;
+.btn-animated .text {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 @keyframes rotate {
@@ -141,51 +97,134 @@ body.auth-page .btn-animated:hover::before {
 }
 
 /* ======================================================
-   HOME / MENÚ – RESET VISUAL
+   NAVBAR
 ====================================================== */
-.home,
-.menu,
-.app-container {
-  padding: 2rem;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(2,6,23,.85);
+  backdrop-filter: blur(8px);
 }
 
-/* BOTONES NORMALES (NO ANIMADOS) */
-.home .btn,
-.menu .btn {
-  background: var(--accent-secondary);
-  color: #fff;
-  padding: .6rem 1.2rem;
-  border-radius: 10px;
-  font-size: .95rem;
-  display: inline-block;
+.navbar a {
+  color: #cbd5f5;
+  text-decoration: none;
+  margin-right: 1.2rem;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: var(--primary);
+}
+
+/* Iconos perfil / salir */
+.navbar img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
 }
 
 /* ======================================================
-   HOME – IMÁGENES CORRECTAS
+   AUTH (LOGIN / REGISTER)
 ====================================================== */
-.home img,
-.menu img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+body.auth-page .navbar,
+body.auth-page .app-container {
+  display: none;
 }
 
-/* CARDS */
-.menu-card img,
-.featured-media img {
+.auth-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(2,6,23,.75), rgba(2,6,23,.85)),
+    url("/assets/images/login.jpg") center/cover no-repeat;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.auth-glass {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  box-shadow: var(--shadow-soft);
+}
+
+.auth-form label {
+  font-size: .9rem;
+  margin-bottom: .25rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: .75rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.3);
+  background: transparent;
+  color: #fff;
+}
+
+.auth-form .btn {
+  margin: 1.5rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* ======================================================
+   HOME
+====================================================== */
+.home .hero {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.home .hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.home .hero p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #cbd5f5;
+}
+
+/* CTA solo Reservar */
+.home .hero-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ======================================================
+   CARDS / MENÚ / TACOS
+====================================================== */
+.menu-grid,
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 2rem;
+}
+
+.menu-card img {
+  width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 /* ======================================================
    FOOTER
 ====================================================== */
 .site-footer {
+  padding: 2rem 1rem;
   text-align: center;
-  padding: 1.5rem;
-  font-size: .85rem;
-  color: #444;
+  color: #94a3b8;
 }
 
 .site-footer img {
