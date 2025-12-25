@@ -70,14 +70,14 @@ body {
   position: relative;
   z-index: 2;
   display: block;
-  padding: 12px 26px;
-  border-radius: 9px;
+  padding: 10px 20px;
+  border-radius: 7px;
   background: linear-gradient(135deg,
       var(--accent-primary),
       var(--accent-secondary));
   color: #d5d9de;
-  font-weight: 600;
-  font-size: 1.65rem;
+  font-weight: 500;
+  font-size: 1.35rem;
   text-align: center;
 }
 
@@ -86,38 +86,17 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent-primary),
-    #1aa5d7,
-    var(--accent-secondary),
-    #09d9d9,
-    var(--accent-tertiary),
-    #c254e3
-  );
+  background: conic-gradient(from var(--angle),
+      var(--accent-primary),
+      #18e061,
+      var(--accent-secondary),
+      #09d9d9,
+      var(--accent-tertiary),
+      #c254e3);
   opacity: 0;
   animation: rotate 3s linear infinite;
   transition: opacity .3s ease;
 }
-.btn-animated::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent-primary),
-    #1aa5d7,
-    var(--accent-secondary),
-    #09d9d9,
-    var(--accent-tertiary),
-    #c254e3
-  );
-  opacity: 0;
-  animation: rotate 3s linear infinite;
-  transition: opacity .3s ease;
-}
-
 
 .btn-animated:hover::before {
   opacity: 1;
@@ -148,6 +127,7 @@ body.auth-page .menu {
    AUTH – BACKGROUND
 ====================================================== */
 .auth-bg {
+  overflow: hidden;
   min-height: 100vh;
   width: 100%;
   background:
@@ -233,7 +213,8 @@ body.auth-page .menu {
   padding: .8rem;
   font-size: .95rem;
   font-weight: 500;
-  color: #e5e7eb; /* visible, acorde al diseño */
+  color: #e5e7eb;
+  /* visible, acorde al diseño */
   margin-bottom: 1rem;
   outline: none;
 }
@@ -264,6 +245,7 @@ body.auth-page .menu {
   display: flex;
   justify-content: center;
 }
+
 .auth-form input:focus-visible {
   -webkit-text-fill-color: #ffffff;
 }
