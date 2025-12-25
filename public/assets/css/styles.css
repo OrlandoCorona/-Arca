@@ -86,17 +86,38 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: conic-gradient(from var(--angle),
-      var(--accent-primary),
-      #1aa5d7,
-      var(--accent-secondary),
-      #09d9d9 
-      var(--accent-tertiary)
-      #c254e3);
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-primary),
+    #1aa5d7,
+    var(--accent-secondary),
+    #09d9d9,
+    var(--accent-tertiary),
+    #c254e3
+  );
   opacity: 0;
   animation: rotate 3s linear infinite;
   transition: opacity .3s ease;
 }
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-primary),
+    #1aa5d7,
+    var(--accent-secondary),
+    #09d9d9,
+    var(--accent-tertiary),
+    #c254e3
+  );
+  opacity: 0;
+  animation: rotate 3s linear infinite;
+  transition: opacity .3s ease;
+}
+
 
 .btn-animated:hover::before {
   opacity: 1;
