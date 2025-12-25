@@ -205,7 +205,7 @@ body.auth-page .menu {
    AUTH – TITLES
 ====================================================== */
 .auth-title {
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: .3px;
 }
@@ -219,8 +219,8 @@ body.auth-page .menu {
 }
 
 .auth-form label {
-  font-size: .9rem;
-  font-weight: 500;
+  font-size: 1.3rem;
+  font-weight: 600;
   margin-bottom: .25rem;
   display: block;
 }
@@ -239,13 +239,13 @@ body.auth-page .menu {
 }
 
 .auth-form input::placeholder {
-  color: rgba(241, 238, 238, 0.794);
+  color: rgba(119, 109, 109, 0);
 }
 
 /* Focus */
 .auth-form input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(34, 197, 196, .35);
+  box-shadow: 0 0 0 2px rgba(23, 219, 219, 0.35);
 }
 
 /* Autofill FIX DEFINITIVO */

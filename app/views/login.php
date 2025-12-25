@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 // Si ya hay sesión, redirigir a home
 if (isset($_SESSION['id_usuario'])) {
-    header('Location: /?view=home');
+    header('Location: /?view=login');
     exit;
 }
 ?>
