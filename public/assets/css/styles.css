@@ -9,31 +9,33 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: #050914;
   color: #e5e7eb;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 
 /* ======================================================
    VARIABLES GLOBALES
 ====================================================== */
 :root {
-  --accent-primary: #2052a2;
-  --accent-secondary: #0c6464;
+  --accent-primary: #3e77d2;
+  --accent-secondary: #31baec;
+  --accent-tertiary: #b541d8;
 
   --text-main: #a2aaba;
   --text-muted: #a4b1c7;
 
-  --radius-md: 14px;
-  --radius-lg: 18px;
+  --radius-md: 16px;
+  --radius-lg: 19px;
 
-  --shadow-soft: 0 22px 50px rgba(0,0,0,.45);
+  --shadow-soft: 0 25px 55px rgba(0, 0, 0, .45);
 }
 
 /* ======================================================
@@ -44,7 +46,7 @@ body {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* ======================================================
@@ -58,7 +60,7 @@ body {
 
 .btn-animated {
   position: relative;
-  padding: 2px;
+  padding: 3px;
   border-radius: 12px;
   background: transparent;
   overflow: hidden;
@@ -70,11 +72,9 @@ body {
   display: block;
   padding: 12px 26px;
   border-radius: 9px;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
+  background: linear-gradient(135deg,
+      var(--accent-primary),
+      var(--accent-secondary));
   color: #d5d9de;
   font-weight: 600;
   font-size: 1.65rem;
@@ -86,15 +86,15 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent-primary),
-    #4ebfe8,
-    var(--accent-primary)
-    #09de82
-  );
+  background: conic-gradient(from var(--angle),
+      var(--accent-primary),
+      #1aa5d7,
+      var(--accent-secondary),
+      #09d9d9 
+      var(--accent-tertiary)
+      #c254e3);
   opacity: 0;
-  animation: rotate 2s linear infinite;
+  animation: rotate 3s linear infinite;
   transition: opacity .3s ease;
 }
 
@@ -103,7 +103,9 @@ body {
 }
 
 @keyframes rotate {
-  to { --angle: 360deg; }
+  to {
+    --angle: 360deg;
+  }
 }
 
 /* ======================================================
@@ -128,7 +130,7 @@ body.auth-page .menu {
   min-height: 100vh;
   width: 100%;
   background:
-    linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.65)),
+    linear-gradient(rgba(5, 9, 20, .65), rgba(5, 9, 20, .65)),
     url("/assets/images/login.jpg");
 
   background-size: cover;
@@ -151,8 +153,8 @@ body.auth-page .menu {
 .auth-glass {
   width: 100%;
   max-width: 380px;
-  background: rgba(255,255,255,.08);
-  border: 2px solid rgba(255,255,255,.8);
+  background: rgba(255, 255, 255, .08);
+  border: 2px solid rgba(255, 255, 255, .8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
@@ -174,7 +176,7 @@ body.auth-page .menu {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.6);
+  border: 1px solid rgba(255, 255, 255, .6);
   object-fit: cover;
 }
 
@@ -205,7 +207,7 @@ body.auth-page .menu {
 .auth-form input {
   width: 100%;
   background-color: transparent !important;
-  border: 1px solid rgba(255,255,255,.35);
+  border: 1px solid rgba(255, 255, 255, .35);
   border-radius: 10px;
   padding: .8rem;
   font-size: .95rem;
@@ -222,7 +224,7 @@ body.auth-page .menu {
 /* Focus */
 .auth-form input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(34,197,196,.35);
+  box-shadow: 0 0 0 2px rgba(34, 197, 196, .35);
 }
 
 /* Autofill FIX DEFINITIVO */
@@ -278,5 +280,3 @@ body.auth-page .menu {
   margin-bottom: .5rem;
   object-fit: cover;
 }
-
-
