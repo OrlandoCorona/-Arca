@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+session_start();
 require __DIR__ . '/../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -9,20 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $correo = trim($_POST['correo'] ?? '');
-$contrasena = $_POST['contrasena'] ?? '';
+$pass   = $_POST['contrasena'] ?? '';
 
-if ($correo === '' || $contrasena === '') {
+if ($correo === '' || $pass === '') {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-/* QUERY CORRECTA */
 $sql = "
-    SELECT
-        id_usuario,
-        nombre,
-        correo,
-        password
+    SELECT id_usuario, nombre, correo, password
     FROM usuarios
     WHERE correo = :correo
     LIMIT 1
@@ -32,13 +28,12 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
 $usuario = $stmt->fetch();
 
-/* VALIDACIÓN */
-if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
+if (!$usuario || !password_verify($pass, $usuario['password'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-/* SESIÓN */
+// Login OK
 session_regenerate_id(true);
 
 $_SESSION['id_usuario'] = $usuario['id_usuario'];

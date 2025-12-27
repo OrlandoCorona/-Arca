@@ -285,15 +285,10 @@ body.auth-page .app-container {
 .auth-logo {
   width: 64px;
   height: 64px;
-
-  max-width: 64px;
-  max-height: 64px;
-
   border-radius: 50%;
   object-fit: contain;
-
-  display: block;
 }
+
 /* ======================================================
    BLOQUE 9 — AUTH FORM + LABEL FLOTANTE
    RESPONSABILIDAD:
@@ -555,8 +550,7 @@ body.auth-page .app-container {
   align-items: center;
   gap: 4px;
 }
-
-.site-footer .footer-logo {
+.footer-logo {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -569,13 +563,11 @@ body.auth-page .app-container {
 /* ======================================================
    FOOTER – LOGIN (AUTH PAGE)
 ====================================================== */
-body.auth-page .site-footer {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
-  margin: 0;
-  background: none;
-  box-shadow: none;
+body.auth-page .site-footer img {
+  width: 35px;
+  height: 35px;
+  max-width: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+  object-fit: contain;
 }

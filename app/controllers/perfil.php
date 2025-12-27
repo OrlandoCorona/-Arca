@@ -1,52 +1,32 @@
 <?php
 declare(strict_types=1);
 
-/**
- * ============================
- * PERFIL DE USUARIO (PROTEGIDO)
- * ============================
- */
+require __DIR__ . '/../config/database.php';
 
 if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
 }
 
-require __DIR__ . '/../config/database.php';
+$idUsuario = $_SESSION['id_usuario'];
 
-$id_usuario = (int) $_SESSION['id_usuario'];
-
-/**
- * Obtener datos del usuario
- */
-$sql = "
-    SELECT
-        nombre,
-        apellido_paterno,
-        apellido_materno,
-        correo,
-        telefono,
-        creado_en
+$stmt = $pdo->prepare("
+    SELECT nombre, correo
     FROM usuarios
     WHERE id_usuario = :id
     LIMIT 1
-";
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute([
-    'id' => $id_usuario
-]);
-
+");
+$stmt->execute(['id' => $idUsuario]);
 $usuario = $stmt->fetch();
 
-if (!$usuario) {
-    // Seguridad: si algo raro pasa, cerramos sesión
-    header('Location: /?action=logout');
-    exit;
-}
+$stmt = $pdo->prepare("
+    SELECT fecha, hora, zona
+    FROM reservaciones
+    WHERE id_usuario = :id
+    ORDER BY fecha DESC
+");
+$stmt->execute(['id' => $idUsuario]);
+$reservaciones = $stmt->fetchAll();
 
-/**
- * Cargar vista
- */
 require __DIR__ . '/../views/perfil.php';
 exit;
