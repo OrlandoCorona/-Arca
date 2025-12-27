@@ -4,25 +4,13 @@ declare(strict_types=1);
 require __DIR__ . '/../config/database.php';
 
 /**
- * ============================
- * LOGIN DE USUARIO
- * ============================
- * - Solo POST
- * - Valida credenciales
- * - Inicia sesión
+ * Solo POST
  */
-
-// ----------------------------
-// Validar método
-// ----------------------------
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=login');
     exit;
 }
 
-// ----------------------------
-// Obtener datos
-// ----------------------------
 $correo     = trim($_POST['correo'] ?? '');
 $contrasena = $_POST['contrasena'] ?? '';
 
@@ -31,11 +19,11 @@ if ($correo === '' || $contrasena === '') {
     exit;
 }
 
-// ----------------------------
-// Buscar usuario
-// ----------------------------
+/**
+ * Buscar usuario
+ */
 $sql = "
-    SELECT id, nombre, correo, contrasena_hash
+    SELECT id, nombre, correo, password
     FROM usuarios
     WHERE correo = :correo
     LIMIT 1
@@ -46,31 +34,28 @@ $stmt->execute(['correo' => $correo]);
 
 $usuario = $stmt->fetch();
 
-// ----------------------------
-// Validar contraseña
-// ----------------------------
-if (
-    !$usuario ||
-    !password_verify($contrasena, $usuario['contrasena_hash'])
-) {
+/**
+ * Validar contraseña
+ */
+if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-// ----------------------------
-// Seguridad de sesión
-// ----------------------------
+/**
+ * Seguridad de sesión
+ */
 session_regenerate_id(true);
 
-// ----------------------------
-// Guardar sesión
-// ----------------------------
+/**
+ * Guardar sesión
+ */
 $_SESSION['id_usuario'] = $usuario['id'];
 $_SESSION['nombre']     = $usuario['nombre'];
 $_SESSION['correo']     = $usuario['correo'];
 
-// ----------------------------
-// Login exitoso
-// ----------------------------
+/**
+ * Login exitoso
+ */
 header('Location: /?view=home');
 exit;

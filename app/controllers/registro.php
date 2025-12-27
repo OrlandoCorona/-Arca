@@ -60,7 +60,7 @@ if ($contrasena !== $repetir) {
 // ----------------------------
 // Verificar correo existente
 // ----------------------------
-$sql = "SELECT id_usuario FROM usuarios WHERE correo = :correo LIMIT 1";
+$sql = "SELECT id FROM usuarios WHERE correo = :correo LIMIT 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
 
@@ -75,21 +75,10 @@ if ($stmt->fetch()) {
 $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 $sql = "
-    INSERT INTO usuarios (
-        correo,
-        nombre,
-        apellido_paterno,
-        apellido_materno,
-        telefono,
-        contrasena_hash
-    ) VALUES (
-        :correo,
-        :nombre,
-        :ap,
-        :am,
-        :telefono,
-        :hash
-    )
+    INSERT INTO usuarios
+        (correo, nombre, apellido_paterno, apellido_materno, telefono, password)
+    VALUES
+        (:correo, :nombre, :ap, :am, :telefono, :password)
 ";
 
 $stmt = $pdo->prepare($sql);
@@ -99,7 +88,7 @@ $stmt->execute([
     'ap'       => $apellido_paterno,
     'am'       => $apellido_materno,
     'telefono' => $telefono,
-    'hash'     => $hash
+    'password' => $hash
 ]);
 
 // ----------------------------
