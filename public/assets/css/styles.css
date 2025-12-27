@@ -182,25 +182,41 @@ body.auth-page .app-container {
   text-decoration: none;
 }
 
-/* FOOTER LOGIN */
+/* =========================
+   FOOTER LOGIN (AISLADO)
+========================= */
 body.auth-page .site-footer {
   position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  background: none;
+
+  padding: 0;
+  margin: 0;
+
+  background: none !important;
+  box-shadow: none !important;
+  border: none;
+
   text-align: center;
 }
 
 body.auth-page .site-footer img {
   width: 42px;
   height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+
   border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 4px;
 }
 
 body.auth-page .site-footer p {
-  font-size: .72rem;
+  font-size: 0.72rem;
   color: #cbd5f5;
+  margin: 0;
 }
 
 /* =========================
