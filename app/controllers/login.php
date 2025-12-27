@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $correo = trim($_POST['correo'] ?? '');
-$pass   = $_POST['contrasena'] ?? '';
+$contrasena = $_POST['contrasena'] ?? '';
 
-if ($correo === '' || $pass === '') {
+if ($correo === '' || $contrasena === '') {
     header('Location: /?view=incorrect-password');
     exit;
 }
@@ -25,14 +25,14 @@ $sql = "
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
-$usuario = $stmt->fetch();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if (!$usuario || !password_verify($pass, $usuario['password'])) {
+if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-// Login OK
+/* LOGIN OK */
 session_regenerate_id(true);
 
 $_SESSION['id_usuario'] = $usuario['id_usuario'];
