@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../config/database.php';
 
+// Solo POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=login');
     exit;
@@ -16,13 +17,9 @@ if ($correo === '' || $contrasena === '') {
     exit;
 }
 
-/**
- * ============================
- * BUSCAR USUARIO
- * ============================
- */
+// Buscar usuario
 $sql = "
-    SELECT id_usuario, nombre, correo, contrasena_hash
+    SELECT id_usuario, nombre, correo, password
     FROM usuarios
     WHERE correo = :correo
     LIMIT 1
@@ -30,34 +27,19 @@ $sql = "
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
-
 $usuario = $stmt->fetch();
 
-/**
- * ============================
- * VALIDAR CONTRASEÑA
- * ============================
- */
-if (!$usuario || !password_verify($contrasena, $usuario['contrasena_hash'])) {
+// Validar contraseña
+if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }
 
-/**
- * ============================
- * SESIÓN SEGURA
- * ============================
- */
+// Sesión segura
 session_regenerate_id(true);
-
 $_SESSION['id_usuario'] = $usuario['id_usuario'];
 $_SESSION['nombre']     = $usuario['nombre'];
 $_SESSION['correo']     = $usuario['correo'];
 
-/**
- * ============================
- * LOGIN OK
- * ============================
- */
 header('Location: /?view=home');
 exit;
