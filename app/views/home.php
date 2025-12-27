@@ -17,22 +17,21 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
+  <!-- NAVBAR -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="app-container home">
 
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-
         <h1 class="hero-title">
-          Restaurante Bar <span>“El Arca”</span>
+          Restaurante Bar <span>El Arca</span>
         </h1>
-
         <p class="hero-subtitle">
           Naturaleza · Gastronomía · Experiencia Premium
         </p>
-
       </div>
     </section>
 
@@ -117,14 +116,11 @@ if (!isset($_SESSION['id_usuario'])) {
   <!-- FOOTER GLOBAL -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <img
-        src="/assets/images/iconoB.jpg"
-        alt="El Arca"
-        class="footer-logo"
-      >
+      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
       <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
     </div>
   </footer>
 
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>

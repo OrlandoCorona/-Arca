@@ -17,21 +17,26 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
+  <!-- NAVBAR -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
+  <!-- CONTENIDO -->
   <main class="app-container menu-page">
 
+    <!-- BOTÓN VOLVER -->
     <button class="btn-back" onclick="history.back()">← Volver</button>
 
+    <!-- HEADER -->
     <section class="menu-section">
-
       <header class="menu-header">
         <h1>Menú</h1>
         <p>Selecciona una categoría para explorar nuestros productos</p>
       </header>
 
+      <!-- GRID DE CATEGORÍAS -->
       <div class="menu-grid">
 
+        <!-- COMIDA -->
         <a href="/?view=food" class="menu-card">
           <div class="menu-media">
             <img src="/assets/images/inicio1.jpg" alt="Comida">
@@ -42,6 +47,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
         </a>
 
+        <!-- CERVEZAS -->
         <a href="/?view=beers" class="menu-card">
           <div class="menu-media">
             <img src="/assets/images/inicio5.jpg" alt="Cervezas">
@@ -52,6 +58,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
         </a>
 
+        <!-- MICHELADAS -->
         <a href="/?view=micheladas" class="menu-card">
           <div class="menu-media">
             <img src="/assets/images/inicio6.jpg" alt="Micheladas">
@@ -62,6 +69,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
         </a>
 
+        <!-- TACOS -->
         <a href="/?view=tacos" class="menu-card">
           <div class="menu-media">
             <img src="/assets/images/inicio3.jpg" alt="Tacos">
@@ -72,9 +80,10 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
         </a>
 
+        <!-- BOTELLAS -->
         <a href="/?view=bottles" class="menu-card">
           <div class="menu-media">
-            <img src="/assets/images/inicio7.jpg" alt="Botellas">
+            <img src="/assets/images/inicio8.jpg" alt="Botellas">
           </div>
           <div class="menu-body">
             <h3>Botellas</h3>
@@ -82,6 +91,7 @@ if (!isset($_SESSION['id_usuario'])) {
           </div>
         </a>
 
+        <!-- EXTRAS -->
         <a href="/?view=extras" class="menu-card">
           <div class="menu-media">
             <img src="/assets/images/inicio2.jpg" alt="Extras">
@@ -93,11 +103,11 @@ if (!isset($_SESSION['id_usuario'])) {
         </a>
 
       </div>
-
     </section>
+
   </main>
 
-  <!-- FOOTER GLOBAL -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
@@ -105,5 +115,6 @@ if (!isset($_SESSION['id_usuario'])) {
     </div>
   </footer>
 
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>
