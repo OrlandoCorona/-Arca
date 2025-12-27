@@ -548,7 +548,6 @@ body.auth-page .app-container {
 /* ======================================================
    MODAL PRODUCTO
 ====================================================== */
-
 .modal {
   position: fixed;
   inset: 0;
@@ -602,7 +601,6 @@ body.auth-page .app-container {
 /* ======================================================
    MENSAJES DE ÉXITO / CONFIRMACIÓN
 ====================================================== */
-
 .mensaje-exito {
   max-width: 420px;
   margin: 0 auto;
