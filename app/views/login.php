@@ -67,7 +67,7 @@ declare(strict_types=1);
   </main>
 
   <!-- FOOTER ORIGINAL, SIN FONDO -->
-  <footer class="site-footer auth-footer">
+<footer class="site-footer auth-footer">
     <img src="/assets/images/inconoB.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>

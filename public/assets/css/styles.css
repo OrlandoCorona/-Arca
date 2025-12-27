@@ -617,3 +617,32 @@ body.auth-page .app-container {
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
+/* ======================================================
+   FOOTER – LOGIN (OVERRIDE TOTAL)
+====================================================== */
+body.auth-page .site-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+body.auth-page .site-footer .footer-inner {
+  padding: 0;
+  margin: 0;
+}
+
+body.auth-page .site-footer .footer-logo {
+  width: 42px;
+  height: 42px;
+}
+
+body.auth-page .site-footer .footer-text {
+  font-size: 0.72rem;
+  color: #cbd5f5;
+}
