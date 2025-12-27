@@ -3,14 +3,6 @@ declare(strict_types=1);
 
 require __DIR__ . '/../config/database.php';
 
-/**
- * ============================
- * LOGIN DE USUARIO
- * ============================
- * - Solo POST
- * - Valida correo y contraseña
- */
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=login');
     exit;
@@ -30,7 +22,7 @@ if ($correo === '' || $contrasena === '') {
  * ============================
  */
 $sql = "
-    SELECT id_usuario, nombre, correo, password
+    SELECT id_usuario, nombre, correo, contrasena_hash
     FROM usuarios
     WHERE correo = :correo
     LIMIT 1
@@ -46,7 +38,7 @@ $usuario = $stmt->fetch();
  * VALIDAR CONTRASEÑA
  * ============================
  */
-if (!$usuario || !password_verify($contrasena, $usuario['password'])) {
+if (!$usuario || !password_verify($contrasena, $usuario['contrasena_hash'])) {
     header('Location: /?view=incorrect-password');
     exit;
 }

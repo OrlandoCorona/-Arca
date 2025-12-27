@@ -72,9 +72,9 @@ $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 $sql = "
     INSERT INTO usuarios
-        (correo, nombre, apellido_paterno, apellido_materno, telefono, password)
+        (correo, nombre, apellido_paterno, apellido_materno, telefono, contrasena_hash)
     VALUES
-        (:correo, :nombre, :ap, :am, :telefono, :password)
+        (:correo, :nombre, :ap, :am, :telefono, :hash)
 ";
 
 $stmt = $pdo->prepare($sql);
@@ -84,7 +84,7 @@ $stmt->execute([
     'ap'       => $apellido_paterno,
     'am'       => $apellido_materno,
     'telefono' => $telefono,
-    'password' => $hash
+    'hash'     => $hash
 ]);
 
 // ----------------------------

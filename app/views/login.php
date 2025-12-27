@@ -1,3 +1,6 @@
+<?php
+declare(strict_types=1);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,65 +12,61 @@
 
 <body class="auth-page">
 
-  <div class="auth-bg">
+  <main class="auth-bg">
+    <div class="auth-glass">
 
-    <main class="form-container">
+      <!-- LOGO SUPERIOR -->
+      <img src="/assets/images/inconoB.jpg" alt="El Arca" class="auth-logo">
 
-      <div class="auth-glass">
+      <h2 class="auth-title">Iniciar sesión</h2>
 
-        <!-- LOGO -->
-        <div class="auth-logo">
-          <img src="/assets/images/inconoB.jpg" alt="El Arca">
-        </div>
+      <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
 
-        <h1 class="auth-title">Iniciar sesión</h1>
+        <label for="correo">Correo electrónico</label>
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          autocomplete="username"
+          required
+        >
 
-        <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
+        <label for="contrasena">Contraseña</label>
+        <input
+          type="password"
+          id="contrasena"
+          name="contrasena"
+          autocomplete="current-password"
+          required
+        >
 
-          <label for="correo">Correo electrónico</label>
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            autocomplete="username"
-            required
-          >
+        <button type="submit" class="btn btn-animated">
+          <span class="text">Iniciar sesión</span>
+        </button>
 
-          <label for="contrasena">Contraseña</label>
-          <input
-            type="password"
-            id="contrasena"
-            name="contrasena"
-            autocomplete="current-password"
-            required
-          >
+      </form>
 
-          <button type="submit" class="btn btn-animated">
-            <span class="text">Iniciar sesión</span>
-          </button>
-
-        </form>
-
-        <div class="auth-links">
-          <p>
-            ¿No tienes cuenta?
-            <a href="/?view=register">Regístrate aquí</a>
-          </p>
-          <p>
-            ¿Olvidaste tu contraseña?
-            <a href="/?view=recover">Recupérala aquí</a>
-          </p>
-        </div>
-
+      <div class="auth-links">
+        <p>
+          ¿No tienes cuenta?
+          <a href="/?view=register">Regístrate aquí</a>
+        </p>
+        <p>
+          ¿Olvidaste tu contraseña?
+          <a href="/?view=recover-password">Recupérala aquí</a>
+        </p>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <img src="/assets/images/inconoB.jpg" alt="El Arca">
-      <p>© 2024 Restaurante Bar El Arca</p>
-    </footer>
+      <!-- LOGO INFERIOR -->
+      <img src="/assets/images/inconoB.jpg" alt="El Arca Restaurante Bar" class="auth-footer-logo">
 
-  </div>
+      <p class="auth-footer-text">
+        El Arca · Restaurante Bar<br>
+        Desde 2007
+      </p>
+
+    </div>
+  </main>
 
 </body>
 </html>
