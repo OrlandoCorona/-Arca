@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 if (!isset($_SESSION['id_usuario'])) {
-  header('Location: /?view=login');
-  exit;
+    header('Location: /?view=login');
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -17,36 +17,66 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-<?php require __DIR__ . '/partials/navbar.php'; ?>
+  <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+  <main class="app-container section">
 
-  <button class="btn-back" onclick="history.back()">← Volver</button>
+    <header class="section-header">
+      <h2>Reservaciones</h2>
+      <p>Reserva tu mesa fácilmente</p>
+    </header>
 
-  <section class="reservation-section">
-    <h1>Reservar mesa</h1>
+    <div class="intro-grid">
 
-    <form method="POST" action="/?action=realizar_reserva" class="reservation-form">
-      <label for="fecha">Fecha</label>
-      <input type="date" name="fecha" id="fecha" required min="<?= date('Y-m-d') ?>">
+      <article class="intro-card">
+        <form method="POST" action="/?action=realizar_reserva">
 
-      <button type="submit" class="btn btn-animated">
-        <span class="text">Confirmar reserva</span>
-      </button>
-    </form>
+          <div class="form-group">
+            <input
+              type="date"
+              name="fecha"
+              required
+            >
+            <label>Fecha</label>
+          </div>
 
-  </section>
+          <div class="form-group">
+            <input
+              type="time"
+              name="hora"
+              required
+            >
+            <label>Hora</label>
+          </div>
 
-</main>
+          <div class="form-group">
+            <input
+              type="number"
+              name="personas"
+              min="1"
+              max="20"
+              required
+            >
+            <label>Número de personas</label>
+          </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
+          <button type="submit" class="btn btn-animated">
+            <span class="text">Confirmar reservación</span>
+          </button>
 
+        </form>
+      </article>
 
-<script src="/assets/js/script.js"></script>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -6,64 +6,146 @@ declare(strict_types=1);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro — El Arca</title>
+  <title>Crear cuenta — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="auth-page">
 
-  <div class="auth-bg">
+  <main class="auth-bg">
 
-    <main class="form-container">
-      <div class="auth-glass">
+    <div class="auth-glass">
 
-        <div class="auth-logo">
-          <img src="/assets/images/inconoB.jpg" alt="El Arca">
-        </div>
-
-        <h1 class="auth-title">Crear cuenta</h1>
-
-        <form method="POST" action="/?action=register" class="auth-form">
-
-          <label>Correo electrónico</label>
-          <input type="email" name="correo" required>
-
-          <label>Nombre</label>
-          <input type="text" name="nombre" required>
-
-          <label>Apellido paterno</label>
-          <input type="text" name="apellido_paterno" required>
-
-          <label>Apellido materno</label>
-          <input type="text" name="apellido_materno">
-
-          <label>Teléfono</label>
-          <input type="tel" name="telefono" required>
-
-          <label>Contraseña</label>
-          <input type="password" name="contrasena" required>
-
-          <label>Repetir contraseña</label>
-          <input type="password" name="repetir_contrasena" required>
-
-          <button type="submit" class="btn btn-animated">
-            <span class="text">Registrarme</span>
-          </button>
-        </form>
-
-        <div class="auth-links">
-          <a href="/?view=login">¿Ya tienes cuenta? Inicia sesión</a>
-        </div>
-
+      <!-- LOGO SUPERIOR -->
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/inconoB.jpg"
+          alt="El Arca"
+          class="auth-logo"
+        >
       </div>
-    </main>
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
 
-  </div>
+      <h2 class="auth-title">Crear cuenta</h2>
+
+      <form
+        method="POST"
+        action="/?action=register"
+        class="auth-form"
+        autocomplete="on"
+      >
+
+        <!-- NOMBRE -->
+        <div class="form-group">
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            placeholder=" "
+            autocomplete="given-name"
+          >
+          <label for="nombre">Nombre</label>
+        </div>
+
+        <!-- APELLIDO PATERNO -->
+        <div class="form-group">
+          <input
+            type="text"
+            id="apellido_paterno"
+            name="apellido_paterno"
+            required
+            placeholder=" "
+            autocomplete="family-name"
+          >
+          <label for="apellido_paterno">Apellido paterno</label>
+        </div>
+
+        <!-- APELLIDO MATERNO -->
+        <div class="form-group">
+          <input
+            type="text"
+            id="apellido_materno"
+            name="apellido_materno"
+            placeholder=" "
+          >
+          <label for="apellido_materno">Apellido materno</label>
+        </div>
+
+        <!-- CORREO -->
+        <div class="form-group">
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            required
+            placeholder=" "
+            autocomplete="email"
+          >
+          <label for="correo">Correo electrónico</label>
+        </div>
+
+        <!-- TELÉFONO -->
+        <div class="form-group">
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            required
+            placeholder=" "
+            autocomplete="tel"
+          >
+          <label for="telefono">Teléfono</label>
+        </div>
+
+        <!-- CONTRASEÑA -->
+        <div class="form-group">
+          <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            required
+            placeholder=" "
+            autocomplete="new-password"
+          >
+          <label for="contrasena">Contraseña</label>
+        </div>
+
+        <!-- REPETIR CONTRASEÑA -->
+        <div class="form-group">
+          <input
+            type="password"
+            id="repetir_contrasena"
+            name="repetir_contrasena"
+            required
+            placeholder=" "
+            autocomplete="new-password"
+          >
+          <label for="repetir_contrasena">Repetir contraseña</label>
+        </div>
+
+        <!-- BOTÓN REGISTRO -->
+        <button type="submit" class="btn btn-animated">
+          <span class="text">Crear cuenta</span>
+        </button>
+
+      </form>
+
+      <!-- LINKS -->
+      <div class="auth-links">
+        <p>
+          ¿Ya tienes cuenta?
+          <a href="/?view=login">Inicia sesión</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER AUTH -->
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
+
 </body>
 </html>

@@ -1,37 +1,49 @@
-<?php declare(strict_types=1); ?>
+<?php
+declare(strict_types=1);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Contraseña incorrecta — El Arca</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contraseña incorrecta — El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="auth-page">
 
-<div class="auth-bg">
+  <main class="auth-bg">
 
-    <main class="form-container">
-        <div class="auth-glass">
-            <div class="auth-logo">
-                <img src="/assets/images/inconoB.jpg" alt="El Arca">
-            </div>
-            <h2>Contraseña incorrecta</h2>
-            <p>La contraseña ingresada no es válida.</p>
-            <a href="/?view=login" class="btn btn-animated">
-                <span class="text">Intentar de nuevo</span>
-            </a>
-        </div>
-    </main>
+    <div class="auth-glass">
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
+      <!-- LOGO -->
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/inconoB.jpg"
+          alt="El Arca"
+          class="auth-logo"
+        >
+      </div>
 
-</div>
+      <h2 class="auth-title">Contraseña incorrecta</h2>
+
+      <p style="color: var(--text-muted); margin-bottom: 1.8rem;">
+        El correo o la contraseña no son correctos.  
+        Por favor, intenta nuevamente.
+      </p>
+
+      <a href="/?view=login" class="btn">
+        Volver a iniciar sesión
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER AUTH -->
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
+
 </body>
 </html>

@@ -1,15 +1,28 @@
+<?php
+declare(strict_types=1);
+
+if (!isset($_SESSION['id_usuario'])) {
+  header('Location: /?view=login');
+  exit;
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú — El Arca</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
 <body>
 
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
   <main class="app-container menu-page">
 
-    <!-- VOLVER -->
-    <div class="menu-back">
-      <button class="btn-back" onclick="history.back()">← Volver</button>
-    </div>
+    <button class="btn-back" onclick="history.back()">← Volver</button>
 
-    <!-- HEADER -->
     <section class="menu-section">
 
       <header class="menu-header">
@@ -17,7 +30,6 @@
         <p>Selecciona una categoría para explorar nuestros productos</p>
       </header>
 
-      <!-- GRID DE CATEGORÍAS -->
       <div class="menu-grid">
 
         <a href="/?view=food" class="menu-card">
@@ -36,7 +48,7 @@
           </div>
           <div class="menu-body">
             <h3>Cervezas</h3>
-            <p>Selección de cervezas bien frías</p>
+            <p>Selección bien fría</p>
           </div>
         </a>
 
@@ -81,16 +93,17 @@
         </a>
 
       </div>
+
     </section>
-
   </main>
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
 
+  <!-- FOOTER GLOBAL -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+    </div>
+  </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
+</html>

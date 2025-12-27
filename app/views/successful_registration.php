@@ -12,28 +12,38 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-<div class="auth-bg">
+  <main class="auth-bg">
 
-  <main class="form-container">
     <div class="auth-glass">
-      <h2>Registro exitoso</h2>
-      <p>Tu cuenta fue creada correctamente.</p>
+
+      <!-- LOGO -->
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/inconoB.jpg"
+          alt="El Arca"
+          class="auth-logo"
+        >
+      </div>
+
+      <h2 class="auth-title">Registro exitoso</h2>
+
+      <p style="color: var(--text-muted); margin-bottom: 1.8rem;">
+        Tu cuenta fue creada correctamente.  
+        Ahora puedes iniciar sesión.
+      </p>
 
       <a href="/?view=login" class="btn btn-animated">
         <span class="text">Iniciar sesión</span>
       </a>
+
     </div>
   </main>
 
- <footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
-
-
-</div>
+  <!-- FOOTER AUTH -->
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
 
 </body>
 </html>
