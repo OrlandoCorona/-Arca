@@ -22,15 +22,14 @@ declare(strict_types=1);
 
       <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
 
-       <div class="form-group">
-  <input type="email" name="correo" id="correo" required>
-  <label for="correo">Correo electrónico</label>
+  <div class="form-group">
+  <input type="email" name="email" required placeholder=" ">
+  <label>Correo electrónico</label>
 </div>
 
-
-        <div class="form-group">
-  <input type="password" name="contrasena" id="contrasena" required>
-  <label for="contrasena">Contraseña</label>
+<div class="form-group">
+  <input type="password" name="password" required placeholder=" ">
+  <label>Contraseña</label>
 </div>
 
         <button type="submit" class="btn btn-animated">
