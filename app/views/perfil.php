@@ -68,10 +68,13 @@ if (!isset($_SESSION['id_usuario'])) {
   </main>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-    <img src="/assets/images/inconoB.jpg" alt="El Arca">
-    <p>© 2024 Restaurante Bar El Arca</p>
-  </footer>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+  </div>
+</footer>
+
 
   <!-- SCRIPTS -->
   <script src="/assets/js/script.js"></script>
