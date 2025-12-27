@@ -228,3 +228,25 @@ body.auth-page .site-footer p {
 .footer-text {
   font-size: .85rem;
 }
+/* ======================================================
+   AUTH – LOGO LOGIN (FIX DEFINITIVO)
+====================================================== */
+
+.auth-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.auth-logo-wrapper img,
+.auth-logo {
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+
+  border-radius: 50%;
+  object-fit: contain;
+
+  display: block;
+}
