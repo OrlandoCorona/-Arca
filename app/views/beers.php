@@ -84,9 +84,10 @@ if (!isset($_SESSION['id_usuario'])) {
 </div>
 
 <footer class="site-footer">
-    <img src="/assets/images/inconoB.jpg" alt="El Arca">
-    <p>© 2024 Restaurante Bar El Arca</p>
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
+
 
 <script>
 document.querySelectorAll('.open-modal').forEach(btn => {

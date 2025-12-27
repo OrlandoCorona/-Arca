@@ -51,15 +51,13 @@ declare(strict_types=1);
       </div>
 
       <!-- LOGO INFERIOR -->
-      <img src="/assets/images/inconoB.jpg" alt="El Arca Restaurante Bar" class="auth-footer-logo">
-
-      <p class="auth-footer-text">
-        El Arca · Restaurante Bar<br>
-        Desde 2007
-      </p>
-
+   
     </div>
   </main>
+<footer class="site-footer">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
 
 </body>
 </html>

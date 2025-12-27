@@ -24,11 +24,11 @@
             </a>
         </div>
     </main>
+<footer class="site-footer">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
 
-    <footer class="site-footer">
-        <img src="/assets/images/inconoB.jpg" alt="El Arca">
-        <p>© 2024 Restaurante Bar El Arca</p>
-    </footer>
 
 </div>
 </body>

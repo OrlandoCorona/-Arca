@@ -109,6 +109,7 @@ if (!isset($_SESSION['id_usuario'])) {
   <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
 
+
 <script>
 document.querySelectorAll('.open-modal').forEach(btn => {
   btn.addEventListener('click', e => {

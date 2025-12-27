@@ -129,7 +129,7 @@ body.auth-page .app-container {
    AUTH – FONDO (UNA SOLA PANTALLA)
 ====================================================== */
 .auth-bg {
-  min-height: 100vh;
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,4 +755,35 @@ body.auth-page .app-container {
   color: #9ecbff;
   background: rgba(20,20,30,0.9);
   border-radius: 6px;
+}
+/* ======================================================
+   FOOTER GLOBAL – TODAS LAS VISTAS
+====================================================== */
+
+.site-footer {
+  margin-top: auto;
+  padding: 2rem 1rem;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: #94a3b8;
 }

@@ -28,6 +28,10 @@ declare(strict_types=1);
 
     </div>
   </main>
+<footer class="site-footer">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
 
 </body>
 </html>
