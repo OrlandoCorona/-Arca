@@ -130,14 +130,17 @@ body.auth-page .app-container {
 ====================================================== */
 .auth-bg {
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(2,6,23,.80), rgba(2,6,23,.90)),
-    url("/assets/images/login.jpg") center / contain no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background:
+    linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.85)),
+    url("/assets/images/login.jpg") center / 100% no-repeat;
+
   overflow: hidden;
 }
+
 
 /* ======================================================
    AUTH – CARD
