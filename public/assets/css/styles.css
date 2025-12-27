@@ -690,3 +690,23 @@ body.auth-page .app-container {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+/* ======================================================
+   MENSAJE DE ÉXITO / CONFIRMACIÓN
+====================================================== */
+
+.mensaje-exito {
+  max-width: 420px;
+  text-align: center;
+}
+
+.mensaje-exito h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.mensaje-exito p {
+  color: #cbd5f5;
+  margin-bottom: 2rem;
+  font-size: .95rem;
+}

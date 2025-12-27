@@ -19,9 +19,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+<main class="app-container product-page">
 
-    <button class="btn-back" onclick="history.back()">← Volver</button>
+    <!-- VOLVER -->
+    <div class="menu-back">
+        <button class="btn-back" onclick="history.back()">← Volver</button>
+    </div>
 
     <section class="menu-section">
         <header class="menu-header">
@@ -29,27 +32,83 @@ if (!isset($_SESSION['id_usuario'])) {
             <p>Selección bien fría</p>
         </header>
 
+        <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
 
-            <article class="menu-card">
+            <article class="product-card"
+                data-name="Cerveza Clara"
+                data-price="55"
+                data-img="/assets/images/inicio5.jpg"
+                data-desc="Cerveza clara bien fría, ideal para acompañar cualquier platillo.">
+
                 <div class="menu-media">
-                    <img src="/assets/images/inicio5.jpg" alt="Cerveza">
+                    <img src="/assets/images/inicio5.jpg" alt="Cerveza Clara">
                 </div>
-                <div class="menu-body">
+
+                <div class="product-body">
                     <h3>Cerveza Clara</h3>
-                    <span class="menu-price">$55</span>
+                    <p>Cerveza clara bien fría.</p>
+
+                    <div class="product-footer">
+                        <span class="menu-price">$55</span>
+                        <button class="btn product-btn open-modal">
+                            Ver detalle
+                        </button>
+                    </div>
                 </div>
             </article>
+
+            <!-- Aquí pueden ir más cervezas -->
 
         </div>
     </section>
 
 </main>
 
+<!-- MODAL DE PRODUCTO -->
+<div class="modal" id="productModal">
+    <div class="modal-overlay"></div>
+
+    <div class="modal-content">
+        <img id="modalImg" src="" alt="">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+
+        <div class="modal-actions">
+            <button class="btn btn-animated">
+                <span class="text">Añadir al carrito</span>
+            </button>
+            <button class="btn-back" id="closeModal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
 <footer class="site-footer">
     <img src="/assets/images/inconoB.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
+
+<script>
+document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+        const card = e.target.closest('.product-card');
+
+        document.getElementById('modalImg').src = card.dataset.img;
+        document.getElementById('modalTitle').textContent = card.dataset.name;
+        document.getElementById('modalDesc').textContent = card.dataset.desc;
+
+        document.getElementById('productModal').classList.add('active');
+    });
+});
+
+document.getElementById('closeModal').onclick = () => {
+    document.getElementById('productModal').classList.remove('active');
+};
+
+document.querySelector('.modal-overlay').onclick = () => {
+    document.getElementById('productModal').classList.remove('active');
+};
+</script>
 
 </body>
 </html>

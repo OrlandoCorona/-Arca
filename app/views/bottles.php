@@ -19,38 +19,65 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+<main class="app-container product-page">
+
+  <!-- VOLVER -->
+  <div class="menu-back">
+    <button class="btn-back" onclick="history.back()">← Volver</button>
+  </div>
 
   <section class="menu-section">
-
-    <button class="btn-back" onclick="history.back()">← Volver</button>
-
     <header class="menu-header">
       <h1>Botellas</h1>
       <p>Selección de botellas para compartir</p>
     </header>
 
+    <!-- GRID DE PRODUCTOS -->
     <div class="menu-grid">
 
-      <article class="menu-card">
+      <article class="product-card"
+        data-name="Botella Premium"
+        data-price="950"
+        data-img="/assets/images/inicio8.jpg"
+        data-desc="Sabor intenso y calidad garantizada, ideal para compartir.">
+
         <div class="menu-media">
-          <img src="/assets/images/inicio8.jpg" alt="Botella premium">
+          <img src="/assets/images/inicio8.jpg" alt="Botella Premium">
         </div>
-        <div class="menu-body">
+
+        <div class="product-body">
           <h3>Botella Premium</h3>
           <p>Sabor intenso y calidad garantizada.</p>
-          <span class="menu-price">$950</span>
+
+          <div class="product-footer">
+            <span class="menu-price">$950</span>
+            <button class="btn product-btn open-modal">
+              Ver detalle
+            </button>
+          </div>
         </div>
       </article>
 
-      <article class="menu-card">
+      <article class="product-card"
+        data-name="Botella Especial"
+        data-price="1200"
+        data-img="/assets/images/inicio9.jpg"
+        data-desc="Ideal para celebraciones y momentos especiales.">
+
         <div class="menu-media">
-          <img src="/assets/images/inicio9.jpg" alt="Botella especial">
+          <img src="/assets/images/inicio9.jpg" alt="Botella Especial">
         </div>
-        <div class="menu-body">
+
+        <div class="product-body">
           <h3>Botella Especial</h3>
           <p>Ideal para celebraciones.</p>
-          <span class="menu-price">$1,200</span>
+
+          <div class="product-footer">
+            <span class="menu-price">$1,200</span>
+            <button class="btn product-btn open-modal">
+              Ver detalle
+            </button>
+          </div>
         </div>
       </article>
 
@@ -59,11 +86,50 @@ if (!isset($_SESSION['id_usuario'])) {
 
 </main>
 
+<!-- MODAL DE PRODUCTO -->
+<div class="modal" id="productModal">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-content">
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+
+    <div class="modal-actions">
+      <button class="btn btn-animated">
+        <span class="text">Añadir al carrito</span>
+      </button>
+      <button class="btn-back" id="closeModal">Cerrar</button>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <img src="/assets/images/inconoB.jpg" alt="El Arca">
   <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
 
-<script src="/assets/js/script.js"></script>
+<script>
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const card = e.target.closest('.product-card');
+
+    document.getElementById('modalImg').src = card.dataset.img;
+    document.getElementById('modalTitle').textContent = card.dataset.name;
+    document.getElementById('modalDesc').textContent = card.dataset.desc;
+
+    document.getElementById('productModal').classList.add('active');
+  });
+});
+
+document.getElementById('closeModal').onclick = () => {
+  document.getElementById('productModal').classList.remove('active');
+};
+
+document.querySelector('.modal-overlay').onclick = () => {
+  document.getElementById('productModal').classList.remove('active');
+};
+</script>
+
 </body>
 </html>
