@@ -39,7 +39,6 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['correo' => $correo]);
     $stmt->fetch();
-
     // Siempre redirigimos al mismo resultado
     header('Location: /?view=recover-password-success');
     exit;
