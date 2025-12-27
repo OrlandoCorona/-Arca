@@ -15,8 +15,10 @@ declare(strict_types=1);
   <main class="auth-bg">
     <div class="auth-glass">
 
-      <!-- LOGO SUPERIOR -->
-      <img src="/assets/images/inconoB.jpg" alt="El Arca" class="auth-logo">
+   <div class="auth-logo-wrapper">
+  <img src="/assets/images/inconoB.jpg" alt="El Arca" class="auth-logo">
+</div>
+
 
       <h2 class="auth-title">Iniciar sesión</h2>
 

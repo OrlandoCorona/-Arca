@@ -18,7 +18,7 @@ body.auth-page .app-container {
 
   background:
     linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.85)),
-    url("/assets/images/login.jpg") center / 100% no-repeat;
+    url("/assets/images/login.jpg") center / cover no-repeat;
 
   position: relative;
   overflow: hidden;
@@ -513,7 +513,9 @@ body.auth-page .app-container {
   padding: 1.5rem;
   text-align: center;
 }
-
+/* ======================================================
+   MENU – TEXTO Y PRECIO
+====================================================== */
 .menu-body h3 {
   font-size: 1.2rem;
   margin-bottom: 0.4rem;
@@ -525,19 +527,12 @@ body.auth-page .app-container {
   margin-bottom: 0.8rem;
 }
 
-/* ======================================================
-   PRECIO
-====================================================== */
 .menu-price {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary);
 }
 
-/* ======================================================
-   BOTÓN AÑADIR / CTA PRODUCTO
-   (usa estilos globales .btn / .btn-animated)
-====================================================== */
 .menu-body .btn {
   margin-top: 0.8rem;
   display: inline-flex;
@@ -560,7 +555,6 @@ body.auth-page .app-container {
   display: flex;
 }
 
-/* OVERLAY */
 .modal::before {
   content: "";
   position: absolute;
@@ -568,7 +562,6 @@ body.auth-page .app-container {
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* CONTENIDO */
 .modal-content {
   position: relative;
   background: #020617;
@@ -589,7 +582,6 @@ body.auth-page .app-container {
   margin-bottom: 1rem;
 }
 
-/* ACCIONES */
 .modal-actions {
   display: flex;
   flex-direction: column;
@@ -598,7 +590,7 @@ body.auth-page .app-container {
 }
 
 /* ======================================================
-   MENSAJES DE ÉXITO / CONFIRMACIÓN
+   MENSAJES DE ÉXITO
 ====================================================== */
 .mensaje-exito {
   max-width: 420px;
@@ -617,15 +609,15 @@ body.auth-page .app-container {
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
+
 /* ======================================================
-   FOOTER – LOGIN (OVERRIDE TOTAL)
+   FOOTER – LOGIN (TRANSPARENTE Y AISLADO)
 ====================================================== */
 body.auth-page .site-footer {
   position: absolute;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-
   padding: 0 !important;
   margin: 0 !important;
   background: none !important;
@@ -645,4 +637,23 @@ body.auth-page .site-footer .footer-logo {
 body.auth-page .site-footer .footer-text {
   font-size: 0.72rem;
   color: #cbd5f5;
+}
+
+/* ======================================================
+   AUTH – LOGO LOGIN (ÚNICO Y CONTROLADO)
+====================================================== */
+.auth-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.auth-logo {
+  width: 64px;
+  height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+  border-radius: 50%;
+  object-fit: contain;
+  display: block;
 }
