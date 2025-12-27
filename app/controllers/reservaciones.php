@@ -21,14 +21,19 @@ $id_usuario = (int) $_SESSION['id_usuario'];
  * ============================
  */
 $sql = "
-    SELECT nombre_cliente, telefono, correo, fecha, hora, zona, creado_en
-    FROM reservaciones
-    WHERE id_usuario = :id
-    ORDER BY fecha DESC
+    SELECT
+        r.fecha,
+        r.hora,
+        r.zona,
+        r.creado_en
+    FROM reservaciones r
+    WHERE r.id_usuario = :id
+    ORDER BY r.fecha DESC, r.hora DESC
 ";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['id' => $id_usuario]);
+
 $reservaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 /**
