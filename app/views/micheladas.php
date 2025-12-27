@@ -19,9 +19,10 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-<main class="app-container">
+<main class="app-container product-page">
 
-  <div class="section-top">
+  <!-- VOLVER -->
+  <div class="menu-back">
     <button class="btn-back" onclick="history.back()">← Volver</button>
   </div>
 
@@ -31,18 +32,26 @@ if (!isset($_SESSION['id_usuario'])) {
       <p>Refrescantes, preparadas al momento</p>
     </header>
 
+    <!-- GRID DE PRODUCTOS -->
     <div class="menu-grid">
 
-      <article class="menu-card">
+      <article class="product-card">
         <div class="menu-media">
           <img src="/assets/images/inicio5.jpg" alt="Michelada clásica">
         </div>
-        <div class="menu-body">
+
+        <div class="product-body">
           <h3>Michelada Clásica</h3>
           <p>La tradicional con limón, sal y salsas.</p>
-          <span class="menu-price">$75</span>
+
+          <div class="product-footer">
+            <span class="menu-price">$75</span>
+            <button class="btn product-btn">Añadir</button>
+          </div>
         </div>
       </article>
+
+      <!-- Aquí pueden ir más productos -->
 
     </div>
   </section>

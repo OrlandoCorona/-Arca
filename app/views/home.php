@@ -33,12 +33,7 @@ if (!isset($_SESSION['id_usuario'])) {
           Naturaleza · Gastronomía · Experiencia Premium
         </p>
 
-        <!-- CTA ÚNICO -->
-        <div class="hero-actions">
-          <a href="/?view=reservaciones" class="btn btn-animated">
-            <span class="text">Reservar ahora</span>
-          </a>
-        </div>
+        <!-- CTA ELIMINADO (ya existe en navbar y al final) -->
 
       </div>
     </section>
@@ -70,44 +65,40 @@ if (!isset($_SESSION['id_usuario'])) {
       </div>
     </section>
 
-    <!-- DESTACADOS -->
+    <!-- DESTACADOS / CARRUSEL -->
     <section class="section section-featured">
       <header class="section-header">
         <h2>Lo más destacado</h2>
       </header>
 
-      <div class="featured-grid">
+      <div class="carousel">
+        <div class="carousel-track">
 
-        <article class="featured-card">
-          <div class="featured-media">
+          <article class="carousel-item">
             <img src="/assets/images/inicio10.png" alt="Ambiente del restaurante">
-          </div>
-          <div class="featured-body">
-            <h3>El ambiente</h3>
-            <p>Un espacio pensado para disfrutar de día y de noche.</p>
-          </div>
-        </article>
+            <div class="carousel-caption">
+              <h3>El ambiente</h3>
+              <p>Un espacio pensado para disfrutar de día y de noche.</p>
+            </div>
+          </article>
 
-        <article class="featured-card">
-          <div class="featured-media">
+          <article class="carousel-item">
             <img src="/assets/images/of1.jpg" alt="Promociones">
-          </div>
-          <div class="featured-body">
-            <h3>Promociones</h3>
-            <p>Eventos y ofertas especiales durante todo el año.</p>
-          </div>
-        </article>
+            <div class="carousel-caption">
+              <h3>Promociones</h3>
+              <p>Eventos y ofertas especiales durante todo el año.</p>
+            </div>
+          </article>
 
-        <article class="featured-card">
-          <div class="featured-media">
+          <article class="carousel-item">
             <img src="/assets/images/inicio3.jpg" alt="Eventos">
-          </div>
-          <div class="featured-body">
-            <h3>Eventos</h3>
-            <p>Celebraciones y reuniones inolvidables.</p>
-          </div>
-        </article>
+            <div class="carousel-caption">
+              <h3>Eventos</h3>
+              <p>Celebraciones y reuniones inolvidables.</p>
+            </div>
+          </article>
 
+        </div>
       </div>
     </section>
 

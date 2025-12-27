@@ -27,10 +27,14 @@ body {
 :root {
   --primary: #0ea5e9;
   --primary-dark: #0369a1;
-  --accent: #22d3ee;
+
+  /* auth accents (recuperados del CSS anterior) */
+  --accent-auth-1: #001e54;
+  --accent-auth-2: #009dd6;
+  --accent-auth-3: #b541d8;
 
   --bg-dark: #020617;
-  --bg-soft: #020617cc;
+  --bg-soft: rgba(2,6,23,.85);
 
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -51,7 +55,7 @@ body {
 }
 
 /* ======================================================
-   CTA BUTTON – ANIMATED (SOLO CTA)
+   BOTÓN ANIMADO – BASE
 ====================================================== */
 @property --angle {
   syntax: "<angle>";
@@ -61,12 +65,31 @@ body {
 
 .btn-animated {
   position: relative;
-  padding: 2px;
+  padding: 3px;
   border-radius: 12px;
   overflow: hidden;
   display: inline-flex;
 }
 
+/* contenido del botón */
+.btn-animated .text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 10px 22px;
+  background: linear-gradient(
+    135deg,
+    var(--accent-auth-1),
+    var(--accent-auth-2)
+  );
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* contorno animado */
 .btn-animated::before {
   content: "";
   position: absolute;
@@ -74,22 +97,20 @@ body {
   border-radius: inherit;
   background: conic-gradient(
     from var(--angle),
-    var(--primary),
-    var(--accent),
-    var(--primary)
+    var(--accent-auth-1),
+    #31a2ff,
+    var(--accent-auth-2),
+    var(--accent-auth-3),
+    var(--accent-auth-1)
   );
+  opacity: 0;
   animation: rotate 3s linear infinite;
+  transition: opacity .3s ease;
 }
 
-.btn-animated .text {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
+/* visible SOLO al hover */
+.btn-animated:hover::before {
+  opacity: 1;
 }
 
 @keyframes rotate {
@@ -97,7 +118,132 @@ body {
 }
 
 /* ======================================================
-   NAVBAR
+   AUTH (LOGIN) – AISLAMIENTO TOTAL
+====================================================== */
+body.auth-page .navbar,
+body.auth-page .app-container {
+  display: none !important;
+}
+
+/* ======================================================
+   AUTH – FONDO (UNA SOLA PANTALLA)
+====================================================== */
+.auth-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(2,6,23,.80), rgba(2,6,23,.90)),
+    url("/assets/images/login.jpg") center / contain no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ======================================================
+   AUTH – CARD
+====================================================== */
+.auth-glass {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+/* ======================================================
+   LOGOS (LOGIN)
+====================================================== */
+
+/* logo superior (más pequeño) */
+.auth-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+/* logo inferior (un poco más grande) */
+.auth-footer-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 2rem auto 0;
+  display: block;
+  opacity: .95;
+}
+
+/* ======================================================
+   AUTH – FORM
+====================================================== */
+.auth-form label {
+  font-size: .85rem;
+  margin-bottom: .25rem;
+  text-align: left;
+  display: block;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: .75rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.3);
+  background: transparent;
+  color: #fff;
+}
+
+/* botón login – 2px arriba */
+.auth-form .btn {
+  margin: 1.25rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* ======================================================
+   AUTH – LINKS (REGISTRO / RECUPERAR)
+====================================================== */
+.auth-links {
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+.auth-links a {
+  color: var(--accent-auth-2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-links a:hover {
+  color: #31a2ff;
+  text-decoration: underline;
+}
+
+/* ======================================================
+   BOTÓN VOLVER (NO ANIMADO)
+====================================================== */
+.btn-back {
+  background: var(--accent-auth-2);
+  color: #fff;
+  padding: .55rem 1.1rem;
+  border-radius: 10px;
+  font-size: .9rem;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.btn-back:hover {
+  background: #31a2ff;
+}
+
+/* ======================================================
+   NAVBAR (SIN REESTRUCTURAR AÚN)
 ====================================================== */
 .navbar {
   display: flex;
@@ -119,90 +265,8 @@ body {
   color: var(--primary);
 }
 
-/* Iconos perfil / salir */
-.navbar img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-
 /* ======================================================
-   AUTH (LOGIN / REGISTER)
-====================================================== */
-body.auth-page .navbar,
-body.auth-page .app-container {
-  display: none;
-}
-
-.auth-bg {
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(2,6,23,.75), rgba(2,6,23,.85)),
-    url("/assets/images/login.jpg") center/cover no-repeat;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
-
-.auth-glass {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.25);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  width: 100%;
-  max-width: 420px;
-  margin: auto;
-  box-shadow: var(--shadow-soft);
-}
-
-.auth-form label {
-  font-size: .9rem;
-  margin-bottom: .25rem;
-}
-
-.auth-form input {
-  width: 100%;
-  padding: .75rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.3);
-  background: transparent;
-  color: #fff;
-}
-
-.auth-form .btn {
-  margin: 1.5rem auto 0;
-  display: flex;
-  justify-content: center;
-}
-
-/* ======================================================
-   HOME
-====================================================== */
-.home .hero {
-  text-align: center;
-  padding: 5rem 2rem;
-}
-
-.home .hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-}
-
-.home .hero p {
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  color: #cbd5f5;
-}
-
-/* CTA solo Reservar */
-.home .hero-actions {
-  display: flex;
-  justify-content: center;
-}
-
-/* ======================================================
-   CARDS / MENÚ / TACOS
+   HOME / MENU / FOOTER (BASE)
 ====================================================== */
 .menu-grid,
 .featured-grid {
@@ -218,9 +282,6 @@ body.auth-page .app-container {
   border-radius: 14px;
 }
 
-/* ======================================================
-   FOOTER
-====================================================== */
 .site-footer {
   padding: 2rem 1rem;
   text-align: center;
@@ -232,4 +293,400 @@ body.auth-page .app-container {
   height: 48px;
   border-radius: 50%;
   margin-bottom: .5rem;
+}
+/* ======================================================
+   NAVBAR – FIX DEFINITIVO
+====================================================== */
+
+.navbar {
+  background: rgba(2,6,23,.85);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* BRAND */
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: #cbd5f5;
+  text-decoration: none;
+  font-size: .95rem;
+}
+
+.nav-item img {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-item:hover {
+  color: var(--primary);
+}
+
+/* CTA */
+.nav-cta {
+  margin-left: auto;
+}
+
+/* ICONOS PERFIL / LOGOUT */
+.nav-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+.nav-icon img {
+  width: 24px;
+  height: 24px;
+  transition: opacity .25s ease;
+}
+
+.nav-icon span {
+  position: absolute;
+  font-size: .8rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+/* HOVER: icono desaparece, texto aparece */
+.nav-icon:hover img {
+  opacity: 0;
+}
+
+.nav-icon:hover span {
+  opacity: 1;
+}
+/* ======================================================
+   HOME – HERO
+====================================================== */
+.hero {
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  margin-bottom: .5rem;
+}
+
+.hero-title span {
+  color: var(--primary);
+}
+
+.hero-subtitle {
+  color: #cbd5f5;
+  font-size: 1.05rem;
+}
+
+/* ======================================================
+   SECTIONS
+====================================================== */
+.section {
+  padding: 4rem 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+}
+
+/* ======================================================
+   INTRO GRID
+====================================================== */
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 2rem;
+}
+
+.intro-card {
+  background: rgba(255,255,255,.06);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* ======================================================
+   CARRUSEL (HTML + CSS)
+====================================================== */
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  min-width: 300px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  background: rgba(255,255,255,.05);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  padding: 1.2rem;
+}
+
+.carousel-caption h3 {
+  margin-bottom: .3rem;
+}
+
+/* ======================================================
+   CTA FINAL
+====================================================== */
+.section-cta {
+  background: rgba(255,255,255,.04);
+}
+
+.cta-box {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* ======================================================
+   MENU – CATEGORÍAS
+====================================================== */
+
+.menu-page {
+  padding: 2rem 2rem 4rem;
+}
+
+/* BOTÓN VOLVER */
+.menu-back {
+  margin-bottom: 1.5rem;
+}
+
+/* HEADER */
+.menu-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.menu-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: .5rem;
+}
+
+.menu-header p {
+  color: #cbd5f5;
+}
+
+/* GRID */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 2rem;
+}
+
+/* CARD */
+.menu-card {
+  background: rgba(255,255,255,.06);
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 40px rgba(0,0,0,.35);
+}
+
+/* IMAGEN */
+.menu-media img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* BODY */
+.menu-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.menu-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: .4rem;
+}
+
+.menu-body p {
+  font-size: .95rem;
+  color: #cbd5f5;
+}
+/* ======================================================
+   PRODUCTOS – VISTAS INTERNAS
+====================================================== */
+
+.product-page {
+  padding: 2rem 2rem 4rem;
+}
+
+/* CARD DE PRODUCTO */
+.product-card {
+  background: rgba(255,255,255,.06);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 40px rgba(0,0,0,.35);
+}
+
+.product-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.product-body h3 {
+  font-size: 1.2rem;
+  margin-bottom: .4rem;
+}
+
+.product-body p {
+  font-size: .95rem;
+  color: #cbd5f5;
+  margin-bottom: 1rem;
+}
+
+/* FOOTER PRODUCTO */
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.menu-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* BOTÓN AÑADIR */
+.product-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: .5rem 1.1rem;
+  border-radius: 10px;
+  font-size: .9rem;
+}
+
+.product-btn:hover {
+  background: var(--primary-dark);
+}
+/* ======================================================
+   MODAL PRODUCTO
+====================================================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+}
+
+.modal-content {
+  position: relative;
+  background: #020617;
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+  z-index: 2;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
