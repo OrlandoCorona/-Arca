@@ -129,7 +129,8 @@ body.auth-page .app-container {
    AUTH – FONDO (UNA SOLA PANTALLA)
 ====================================================== */
 .auth-bg {
-  min-height: 100px;
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,6 +139,7 @@ body.auth-page .app-container {
     linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.85)),
     url("/assets/images/login.jpg") center / 100% no-repeat;
 
+  position: relative;
   overflow: hidden;
 }
 
@@ -763,12 +765,37 @@ body.auth-page .app-container {
    FOOTER GLOBAL – TODAS LAS VISTAS
 ====================================================== */
 
-.site-footer {
-  margin-top: auto;
-  padding: 2rem 1rem;
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255,255,255,0.1);
+/* ======================================================
+   FOOTER – LOGIN (SIN FONDO)
+====================================================== */
+
+.auth-page .site-footer {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: none !important;   /* 🔥 quita la caja azul */
+  box-shadow: none !important;
+  border: none;
+
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.auth-page .site-footer img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 4px;
+}
+
+.auth-page .site-footer p {
+  font-size: 0.72rem;
+  color: #cbd5f5;
+  margin: 0;
 }
 
 .footer-inner {
