@@ -12,36 +12,37 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <div class="auth-bg">
+  <main class="auth-bg">
 
-    <main class="form-container">
-      <div class="auth-glass">
+    <div class="auth-glass">
 
-        <div class="auth-logo">
-          <img src="/assets/images/inconoB.jpg" alt="El Arca">
-        </div>
-
-        <h1 class="auth-title">Correo enviado</h1>
-
-        <p style="text-align:center;">
-          Si el correo existe en nuestro sistema, recibirás instrucciones
-          para restablecer tu contraseña.
-        </p>
-
-        <a href="/?view=login" class="btn btn-animated">
-          <span class="text">Aceptar</span>
-        </a>
-
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/logo-auth-top.jpg"
+          alt="El Arca"
+          class="auth-logo"
+        >
       </div>
-    </main>
 
-    <footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
+      <h2 class="auth-title">Correo enviado</h2>
 
-  </div>
+      <p style="text-align:center;">
+        Si el correo existe en nuestro sistema, recibirás instrucciones
+        para restablecer tu contraseña.
+      </p>
+
+      <a href="/?view=login" class="btn btn-animated">
+        <span class="text">Aceptar</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
+
 </body>
 </html>

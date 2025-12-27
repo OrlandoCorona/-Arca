@@ -12,47 +12,52 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <div class="auth-bg">
+  <main class="auth-bg">
 
-    <main class="form-container">
-      <div class="auth-glass">
+    <div class="auth-glass">
 
-        <div class="auth-logo">
-          <img src="/assets/images/inconoB.jpg" alt="El Arca">
-        </div>
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/logo-auth-top.jpg"
+          alt="El Arca"
+          class="auth-logo"
+        >
+      </div>
 
-        <h1 class="auth-title">Recuperar contraseña</h1>
+      <h2 class="auth-title">Recuperar contraseña</h2>
 
-        <form method="POST" action="/?action=recover" class="auth-form">
-          <label for="correo">Correo electrónico</label>
+      <form method="POST" action="/?action=recover" class="auth-form">
+
+        <div class="form-group">
           <input
             type="email"
             id="correo"
             name="correo"
             required
-            placeholder="correo@ejemplo.com"
+            placeholder=" "
+            autocomplete="email"
           >
-
-          <button type="submit" class="btn btn-animated">
-            <span class="text">Enviar instrucciones</span>
-          </button>
-        </form>
-
-        <div class="auth-links">
-          <a href="/?view=login">Volver a iniciar sesión</a>
+          <label for="correo">Correo electrónico</label>
         </div>
 
+        <button type="submit" class="btn btn-animated">
+          <span class="text">Enviar instrucciones</span>
+        </button>
+
+      </form>
+
+      <div class="auth-links">
+        <a href="/?view=login">Volver a iniciar sesión</a>
       </div>
-    </main>
 
-    <footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
-</footer>
+    </div>
 
+  </main>
 
-  </div>
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
+  </footer>
+
 </body>
 </html>

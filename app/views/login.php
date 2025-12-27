@@ -16,10 +16,9 @@ declare(strict_types=1);
 
     <div class="auth-glass">
 
-      <!-- LOGO -->
       <div class="auth-logo-wrapper">
         <img
-          src="/assets/images/inconoB.jpg"
+          src="/assets/images/logo-auth-top.jpg"
           alt="El Arca"
           class="auth-logo"
         >
@@ -34,7 +33,6 @@ declare(strict_types=1);
         autocomplete="on"
       >
 
-        <!-- CORREO -->
         <div class="form-group">
           <input
             type="email"
@@ -47,7 +45,6 @@ declare(strict_types=1);
           <label for="correo">Correo electrónico</label>
         </div>
 
-        <!-- CONTRASEÑA -->
         <div class="form-group">
           <input
             type="password"
@@ -60,14 +57,12 @@ declare(strict_types=1);
           <label for="contrasena">Contraseña</label>
         </div>
 
-        <!-- SUBMIT -->
         <button type="submit" class="btn btn-animated">
           <span class="text">Iniciar sesión</span>
         </button>
 
       </form>
 
-      <!-- LINKS -->
       <div class="auth-links">
         <p>
           ¿No tienes cuenta?
@@ -82,9 +77,8 @@ declare(strict_types=1);
     </div>
   </main>
 
-  <!-- FOOTER AUTH -->
   <footer class="site-footer auth-footer">
-    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 

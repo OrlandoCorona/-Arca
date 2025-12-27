@@ -17,25 +17,20 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <!-- NAVBAR -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <main class="app-container home">
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Restaurante Bar <span>El Arca</span>
-        </h1>
-        <p class="hero-subtitle">
-          Naturaleza · Gastronomía · Experiencia Premium
-        </p>
-      </div>
+      <img src="/assets/images/logo-home.png" alt="El Arca" class="hero-logo">
+      <h1 class="hero-title">
+        Restaurante Bar <span>El Arca</span>
+      </h1>
+      <p class="hero-subtitle">
+        Naturaleza · Gastronomía · Experiencia Premium
+      </p>
     </section>
 
-    <!-- INTRO -->
     <section class="section section-intro">
       <header class="section-header">
         <h2>Una experiencia diferente</h2>
@@ -62,7 +57,6 @@ if (!isset($_SESSION['id_usuario'])) {
       </div>
     </section>
 
-    <!-- DESTACADOS / CARRUSEL -->
     <section class="section section-featured">
       <header class="section-header">
         <h2>Lo más destacado</h2>
@@ -72,26 +66,26 @@ if (!isset($_SESSION['id_usuario'])) {
         <div class="carousel-track">
 
           <article class="carousel-item">
-            <img src="/assets/images/inicio10.png" alt="Ambiente del restaurante">
+            <img src="/assets/images/arcairis.jpg" alt="Coctelería">
             <div class="carousel-caption">
-              <h3>El ambiente</h3>
-              <p>Un espacio pensado para disfrutar de día y de noche.</p>
+              <h3>Coctelería</h3>
+              <p>Sabores únicos y combinaciones especiales.</p>
             </div>
           </article>
 
           <article class="carousel-item">
-            <img src="/assets/images/of1.jpg" alt="Promociones">
+            <img src="/assets/images/tacos-asada-inicio.png" alt="Tacos de asada">
             <div class="carousel-caption">
-              <h3>Promociones</h3>
-              <p>Eventos y ofertas especiales durante todo el año.</p>
+              <h3>Tacos</h3>
+              <p>Tradición y sabor en cada platillo.</p>
             </div>
           </article>
 
           <article class="carousel-item">
-            <img src="/assets/images/inicio3.jpg" alt="Eventos">
+            <img src="/assets/images/micheladas-inicio.png" alt="Micheladas">
             <div class="carousel-caption">
-              <h3>Eventos</h3>
-              <p>Celebraciones y reuniones inolvidables.</p>
+              <h3>Micheladas</h3>
+              <p>Refrescantes y preparadas al momento.</p>
             </div>
           </article>
 
@@ -99,7 +93,6 @@ if (!isset($_SESSION['id_usuario'])) {
       </div>
     </section>
 
-    <!-- CTA FINAL -->
     <section class="section section-cta">
       <div class="cta-box">
         <h2>¿Listo para visitarnos?</h2>
@@ -113,14 +106,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
   </main>
 
-  <!-- FOOTER GLOBAL -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <img src="/assets/images/inconoB.jpg" alt="El Arca" class="footer-logo">
+      <img src="/assets/images/logo-footer.jpg" alt="El Arca" class="footer-logo">
       <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>

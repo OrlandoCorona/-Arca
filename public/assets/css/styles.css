@@ -29,10 +29,14 @@ body {
 
 /* Evita imágenes gigantes por defecto */
 img {
-  max-width: 100%;
-  height: auto;
   display: block;
 }
+.img-fluid {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 
 /* Links base */
 a {
@@ -223,48 +227,17 @@ body.auth-page .app-container {
 /* ======================================================
    BLOQUE 12 — NAVBAR ICONOS
 ====================================================== */
+.icon-img {
+  width: 32px;
+  height: 32px;
 
-.nav-icons {
-  display: flex;
-  gap: 1rem;
-}
+  max-width: 32px;
+  max-height: 32px;
 
-.nav-icon {
-  position: relative;
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-icon img {
-  width: 24px;
-  height: 24px;
-  max-width: 24px;
-  max-height: 24px;
-
+  border-radius: 50%;
   object-fit: contain;
-  transition: opacity .25s ease;
 }
 
-.nav-icon span {
-  position: absolute;
-  font-size: .8rem;
-  color: #fff;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease;
-}
-
-.nav-icon:hover img {
-  opacity: 0;
-}
-
-.nav-icon:hover span {
-  opacity: 1;
-}
 /* ======================================================
    BLOQUE 6 — AUTH FONDO (IMAGEN + OVERLAY)
    RESPONSABILIDAD:
