@@ -1,59 +1,141 @@
-/* ======================================================
-   AUTH (LOGIN) – AISLAMIENTO TOTAL
-====================================================== */
+/* =========================
+   BASE
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+:root {
+  --primary: #0ea5e9;
+  --accent-auth-1: #001e54;
+  --accent-auth-2: #009dd6;
+  --accent-auth-3: #b541d8;
+  --radius-lg: 20px;
+  --shadow-soft: 0 20px 45px rgba(0,0,0,.45);
+}
+
+/* =========================
+   BOTONES
+========================= */
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-animated {
+  position: relative;
+  padding: 3px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.btn-animated .text {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, var(--accent-auth-1), var(--accent-auth-2));
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.05rem;
+}
+
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-auth-1),
+    #31a2ff,
+    var(--accent-auth-2),
+    var(--accent-auth-3),
+    var(--accent-auth-1)
+  );
+  opacity: 0;
+  animation: rotate 3s linear infinite;
+  transition: opacity .3s;
+}
+
+.btn-animated:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  to { --angle: 360deg; }
+}
+
+/* =========================
+   AUTH (LOGIN)
+========================= */
 body.auth-page .navbar,
 body.auth-page .app-container {
   display: none !important;
 }
 
-/* ======================================================
-   AUTH – FONDO (UNA SOLA PANTALLA)
-====================================================== */
 .auth-bg {
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
   background:
     linear-gradient(rgba(5,9,20,.65), rgba(5,9,20,.85)),
     url("/assets/images/login.jpg") center / cover no-repeat;
-
   position: relative;
-  overflow: hidden;
 }
 
-/* ======================================================
-   AUTH – CARD
-====================================================== */
 .auth-glass {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.25);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  width: 100%;
   max-width: 420px;
+  width: 100%;
   box-shadow: var(--shadow-soft);
   text-align: center;
 }
 
-/* ======================================================
-   LOGO SUPERIOR
-====================================================== */
+/* LOGO LOGIN – CONTROLADO */
 .auth-logo {
-  width: 90px;
-  height: 90px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 1rem;
   display: block;
 }
 
-/* ======================================================
-   AUTH – FORM (FLOATING LABELS)
-====================================================== */
+.auth-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* FORM */
 .form-group {
   position: relative;
   margin-bottom: 1.4rem;
@@ -64,10 +146,9 @@ body.auth-page .app-container {
   padding: 14px 12px;
   font-size: 1.05rem;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.3);
-  background: transparent;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.05);
   color: #fff;
-  outline: none;
 }
 
 .form-group label {
@@ -76,31 +157,21 @@ body.auth-page .app-container {
   top: 50%;
   transform: translateY(-50%);
   font-size: .95rem;
-  color: #cbd5f5;
+  color: #e5e7eb;
   pointer-events: none;
   transition: all .25s ease;
-  padding: 0 4px;
 }
 
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
   top: -7px;
   font-size: .75rem;
-  color: #9ecbff;
-  background: rgba(20,20,30,.9);
+  background: rgba(15,23,42,.9);
+  padding: 0 6px;
   border-radius: 6px;
 }
 
-/* BOTÓN LOGIN */
-.auth-form .btn {
-  margin: 1.25rem auto 0;
-  display: flex;
-  justify-content: center;
-}
-
-/* ======================================================
-   AUTH – LINKS
-====================================================== */
+/* LINKS */
 .auth-links {
   margin-top: 1rem;
   font-size: .9rem;
@@ -109,551 +180,51 @@ body.auth-page .app-container {
 .auth-links a {
   color: var(--accent-auth-2);
   text-decoration: none;
-  font-weight: 500;
 }
 
-.auth-links a:hover {
-  color: #31a2ff;
-  text-decoration: underline;
+/* FOOTER LOGIN */
+body.auth-page .site-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  text-align: center;
 }
 
-/* ======================================================
-   BOTÓN VOLVER (NO ANIMADO)
-====================================================== */
-.btn-back {
-  background: var(--accent-auth-2);
-  color: #fff;
-  padding: 0.55rem 1.1rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  display: inline-block;
-  margin-top: 1rem;
-  border: none;
-  cursor: pointer;
+body.auth-page .site-footer img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
 }
 
-.btn-back:hover {
-  background: #31a2ff;
+body.auth-page .site-footer p {
+  font-size: .72rem;
+  color: #cbd5f5;
 }
 
-/* ======================================================
-   HOME / MENU – GRIDS BASE
-====================================================== */
-.menu-grid,
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-/* ======================================================
-   CARDS / IMÁGENES
-====================================================== */
-.menu-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 14px;
-}
-
-/* ======================================================
-   FOOTER – BASE GLOBAL (TODAS LAS VISTAS)
-====================================================== */
+/* =========================
+   FOOTER GLOBAL
+========================= */
 .site-footer {
   padding: 2rem 1rem;
   text-align: center;
   color: #94a3b8;
 }
 
-.site-footer .footer-inner {
+.footer-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
 }
 
-.site-footer .footer-logo {
+.footer-logo {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 0.25rem;
+  margin-bottom: .3rem;
 }
 
-.site-footer .footer-text {
-  font-size: 0.8rem;
-}
-
-/* ======================================================
-   NAVBAR – DEFINITIVO
-====================================================== */
-
-.navbar {
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* BRAND */
-.brand {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #fff;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-/* LINKS */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #cbd5f5;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.nav-item img {
-  width: 22px;
-  height: 22px;
-}
-
-.nav-item:hover {
-  color: var(--primary);
-}
-
-/* CTA */
-.nav-cta {
-  margin-left: auto;
-}
-
-/* ICONOS PERFIL / LOGOUT */
-.nav-icons {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-icon {
-  position: relative;
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-decoration: none;
-}
-.nav-icon img {
-  width: 24px;
-  height: 24px;
-  transition: opacity 0.25s ease;
-}
-
-.nav-icon span {
-  position: absolute;
-  font-size: 0.8rem;
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-/* HOVER: icono desaparece, texto aparece */
-.nav-icon:hover img {
-  opacity: 0;
-}
-
-.nav-icon:hover span {
-  opacity: 1;
-}
-
-/* ======================================================
-   HOME – HERO
-====================================================== */
-.hero {
-  padding: 5rem 2rem 4rem;
-  text-align: center;
-}
-
-.hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: 2.6rem;
-  margin-bottom: 0.6rem;
-  line-height: 1.2;
-}
-
-.hero-title span {
-  color: var(--primary);
-}
-
-.hero-subtitle {
-  color: #cbd5f5;
-  font-size: 1.05rem;
-  margin-bottom: 2rem;
-}
-
-/* ======================================================
-   SECTIONS (BASE)
-====================================================== */
-.section {
-  padding: 4rem 2rem;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.section-header h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header p {
-  color: #cbd5f5;
-  font-size: 0.95rem;
-}
-
-/* ======================================================
-   INTRO GRID
-====================================================== */
-.intro-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.intro-card {
-  background: rgba(255,255,255,0.06);
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.intro-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255,255,255,0.09);
-}
-
-.intro-card h3 {
-  margin-bottom: 0.5rem;
-}
-
-/* ======================================================
-   CARRUSEL (HTML + CSS)
-====================================================== */
-.carousel {
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 2rem;
-  scroll-snap-type: x mandatory;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-behavior: smooth;
-}
-
-.carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-item {
-  min-width: 300px;
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  background: rgba(255,255,255,0.05);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.carousel-item:hover {
-  transform: scale(1.03);
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.carousel-caption {
-  padding: 1.2rem;
-}
-
-.carousel-caption h3 {
-  margin-bottom: 0.3rem;
-}
-
-.carousel-caption p {
-  font-size: 0.9rem;
-  color: #cbd5f5;
-}
-
-/* ======================================================
-   CTA FINAL
-====================================================== */
-.section-cta {
-  background: rgba(255,255,255,0.04);
-}
-
-.cta-box {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.03);
-}
-
-.cta-box h2 {
-  margin-bottom: 0.6rem;
-}
-
-.cta-box p {
-  margin-bottom: 1.5rem;
-  color: #cbd5f5;
-}
-
-/* ======================================================
-   MENU – SECCIONES (CATEGORÍAS Y PRODUCTOS)
-====================================================== */
-
-.menu-section {
-  padding: 2rem 2rem 4rem;
-}
-
-/* ======================================================
-   HEADER MENU
-====================================================== */
-.menu-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.menu-header h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.menu-header p {
-  color: #cbd5f5;
-  font-size: 0.95rem;
-}
-
-/* ======================================================
-   GRID MENU
-   (hereda display/grid del bloque base)
-====================================================== */
-
-/* ======================================================
-   CARD (CATEGORÍAS Y PRODUCTOS)
-====================================================== */
-.menu-card {
-  background: rgba(255,255,255,0.06);
-  border-radius: 18px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.menu-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 40px rgba(0,0,0,0.35);
-}
-
-/* ======================================================
-   MEDIA
-====================================================== */
-.menu-media img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* ======================================================
-   BODY
-====================================================== */
-.menu-body {
-  padding: 1.5rem;
-  text-align: center;
-}
-/* ======================================================
-   MENU – TEXTO Y PRECIO
-====================================================== */
-.menu-body h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-}
-
-.menu-body p {
-  font-size: 0.95rem;
-  color: #cbd5f5;
-  margin-bottom: 0.8rem;
-}
-
-.menu-price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.menu-body .btn {
-  margin-top: 0.8rem;
-  display: inline-flex;
-  justify-content: center;
-}
-
-/* ======================================================
-   MODAL PRODUCTO
-====================================================== */
-.modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 200;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal-content {
-  position: relative;
-  background: #020617;
-  border-radius: 18px;
-  padding: 2rem;
-  max-width: 420px;
-  width: 90%;
-  z-index: 2;
-  text-align: center;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-.modal-content img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 1rem;
-}
-
-.modal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-/* ======================================================
-   MENSAJES DE ÉXITO
-====================================================== */
-.mensaje-exito {
-  max-width: 420px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.mensaje-exito h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-
-.mensaje-exito p {
-  color: #cbd5f5;
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
-}
-
-/* ======================================================
-   FOOTER – LOGIN (TRANSPARENTE Y AISLADO)
-====================================================== */
-body.auth-page .site-footer {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0 !important;
-  margin: 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-}
-
-body.auth-page .site-footer .footer-inner {
-  padding: 0;
-  margin: 0;
-}
-
-body.auth-page .site-footer .footer-logo {
-  width: 42px;
-  height: 42px;
-}
-
-body.auth-page .site-footer .footer-text {
-  font-size: 0.72rem;
-  color: #cbd5f5;
-}
-
-/* ======================================================
-   AUTH – LOGO LOGIN (ÚNICO Y CONTROLADO)
-====================================================== */
-.auth-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.auth-logo {
-  width: 64px;
-  height: 64px;
-  max-width: 64px;
-  max-height: 64px;
-  border-radius: 50%;
-  object-fit: contain;
-  display: block;
+.footer-text {
+  font-size: .85rem;
 }

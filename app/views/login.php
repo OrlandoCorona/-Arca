@@ -12,67 +12,58 @@ declare(strict_types=1);
 
 <body class="auth-page">
 
-  <main class="auth-bg">
-    <div class="auth-glass">
+<main class="auth-bg">
+  <div class="auth-glass">
 
-   <div class="auth-logo-wrapper">
-  <img src="/assets/images/inconoB.jpg" alt="El Arca" class="auth-logo">
-</div>
+    <!-- LOGO LOGIN (ÚNICO) -->
+    <img src="/assets/images/inconoB.jpg" alt="El Arca" class="auth-logo">
 
+    <h2 class="auth-title">Iniciar sesión</h2>
 
-      <h2 class="auth-title">Iniciar sesión</h2>
+    <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
 
-      <form method="POST" action="/?action=login" class="auth-form" autocomplete="on">
-
-        <div class="form-group">
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            required
-            placeholder=" "
-            autocomplete="username"
-          >
-          <label for="correo">Correo electrónico</label>
-        </div>
-
-        <div class="form-group">
-          <input
-            type="password"
-            id="contrasena"
-            name="contrasena"
-            required
-            placeholder=" "
-            autocomplete="current-password"
-          >
-          <label for="contrasena">Contraseña</label>
-        </div>
-
-        <button type="submit" class="btn btn-animated">
-          <span class="text">Iniciar sesión</span>
-        </button>
-
-      </form>
-
-      <div class="auth-links">
-        <p>
-          ¿No tienes cuenta?
-          <a href="/?view=register">Regístrate aquí</a>
-        </p>
-        <p>
-          ¿Olvidaste tu contraseña?
-          <a href="/?view=recover-password">Recupérala aquí</a>
-        </p>
+      <div class="form-group">
+        <input
+          type="email"
+          id="correo"
+          name="correo"
+          required
+          placeholder=" "
+          autocomplete="username"
+        >
+        <label for="correo">Correo electrónico</label>
       </div>
 
-    </div>
-  </main>
+      <div class="form-group">
+        <input
+          type="password"
+          id="contrasena"
+          name="contrasena"
+          required
+          placeholder=" "
+          autocomplete="current-password"
+        >
+        <label for="contrasena">Contraseña</label>
+      </div>
 
-  <!-- FOOTER ORIGINAL, SIN FONDO -->
+      <button type="submit" class="btn btn-animated">
+        <span class="text">Iniciar sesión</span>
+      </button>
+
+    </form>
+
+    <div class="auth-links">
+      <p>¿No tienes cuenta? <a href="/?view=register">Regístrate aquí</a></p>
+      <p>¿Olvidaste tu contraseña? <a href="/?view=recover">Recupérala aquí</a></p>
+    </div>
+
+  </div>
+</main>
+
 <footer class="site-footer auth-footer">
-    <img src="/assets/images/inconoB.jpg" alt="El Arca">
-    <p>© 2024 Restaurante Bar El Arca</p>
-  </footer>
+  <img src="/assets/images/inconoB.jpg" alt="El Arca">
+  <p>© 2024 Restaurante Bar El Arca</p>
+</footer>
 
 </body>
 </html>
