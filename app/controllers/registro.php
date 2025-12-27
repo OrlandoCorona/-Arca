@@ -1,47 +1,24 @@
 <?php
 declare(strict_types=1);
 
-/**
- * ============================
- * REGISTRO DE USUARIO
- * ============================
- * - Solo POST
- * - No inicia sesión
- * - No hace login automático
- * - Redirige a successful_registration
- */
-
 require __DIR__ . '/../config/database.php';
 
-// ----------------------------
-// Validar método
-// ----------------------------
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /?view=register');
     exit;
 }
 
-// ----------------------------
-// Obtener datos
-// ----------------------------
-$correo            = trim($_POST['correo'] ?? '');
-$nombre            = trim($_POST['nombre'] ?? '');
-$apellido_paterno  = trim($_POST['apellido_paterno'] ?? '');
-$apellido_materno  = trim($_POST['apellido_materno'] ?? '');
-$telefono          = trim($_POST['telefono'] ?? '');
-$contrasena        = $_POST['contrasena'] ?? '';
-$repetir           = $_POST['repetir_contrasena'] ?? '';
+$correo           = trim($_POST['correo'] ?? '');
+$nombre           = trim($_POST['nombre'] ?? '');
+$apellido_paterno = trim($_POST['apellido_paterno'] ?? '');
+$apellido_materno = trim($_POST['apellido_materno'] ?? '');
+$telefono         = trim($_POST['telefono'] ?? '');
+$contrasena       = $_POST['contrasena'] ?? '';
+$repetir          = $_POST['repetir_contrasena'] ?? '';
 
-// ----------------------------
-// Validaciones básicas
-// ----------------------------
 if (
-    $correo === '' ||
-    $nombre === '' ||
-    $apellido_paterno === '' ||
-    $telefono === '' ||
-    $contrasena === '' ||
-    $repetir === ''
+    $correo === '' || $nombre === '' || $apellido_paterno === '' ||
+    $telefono === '' || $contrasena === '' || $repetir === ''
 ) {
     header('Location: /?view=register');
     exit;
@@ -57,10 +34,7 @@ if ($contrasena !== $repetir) {
     exit;
 }
 
-// ----------------------------
-// Verificar correo existente
-// ----------------------------
-$sql = "SELECT id FROM usuarios WHERE correo = :correo LIMIT 1";
+$sql = "SELECT id_usuario FROM usuarios WHERE correo = :correo LIMIT 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['correo' => $correo]);
 
@@ -69,16 +43,13 @@ if ($stmt->fetch()) {
     exit;
 }
 
-// ----------------------------
-// Insertar usuario
-// ----------------------------
 $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 $sql = "
     INSERT INTO usuarios
-        (correo, nombre, apellido_paterno, apellido_materno, telefono, password)
+        (correo, nombre, apellido_paterno, apellido_materno, telefono, contrasena_hash)
     VALUES
-        (:correo, :nombre, :ap, :am, :telefono, :password)
+        (:correo, :nombre, :ap, :am, :telefono, :hash)
 ";
 
 $stmt = $pdo->prepare($sql);
@@ -88,11 +59,8 @@ $stmt->execute([
     'ap'       => $apellido_paterno,
     'am'       => $apellido_materno,
     'telefono' => $telefono,
-    'password' => $hash
+    'hash'     => $hash
 ]);
 
-// ----------------------------
-// REGISTRO EXITOSO
-// ----------------------------
 header('Location: /?view=successful_registration');
 exit;
