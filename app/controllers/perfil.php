@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * ============================
+ * PERFIL DE USUARIO (PROTEGIDO)
+ * ============================
+ */
+
 if (!isset($_SESSION['id_usuario'])) {
     header('Location: /?view=login');
     exit;
@@ -8,33 +14,39 @@ if (!isset($_SESSION['id_usuario'])) {
 
 require __DIR__ . '/../config/database.php';
 
-$id_usuario = $_SESSION['id_usuario'];
+$id_usuario = (int) $_SESSION['id_usuario'];
 
-// Datos del usuario
-$sqlUsuario = "
-    SELECT nombre, correo
+/**
+ * Obtener datos del usuario
+ */
+$sql = "
+    SELECT
+        nombre,
+        apellido_paterno,
+        apellido_materno,
+        correo,
+        telefono,
+        creado_en
     FROM usuarios
-    WHERE id = :id
+    WHERE id_usuario = :id
+    LIMIT 1
 ";
-$stmt = $pdo->prepare($sqlUsuario);
-$stmt->execute(['id' => $id_usuario]);
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'id' => $id_usuario
+]);
+
 $usuario = $stmt->fetch();
 
 if (!$usuario) {
-    header('Location: /?view=login');
+    // Seguridad: si algo raro pasa, cerramos sesión
+    header('Location: /?action=logout');
     exit;
 }
 
-// Reservaciones
-$sqlReservas = "
-    SELECT fecha, hora, zona
-    FROM reservaciones
-    WHERE id_usuario = :id
-    ORDER BY fecha DESC
-";
-$stmt = $pdo->prepare($sqlReservas);
-$stmt->execute(['id' => $id_usuario]);
-$reservaciones = $stmt->fetchAll();
-
+/**
+ * Cargar vista
+ */
 require __DIR__ . '/../views/perfil.php';
 exit;
