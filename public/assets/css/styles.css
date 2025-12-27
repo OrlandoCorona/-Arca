@@ -46,7 +46,6 @@ body {
   initial-value: 0deg;
   inherits: false;
 }
-
 .btn-animated {
   position: relative;
   padding: 3px;
@@ -56,33 +55,45 @@ body {
 }
 
 .btn-animated .text {
+  position: relative;
+  z-index: 2;
+  display: block;
   padding: 10px 22px;
-  background: linear-gradient(135deg, var(--accent-auth-1), var(--accent-auth-2));
+  background: linear-gradient(135deg, #0ea5e9, #7c3aed);
   color: #fff;
   border-radius: 8px;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
 }
 
+/* CONTORNO */
 .btn-animated::before {
   content: "";
   position: absolute;
-  inset: -1px;
+  inset: -2px;
   border-radius: inherit;
   background: conic-gradient(
     from var(--angle),
-    var(--accent-auth-1),
-    #31a2ff,
-    var(--accent-auth-2),
-    var(--accent-auth-3),
-    var(--accent-auth-1)
+    #0ea5e9,
+    #7c3aed,
+    #22d3ee,
+    #0ea5e9
   );
   opacity: 0;
+  z-index: 1;
   animation: rotate 3s linear infinite;
-  transition: opacity .3s;
 }
 
+/* SOLO SE ACTIVA EL BORDE */
 .btn-animated:hover::before {
   opacity: 1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 @keyframes rotate {
