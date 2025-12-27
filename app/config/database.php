@@ -1,11 +1,19 @@
 <?php
 declare(strict_types=1);
 
-$host     = $_ENV['DB_HOST'] ?? 'localhost';
-$port     = $_ENV['DB_PORT'] ?? '5432';
-$dbname   = $_ENV['DB_NAME'] ?? 'arca';
-$user     = $_ENV['DB_USER'] ?? 'postgres';
-$password = $_ENV['DB_PASSWORD'] ?? '030899';
+$url = $_ENV['DATABASE_URL'] ?? '';
+
+if ($url === '') {
+    die('DATABASE_URL no definida');
+}
+
+$db = parse_url($url);
+
+$host     = $db['host'];
+$port     = $db['port'] ?? 5432;
+$dbname   = ltrim($db['path'], '/');
+$user     = $db['user'];
+$password = $db['pass'];
 
 try {
     $pdo = new PDO(
