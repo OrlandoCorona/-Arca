@@ -116,7 +116,7 @@ if (!isset($_SESSION['id_usuario'])) {
   <!-- FOOTER GLOBAL -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+      <img src="/assets/images/inconoB.jpg" alt="El Arca" class="footer-logo">
       <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
     </div>
   </footer>
