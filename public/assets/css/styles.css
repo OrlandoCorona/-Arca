@@ -316,25 +316,28 @@ ol {
    - SIN filtros pesados
 ====================================================== */
 .auth-glass {
-  position: relative; /* ⬅️ ASEGURA CAPA */
+  position: relative;
   z-index: 2;
-}
 
-.auth-glass {
   width: 360px;
-  /* Glassmorphism: más transparente, borde sutil y desenfoque de fondo */
-  background: rgba(255, 255, 255, 0.0025);
   padding: 2rem;
+  margin-top: -40px; /* ⬅️ sube el panel, evita choque con labels */
+
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+
 
 .auth-bg {
   min-height: 100vh;
@@ -750,4 +753,41 @@ ol {
   justify-content: center;
   gap: 0.4rem;
   text-align: center;
+}
+/* ===============================
+   BOTÓN CON BORDE ANIMADO (AUTH)
+   =============================== */
+
+.btn-animated {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  background: linear-gradient(
+    120deg,
+    #0ea5e9,
+    #22d3ee,
+    #a855f7
+  );
+  z-index: -1;
+}
+
+.btn-animated:hover {
+  transform: translateY(-1px);
+}
+.form-group input {
+  padding: 0.9rem 0.75rem;
+}
+.auth-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
 }
