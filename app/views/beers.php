@@ -58,14 +58,14 @@ if (!isset($_SESSION['id_usuario'])) {
                 </div>
             </article>
 
-            <!-- Aquí pueden ir más cervezas -->
+            <!-- Más cervezas aquí -->
 
         </div>
     </section>
 
 </main>
 
-<!-- MODAL DE PRODUCTO -->
+<!-- MODAL PRODUCTO -->
 <div class="modal" id="productModal">
     <div class="modal-overlay"></div>
 
@@ -90,29 +90,8 @@ if (!isset($_SESSION['id_usuario'])) {
   </div>
 </footer>
 
-
-
-<script>
-document.querySelectorAll('.open-modal').forEach(btn => {
-    btn.addEventListener('click', e => {
-        const card = e.target.closest('.product-card');
-
-        document.getElementById('modalImg').src = card.dataset.img;
-        document.getElementById('modalTitle').textContent = card.dataset.name;
-        document.getElementById('modalDesc').textContent = card.dataset.desc;
-
-        document.getElementById('productModal').classList.add('active');
-    });
-});
-
-document.getElementById('closeModal').onclick = () => {
-    document.getElementById('productModal').classList.remove('active');
-};
-
-document.querySelector('.modal-overlay').onclick = () => {
-    document.getElementById('productModal').classList.remove('active');
-};
-</script>
+<!-- JS UI CENTRALIZADO -->
+<script src="/assets/js/ui.js"></script>
 
 </body>
 </html>

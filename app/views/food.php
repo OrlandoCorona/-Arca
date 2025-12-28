@@ -20,80 +20,75 @@ if (!isset($_SESSION['id_usuario'])) {
   <!-- NAVBAR -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <!-- CONTENIDO -->
-  <main class="app-container product-page">
+  <main class="app-container menu-page">
 
-    <!-- BOTÓN VOLVER -->
+    <!-- VOLVER -->
     <button class="btn-back" onclick="history.back()">← Volver</button>
 
     <!-- HEADER -->
-    <section class="menu-section">
-      <header class="menu-header">
-        <h1>Comida</h1>
-        <p>Platillos preparados al momento</p>
-      </header>
+    <header class="menu-header">
+      <h1>Comida</h1>
+      <p>Elige una categoría</p>
+    </header>
 
-      <!-- GRID DE PRODUCTOS -->
-      <div class="menu-grid">
+    <!-- GRID DE CATEGORÍAS -->
+    <section class="menu-grid">
 
-        <!-- PRODUCTO -->
-        <article class="menu-card product-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio1.jpg" alt="Platillo tradicional">
-          </div>
+      <!-- TACOS -->
+      <a href="/?view=tacos" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/tacos-asada-inicio.png" alt="Tacos">
+        </div>
+        <div class="menu-body">
+          <h3>Tacos</h3>
+          <p>Preparados al momento con recetas tradicionales</p>
+        </div>
+      </a>
 
-          <div class="menu-body">
-            <h3>Platillo Tradicional</h3>
-            <p>Receta clásica preparada con el sabor característico de El Arca.</p>
+      <!-- EXTRAS -->
+      <a href="/?view=extras" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/extras-inicio.png" alt="Extras">
+        </div>
+        <div class="menu-body">
+          <h3>Extras</h3>
+          <p>Complementos para acompañar tus platillos</p>
+        </div>
+      </a>
 
-            <div class="product-footer">
-              <span class="menu-price">$140</span>
-              <button class="btn btn-animated">
-                <span class="text">Agregar</span>
-              </button>
-            </div>
-          </div>
-        </article>
+      <!-- ESPECIALIDADES -->
+      <a href="/?view=especialidades" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/especialidades-inicio.png" alt="Especialidades">
+        </div>
+        <div class="menu-body">
+          <h3>Especialidades</h3>
+          <p>Platillos destacados de la casa</p>
+        </div>
+      </a>
 
-        <!-- PRODUCTO -->
-        <article class="menu-card product-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio2.jpg" alt="Especial de la casa">
-          </div>
+      <!-- POSTRES -->
+      <a href="/?view=postres" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/postres-inicio.png" alt="Postres">
+        </div>
+        <div class="menu-body">
+          <h3>Postres</h3>
+          <p>El toque dulce para cerrar tu experiencia</p>
+        </div>
+      </a>
 
-          <div class="menu-body">
-            <h3>Especial de la Casa</h3>
-            <p>Una opción ideal para quienes buscan algo diferente y delicioso.</p>
+      <!-- SNACKS -->
+      <a href="/?view=snacks" class="menu-card">
+        <div class="menu-media">
+          <img src="/assets/images/snacks-inicio.png" alt="Snacks">
+        </div>
+        <div class="menu-body">
+          <h3>Snacks</h3>
+          <p>Opciones ligeras para compartir</p>
+        </div>
+      </a>
 
-            <div class="product-footer">
-              <span class="menu-price">$160</span>
-              <button class="btn btn-animated">
-                <span class="text">Agregar</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCTO -->
-        <article class="menu-card product-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio3.jpg" alt="Complemento">
-          </div>
-
-          <div class="menu-body">
-            <h3>Complemento</h3>
-            <p>Perfecto para acompañar cualquier platillo principal.</p>
-
-            <div class="product-footer">
-              <span class="menu-price">$80</span>
-              <button class="btn btn-animated">
-                <span class="text">Agregar</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-      </div>
     </section>
 
   </main>
@@ -106,6 +101,5 @@ if (!isset($_SESSION['id_usuario'])) {
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>

@@ -23,7 +23,7 @@ if (!isset($_SESSION['id_usuario'])) {
   <!-- CONTENIDO -->
   <main class="app-container menu-page">
 
-    <!-- BOTÓN VOLVER -->
+    <!-- VOLVER -->
     <button class="btn-back" onclick="history.back()">← Volver</button>
 
     <!-- HEADER -->
@@ -32,39 +32,39 @@ if (!isset($_SESSION['id_usuario'])) {
       <p>Descubre nuestras categorías</p>
     </header>
 
-    <!-- GRID -->
+    <!-- GRID DE CATEGORÍAS -->
     <section class="menu-grid">
 
       <!-- BEBIDAS -->
       <a href="/?view=beers" class="menu-card">
         <div class="menu-media">
-          <img src="/assets/images/inicio6.jpg" alt="Bebidas">
+          <img src="/assets/images/arca-iris.jpg" alt="Bebidas y copeo">
         </div>
         <div class="menu-body">
           <h3>Bebidas</h3>
-          <p>Cervezas y bebidas refrescantes</p>
+          <p>Cervezas, botellas y copeo</p>
         </div>
       </a>
 
       <!-- MICHELADAS -->
       <a href="/?view=micheladas" class="menu-card">
         <div class="menu-media">
-          <img src="/assets/images/inicio5.jpg" alt="Micheladas">
+          <img src="/assets/images/micheladas-inicio.png" alt="Micheladas">
         </div>
         <div class="menu-body">
           <h3>Micheladas</h3>
-          <p>Nuestras especialidades</p>
+          <p>Nuestras especialidades refrescantes</p>
         </div>
       </a>
 
       <!-- COMIDA -->
       <a href="/?view=food" class="menu-card">
         <div class="menu-media">
-          <img src="/assets/images/inicio3.jpg" alt="Comida">
+          <img src="/assets/images/tacos-asada-inicio.png" alt="Comida">
         </div>
         <div class="menu-body">
           <h3>Comida</h3>
-          <p>Platillos preparados al momento</p>
+          <p>Tacos y platillos preparados al momento</p>
         </div>
       </a>
 
@@ -80,6 +80,5 @@ if (!isset($_SESSION['id_usuario'])) {
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
 </body>
 </html>

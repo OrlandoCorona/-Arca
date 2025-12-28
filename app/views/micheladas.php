@@ -17,44 +17,82 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <body>
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+<?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="app-container product-page">
+<main class="app-container product-page">
 
+  <!-- VOLVER -->
+  <div class="menu-back">
     <button class="btn-back" onclick="history.back()">← Volver</button>
+  </div>
 
-    <section class="menu-section">
+  <section class="menu-section">
 
-      <header class="menu-header">
-        <h1>Micheladas</h1>
-        <p>Refrescantes, preparadas al momento</p>
-      </header>
+    <header class="menu-header">
+      <h1>Micheladas</h1>
+      <p>Refrescantes, preparadas al momento</p>
+    </header>
 
-      <div class="menu-grid">
+    <!-- GRID DE PRODUCTOS -->
+    <div class="menu-grid">
 
-        <article class="menu-card">
-          <div class="menu-media">
-            <img src="/assets/images/inicio5.jpg" alt="Michelada clásica">
-          </div>
-          <div class="menu-body">
-            <h3>Michelada Clásica</h3>
-            <p>Limón, sal y salsas tradicionales.</p>
+      <article class="product-card"
+        data-name="Michelada Clásica"
+        data-price="75"
+        data-img="/assets/images/inicio5.jpg"
+        data-desc="Limón natural, sal y salsas tradicionales. Bien fría.">
+
+        <div class="menu-media">
+          <img src="/assets/images/inicio5.jpg" alt="Michelada Clásica">
+        </div>
+
+        <div class="product-body">
+          <h3>Michelada Clásica</h3>
+          <p>Limón, sal y salsas tradicionales.</p>
+
+          <div class="product-footer">
             <span class="menu-price">$75</span>
+            <button class="btn product-btn open-modal">
+              Ver detalle
+            </button>
           </div>
-        </article>
+        </div>
+      </article>
 
-      </div>
+      <!-- Puedes agregar más micheladas aquí -->
 
-    </section>
-  </main>
-
-  <!-- FOOTER GLOBAL -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
     </div>
-  </footer>
+
+  </section>
+</main>
+
+<!-- MODAL PRODUCTO -->
+<div class="modal" id="productModal">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-content">
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+
+    <div class="modal-actions">
+      <button class="btn btn-animated">
+        <span class="text">Añadir al carrito</span>
+      </button>
+      <button class="btn-back" id="closeModal">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+  </div>
+</footer>
+
+<!-- JS UI CENTRALIZADO -->
+<script src="/assets/js/ui.js"></script>
 
 </body>
 </html>

@@ -121,6 +121,6 @@ if (!isset($_SESSION['id_usuario'])) {
     </div>
   </footer>
 
-  <script src="/assets/js/script.js"></script>
+  
 </body>
 </html>

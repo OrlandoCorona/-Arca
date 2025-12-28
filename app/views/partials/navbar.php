@@ -1,130 +1,61 @@
 <?php
-declare(strict_types=1);
-
-if (!isset($_SESSION['id_usuario'])) {
-  header('Location: /?view=login');
-  exit;
-}
+// app/views/partials/navbar.php
+$currentView = $_GET['view'] ?? 'home';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca — Restaurante Bar</title>
-  <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
 
-<body>
+<nav class="navbar">
+  <div class="navbar-inner">
 
-  <!-- NAVBAR -->
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+    <!-- BRAND -->
+    <a href="/?view=home" class="brand">
+      <img src="/assets/images/logo-navbar.jpg" alt="El Arca" class="nav-brand-logo">
+      <span>El Arca</span>
+    </a>
 
-  <main class="app-container home">
+    <!-- LINKS PRINCIPALES -->
+    <ul class="nav-links">
 
-    <!-- HERO -->
-    <section class="hero">
-      <img
-        src="/assets/images/logo-home.png"
-        alt="El Arca"
-        class="hero-logo"
-      >
-      <h1 class="hero-title">
-        Restaurante Bar <span>El Arca</span>
-      </h1>
-      <p class="hero-subtitle">
-        Naturaleza · Gastronomía · Experiencia Premium
-      </p>
-    </section>
-
-    <!-- INTRO -->
-    <section class="section section-intro">
-      <header class="section-header">
-        <h2>Una experiencia diferente</h2>
-        <p>
-          En El Arca combinamos gastronomía, naturaleza y momentos memorables.
-        </p>
-      </header>
-
-      <div class="intro-grid">
-        <article class="intro-card">
-          <h3>Ambiente natural</h3>
-          <p>Espacios abiertos y zonas familiares para disfrutar sin prisas.</p>
-        </article>
-
-        <article class="intro-card">
-          <h3>Cocina de calidad</h3>
-          <p>Ingredientes frescos y recetas cuidadosamente preparadas.</p>
-        </article>
-
-        <article class="intro-card">
-          <h3>Momentos especiales</h3>
-          <p>Eventos, reuniones y celebraciones en un entorno único.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- DESTACADOS -->
-    <section class="section section-featured">
-      <header class="section-header">
-        <h2>Lo más destacado</h2>
-      </header>
-
-      <div class="carousel">
-        <div class="carousel-track">
-
-          <article class="carousel-item">
-            <img src="/assets/images/arcairis.jpg" alt="Coctelería">
-            <div class="carousel-caption">
-              <h3>Coctelería</h3>
-              <p>Sabores únicos y combinaciones especiales.</p>
-            </div>
-          </article>
-
-          <article class="carousel-item">
-            <img src="/assets/images/tacos-asada-inicio.png" alt="Tacos">
-            <div class="carousel-caption">
-              <h3>Tacos</h3>
-              <p>Tradición y sabor en cada platillo.</p>
-            </div>
-          </article>
-
-          <article class="carousel-item">
-            <img src="/assets/images/micheladas-inicio.png" alt="Micheladas">
-            <div class="carousel-caption">
-              <h3>Micheladas</h3>
-              <p>Refrescantes y preparadas al momento.</p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section section-cta">
-      <div class="cta-box">
-        <h2>¿Listo para visitarnos?</h2>
-        <p>Reserva tu mesa y vive la experiencia El Arca.</p>
-
-        <a href="/?view=reservaciones" class="btn btn-animated">
-          <span class="text">Reservar ahora</span>
+      <li>
+        <a href="/?view=home"
+           class="nav-link <?= $currentView === 'home' ? 'active' : '' ?>">
+          <img src="/assets/images/icon-home.png" alt="Inicio">
+          <span>Inicio</span>
         </a>
-      </div>
-    </section>
+      </li>
 
-  </main>
+      <li>
+        <a href="/?view=menu"
+           class="nav-link <?= $currentView === 'menu' || $currentView === 'food' ? 'active' : '' ?>">
+          <img src="/assets/images/icon-menu.png" alt="Menú">
+          <span>Menú</span>
+        </a>
+      </li>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img
-        src="/assets/images/logo-footer.jpg"
-        alt="El Arca"
-        class="footer-logo"
-      >
-      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+      <li>
+        <a href="/?view=reservaciones"
+           class="nav-link <?= $currentView === 'reservaciones' ? 'active' : '' ?>">
+          <img src="/assets/images/icon-reservaciones.png" alt="Reservaciones">
+          <span>Reservaciones</span>
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- ACCIONES DERECHA -->
+    <div class="nav-actions">
+
+      <a href="/?view=perfil"
+         class="nav-link <?= $currentView === 'perfil' ? 'active' : '' ?>">
+        <img src="/assets/images/icon-user.png" alt="Perfil">
+        <span>Perfil</span>
+      </a>
+
+      <a href="/?action=logout" class="nav-link danger">
+        <img src="/assets/images/icon-logout.png" alt="Salir">
+        <span>Salir</span>
+      </a>
+
     </div>
-  </footer>
 
-</body>
-</html>
+  </div>
+</nav>

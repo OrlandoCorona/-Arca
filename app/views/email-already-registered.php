@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); ?>
+<?php
+declare(strict_types=1);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,29 +12,33 @@
 
 <body class="auth-page">
 
-<div class="auth-bg">
+<main class="auth-bg">
 
-    <main class="form-container">
-        <div class="auth-glass">
-            <div class="auth-logo">
-                <img src="/assets/images/inconoB.jpg" alt="El Arca">
-            </div>
-            <h2>Correo ya registrado</h2>
-            <p>Este correo ya está asociado a una cuenta.</p>
-            <a href="/?view=login" class="btn btn-animated">
-                <span class="text">Volver</span>
-            </a>
+    <div class="auth-glass">
+
+        <div class="auth-logo-wrapper">
+            <img
+                src="/assets/images/logo-auth-top.jpg"
+                alt="El Arca"
+                class="auth-logo"
+            >
         </div>
-    </main>
-<footer class="site-footer">
-  <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-    <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-  </div>
+
+        <h2 class="auth-title">Correo ya registrado</h2>
+        <p>Este correo ya está asociado a una cuenta.</p>
+
+        <a href="/?view=login" class="btn btn-animated">
+            <span class="text">Volver</span>
+        </a>
+
+    </div>
+
+</main>
+
+<footer class="site-footer auth-footer">
+    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
 </footer>
 
-
-
-</div>
 </body>
 </html>

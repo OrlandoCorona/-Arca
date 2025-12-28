@@ -21,9 +21,9 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <main class="app-container product-page">
 
-    <!-- VOLVER -->
+    <!-- VOLVER A COMIDA -->
     <div class="menu-back">
-        <button class="btn-back" onclick="history.back()">← Volver</button>
+        <a href="/?view=food" class="btn-back">← Volver</a>
     </div>
 
     <section class="menu-section">
@@ -37,7 +37,6 @@ if (!isset($_SESSION['id_usuario'])) {
 
             <article class="product-card"
                 data-name="Taco al Pastor"
-                data-price="25"
                 data-img="/assets/images/taco1.jpg"
                 data-desc="Carne marinada con piña y especias tradicionales.">
 
@@ -80,6 +79,7 @@ if (!isset($_SESSION['id_usuario'])) {
         </div>
     </div>
 </div>
+
 <footer class="site-footer">
   <div class="footer-inner">
     <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
@@ -87,27 +87,8 @@ if (!isset($_SESSION['id_usuario'])) {
   </div>
 </footer>
 
-<script>
-document.querySelectorAll('.open-modal').forEach(btn => {
-    btn.addEventListener('click', e => {
-        const card = e.target.closest('.product-card');
-
-        document.getElementById('modalImg').src = card.dataset.img;
-        document.getElementById('modalTitle').textContent = card.dataset.name;
-        document.getElementById('modalDesc').textContent = card.dataset.desc;
-
-        document.getElementById('productModal').classList.add('active');
-    });
-});
-
-document.getElementById('closeModal').onclick = () => {
-    document.getElementById('productModal').classList.remove('active');
-};
-
-document.querySelector('.modal-overlay').onclick = () => {
-    document.getElementById('productModal').classList.remove('active');
-};
-</script>
+<!-- JS UI CENTRALIZADO -->
+<script src="/assets/js/ui.js"></script>
 
 </body>
 </html>
