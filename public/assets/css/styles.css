@@ -152,6 +152,10 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
+  max-width: 320px; /* mantener formularios contenidos */
+  width: 100%;
+  margin: 0 auto;
+  align-items: center; /* centra botones sin tocar .btn */
 }
 
 /* CONTENEDOR INPUT */
@@ -184,8 +188,8 @@ ol {
   color: var(--text-soft);
 
   pointer-events: none;
-  background: rgba(10, 15, 25, 0.95);
-  padding: 0 0.25rem;
+  background: transparent;
+  padding: 0;
 
   transition: 0.25s ease;
 }
@@ -193,7 +197,7 @@ ol {
 /* EFECTO FLOTANTE */
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
-  top: -6px;
+  top: -8px;
   font-size: 0.7rem;
   color: var(--primary);
 }
@@ -315,7 +319,7 @@ ol {
   background: rgba(10, 15, 25, 0.88);
   padding: 2rem;
   border-radius: 18px;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
 }
 
 .auth-bg {
@@ -385,8 +389,8 @@ ol {
 }
 
 .nav-brand-logo {
-  height: 34px;
-  width: 34px;
+  height: 30px;
+  width: 30px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -624,7 +628,9 @@ ol {
 .footer-logo {
   width: 42px;
   height: 42px;
-  object-fit: contain;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .footer-text {
@@ -640,8 +646,10 @@ ol {
 }
 
 .auth-footer img {
-  width: 56px;
-  height: auto;
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 /* ======================================================
    BLOQUE 12 — BOTONES & UTILIDADES
