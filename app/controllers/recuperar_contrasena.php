@@ -4,14 +4,14 @@ declare(strict_types=1);
 require __DIR__ . '/../config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /?view=recover');
+    header('Location: /?view=recover-password');
     exit;
 }
 
 $correo = trim($_POST['correo'] ?? '');
 
 if ($correo === '' || !filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-    header('Location: /?view=recover');
+    header('Location: /?view=recover-password');
     exit;
 }
 

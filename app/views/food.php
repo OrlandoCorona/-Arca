@@ -56,16 +56,7 @@ if (!isset($_SESSION['id_usuario'])) {
         </div>
       </a>
 
-      <!-- ESPECIALIDADES -->
-      <a href="/?view=especialidades" class="menu-card">
-        <div class="menu-media">
-          <img src="/assets/images/especialidades-inicio.png" alt="Especialidades">
-        </div>
-        <div class="menu-body">
-          <h3>Especialidades</h3>
-          <p>Platillos destacados de la casa</p>
-        </div>
-      </a>
+      <!-- ESPECIALIDADES removed: view not present -->
 
       <!-- POSTRES -->
       <a href="/?view=postres" class="menu-card">

@@ -52,7 +52,7 @@ if (!isset($_SESSION['id_usuario'])) {
           <div class="form-group">
             <input
               type="number"
-              name="personas"
+              name="zona"
               min="1"
               max="20"
               required

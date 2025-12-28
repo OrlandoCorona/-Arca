@@ -23,7 +23,7 @@ declare(strict_types=1);
 
             <h2 class="auth-title">Este correo ya está asociado a una cuenta.
                 Puedes iniciar sesión o recuperar tu contraseña.</p>
-                <a href="/?view=recover">¿Olvidaste tu contraseña?</a>
+                <a href="/?view=recover-password">¿Olvidaste tu contraseña?</a>
 
                 <a href="/?view=login" class="btn btn-animated">
                     <span class="text">Volver</span>
