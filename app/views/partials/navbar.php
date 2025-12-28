@@ -15,21 +15,21 @@
 
       <li>
         <a href="/?view=home" class="nav-link nav-home">
-          <img src="/assets/images/icon-home.png" alt="Inicio">
+          <img src="/assets/images/home.png" alt="Inicio">
           <span>Inicio</span>
         </a>
       </li>
 
       <li>
         <a href="/?view=menu" class="nav-link nav-menu">
-          <img src="/assets/images/icon-menu.png" alt="Menú">
+          <img src="/assets/images/menu.png" alt="Menú">
           <span>Menú</span>
         </a>
       </li>
 
       <li>
         <a href="/?view=reservaciones" class="nav-link nav-reservaciones">
-          <img src="/assets/images/icon-reservaciones.png" alt="Reservaciones">
+          <img src="/assets/images/reservaciones.png" alt="Reservaciones">
           <span>Reservaciones</span>
         </a>
       </li>
@@ -40,7 +40,7 @@
     <div class="nav-actions">
 
       <a href="/?view=perfil" class="nav-link nav-perfil">
-        <img src="/assets/images/icon-user.png" alt="Perfil">
+        <img src="/assets/images/perfil.png" alt="Perfil">
         <span>Perfil</span>
       </a>
 

@@ -19,7 +19,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <body>
 
   <!-- NAVBAR -->
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+  <?php require __DIR__ . '/views/partials/navbar.php'; ?>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="app-container home">
