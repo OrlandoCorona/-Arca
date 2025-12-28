@@ -26,7 +26,7 @@ declare(strict_types=1);
 
       <h2 class="auth-title">Recuperar contraseña</h2>
 
-      <form method="POST" action="/?action=recover" class="auth-form">
+      <form method="POST" action="/?action=recover-password" class="auth-form">
 
         <div class="form-group">
           <input
