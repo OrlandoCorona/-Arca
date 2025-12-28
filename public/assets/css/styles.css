@@ -141,7 +141,7 @@ ol {
 }
 
 /* Contenedor principal del botón para iconos de navbar (añadido por petición) */
-.btn {
+.navbar .btn {
   position: relative;
   width: 150px;
   height: 50px;
@@ -157,8 +157,8 @@ ol {
   transition-duration: 0.3s;
 }
 
-/* El texto que aparece al hacer hover */
-.text {
+/* El texto que aparece al hacer hover (específico para botones en navbar) */
+.navbar .btn .text {
   width: 0%;
   opacity: 0;
   color: white;
@@ -171,19 +171,19 @@ ol {
   justify-content: center;
 }
 
-/* Estado Hover: Cuando pasas el mouse sobre el botón */
-.btn:hover {
+/* Estado Hover: Cuando pasas el mouse sobre el botón (navbar) */
+.navbar .btn:hover {
   padding-left: 20px;
 }
 
-.btn:hover .text {
+.navbar .btn:hover .text {
   opacity: 1;
   width: 70%;
   padding-right: 10px;
 }
 
-/* Estado Active: Cuando haces clic */
-.btn:active {
+/* Estado Active: Cuando haces clic (navbar) */
+.navbar .btn:active {
   transform: translate(2px, 2px);
   transition-duration: 0.1s;
 }
