@@ -312,12 +312,15 @@ ol {
    - Imagen LCP controlada
    - SIN filtros pesados
 ====================================================== */
-
+.auth-glass {
+  position: relative; /* ⬅️ ASEGURA CAPA */
+  z-index: 2;
+}
 
 .auth-glass {
   width: 360px;
   /* Glassmorphism: más transparente, borde sutil y desenfoque de fondo */
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.0025);
   padding: 2rem;
   border-radius: 18px;
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
