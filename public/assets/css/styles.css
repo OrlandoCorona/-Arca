@@ -206,24 +206,6 @@ ol {
    - SIN filtros pesados
 ====================================================== */
 
-.auth-bg {
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      rgba(5, 9, 20, 0.75),
-      rgba(5, 9, 20, 0.9)
-    ),
-    url("/assets/images/login-bg.webp");
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 /* CONTENEDOR GLASS */
 .auth-glass {
