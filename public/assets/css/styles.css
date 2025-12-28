@@ -50,48 +50,7 @@ ul,
 ol {
   list-style: none;
 }
-/* ======================================================
-   BLOQUE 2 — VARIABLES CSS
-   RESPONSABILIDAD:
-   - Paleta de colores
-   - Radios
-   - Sombras
-   - Valores reutilizables
-   - NO layout
-====================================================== */
 
-:root {
-  /* Brand */
-  --primary: #0ea5e9;
-  --primary-dark: #0369a1;
-
-  /* Auth accents */
-  --accent-auth-1: #001e54;
-  --accent-auth-2: #009dd6;
-  --accent-auth-3: #b541d8;
-
-  /* Backgrounds */
-  --bg-dark: #020617;
-  --bg-soft: rgba(2, 6, 23, 0.85);
-
-  /* Text */
-  --text-main: #e5e7eb;
-  --text-muted: #cbd5f5;
-  --text-soft: #94a3b8;
-
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-
-  /* Shadows */
-  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.45);
-  --shadow-hard: 0 30px 60px rgba(0, 0, 0, 0.55);
-
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-base: 0.3s ease;
-}
 /* ======================================================
    BLOQUE 2 — VARIABLES CSS
    RESPONSABILIDAD:
@@ -181,6 +140,70 @@ ol {
   outline-offset: 2px;
 }
 /* ======================================================
+   BLOQUE 4 — LAYOUT GLOBAL / APP CONTAINERS
+   RESPONSABILIDAD:
+   - Contenedores base
+   - Home layout
+   - Secciones generales
+====================================================== */
+
+.app-container {
+  min-height: calc(100vh - 64px);
+  width: 100%;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+/* HERO */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 3rem 1.2rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: var(--text-main);
+}
+
+.hero-title span {
+  color: var(--primary);
+}
+
+.hero-subtitle {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+}
+
+/* SECCIONES */
+.section {
+  padding: 3rem 1.2rem;
+}
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  color: var(--text-main);
+}
+
+.section-header p {
+  margin-top: 0.4rem;
+  color: var(--text-muted);
+}
+
+/* ======================================================
    BLOQUE 5 — AUTH PAGE (AISLAMIENTO TOTAL)
    RESPONSABILIDAD:
    - Aislar login / register / recover
@@ -218,14 +241,6 @@ ol {
   border-radius: 18px;
 }
 
-/* ======================================================
-   BLOQUE 6 — AUTH BACKGROUND (LCP OPTIMIZADO)
-   RESPONSABILIDAD:
-   - Fondo AUTH
-   - Imagen LCP controlada
-   - SIN filtros pesados
-====================================================== */
-
 .auth-bg {
   position: relative;
   min-height: 100vh;
@@ -238,95 +253,6 @@ ol {
 
 
 /* CONTENEDOR GLASS */
-
-/* ======================================================
-   BLOQUE 7 — NAVBAR
-   RESPONSABILIDAD:
-   - Navegación clara
-   - Estado activo visible
-   - Sticky sin afectar LCP
-====================================================== */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  background: rgba(5, 9, 20, 0.9);
-  backdrop-filter: blur(6px);
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.navbar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1.2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-/* BRAND */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-
-  font-weight: 600;
-  color: var(--text-light);
-  text-decoration: none;
-}
-
-.nav-brand-logo {
-  height: 34px;
-  width: auto;
-}
-
-/* LINKS */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-
-  padding: 0.4rem 0.75rem;
-  border-radius: var(--radius-sm);
-
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.nav-link img {
-  width: 18px;
-  height: 18px;
-}
-
-/* ACTIVE */
-.nav-link.active {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-light);
-}
-
-/* ACTIONS */
-.nav-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.nav-link.danger {
-  color: #ff6b6b;
-}
 /* ======================================================
    BLOQUE 7 — NAVBAR
    RESPONSABILIDAD:
@@ -624,24 +550,6 @@ ol {
    - Estados hover/active
    - Utilidades menores
 ====================================================== */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.55rem 1.2rem;
-  border-radius: var(--radius-sm);
-
-  border: none;
-  cursor: pointer;
-  font-size: 0.95rem;
-
-  background: var(--primary);
-  color: #fff;
-
-  transition: background 0.2s ease, transform 0.15s ease;
-}
 
 .btn:hover {
   background: var(--primary-dark);
