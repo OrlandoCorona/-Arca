@@ -18,10 +18,12 @@ declare(strict_types=1);
 
       <div class="auth-logo-wrapper">
         <img
-          src="/assets/images/logo-auth-top.jpg"
-          alt="El Arca"
-          class="auth-logo"
-        >
+  src="/assets/images/logo-auth-top.webp"
+  alt="El Arca"
+  class="auth-logo"
+  fetchpriority="high"
+  decoding="async"
+>
       </div>
 
       <h2 class="auth-title">Correo enviado</h2>

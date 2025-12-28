@@ -37,7 +37,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
         <div class="auth-logo-wrapper">
           <img
-            src="/assets/images/inconoB.jpg"
+            src="/assets/images/logo-footer.jpg"
             alt="Usuario El Arca"
             class="auth-logo"
           >

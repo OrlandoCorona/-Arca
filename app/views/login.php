@@ -7,20 +7,42 @@ declare(strict_types=1);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar sesión — El Arca</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <!-- PRELOAD LCP (LOGIN BACKGROUND) -->
+  <link
+    rel="preload"
+    as="image"
+    href="/assets/images/login-bg.webp"
+    fetchpriority="high"
+  >
 </head>
 
 <body class="auth-page">
 
   <main class="auth-bg">
 
+    <!-- IMAGEN LCP (ANTES ERA BACKGROUND EN CSS) -->
+    <img
+      src="/assets/images/login-bg.webp"
+      alt=""
+      class="auth-bg-img"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    >
+
     <div class="auth-glass">
 
+      <!-- LOGO -->
       <div class="auth-logo-wrapper">
         <img
-          src="/assets/images/logo-auth-top.jpg"
+          src="/assets/images/logo-auth-top.webp"
           alt="El Arca"
           class="auth-logo"
+          decoding="async"
         >
       </div>
 
@@ -70,7 +92,7 @@ declare(strict_types=1);
         </p>
         <p>
           ¿Olvidaste tu contraseña?
-          <a href="/?view=recover">Recupérala aquí</a>
+          <a href="/?view=recover-password">Recupérala aquí</a>
         </p>
       </div>
 
@@ -78,7 +100,11 @@ declare(strict_types=1);
   </main>
 
   <footer class="site-footer auth-footer">
-    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
+    <img
+      src="/assets/images/logo-auth-footer.jpg"
+      alt="El Arca"
+      decoding="async"
+    >
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 

@@ -19,7 +19,7 @@ declare(strict_types=1);
       <!-- LOGO -->
       <div class="auth-logo-wrapper">
         <img
-          src="/assets/images/inconoB.jpg"
+          src="/assets/images/logo-footer.jpg"
           alt="El Arca"
           class="auth-logo"
         >
@@ -41,7 +41,7 @@ declare(strict_types=1);
 
   <!-- FOOTER AUTH -->
   <footer class="site-footer auth-footer">
-    <img src="/assets/images/inconoB.jpg" alt="El Arca">
+    <img src="/assets/images/logo-footer.jpg" alt="El Arca">
     <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 

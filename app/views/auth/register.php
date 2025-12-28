@@ -8,6 +8,7 @@ if (!isset($_SESSION['id_usuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,7 +73,7 @@ if (!isset($_SESSION['id_usuario'])) {
         <div class="carousel-track">
 
           <article class="carousel-item">
-            <img src="/assets/images/inicio10.png" alt="Ambiente del restaurante">
+            <img src="/assets/images/inicio10.webp" alt="Ambiente del restaurante" loading="lazy" decoding="async">
             <div class="carousel-caption">
               <h3>El ambiente</h3>
               <p>Un espacio pensado para disfrutar de día y de noche.</p>
@@ -116,11 +117,12 @@ if (!isset($_SESSION['id_usuario'])) {
   <!-- FOOTER GLOBAL -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <img src="/assets/images/inconoB.jpg" alt="El Arca" class="footer-logo">
+      <img src="/assets/images/logo-footer.jpg" alt="El Arca" class="footer-logo">
       <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
     </div>
   </footer>
 
-  
+
 </body>
+
 </html>

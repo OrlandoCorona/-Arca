@@ -18,7 +18,7 @@ declare(strict_types=1);
         <div class="auth-glass">
 
             <div class="auth-logo-wrapper">
-                <img src="/assets/images/logo-auth-top.jpg" alt="El Arca" class="auth-logo">
+                <img src="/assets/imageslogo-auth-top.webp" alt="El Arca" class="auth-logo">
             </div>
 
             <h2 class="auth-title">Este correo ya está asociado a una cuenta.
