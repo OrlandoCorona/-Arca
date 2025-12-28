@@ -45,7 +45,7 @@
       </a>
 
       <a href="/?action=logout" class="nav-link danger">
-        <img src="/assets/images/icon-logout.png" alt="Salir">
+        <img src="/assets/images/logout.png" alt="Salir">
         <span>Salir</span>
       </a>
 
