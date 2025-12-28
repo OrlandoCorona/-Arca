@@ -140,6 +140,86 @@ ol {
   outline-offset: 2px;
 }
 /* ======================================================
+   BLOQUE 4 — FORMULARIOS (AUTH)
+   RESPONSABILIDAD:
+   - Inputs flotantes
+   - Labels animados
+   - Formularios login / register / recover
+   - NO layout general
+====================================================== */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* CONTENEDOR INPUT */
+.form-group {
+  position: relative;
+}
+
+/* INPUT */
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 0.65rem;
+  font-size: 0.95rem;
+
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+
+  color: var(--text-main);
+  outline: none;
+}
+
+/* LABEL FLOTANTE */
+.form-group label {
+  position: absolute;
+  left: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 0.85rem;
+  color: var(--text-soft);
+
+  pointer-events: none;
+  background: rgba(10, 15, 25, 0.95);
+  padding: 0 0.25rem;
+
+  transition: 0.25s ease;
+}
+
+/* EFECTO FLOTANTE */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  top: -6px;
+  font-size: 0.7rem;
+  color: var(--primary);
+}
+
+/* FOCUS */
+.form-group input:focus {
+  border-color: var(--primary);
+}
+
+/* LINKS AUTH */
+.auth-links {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.auth-links a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* ======================================================
    BLOQUE 4 — LAYOUT GLOBAL / APP CONTAINERS
    RESPONSABILIDAD:
    - Contenedores base
@@ -230,27 +310,37 @@ ol {
 ====================================================== */
 
 
-/* CONTENEDOR GLASS */
 .auth-glass {
-  position: relative;
-  z-index: 1;
   width: 360px;
-  background: rgba(10, 15, 25, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 30px;
+  background: rgba(10, 15, 25, 0.88);
+  padding: 2rem;
   border-radius: 18px;
+  box-shadow: var(--shadow-soft);
 }
 
 .auth-bg {
-  position: relative;
   min-height: 100vh;
+
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 40px;
-  overflow: hidden;
-}
+  justify-content: center;
 
+  background:
+    linear-gradient(
+      rgba(5, 9, 20, 0.75),
+      rgba(5, 9, 20, 0.9)
+    ),
+    url("/assets/images/login-bg.webp") center / cover no-repeat;
+}
+.auth-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.55);
+}
 
 /* CONTENEDOR GLASS */
 /* ======================================================
@@ -296,8 +386,18 @@ ol {
 
 .nav-brand-logo {
   height: 34px;
-  width: auto;
+  width: 34px;
+  object-fit: cover;
+  border-radius: 50%;
 }
+
+.auth-logo,
+.footer-logo {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
 
 /* LINKS */
 .nav-links {

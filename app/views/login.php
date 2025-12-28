@@ -24,16 +24,6 @@ declare(strict_types=1);
 
   <main class="auth-bg">
 
-    <!-- IMAGEN LCP (ANTES ERA BACKGROUND EN CSS) -->
-    <img
-      src="/assets/images/login-bg.webp"
-      alt=""
-      class="auth-bg-img"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    >
-
     <div class="auth-glass">
 
       <!-- LOGO -->
