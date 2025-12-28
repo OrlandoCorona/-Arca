@@ -3,121 +3,113 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Arca — Restaurante Bar</title>
+  <title>Crear cuenta — El Arca</title>
+
+  <!-- CSS GLOBAL -->
   <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <!-- PRELOAD LCP -->
+  <link
+    rel="preload"
+    as="image"
+    href="/assets/images/login-bg.webp"
+    fetchpriority="high"
+  >
 </head>
 
-<body>
+<body class="auth-page">
 
-  <!-- NAVBAR -->
-  <?php require __DIR__ . '/../partials/navbar.php'; ?>
+  <main class="auth-bg">
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="app-container home">
+    <!-- IMAGEN DE FONDO (LCP CONTROLADO) -->
+    <img
+      src="/assets/images/login-bg.webp"
+      alt=""
+      class="auth-bg-img"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    >
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Restaurante Bar <span>El Arca</span>
-        </h1>
-        <p class="hero-subtitle">
-          Naturaleza · Gastronomía · Experiencia Premium
-        </p>
+    <div class="auth-glass">
+
+      <!-- LOGO -->
+      <div class="auth-logo-wrapper">
+        <img
+          src="/assets/images/logo-auth-top.webp"
+          alt="El Arca"
+          class="auth-logo"
+          decoding="async"
+        >
       </div>
-    </section>
 
-    <!-- INTRO -->
-    <section class="section section-intro">
-      <header class="section-header">
-        <h2>Una experiencia diferente</h2>
-        <p>
-          En El Arca combinamos gastronomía, naturaleza y momentos memorables.
-        </p>
-      </header>
+      <h2 class="auth-title">Crear cuenta</h2>
 
-      <div class="intro-grid">
-        <article class="intro-card">
-          <h3>Ambiente natural</h3>
-          <p>Espacios abiertos y zonas familiares para disfrutar sin prisas.</p>
-        </article>
+      <form
+        method="POST"
+        action="/?action=register"
+        class="auth-form"
+        autocomplete="on"
+      >
 
-        <article class="intro-card">
-          <h3>Cocina de calidad</h3>
-          <p>Ingredientes frescos y recetas cuidadosamente preparadas.</p>
-        </article>
-
-        <article class="intro-card">
-          <h3>Momentos especiales</h3>
-          <p>Eventos, reuniones y celebraciones en un entorno único.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- DESTACADOS / CARRUSEL -->
-    <section class="section section-featured">
-      <header class="section-header">
-        <h2>Lo más destacado</h2>
-      </header>
-
-      <div class="carousel">
-        <div class="carousel-track">
-
-          <article class="carousel-item">
-            <img src="/assets/images/inicio10.webp" alt="Ambiente del restaurante" loading="lazy" decoding="async">
-            <div class="carousel-caption">
-              <h3>El ambiente</h3>
-              <p>Un espacio pensado para disfrutar de día y de noche.</p>
-            </div>
-          </article>
-
-          <article class="carousel-item">
-            <img src="/assets/images/of1.jpg" alt="Promociones">
-            <div class="carousel-caption">
-              <h3>Promociones</h3>
-              <p>Eventos y ofertas especiales durante todo el año.</p>
-            </div>
-          </article>
-
-          <article class="carousel-item">
-            <img src="/assets/images/inicio3.jpg" alt="Eventos">
-            <div class="carousel-caption">
-              <h3>Eventos</h3>
-              <p>Celebraciones y reuniones inolvidables.</p>
-            </div>
-          </article>
-
+        <div class="form-group">
+          <input type="text" id="nombre" name="nombre" required placeholder=" " autocomplete="given-name">
+          <label for="nombre">Nombre</label>
         </div>
+
+        <div class="form-group">
+          <input type="text" id="apellido_paterno" name="apellido_paterno" required placeholder=" " autocomplete="family-name">
+          <label for="apellido_paterno">Apellido paterno</label>
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="apellido_materno" name="apellido_materno" placeholder=" ">
+          <label for="apellido_materno">Apellido materno</label>
+        </div>
+
+        <div class="form-group">
+          <input type="email" id="correo" name="correo" required placeholder=" " autocomplete="email">
+          <label for="correo">Correo electrónico</label>
+        </div>
+
+        <div class="form-group">
+          <input type="tel" id="telefono" name="telefono" required placeholder=" " autocomplete="tel">
+          <label for="telefono">Teléfono</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="contrasena" name="contrasena" required placeholder=" " autocomplete="new-password">
+          <label for="contrasena">Contraseña</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="repetir_contrasena" name="repetir_contrasena" required placeholder=" " autocomplete="new-password">
+          <label for="repetir_contrasena">Repetir contraseña</label>
+        </div>
+
+        <button type="submit" class="btn btn-animated">
+          <span class="text">Crear cuenta</span>
+        </button>
+
+      </form>
+
+      <div class="auth-links">
+        <p>
+          ¿Ya tienes cuenta?
+          <a href="/?view=login">Inicia sesión</a>
+        </p>
       </div>
-    </section>
 
-    <!-- CTA FINAL -->
-    <section class="section section-cta">
-      <div class="cta-box">
-        <h2>¿Listo para visitarnos?</h2>
-        <p>Reserva tu mesa y vive la experiencia El Arca.</p>
-
-        <a href="/?view=reservaciones" class="btn btn-animated">
-          <span class="text">Reservar ahora</span>
-        </a>
-      </div>
-    </section>
-
+    </div>
   </main>
 
-  <!-- FOOTER GLOBAL -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="/assets/images/logo-footer.jpg" alt="El Arca" class="footer-logo">
-      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
-    </div>
+  <footer class="site-footer auth-footer">
+    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
+    <p>© 2024 Restaurante Bar El Arca</p>
   </footer>
 
-
 </body>
-
 </html>
