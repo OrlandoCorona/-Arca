@@ -332,24 +332,24 @@ ol {
 
 .auth-bg {
   min-height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: relative; /* contiene la imagen absoluta */
   overflow: hidden;
 
-  background:
-    linear-gradient(rgba(5, 9, 20, 0.75), rgba(5, 9, 20, 0.9)),
-    url("/assets/images/login-bg.jpg") center / cover no-repeat;
+  /* Usar solo el degradado en la capa principal; la imagen será el elemento .auth-bg-img
+     posicionado por detrás para garantizar z-index bajo */
+  background: linear-gradient(rgba(5, 9, 20, 0.75), rgba(5, 9, 20, 0.9));
 }
-
 .auth-bg-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* imagen como fondo, por detrás del contenido */
+  z-index: 0; /* imagen como fondo, por detrás del contenido */
   filter: brightness(0.55);
 }
 
