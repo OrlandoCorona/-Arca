@@ -152,7 +152,7 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  max-width: 320px; /* mantener formularios contenidos */
+  max-width: 380px; /* formularios más anchos para mejor usabilidad */
   width: 100%;
   margin: 0 auto;
   align-items: center; /* centra botones sin tocar .btn */
@@ -319,9 +319,11 @@ ol {
   position: relative;
   z-index: 2;
 
-  width: 360px;
+  /* Más ancho para inputs y mejor legibilidad */
+  width: min(420px, 92%);
+  max-width: 420px;
   padding: 2rem;
-  margin-top: -40px; /* ⬅️ sube el panel, evita choque con labels */
+  margin: 0; /* evitar transformaciones extra que rompen el layout */
 
   background: rgba(255, 255, 255, 0.06);
   border-radius: 18px;
@@ -350,6 +352,7 @@ ol {
     rgba(5, 9, 20, 0.75),
     rgba(5, 9, 20, 0.9)
   );
+  padding: 2rem; /* evita que el panel pegue en los bordes en pantallas pequeñas */
 }
 
 .auth-bg-img {
@@ -360,6 +363,7 @@ ol {
   object-fit: cover;
   z-index: -1;
   filter: brightness(0.55);
+  will-change: transform; /* ayuda a evitar jitter en algunos navegadores */
 }
 
 
@@ -744,6 +748,35 @@ ol {
   justify-content: center;
   gap: 0.4rem;
   text-align: center;
+}
+
+/* En páginas auth, eliminar el fondo por defecto del footer (evita 'barra azul') */
+.site-footer.auth-footer {
+  background: transparent;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-align: center;
+}
+
+/* Inputs más cómodos en auth */
+.form-group input {
+  padding: 0.95rem 0.85rem;
+}
+
+/* Ajustes responsivos para auth */
+@media (max-width: 420px) {
+  .auth-glass {
+    width: 100%;
+    padding: 1.2rem;
+  }
+
+  .auth-form {
+    max-width: 100%;
+  }
 }
 /* ===============================
    BOTÓN CON BORDE ANIMADO (AUTH)

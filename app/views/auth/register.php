@@ -38,7 +38,12 @@ declare(strict_types=1);
 
       <!-- LOGO -->
       <div class="auth-logo-wrapper">
-        <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="">
+        <img
+          src="/assets/images/logo-auth-top.webp"
+          alt="El Arca"
+          class="auth-logo"
+          decoding="async"
+        >
 
       </div>
 
