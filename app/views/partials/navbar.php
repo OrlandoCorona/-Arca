@@ -1,8 +1,6 @@
 <?php
 // app/views/partials/navbar.php
-$currentView = $_GET['view'] ?? 'home';
 ?>
-
 <nav class="navbar">
   <div class="navbar-inner">
 
@@ -16,24 +14,21 @@ $currentView = $_GET['view'] ?? 'home';
     <ul class="nav-links">
 
       <li>
-        <a href="/?view=home"
-           class="nav-link <?= $currentView === 'home' ? 'active' : '' ?>">
+        <a href="/?view=home" class="nav-link nav-home">
           <img src="/assets/images/icon-home.png" alt="Inicio">
           <span>Inicio</span>
         </a>
       </li>
 
       <li>
-        <a href="/?view=menu"
-           class="nav-link <?= $currentView === 'menu' || $currentView === 'food' ? 'active' : '' ?>">
+        <a href="/?view=menu" class="nav-link nav-menu">
           <img src="/assets/images/icon-menu.png" alt="Menú">
           <span>Menú</span>
         </a>
       </li>
 
       <li>
-        <a href="/?view=reservaciones"
-           class="nav-link <?= $currentView === 'reservaciones' ? 'active' : '' ?>">
+        <a href="/?view=reservaciones" class="nav-link nav-reservaciones">
           <img src="/assets/images/icon-reservaciones.png" alt="Reservaciones">
           <span>Reservaciones</span>
         </a>
@@ -44,8 +39,7 @@ $currentView = $_GET['view'] ?? 'home';
     <!-- ACCIONES DERECHA -->
     <div class="nav-actions">
 
-      <a href="/?view=perfil"
-         class="nav-link <?= $currentView === 'perfil' ? 'active' : '' ?>">
+      <a href="/?view=perfil" class="nav-link nav-perfil">
         <img src="/assets/images/icon-user.png" alt="Perfil">
         <span>Perfil</span>
       </a>

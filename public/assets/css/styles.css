@@ -262,7 +262,7 @@ body.auth-page .app-container {
       rgba(5, 9, 20, 0.65),
       rgba(5, 9, 20, 0.85)
     ),
-    url("/assets/images/login.jpg") center / cover no-repeat;
+    url("/assets/images/login-bg.jpg") center / cover no-repeat;
 }
 /* ======================================================
    BLOQUE 7 — AUTH CARD (LOGIN / REGISTER)
