@@ -294,6 +294,9 @@ ol {
    - Evitar herencia de layout global
    - Evitar reflow innecesario
 ====================================================== */
+.auth-title {
+  margin-bottom: 1.4rem;
+}
 
 .auth-page {
   min-height: 100vh;
@@ -734,4 +737,17 @@ ol {
 
 .hidden {
   display: none !important;
+}
+.auth-footer {
+  background: transparent;
+  border-top: none;
+}
+
+.auth-footer .footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-align: center;
 }

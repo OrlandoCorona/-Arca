@@ -14,6 +14,14 @@ declare(strict_types=1);
 
   <main class="auth-bg">
 
+    <!-- IMAGEN DE FONDO (OBLIGATORIA PARA AUTH) -->
+    <img
+      src="/assets/images/login-bg.jpg"
+      class="auth-bg-img"
+      alt=""
+      loading="eager"
+    >
+
     <div class="auth-glass">
 
       <div class="auth-logo-wrapper">

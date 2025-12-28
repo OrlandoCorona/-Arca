@@ -14,6 +14,14 @@ declare(strict_types=1);
 
   <main class="auth-bg">
 
+    <!-- IMAGEN DE FONDO (OBLIGATORIA PARA AUTH) -->
+    <img
+      src="/assets/images/login-bg.jpg"
+      class="auth-bg-img"
+      alt=""
+      loading="eager"
+    >
+
     <div class="auth-glass">
 
       <div class="auth-logo-wrapper">
@@ -55,8 +63,10 @@ declare(strict_types=1);
   </main>
 
   <footer class="site-footer auth-footer">
-    <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca">
-    <p>© 2024 Restaurante Bar El Arca</p>
+    <div class="footer-inner">
+      <img src="/assets/images/logo-auth-footer.jpg" alt="El Arca" class="footer-logo">
+      <p>© 2024 Restaurante Bar El Arca</p>
+    </div>
   </footer>
 
 </body>
