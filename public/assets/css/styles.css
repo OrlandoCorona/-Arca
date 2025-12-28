@@ -316,10 +316,18 @@ ol {
 
 .auth-glass {
   width: 360px;
-  background: rgba(10, 15, 25, 0.88);
+  /* Glassmorphism: más transparente, borde sutil y desenfoque de fondo */
+  background: rgba(255, 255, 255, 0.04);
   padding: 2rem;
   border-radius: 18px;
-  box-shadow: 0 16px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .auth-bg {
@@ -328,13 +336,12 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative; /* contiene la imagen absoluta */
+  overflow: hidden;
 
-  background:
-    linear-gradient(
-      rgba(5, 9, 20, 0.75),
-      rgba(5, 9, 20, 0.9)
-    ),
-    url("/assets/images/login-bg.webp") center / cover no-repeat;
+  /* Usar solo el degradado en la capa principal; la imagen será el elemento .auth-bg-img
+     posicionado por detrás para garantizar z-index bajo */
+  background: linear-gradient(rgba(5, 9, 20, 0.75), rgba(5, 9, 20, 0.9));
 }
 .auth-bg-img {
   position: absolute;
@@ -342,8 +349,41 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  z-index: -1; /* imagen como fondo, por detrás del contenido */
   filter: brightness(0.55);
+}
+
+/* Limitar tamaño del logo auth y centrarlo dentro del contenedor */
+.auth-logo {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 0.8rem auto;
+}
+
+/* Centrar títulos, formulario y footer en vistas de autenticación */
+.auth-glass h1,
+.auth-glass h2,
+.auth-glass h3,
+.auth-glass p {
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 320px; /* mantener formularios contenidos */
+  width: 100%;
+  margin: 0 auto;
+  align-items: center; /* centra botones sin tocar .btn */
+}
+
+/* Centrar footer en vistas auth */
+.auth-footer .footer-inner {
+  justify-content: center;
 }
 
 /* CONTENEDOR GLASS */
