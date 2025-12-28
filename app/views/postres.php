@@ -15,13 +15,12 @@ if (!isset($_SESSION['id_usuario'])) {
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
-<body>
+<body class="page-postres">
 
 <?php require __DIR__ . '/partials/navbar.php'; ?>
 
 <main class="app-container product-page">
 
-    <!-- VOLVER A COMIDA -->
     <div class="menu-back">
         <a href="/?view=food" class="btn-back">← Volver</a>
     </div>
@@ -32,7 +31,6 @@ if (!isset($_SESSION['id_usuario'])) {
             <p>El toque dulce para cerrar tu experiencia</p>
         </header>
 
-        <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
 
             <article class="product-card"
@@ -50,9 +48,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
                     <div class="product-footer">
                         <span class="menu-price">$70</span>
-                        <button class="btn product-btn open-modal">
-                            Ver detalle
-                        </button>
+                        <button class="btn product-btn open-modal">Ver detalle</button>
                     </div>
                 </div>
             </article>
@@ -72,9 +68,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
                     <div class="product-footer">
                         <span class="menu-price">$65</span>
-                        <button class="btn product-btn open-modal">
-                            Ver detalle
-                        </button>
+                        <button class="btn product-btn open-modal">Ver detalle</button>
                     </div>
                 </div>
             </article>
@@ -94,9 +88,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
                     <div class="product-footer">
                         <span class="menu-price">$55</span>
-                        <button class="btn product-btn open-modal">
-                            Ver detalle
-                        </button>
+                        <button class="btn product-btn open-modal">Ver detalle</button>
                     </div>
                 </div>
             </article>
@@ -106,33 +98,13 @@ if (!isset($_SESSION['id_usuario'])) {
 
 </main>
 
-<!-- MODAL PRODUCTO -->
-<div class="modal" id="productModal">
-    <div class="modal-overlay"></div>
-
-    <div class="modal-content">
-        <img id="modalImg" src="" alt="">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDesc"></p>
-
-        <div class="modal-actions">
-            <button class="btn btn-animated">
-                <span class="text">Añadir al carrito</span>
-            </button>
-            <button class="btn-back" id="closeModal">Cerrar</button>
-        </div>
-    </div>
-</div>
-
 <footer class="site-footer">
   <div class="footer-inner">
-    <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
+    <img src="/assets/images/logo-footer.jpg" alt="El Arca" class="footer-logo">
     <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
   </div>
 </footer>
 
-<!-- JS UI CENTRALIZADO -->
 <script src="/assets/js/ui.js"></script>
-
 </body>
 </html>
