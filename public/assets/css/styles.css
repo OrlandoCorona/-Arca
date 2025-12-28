@@ -15,7 +15,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -31,12 +32,12 @@ body {
 img {
   display: block;
 }
+
 .img-fluid {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-
 
 /* Links base */
 a {
@@ -45,7 +46,8 @@ a {
 }
 
 /* Listas limpias */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 /* ======================================================
@@ -83,12 +85,54 @@ ul, ol {
   --radius-lg: 20px;
 
   /* Shadows */
-  --shadow-soft: 0 20px 45px rgba(0,0,0,0.45);
-  --shadow-hard: 0 30px 60px rgba(0,0,0,0.55);
+  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.45);
+  --shadow-hard: 0 30px 60px rgba(0, 0, 0, 0.55);
 
   /* Transitions */
-  --transition-fast: .2s ease;
-  --transition-base: .3s ease;
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+}
+/* ======================================================
+   BLOQUE 2 — VARIABLES CSS
+   RESPONSABILIDAD:
+   - Paleta de colores
+   - Radios
+   - Sombras
+   - Valores reutilizables
+   - NO layout
+====================================================== */
+
+:root {
+  /* Brand */
+  --primary: #0ea5e9;
+  --primary-dark: #0369a1;
+
+  /* Auth accents */
+  --accent-auth-1: #001e54;
+  --accent-auth-2: #009dd6;
+  --accent-auth-3: #b541d8;
+
+  /* Backgrounds */
+  --bg-dark: #020617;
+  --bg-soft: rgba(2, 6, 23, 0.85);
+
+  /* Text */
+  --text-main: #e5e7eb;
+  --text-muted: #cbd5f5;
+  --text-soft: #94a3b8;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-soft: 0 20px 45px rgba(0, 0, 0, 0.45);
+  --shadow-hard: 0 30px 60px rgba(0, 0, 0, 0.55);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
 }
 /* ======================================================
    BLOQUE 3 — BOTONES BASE
@@ -137,501 +181,537 @@ ul, ol {
   outline-offset: 2px;
 }
 /* ======================================================
-   BLOQUE 4 — BOTÓN ANIMADO (CONTORNO)
+   BLOQUE 5 — AUTH PAGE (AISLAMIENTO TOTAL)
    RESPONSABILIDAD:
-   - Animar SOLO el borde
-   - El texto NO gira
-   - Sin afectar otros botones
+   - Aislar login / register / recover
+   - Evitar herencia de layout global
+   - Evitar reflow innecesario
 ====================================================== */
 
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+.auth-page {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-animated {
-  position: relative;
-  padding: 3px; /* grosor del borde */
-  border-radius: calc(var(--radius-md) + 2px);
-  background: transparent;
+.auth-page main {
+  flex: 1;
+}
+/* ======================================================
+   BLOQUE 6 — AUTH BACKGROUND (LCP OPTIMIZADO)
+   RESPONSABILIDAD:
+   - Fondo AUTH
+   - Imagen LCP controlada
+   - SIN filtros pesados
+====================================================== */
+
+.auth-bg {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(5, 9, 20, 0.75),
+      rgba(5, 9, 20, 0.9)
+    ),
+    url("/assets/images/login-bg.webp");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* CONTENEDOR GLASS */
+.auth-glass {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.2rem;
+
+  border-radius: var(--radius-lg);
+
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(6px);
+
+  box-shadow: var(--shadow-soft);
+}
+/* ======================================================
+   BLOQUE 6 — AUTH BACKGROUND (LCP OPTIMIZADO)
+   RESPONSABILIDAD:
+   - Fondo AUTH
+   - Imagen LCP controlada
+   - SIN filtros pesados
+====================================================== */
+
+.auth-bg {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      rgba(5, 9, 20, 0.75),
+      rgba(5, 9, 20, 0.9)
+    ),
+    url("/assets/images/login-bg.webp");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* CONTENEDOR GLASS */
+.auth-glass {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.2rem;
+
+  border-radius: var(--radius-lg);
+
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(6px);
+
+  box-shadow: var(--shadow-soft);
+}
+/* ======================================================
+   BLOQUE 7 — NAVBAR
+   RESPONSABILIDAD:
+   - Navegación clara
+   - Estado activo visible
+   - Sticky sin afectar LCP
+====================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(5, 9, 20, 0.9);
+  backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-weight: 600;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.nav-brand-logo {
+  height: 34px;
+  width: auto;
+}
+
+/* LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-link img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ACTIVE */
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+}
+
+/* ACTIONS */
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-link.danger {
+  color: #ff6b6b;
+}
+/* ======================================================
+   BLOQUE 7 — NAVBAR
+   RESPONSABILIDAD:
+   - Navegación clara
+   - Estado activo visible
+   - Sticky sin afectar LCP
+====================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(5, 9, 20, 0.9);
+  backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-weight: 600;
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.nav-brand-logo {
+  height: 34px;
+  width: auto;
+}
+
+/* LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-link img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ACTIVE */
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-light);
+}
+
+/* ACTIONS */
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-link.danger {
+  color: #ff6b6b;
+}
+/* ======================================================
+   BLOQUE 9 — PRODUCT PAGES
+   RESPONSABILIDAD:
+   - Layout consistente
+   - Cards reutilizables
+   - UX clara en todas las categorías
+====================================================== */
+
+.product-page {
+  padding: 2rem 1.2rem 3rem;
+}
+
+/* BOTÓN VOLVER */
+.menu-back {
+  margin-bottom: 1rem;
+}
+
+.btn-back {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.btn-back:hover {
+  color: var(--text-light);
+}
+
+/* HEADER SECCIÓN */
+.menu-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.menu-header h1 {
+  font-size: 2rem;
+  color: var(--text-light);
+}
+
+.menu-header p {
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+/* GRID */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+/* ======================================================
+   BLOQUE 10 — PRODUCT CARD + MODAL
+   RESPONSABILIDAD:
+   - Cards visuales
+   - Modal liviano
+   - SIN JS inline dependiente de layout
+====================================================== */
+
+.product-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-animated::before {
-  content: "";
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* MEDIA */
+.menu-media img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* BODY */
+.product-body {
+  padding: 1rem;
+  flex: 1;
+}
+
+.product-body h3 {
+  color: var(--text-light);
+  font-size: 1.05rem;
+}
+
+.product-body p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* FOOTER */
+.product-footer {
+  margin-top: 0.8rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-price {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2000;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-overlay {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-
-  background: conic-gradient(
-    from var(--angle),
-    var(--accent-auth-1),
-    #31a2ff,
-    var(--accent-auth-2),
-    var(--accent-auth-3),
-    var(--accent-auth-1)
-  );
-
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  animation: rotate-border 3s linear infinite;
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.7);
 }
 
-/* SOLO el borde aparece al hover */
-.btn-animated:hover::before {
-  opacity: 1;
-}
-
-/* Contenido del botón */
-.btn-animated > .text {
+.modal-content {
   position: relative;
-  z-index: 2;
+  max-width: 420px;
+  margin: 10vh auto;
+  padding: 1.5rem;
 
+  background: rgba(5, 9, 20, 0.95);
+  border-radius: var(--radius-lg);
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+.modal-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+/* ======================================================
+   BLOQUE 11 — FOOTER
+   RESPONSABILIDAD:
+   - Footer global
+   - Footer auth
+   - Imagenes controladas (NO reglas globales)
+====================================================== */
+
+.site-footer {
+  margin-top: auto;
+  padding: 1.2rem 1rem;
+
+  background: rgba(2, 6, 23, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.footer-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* FOOTER AUTH */
+.auth-footer {
+  background: transparent;
+  border-top: none;
+  padding-bottom: 1.5rem;
+}
+
+.auth-footer img {
+  width: 56px;
+  height: auto;
+}
+/* ======================================================
+   BLOQUE 12 — BOTONES & UTILIDADES
+   RESPONSABILIDAD:
+   - Botones reutilizables
+   - Estados hover/active
+   - Utilidades menores
+====================================================== */
+
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   padding: 0.55rem 1.2rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
 
-  background: linear-gradient(
-    135deg,
-    var(--accent-auth-1),
-    var(--accent-auth-2)
-  );
-
-  color: #ffffff;
+  border: none;
+  cursor: pointer;
   font-size: 0.95rem;
-  font-weight: 500;
-}
 
-/* Animación SOLO del ángulo */
-@keyframes rotate-border {
-  to {
-    --angle: 360deg;
-  }
-}
-/* ======================================================
-   BLOQUE 5 — AUTH AISLAMIENTO TOTAL
-   RESPONSABILIDAD:
-   - Ocultar navbar y layout en auth
-   - NO tocar footer
-====================================================== */
-
-body.auth-page .navbar,
-body.auth-page .app-container {
-  display: none !important;
-}
-/* ======================================================
-   BLOQUE 12 — NAVBAR ICONOS
-====================================================== */
-.icon-img {
-  width: 32px;
-  height: 32px;
-
-  max-width: 32px;
-  max-height: 32px;
-
-  border-radius: 50%;
-  object-fit: contain;
-}
-
-/* ======================================================
-   BLOQUE 6 — AUTH FONDO (IMAGEN + OVERLAY)
-   RESPONSABILIDAD:
-   - Fondo login estable
-   - Sin zoom raro
-   - Una sola pantalla
-====================================================== */
-
-.auth-bg {
-  min-height: 100vh;
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      rgba(5, 9, 20, 0.65),
-      rgba(5, 9, 20, 0.85)
-    ),
-    url("/assets/images/login-bg.webp") center / cover no-repeat;
-}
-/* ======================================================
-   BLOQUE 7 — AUTH CARD (LOGIN / REGISTER)
-   RESPONSABILIDAD:
-   - Contenedor principal del auth
-   - Glass effect
-====================================================== */
-
-.auth-glass {
-  width: 100%;
-  max-width: 420px;
-
-  padding: 2.5rem 2.5rem 2.2rem;
-  border-radius: var(--radius-lg);
-
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-
-  box-shadow: var(--shadow-soft);
-  text-align: center;
-
-  position: relative;
-}
-/* ======================================================
-   BLOQUE 8 — AUTH LOGO (AISLADO)
-   RESPONSABILIDAD:
-   - Tamaño fijo del logo
-   - Evitar que invada la card
-====================================================== */
-
-.auth-logo-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.auth-logo {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: contain;
-}
-
-/* ======================================================
-   BLOQUE 9 — AUTH FORM + LABEL FLOTANTE
-   RESPONSABILIDAD:
-   - Tipografía del título
-   - Inputs consistentes
-   - Label flotante estable
-====================================================== */
-
-/* Título */
-.auth-title {
-  font-size: 1.8rem;
-  margin-bottom: 1.4rem;
-  color: #ffffff;
-}
-
-/* Contenedor input */
-.form-group {
-  position: relative;
-  margin-bottom: 1.4rem;
-}
-
-/* Input */
-.form-group input {
-  width: 100%;
-  padding: 14px 12px;
-  font-size: 1.05rem;
-
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255,255,255,0.35);
-
-  background: rgba(255,255,255,0.05);
-  color: #ffffff;
-
-  outline: none;
-}
-
-/* Label (inicia dentro) */
-.form-group label {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  font-size: 0.95rem;
-  color: #e5e7eb;
-
-  pointer-events: none;
-  transition: all 0.25s ease;
-
-  background: transparent;
-  padding: 0 6px;
-}
-
-/* Flotación */
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
-  top: -7px;
-  font-size: 0.75rem;
-  color: #ffffff;
-
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 6px;
-}
-/* ======================================================
-   HOME – HERO
-====================================================== */
-.hero {
-  padding: 5rem 2rem 4rem;
-  text-align: center;
-}
-
-.hero-title {
-  font-size: 2.6rem;
-  margin-bottom: .5rem;
-}
-
-.hero-title span {
-  color: var(--primary);
-}
-
-.hero-subtitle {
-  color: #cbd5f5;
-  font-size: 1.05rem;
-}
-/* ======================================================
-   SECTIONS – BASE
-====================================================== */
-.section {
-  padding: 4rem 2rem;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.section-header h2 {
-  font-size: 2rem;
-  margin-bottom: .5rem;
-}
-
-.section-header p {
-  color: #cbd5f5;
-}/* ======================================================
-   INTRO GRID – HOME
-====================================================== */
-.intro-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 2rem;
-}
-
-.intro-card {
-  background: rgba(255,255,255,.06);
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-}
-
-.intro-card h3 {
-  margin-bottom: .5rem;
-}
-
-/* ======================================================
-   CARRUSEL – HOME
-====================================================== */
-.carousel {
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-}
-
-.carousel-track::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-item {
-  min-width: 300px;
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  background: rgba(255,255,255,.05);
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.carousel-caption {
-  padding: 1.2rem;
-}
-
-.carousel-caption h3 {
-  margin-bottom: .3rem;
-}
-/* ======================================================
-   CTA FINAL
-====================================================== */
-.section-cta {
-  background: rgba(255,255,255,.04);
-}
-
-.cta-box {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-/* ======================================================
-   BLOQUE 12 — NAVBAR ICONOS
-====================================================== */
-
-.nav-icons {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-icon {
-  position: relative;
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-icon img {
-  width: 24px;
-  height: 24px;
-  max-width: 24px;
-  max-height: 24px;
-
-  object-fit: contain;
-  transition: opacity .25s ease;
-}
-
-.nav-icon span {
-  position: absolute;
-  font-size: .8rem;
+  background: var(--primary);
   color: #fff;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s ease;
+
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.nav-icon:hover img {
-  opacity: 0;
+.btn:hover {
+  background: var(--primary-dark);
 }
 
-.nav-icon:hover span {
-  opacity: 1;
+.btn:active {
+  transform: translateY(1px);
 }
 
-/* ======================================================
-   MENU – CATEGORÍAS
-====================================================== */
-.menu-section {
-  padding: 2rem 2rem 4rem;
-}
-
-.menu-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.menu-header h1 {
-  font-size: 2.2rem;
-  margin-bottom: .5rem;
-}
-
-.menu-header p {
-  color: #cbd5f5;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 2rem;
-}
-
-.menu-card {
-  background: rgba(255,255,255,.06);
-  border-radius: 18px;
+/* BOTÓN ANIMADO */
+.btn-animated {
+  position: relative;
   overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-.menu-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 40px rgba(0,0,0,.35);
+.btn-animated .text {
+  position: relative;
+  z-index: 2;
 }
 
-.menu-media img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+/* BOTÓN PRODUCTO */
+.product-btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
 }
 
-.menu-body {
-  padding: 1.5rem;
+/* UTILIDADES */
+.text-center {
   text-align: center;
 }
-/* ======================================================
-   PRODUCTOS – INTERNOS
-====================================================== */
-.menu-body h3 {
-  font-size: 1.2rem;
-  margin-bottom: .4rem;
-}
 
-.menu-body p {
-  font-size: .95rem;
-  color: #cbd5f5;
-  margin-bottom: .8rem;
-}
-
-.menu-price {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-/* ======================================================
-   FOOTER – GLOBAL
-====================================================== */
-.site-footer {
-  padding: 2rem 1rem;
-  text-align: center;
-  color: #94a3b8;
-}
-
-.site-footer .footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-.footer-logo {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.site-footer .footer-text {
-  font-size: .8rem;
-}
-/* ======================================================
-   FOOTER – LOGIN (AUTH PAGE)
-====================================================== */
-body.auth-page .site-footer img {
-  width: 35px;
-  height: 35px;
-  max-width: 35px;
-  max-height: 35px;
-  border-radius: 50%;
-  object-fit: contain;
+.hidden {
+  display: none !important;
 }
