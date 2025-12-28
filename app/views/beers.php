@@ -21,9 +21,9 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <main class="app-container product-page">
 
-    <!-- VOLVER -->
+    <!-- VOLVER A MENÚ -->
     <div class="menu-back">
-        <button class="btn-back" onclick="history.back()">← Volver</button>
+        <a href="/?view=menu" class="btn-back">← Volver</a>
     </div>
 
     <section class="menu-section">
@@ -37,7 +37,6 @@ if (!isset($_SESSION['id_usuario'])) {
 
             <article class="product-card"
                 data-name="Cerveza Clara"
-                data-price="55"
                 data-img="/assets/images/inicio5.jpg"
                 data-desc="Cerveza clara bien fría, ideal para acompañar cualquier platillo.">
 
@@ -58,7 +57,7 @@ if (!isset($_SESSION['id_usuario'])) {
                 </div>
             </article>
 
-            <!-- Más cervezas aquí -->
+            <!-- Aquí pueden ir más cervezas -->
 
         </div>
     </section>

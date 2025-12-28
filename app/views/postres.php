@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Botellas — El Arca</title>
+    <title>Postres — El Arca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
@@ -21,35 +21,35 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <main class="app-container product-page">
 
-    <!-- VOLVER A MENÚ -->
+    <!-- VOLVER A COMIDA -->
     <div class="menu-back">
-        <a href="/?view=menu" class="btn-back">← Volver</a>
+        <a href="/?view=food" class="btn-back">← Volver</a>
     </div>
 
     <section class="menu-section">
         <header class="menu-header">
-            <h1>Botellas</h1>
-            <p>Selección premium para compartir</p>
+            <h1>Postres</h1>
+            <p>El toque dulce para cerrar tu experiencia</p>
         </header>
 
         <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
 
             <article class="product-card"
-                data-name="Botella Premium"
-                data-img="/assets/images/botella-premium.jpg"
-                data-desc="Botella premium ideal para celebraciones y momentos especiales.">
+                data-name="Pastel de Chocolate"
+                data-img="/assets/images/postre-pastel-chocolate.jpg"
+                data-desc="Pastel de chocolate con textura suave e intenso sabor.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-premium.jpg" alt="Botella Premium">
+                    <img src="/assets/images/postre-pastel-chocolate.jpg" alt="Pastel de Chocolate">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Premium</h3>
-                    <p>Calidad y sabor garantizados.</p>
+                    <h3>Pastel de Chocolate</h3>
+                    <p>Clásico y delicioso.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$950</span>
+                        <span class="menu-price">$70</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
@@ -58,20 +58,20 @@ if (!isset($_SESSION['id_usuario'])) {
             </article>
 
             <article class="product-card"
-                data-name="Botella Especial"
-                data-img="/assets/images/botella-especial.jpg"
-                data-desc="Perfecta para compartir en ocasiones especiales.">
+                data-name="Flan Napolitano"
+                data-img="/assets/images/postre-flan.jpg"
+                data-desc="Flan napolitano tradicional con caramelo.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-especial.jpg" alt="Botella Especial">
+                    <img src="/assets/images/postre-flan.jpg" alt="Flan Napolitano">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Especial</h3>
-                    <p>Selección destacada.</p>
+                    <h3>Flan Napolitano</h3>
+                    <p>Suave y cremoso.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$1,200</span>
+                        <span class="menu-price">$65</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
@@ -80,20 +80,20 @@ if (!isset($_SESSION['id_usuario'])) {
             </article>
 
             <article class="product-card"
-                data-name="Botella Reserva"
-                data-img="/assets/images/botella-reserva.jpg"
-                data-desc="Reserva especial con carácter intenso y aroma único.">
+                data-name="Helado Artesanal"
+                data-img="/assets/images/postre-helado.jpg"
+                data-desc="Helado artesanal de sabores variados.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-reserva.jpg" alt="Botella Reserva">
+                    <img src="/assets/images/postre-helado.jpg" alt="Helado Artesanal">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Reserva</h3>
-                    <p>Para paladares exigentes.</p>
+                    <h3>Helado Artesanal</h3>
+                    <p>Refrescante y cremoso.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$1,450</span>
+                        <span class="menu-price">$55</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>

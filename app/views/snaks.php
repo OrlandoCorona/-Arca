@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Botellas — El Arca</title>
+    <title>Snacks — El Arca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
@@ -21,35 +21,35 @@ if (!isset($_SESSION['id_usuario'])) {
 
 <main class="app-container product-page">
 
-    <!-- VOLVER A MENÚ -->
+    <!-- VOLVER A COMIDA -->
     <div class="menu-back">
-        <a href="/?view=menu" class="btn-back">← Volver</a>
+        <a href="/?view=food" class="btn-back">← Volver</a>
     </div>
 
     <section class="menu-section">
         <header class="menu-header">
-            <h1>Botellas</h1>
-            <p>Selección premium para compartir</p>
+            <h1>Snacks</h1>
+            <p>Opciones ligeras para compartir</p>
         </header>
 
         <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
 
             <article class="product-card"
-                data-name="Botella Premium"
-                data-img="/assets/images/botella-premium.jpg"
-                data-desc="Botella premium ideal para celebraciones y momentos especiales.">
+                data-name="Nachos con Queso"
+                data-img="/assets/images/snack-nachos.jpg"
+                data-desc="Totopos crujientes con queso fundido.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-premium.jpg" alt="Botella Premium">
+                    <img src="/assets/images/snack-nachos.jpg" alt="Nachos con Queso">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Premium</h3>
-                    <p>Calidad y sabor garantizados.</p>
+                    <h3>Nachos con Queso</h3>
+                    <p>Clásicos y crujientes.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$950</span>
+                        <span class="menu-price">$65</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
@@ -58,20 +58,20 @@ if (!isset($_SESSION['id_usuario'])) {
             </article>
 
             <article class="product-card"
-                data-name="Botella Especial"
-                data-img="/assets/images/botella-especial.jpg"
-                data-desc="Perfecta para compartir en ocasiones especiales.">
+                data-name="Aros de Cebolla"
+                data-img="/assets/images/snack-aros-cebolla.jpg"
+                data-desc="Aros de cebolla empanizados y dorados.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-especial.jpg" alt="Botella Especial">
+                    <img src="/assets/images/snack-aros-cebolla.jpg" alt="Aros de Cebolla">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Especial</h3>
-                    <p>Selección destacada.</p>
+                    <h3>Aros de Cebolla</h3>
+                    <p>Crujientes por fuera, suaves por dentro.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$1,200</span>
+                        <span class="menu-price">$60</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
@@ -80,20 +80,20 @@ if (!isset($_SESSION['id_usuario'])) {
             </article>
 
             <article class="product-card"
-                data-name="Botella Reserva"
-                data-img="/assets/images/botella-reserva.jpg"
-                data-desc="Reserva especial con carácter intenso y aroma único.">
+                data-name="Palomitas Preparadas"
+                data-img="/assets/images/snack-palomitas.jpg"
+                data-desc="Palomitas con mantequilla y especias.">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-reserva.jpg" alt="Botella Reserva">
+                    <img src="/assets/images/snack-palomitas.jpg" alt="Palomitas Preparadas">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Reserva</h3>
-                    <p>Para paladares exigentes.</p>
+                    <h3>Palomitas Preparadas</h3>
+                    <p>Ideales para compartir.</p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$1,450</span>
+                        <span class="menu-price">$50</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
