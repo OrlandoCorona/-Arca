@@ -139,6 +139,54 @@ ol {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+/* Contenedor principal del botón para iconos de navbar (añadido por petición) */
+.btn {
+  position: relative;
+  width: 150px;
+  height: 50px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; /* Importante para ocultar el texto inicial */
+  transition-duration: 0.3s;
+}
+
+/* El texto que aparece al hacer hover */
+.text {
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  white-space: nowrap; /* Evita que el texto salte de línea */
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estado Hover: Cuando pasas el mouse sobre el botón */
+.btn:hover {
+  padding-left: 20px;
+}
+
+.btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  padding-right: 10px;
+}
+
+/* Estado Active: Cuando haces clic */
+.btn:active {
+  transform: translate(2px, 2px);
+  transition-duration: 0.1s;
+}
 /* ======================================================
    BLOQUE 4 — FORMULARIOS (AUTH)
    RESPONSABILIDAD:
