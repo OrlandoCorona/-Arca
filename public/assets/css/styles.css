@@ -341,26 +341,27 @@ ol {
 
 .auth-bg {
   min-height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* contiene la imagen absoluta */
+  position: relative;
   overflow: hidden;
-
-  /* Usar solo el degradado en la capa principal; la imagen será el elemento .auth-bg-img
-     posicionado por detrás para garantizar z-index bajo */
-  background: linear-gradient(rgba(5, 9, 20, 0.75), rgba(5, 9, 20, 0.9));
+  background: linear-gradient(
+    rgba(5, 9, 20, 0.75),
+    rgba(5, 9, 20, 0.9)
+  );
 }
+
 .auth-bg-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0; /* imagen como fondo, por detrás del contenido */
+  z-index: -1;
   filter: brightness(0.55);
 }
+
 
 /* Limitar tamaño del logo auth y centrarlo dentro del contenedor */
 .auth-logo {
@@ -378,16 +379,6 @@ ol {
 .auth-glass h3,
 .auth-glass p {
   text-align: center;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  max-width: 320px; /* mantener formularios contenidos */
-  width: 100%;
-  margin: 0 auto;
-  align-items: center; /* centra botones sin tocar .btn */
 }
 
 /* Centrar footer en vistas auth */

@@ -19,13 +19,8 @@ declare(strict_types=1);
 
   <main class="auth-bg">
 
-    <!-- IMAGEN DE FONDO -->
-    <img
-      src="/assets/images/login-bg.webp"
-      alt=""
-      class="auth-bg-img"
-      loading="eager"
-    >
+  <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="">
+
 
     <!-- GLASS -->
     <div class="auth-glass">

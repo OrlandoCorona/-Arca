@@ -25,11 +25,8 @@ declare(strict_types=1);
     <div class="auth-glass">
 
       <div class="auth-logo-wrapper">
-        <img
-          src="/assets/images/logo-auth-top.webp"
-          alt="El Arca"
-          class="auth-logo"
-        >
+        <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="">
+
       </div>
 
       <h2 class="auth-title">Recuperar contraseña</h2>
