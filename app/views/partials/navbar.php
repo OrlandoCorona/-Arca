@@ -48,7 +48,6 @@
         <img src="/assets/images/logout.png" alt="Salir">
         <span>Salir</span>
       </a>
-
     </div>
 
   </div>
