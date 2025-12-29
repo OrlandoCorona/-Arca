@@ -706,6 +706,129 @@ ol {
 }
 
 /* ======================================================
+   ENHANCEMENTS — NAVBAR, CAROUSEL, TYPOGRAPHY, MICRO-INTERACTIONS
+   RESPONSABILIDAD:
+   - Mostrar solo iconos en navbar y revelar label en hover
+   - Carrusel CSS para home/menu (sin JS adicional)
+   - Micro-interacciones y ajustes tipográficos
+   - Mantener clases existentes y no tocar .btn base
+====================================================== */
+
+/* NAVBAR: mostrar solo iconos por defecto, revelar texto con fade+slide */
+.nav-link {
+  position: relative;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.nav-link span {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  overflow: hidden;
+  transform: translateX(-6px);
+  transition: max-width 260ms cubic-bezier(.2,.9,.2,1),
+              opacity 200ms ease, transform 260ms cubic-bezier(.2,.9,.2,1);
+}
+
+.nav-link:hover span,
+.nav-link:focus span {
+  max-width: 140px;
+  opacity: 1;
+  margin-left: 0.45rem;
+  transform: translateX(0);
+}
+
+/* Make nav icons slightly larger for clarity */
+.nav-link img {
+  width: 20px;
+  height: 20px;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.nav-link:hover img {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* CAROUSEL (CSS-only, responsive, scroll-snap friendly) */
+.carousel {
+  overflow: hidden;
+  padding: 0.6rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 0.6rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  min-width: 260px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 420ms ease;
+}
+
+.carousel-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+.carousel-caption {
+  padding: 0.9rem;
+}
+
+/* TYPOGRAPHY & HERO tweaks: mayor jerarquía en títulos */
+.hero-logo {
+  max-width: 160px;
+  width: 30%;
+  height: auto;
+  margin: 0 auto 0.6rem;
+  display: block;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  line-height: 1.05;
+  letter-spacing: -0.6px;
+}
+
+.section-header h2 {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* MICRO-INTERACTIONS: subtle scale on cards (product & intro) */
+.intro-card,
+.product-card {
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+}
+
+.intro-card:hover,
+.product-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.28);
+}
+
+
+/* ======================================================
    BLOQUE 11 — FOOTER
    RESPONSABILIDAD:
    - Footer global
