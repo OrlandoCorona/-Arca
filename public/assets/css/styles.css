@@ -8,12 +8,7 @@
 ====================================================== */
 
 *,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 html,
 body {
@@ -62,6 +57,9 @@ ol {
 ====================================================== */
 
 :root {
+  --accent-primary: #001e54;
+   --accent-secondar: #0046be;
+    --accent-tertiary: #548df6;
   /* Brand */
   --primary: #0ea5e9;
   --primary-dark: #0369a1;
@@ -93,6 +91,7 @@ ol {
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
 }
+
 /* ======================================================
    BLOQUE 3 — BOTONES BASE
    RESPONSABILIDAD:
@@ -153,7 +152,8 @@ ol {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden; /* Importante para ocultar el texto inicial */
+  overflow: hidden;
+  /* Importante para ocultar el texto inicial */
   transition-duration: 0.3s;
 }
 
@@ -164,7 +164,8 @@ ol {
   color: white;
   font-size: 1.2em;
   font-weight: 600;
-  white-space: nowrap; /* Evita que el texto salte de línea */
+  white-space: nowrap;
+  /* Evita que el texto salte de línea */
   transition-duration: 0.3s;
   display: flex;
   align-items: center;
@@ -187,6 +188,7 @@ ol {
   transform: translate(2px, 2px);
   transition-duration: 0.1s;
 }
+
 /* ======================================================
    BLOQUE 4 — FORMULARIOS (AUTH)
    RESPONSABILIDAD:
@@ -200,10 +202,12 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
-  max-width: 380px; /* formularios más anchos para mejor usabilidad */
+  max-width: 380px;
+  /* formularios más anchos para mejor usabilidad */
   width: 100%;
   margin: 0 auto;
-  align-items: center; /* centra botones sin tocar .btn */
+  align-items: center;
+  /* centra botones sin tocar .btn */
 }
 
 /* CONTENEDOR INPUT */
@@ -243,8 +247,8 @@ ol {
 }
 
 /* EFECTO FLOTANTE */
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
+.form-group input:focus+label,
+.form-group input:not(:placeholder-shown)+label {
   top: -8px;
   font-size: 0.7rem;
   color: var(--primary);
@@ -356,6 +360,7 @@ ol {
 .auth-page main {
   flex: 1;
 }
+
 /* ======================================================
    BLOQUE 6 — AUTH BACKGROUND (LCP OPTIMIZADO)
    RESPONSABILIDAD:
@@ -371,7 +376,8 @@ ol {
   width: min(420px, 92%);
   max-width: 420px;
   padding: 2rem;
-  margin: 0; /* evitar transformaciones extra que rompen el layout */
+  margin: 0;
+  /* evitar transformaciones extra que rompen el layout */
 
   background: rgba(255, 255, 255, 0.06);
   border-radius: 18px;
@@ -396,11 +402,10 @@ ol {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    rgba(5, 9, 20, 0.75),
-    rgba(5, 9, 20, 0.9)
-  );
-  padding: 2rem; /* evita que el panel pegue en los bordes en pantallas pequeñas */
+  background: linear-gradient(rgba(5, 9, 20, 0.75),
+      rgba(5, 9, 20, 0.9));
+  padding: 2rem;
+  /* evita que el panel pegue en los bordes en pantallas pequeñas */
 }
 
 .auth-bg-img {
@@ -411,7 +416,8 @@ ol {
   object-fit: cover;
   z-index: -1;
   filter: brightness(0.55);
-  will-change: transform; /* ayuda a evitar jitter en algunos navegadores */
+  will-change: transform;
+  /* ayuda a evitar jitter en algunos navegadores */
 }
 
 
@@ -537,6 +543,7 @@ ol {
 .nav-link.danger {
   color: #ff6b6b;
 }
+
 /* ======================================================
    BLOQUE 9 — PRODUCT PAGES
    RESPONSABILIDAD:
@@ -591,6 +598,7 @@ ol {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
 }
+
 /* ======================================================
    BLOQUE 10 — PRODUCT CARD + MODAL
    RESPONSABILIDAD:
@@ -691,6 +699,7 @@ ol {
   display: flex;
   justify-content: space-between;
 }
+
 /* ======================================================
    BLOQUE 11 — FOOTER
    RESPONSABILIDAD:
@@ -743,6 +752,7 @@ ol {
   object-fit: cover;
   border-radius: 50%;
 }
+
 /* ======================================================
    BLOQUE 12 — BOTONES & UTILIDADES
    RESPONSABILIDAD:
@@ -760,15 +770,6 @@ ol {
 }
 
 /* BOTÓN ANIMADO */
-.btn-animated {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-animated .text {
-  position: relative;
-  z-index: 2;
-}
 
 /* BOTÓN PRODUCTO */
 .product-btn {
@@ -784,6 +785,7 @@ ol {
 .hidden {
   display: none !important;
 }
+
 .auth-footer {
   background: transparent;
   border-top: none;
@@ -826,6 +828,7 @@ ol {
     max-width: 100%;
   }
 }
+
 /* ===============================
    BOTÓN CON BORDE ANIMADO (AUTH)
    =============================== */
@@ -844,21 +847,21 @@ ol {
   position: absolute;
   inset: -2px;
   border-radius: 12px;
-  background: linear-gradient(
-    120deg,
-    #0ea5e9,
-    #22d3ee,
-    #a855f7
-  );
+  background: linear-gradient(120deg,
+      #0ea5e9,
+      #22d3ee,
+      #a855f7);
   z-index: -1;
 }
 
 .btn-animated:hover {
   transform: translateY(-1px);
 }
+
 .form-group input {
   padding: 0.9rem 0.75rem;
 }
+
 .auth-title {
   font-size: 1.6rem;
   margin-bottom: 1.2rem;
