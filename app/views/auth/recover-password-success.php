@@ -16,7 +16,7 @@ declare(strict_types=1);
 
     <!-- IMAGEN DE FONDO (OBLIGATORIA PARA AUTH) -->
     <img
-      src="/assets/images/login-bg.jpg"
+      src="/assets/images/login-bg.webp"
       class="auth-bg-img"
       alt=""
       loading="eager"
