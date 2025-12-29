@@ -26,7 +26,7 @@ declare(strict_types=1);
 
       <div class="auth-logo-wrapper">
         <img
-  src="/assets/images/logo-auth-top.webp"
+  src="/assets/images/logo-auth-top.jpg"
   alt="El Arca"
   class="auth-logo"
   fetchpriority="high"
