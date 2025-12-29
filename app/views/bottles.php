@@ -34,73 +34,33 @@ if (!isset($_SESSION['id_usuario'])) {
 
         <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
-
+            <?php
+            $products = include __DIR__ . '/../config/products.php';
+            $items = $products['botellas_y_copeo'] ?? [];
+            foreach ($items as $p):
+            ?>
             <article class="product-card"
-                data-name="Botella Premium"
-                data-img="/assets/images/botella-premium.jpg"
-                data-desc="Botella premium ideal para celebraciones y momentos especiales.">
+                data-name="<?= htmlspecialchars($p['name']) ?>"
+                data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+                data-desc="<?= htmlspecialchars($p['name']) ?>">
 
                 <div class="menu-media">
-                    <img src="/assets/images/botella-premium.jpg" alt="Botella Premium">
+                    <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                 </div>
 
                 <div class="product-body">
-                    <h3>Botella Premium</h3>
-                    <p>Calidad y sabor garantizados.</p>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
+                    <p><?= htmlspecialchars($p['name']) ?></p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$950</span>
+                        <span class="menu-price">$--</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
                     </div>
                 </div>
             </article>
-
-            <article class="product-card"
-                data-name="Botella Especial"
-                data-img="/assets/images/botella-especial.jpg"
-                data-desc="Perfecta para compartir en ocasiones especiales.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/botella-especial.jpg" alt="Botella Especial">
-                </div>
-
-                <div class="product-body">
-                    <h3>Botella Especial</h3>
-                    <p>Selección destacada.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$1,200</span>
-                        <button class="btn product-btn open-modal">
-                            Ver detalle
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="product-card"
-                data-name="Botella Reserva"
-                data-img="/assets/images/botella-reserva.jpg"
-                data-desc="Reserva especial con carácter intenso y aroma único.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/botella-reserva.jpg" alt="Botella Reserva">
-                </div>
-
-                <div class="product-body">
-                    <h3>Botella Reserva</h3>
-                    <p>Para paladares exigentes.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$1,450</span>
-                        <button class="btn product-btn open-modal">
-                            Ver detalle
-                        </button>
-                    </div>
-                </div>
-            </article>
-
+            <?php endforeach; ?>
         </div>
     </section>
 

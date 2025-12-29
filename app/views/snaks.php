@@ -32,67 +32,31 @@ if (!isset($_SESSION['id_usuario'])) {
         </header>
 
         <div class="menu-grid">
-
+            <?php
+            $products = include __DIR__ . '/../config/products.php';
+            $items = $products['antojitos_y_snacks'] ?? [];
+            foreach ($items as $p):
+            ?>
             <article class="product-card"
-                data-name="Nachos con Queso"
-                data-img="/assets/images/snack-nachos.jpg"
-                data-desc="Totopos crujientes con queso fundido.">
+                data-name="<?= htmlspecialchars($p['name']) ?>"
+                data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+                data-desc="<?= htmlspecialchars($p['name']) ?>">
 
                 <div class="menu-media">
-                    <img src="/assets/images/snack-nachos.jpg" alt="Nachos con Queso">
+                    <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                 </div>
 
                 <div class="product-body">
-                    <h3>Nachos con Queso</h3>
-                    <p>Clásicos y crujientes.</p>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
+                    <p><?= htmlspecialchars($p['name']) ?></p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$65</span>
+                        <span class="menu-price">$--</span>
                         <button class="btn product-btn open-modal">Ver detalle</button>
                     </div>
                 </div>
             </article>
-
-            <article class="product-card"
-                data-name="Aros de Cebolla"
-                data-img="/assets/images/snack-aros-cebolla.jpg"
-                data-desc="Aros de cebolla empanizados y dorados.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/snack-aros-cebolla.jpg" alt="Aros de Cebolla">
-                </div>
-
-                <div class="product-body">
-                    <h3>Aros de Cebolla</h3>
-                    <p>Crujientes por fuera, suaves por dentro.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$60</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="product-card"
-                data-name="Palomitas Preparadas"
-                data-img="/assets/images/snack-palomitas.jpg"
-                data-desc="Palomitas con mantequilla y especias.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/snack-palomitas.jpg" alt="Palomitas Preparadas">
-                </div>
-
-                <div class="product-body">
-                    <h3>Palomitas Preparadas</h3>
-                    <p>Ideales para compartir.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$50</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
-                    </div>
-                </div>
-            </article>
-
+            <?php endforeach; ?>
         </div>
     </section>
 

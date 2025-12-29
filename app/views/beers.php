@@ -34,31 +34,33 @@ if (!isset($_SESSION['id_usuario'])) {
 
         <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
-
+            <?php
+            $products = include __DIR__ . '/../config/products.php';
+            $items = $products['cervezas_media_355ml'] ?? [];
+            foreach ($items as $p):
+            ?>
             <article class="product-card"
-                data-name="Cerveza Clara"
-                data-img="/assets/images/inicio5.jpg"
-                data-desc="Cerveza clara bien fría, ideal para acompañar cualquier platillo.">
+                data-name="<?= htmlspecialchars($p['name']) ?>"
+                data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+                data-desc="<?= htmlspecialchars($p['name']) ?>">
 
                 <div class="menu-media">
-                    <img src="/assets/images/inicio5.jpg" alt="Cerveza Clara">
+                    <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                 </div>
 
                 <div class="product-body">
-                    <h3>Cerveza Clara</h3>
-                    <p>Cerveza clara bien fría.</p>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
+                    <p><?= htmlspecialchars($p['name']) ?></p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$55</span>
+                        <span class="menu-price">$--</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
                     </div>
                 </div>
             </article>
-
-            <!-- Aquí pueden ir más cervezas -->
-
+            <?php endforeach; ?>
         </div>
     </section>
 

@@ -35,32 +35,43 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <!-- GRID DE PRODUCTOS -->
     <div class="menu-grid">
-
+      <?php
+      $products = include __DIR__ . '/../config/products.php';
+      $keys = [
+        'micheladas_grandes_clasicas_1_2l',
+        'micheladas_medianas_355ml',
+        'micheladas_grandes_premium'
+      ];
+      $items = [];
+      foreach ($keys as $k) {
+        if (isset($products[$k]) && is_array($products[$k])) {
+          $items = array_merge($items, $products[$k]);
+        }
+      }
+      foreach ($items as $p):
+      ?>
       <article class="product-card"
-        data-name="Michelada Clásica"
-        data-price="75"
-        data-img="/assets/images/inicio5.jpg"
-        data-desc="Limón natural, sal y salsas tradicionales. Bien fría.">
+        data-name="<?= htmlspecialchars($p['name']) ?>"
+        data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+        data-desc="<?= htmlspecialchars($p['name']) ?>">
 
         <div class="menu-media">
-          <img src="/assets/images/inicio5.jpg" alt="Michelada Clásica">
+          <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
         </div>
 
         <div class="product-body">
-          <h3>Michelada Clásica</h3>
-          <p>Limón, sal y salsas tradicionales.</p>
+          <h3><?= htmlspecialchars($p['name']) ?></h3>
+          <p><?= htmlspecialchars($p['name']) ?></p>
 
           <div class="product-footer">
-            <span class="menu-price">$75</span>
+            <span class="menu-price">$--</span>
             <button class="btn product-btn open-modal">
               Ver detalle
             </button>
           </div>
         </div>
       </article>
-
-      <!-- Puedes agregar más micheladas aquí -->
-
+      <?php endforeach; ?>
     </div>
 
   </section>

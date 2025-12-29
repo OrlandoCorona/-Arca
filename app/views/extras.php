@@ -32,67 +32,31 @@ if (!isset($_SESSION['id_usuario'])) {
         </header>
 
         <div class="menu-grid">
-
+            <?php
+            $products = include __DIR__ . '/../config/products.php';
+            $items = $products['extras_para_micheladas'] ?? [];
+            foreach ($items as $p):
+            ?>
             <article class="product-card"
-                data-name="Guacamole"
-                data-img="/assets/images/extra-guacamole.jpg"
-                data-desc="Guacamole preparado al momento con aguacate fresco.">
+                data-name="<?= htmlspecialchars($p['name']) ?>"
+                data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+                data-desc="<?= htmlspecialchars($p['name']) ?>">
 
                 <div class="menu-media">
-                    <img src="/assets/images/extra-guacamole.jpg" alt="Guacamole">
+                    <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                 </div>
 
                 <div class="product-body">
-                    <h3>Guacamole</h3>
-                    <p>Aguacate fresco con limón y sal.</p>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
+                    <p><?= htmlspecialchars($p['name']) ?></p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$45</span>
+                        <span class="menu-price">$--</span>
                         <button class="btn product-btn open-modal">Ver detalle</button>
                     </div>
                 </div>
             </article>
-
-            <article class="product-card"
-                data-name="Frijoles Charros"
-                data-img="/assets/images/extra-frijoles.jpg"
-                data-desc="Frijoles charros tradicionales con tocino y chorizo.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/extra-frijoles.jpg" alt="Frijoles Charros">
-                </div>
-
-                <div class="product-body">
-                    <h3>Frijoles Charros</h3>
-                    <p>Receta tradicional mexicana.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$40</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="product-card"
-                data-name="Papas a la Francesa"
-                data-img="/assets/images/extra-papas.jpg"
-                data-desc="Papas fritas crujientes, ideales para compartir.">
-
-                <div class="menu-media">
-                    <img src="/assets/images/extra-papas.jpg" alt="Papas a la Francesa">
-                </div>
-
-                <div class="product-body">
-                    <h3>Papas a la Francesa</h3>
-                    <p>Crujientes y doradas.</p>
-
-                    <div class="product-footer">
-                        <span class="menu-price">$50</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
-                    </div>
-                </div>
-            </article>
-
+            <?php endforeach; ?>
         </div>
     </section>
 

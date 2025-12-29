@@ -34,29 +34,33 @@ if (!isset($_SESSION['id_usuario'])) {
 
         <!-- GRID DE PRODUCTOS -->
         <div class="menu-grid">
-
+            <?php
+            $products = include __DIR__ . '/../config/products.php';
+            $items = $products['tacos_de_asada'] ?? [];
+            foreach ($items as $p):
+            ?>
             <article class="product-card"
-                data-name="Taco al Pastor"
-                data-img="/assets/images/taco1.jpg"
-                data-desc="Carne marinada con piña y especias tradicionales.">
+                data-name="<?= htmlspecialchars($p['name']) ?>"
+                data-img="/assets/images/<?= htmlspecialchars($p['image']) ?>"
+                data-desc="<?= htmlspecialchars($p['name']) ?>">
 
                 <div class="menu-media">
-                    <img src="/assets/images/taco1.jpg" alt="Taco al Pastor">
+                    <img src="/assets/images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
                 </div>
 
                 <div class="product-body">
-                    <h3>Taco al Pastor</h3>
-                    <p>Carne marinada con piña y especias tradicionales.</p>
+                    <h3><?= htmlspecialchars($p['name']) ?></h3>
+                    <p><?= htmlspecialchars($p['name']) ?></p>
 
                     <div class="product-footer">
-                        <span class="menu-price">$25</span>
+                        <span class="menu-price">$--</span>
                         <button class="btn product-btn open-modal">
                             Ver detalle
                         </button>
                     </div>
                 </div>
             </article>
-
+            <?php endforeach; ?>
         </div>
     </section>
 
