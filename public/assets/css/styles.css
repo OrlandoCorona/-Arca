@@ -889,13 +889,10 @@ ol {
    - Utilidades menores
 ====================================================== */
 
-.btn:hover {
-  background: var(--primary-dark);
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
+/* NOTE: duplicate .btn and auth-footer rules removed to avoid cascade overrides.
+   Button hover/active behavior is defined earlier in BLOQUE 3 (base buttons).
+   More specific auth footer/layout rules remain below.
+*/
 
 /* BOTÓN ANIMADO */
 
@@ -912,32 +909,6 @@ ol {
 
 .hidden {
   display: none !important;
-}
-
-.auth-footer {
-  background: transparent;
-  border-top: none;
-}
-
-.auth-footer .footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  text-align: center;
-}
-
-/* En páginas auth, eliminar el fondo por defecto del footer (evita 'barra azul') */
-.site-footer.auth-footer {
-  background: transparent;
-  border-top: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  text-align: center;
 }
 
 /* Inputs más cómodos en auth */
