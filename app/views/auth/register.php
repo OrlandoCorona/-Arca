@@ -9,7 +9,7 @@ declare(strict_types=1);
   <title>Crear cuenta — El Arca</title>
 
   <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="/assets/css/styles.css">
+<link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
 
   <!-- PRELOAD LCP -->
   <link
