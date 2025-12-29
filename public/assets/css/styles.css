@@ -58,8 +58,8 @@ ol {
 
 :root {
   --accent-primary: #001e54;
-   --accent-secondar: #0046be;
-    --accent-tertiary: #548df6;
+  --accent-secondary: #0046be;
+  --accent-tertiary: #5074b7;
   /* Brand */
   --primary: #0ea5e9;
   --primary-dark: #0369a1;
@@ -865,4 +865,73 @@ ol {
 .auth-title {
   font-size: 1.6rem;
   margin-bottom: 1.2rem;
+}
+
+/* ===============================
+   BOTÓN ANIMADO — CONTORNO GIRATORIO (ESPECÍFICO)
+   Aplicado solo a botones en páginas auth y al CTA de reservar
+   para no afectar otros botones del proyecto.
+   =============================== */
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.auth-page .btn-animated,
+.cta-box .btn-animated {
+  position: relative;
+  padding: 3px; /* grosor del borde */
+  border-radius: 12px;
+  background: transparent;
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.auth-page .btn-animated::before,
+.cta-box .btn-animated::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    var(--accent-primary),
+    #31a2ff,
+    var(--accent-secondary),
+    #05183b,
+    var(--accent-tertiary),
+    #68e0ff,
+    var(--accent-primary)
+  );
+  opacity: 0;
+  animation: rotate 3s linear infinite;
+  transition: opacity .3s ease;
+  z-index: 1;
+}
+
+.auth-page .btn-animated:hover::before,
+.cta-box .btn-animated:hover::before {
+  opacity: 1;
+}
+
+.auth-page .btn-animated .text,
+.cta-box .btn-animated .text {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.05rem; /* más comedido que 1.35rem para no romper layout */
+  text-align: center;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
 }
