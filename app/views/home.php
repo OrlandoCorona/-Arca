@@ -28,7 +28,7 @@ if (!isset($_SESSION['id_usuario'])) {
       <img src="/assets/images/logo-home.png" alt="El Arca" class="hero-logo">
       <h1 class="hero-title">
         Restaurante Bar <br>
-        <span class="text-wave">El Arca</span>
+        <span class="text-wave" style="font-family: var(--font-hero); font-weight: 700; letter-spacing: -2px;">El Arca</span>
       </h1>
       <p class="hero-subtitle">
         Naturaleza · Gastronomía · Experiencia Premium
@@ -42,54 +42,58 @@ if (!isset($_SESSION['id_usuario'])) {
           En El Arca combinamos gastronomía, naturaleza y momentos memorables.
         </p>
       </header>
-
-      <div class="intro-grid">
-        <article class="intro-card glass-panel">
-          <h3>Ambiente natural</h3>
-          <p>Espacios abiertos y zonas familiares para disfrutar sin prisas.</p>
-        </article>
-
-        <article class="intro-card glass-panel">
-          <h3>Cocina de calidad</h3>
-          <p>Ingredientes frescos y recetas cuidadosamente preparadas.</p>
-        </article>
-
-        <article class="intro-card glass-panel">
-          <h3>Momentos especiales</h3>
-          <p>Eventos, reuniones y celebraciones en un entorno único.</p>
-        </article>
-      </div>
+      <!-- Intro cards removed as requested to integrate into carousel or kept as is? User said "Integrar esta sección como parte del carrusel cilíndrico" for specific items, but "Intro" usually introduces concepts. The "Contenido de las tarjetas" list is specific. I will keep the intro text but maybe hide the old cards if they are redundant, OR the user meant the "Terraza/Fuente/..." ARE the new featured elements. The user instructions say "Otras dos tarjetas conceptuales similares" and listed specific 6 items. I will replacing the "Lo más destacado" carousel with the NEW Cylindrical Carousel containing the 6 items. -->
     </section>
 
     <section class="section section-featured">
       <header class="section-header">
-        <h2 class="text-glow">Lo más destacado</h2>
+        <h2 class="text-glow">Explora nuestras zonas</h2>
+        <p>Da clic sobre la imagen para conocer más acerca de la zona</p>
       </header>
 
-      <div class="carousel">
+      <div class="carousel" id="cylinderCarousel">
         <div class="carousel-track">
-
-          <article class="carousel-item">
-            <img src="/assets/images/arcairis.jpg" alt="Coctelería">
+          <!-- 6 Cards: Terraza, Fuente, Camastros, Billar, Zona de niños, Carpas -->
+          
+          <article class="carousel-item" data-name="Terraza" data-desc="Disfruta de la vista y el aire libre en nuestra terraza premium.">
+            <img src="/assets/images/arcairis.jpg" alt="Terraza"> <!-- Placeholder image, reused existing -->
             <div class="carousel-caption">
-              <h3>Coctelería</h3>
-              <p>Sabores únicos y combinaciones especiales.</p>
+              <h3>Terraza</h3>
             </div>
           </article>
 
-          <article class="carousel-item">
-            <img src="/assets/images/tacos-asada-inicio.png" alt="Tacos de asada">
+          <article class="carousel-item" data-name="Fuente" data-desc="Relájate con el sonido del agua en nuestra zona de fuentes.">
+            <img src="/assets/images/tacos-asada-inicio.png" alt="Fuente"> <!-- Placeholder -->
             <div class="carousel-caption">
-              <h3>Tacos</h3>
-              <p>Tradición y sabor en cada platillo.</p>
+              <h3>Fuente</h3>
             </div>
           </article>
 
-          <article class="carousel-item">
-            <img src="/assets/images/micheladas-inicio.png" alt="Micheladas">
+          <article class="carousel-item" data-name="Camastros" data-desc="Comodidad y descanso bajo el sol.">
+             <img src="/assets/images/micheladas-inicio.png" alt="Camastros"> <!-- Placeholder -->
             <div class="carousel-caption">
-              <h3>Micheladas</h3>
-              <p>Refrescantes y preparadas al momento.</p>
+              <h3>Camastros</h3>
+            </div>
+          </article>
+
+          <article class="carousel-item" data-name="Billar" data-desc="Diviértete con amigos en nuestras mesas profesionales.">
+             <img src="/assets/images/arcairis.jpg" alt="Billar"> <!-- Placeholder -->
+            <div class="carousel-caption">
+              <h3>Billar</h3>
+            </div>
+          </article>
+
+           <article class="carousel-item" data-name="Zona de niños" data-desc="Diversión segura para los más pequeños.">
+             <img src="/assets/images/tacos-asada-inicio.png" alt="Zona de niños"> <!-- Placeholder -->
+            <div class="carousel-caption">
+              <h3>Zona de niños</h3>
+            </div>
+          </article>
+
+           <article class="carousel-item" data-name="Carpas" data-desc="Privacidad y confort para tu grupo.">
+             <img src="/assets/images/micheladas-inicio.png" alt="Carpas"> <!-- Placeholder -->
+            <div class="carousel-caption">
+              <h3>Carpas</h3>
             </div>
           </article>
 
@@ -98,9 +102,8 @@ if (!isset($_SESSION['id_usuario'])) {
     </section>
 
     <section class="section section-cta">
-      <div class="cta-box glass-panel cta-background" style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden;">
-        <!-- Overlay for readability -->
-        <div class="cta-overlay" style="position: absolute; inset: 0; background: rgba(2,6,23,0.7); z-index: 1;"></div>
+      <!-- Image changed to principal_reservaciones.webp, glass only on box -->
+      <div class="cta-box glass-panel" style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden; background: rgba(255,255,255,0.05);">
         
         <div style="position: relative; z-index: 2;">
           <h2 class="text-glow">¿Listo para visitarnos?</h2>
@@ -110,6 +113,9 @@ if (!isset($_SESSION['id_usuario'])) {
             <span class="text">Reservar ahora</span>
           </a>
         </div>
+        
+        <!-- Background Image specific to CTA box as requested -->
+         <div class="cta-bg-img" style="position: absolute; inset: 0; background-image: url('/assets/images/principal_reservaciones.webp'); background-size: cover; background-position: center; opacity: 0.3; z-index: -1;"></div>
       </div>
     </section>
 

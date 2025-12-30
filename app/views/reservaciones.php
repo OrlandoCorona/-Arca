@@ -12,90 +12,83 @@ if (!isset($_SESSION['id_usuario'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservaciones — El Arca</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link rel="preload" as="image" href="/assets/images/login-bg.webp" fetchpriority="high">
 </head>
 
-<body>
+<body class="auth-page">
 
-  <?php require __DIR__ . '/partials/navbar.php'; ?>
+  <main class="auth-bg">
+    <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="">
 
-  <main class="app-container section">
+    <div class="auth-glass" style="max-width: 500px;"> <!-- Slightly wider for reservation form if needed -->
+      
+      <h2 class="auth-title">Reservaciones</h2>
+      <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">Reserva tu mesa fácilmente</p>
 
-    <header class="section-header">
-      <h2>Reservaciones</h2>
-      <p>Reserva tu mesa fácilmente</p>
-    </header>
+      <form method="POST" action="/?action=realizar_reserva" id="reservationForm" class="auth-form" style="width: 100%;">
 
-    <div class="reservation-container">
-
-      <article class="reservation-card glass-panel">
-        <div class="reservation-info">
-          <h3>Horario de Atención</h3>
-          <ul class="schedule-list">
-            <li><span class="day">Martes - Sábado</span><span class="hours">12:00 PM – 7:00 PM</span></li>
-            <li><span class="day">Domingo</span><span class="hours">12:00 PM – 6:00 PM</span></li>
-            <li class="closed"><span class="day">Lunes</span><span class="hours">Cerrado</span></li>
-          </ul>
+        <div class="form-group">
+          <input
+            type="date"
+            name="fecha"
+            id="fechaInput"
+            required
+            placeholder=" "
+            style="color-scheme: dark;" 
+          >
+          <label for="fechaInput">Fecha</label>
+          <span class="form-error" id="fechaError" style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
         </div>
 
-        <form method="POST" action="/?action=realizar_reserva" id="reservationForm" class="reservation-form">
+        <div class="form-group">
+          <input
+            type="time"
+            name="hora"
+            id="horaInput"
+            required
+            placeholder=" "
+            style="color-scheme: dark;"
+          >
+          <label for="horaInput">Hora</label>
+          <span class="form-error" id="horaError" style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
+        </div>
 
-          <div class="form-group">
-            <input
-              type="date"
-              name="fecha"
-              id="fechaInput"
-              required
-              placeholder=" "
-            >
-            <label for="fechaInput">Fecha</label>
-            <span class="form-error" id="fechaError"></span>
-          </div>
+        <div class="form-group">
+          <input
+            type="number"
+            name="zona"
+            id="zonaInput"
+            min="1"
+            max="20"
+            required
+            placeholder=" "
+          >
+          <label for="zonaInput">Número de personas</label>
+          <span class="form-error" id="zonaError"></span>
+        </div>
 
-          <div class="form-group">
-            <input
-              type="time"
-              name="hora"
-              id="horaInput"
-              required
-              placeholder=" "
-            >
-            <label for="horaInput">Hora</label>
-            <span class="form-error" id="horaError"></span>
-          </div>
+        <button type="submit" class="btn btn-animated" id="submitBtn" style="width: 100%; margin-top: 1rem;">
+          <span class="text">Confirmar reservación</span>
+        </button>
 
-          <div class="form-group">
-            <input
-              type="number"
-              name="zona"
-              id="zonaInput"
-              min="1"
-              max="20"
-              required
-              placeholder=" "
-            >
-            <label for="zonaInput">Número de personas</label>
-            <span class="form-error" id="zonaError"></span>
-          </div>
+      </form>
 
-          <button type="submit" class="btn btn-animated" id="submitBtn">
-            <span class="text">Confirmar reservación</span>
-          </button>
-
-        </form>
-      </article>
+      <!-- Botón Volver - Abajo a la izquierda -->
+      <div style="width: 100%; display: flex; justify-content: flex-start; margin-top: 1.5rem;">
+        <a href="/?view=home" class="btn-back" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
+          ← Volver
+        </a>
+      </div>
 
     </div>
 
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer auth-footer">
     <div class="footer-inner">
       <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-      <p class="footer-text">© 2025 Restaurante Bar El Arca — Donde la naturaleza y la gastronomía se encuentran.</p>
+      <p class="footer-text">© 2025 Restaurante Bar El Arca</p>
     </div>
   </footer>
 

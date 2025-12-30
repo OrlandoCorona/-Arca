@@ -35,7 +35,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <section class="menu-grid">
 
       <!-- TACOS -->
-      <a href="/?view=tacos" class="menu-card">
+      <a href="/?view=tacos" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/tacos-asada-inicio.png" alt="Tacos">
         </div>
@@ -46,7 +46,7 @@ if (!isset($_SESSION['id_usuario'])) {
       </a>
 
       <!-- EXTRAS -->
-      <a href="/?view=extras" class="menu-card">
+      <a href="/?view=extras" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/extras-inicio.png" alt="Extras">
         </div>
@@ -59,7 +59,7 @@ if (!isset($_SESSION['id_usuario'])) {
       <!-- ESPECIALIDADES removed: view not present -->
 
       <!-- POSTRES -->
-      <a href="/?view=postres" class="menu-card">
+      <a href="/?view=postres" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/postres-inicio.png" alt="Postres">
         </div>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['id_usuario'])) {
       </a>
 
       <!-- SNACKS -->
-      <a href="/?view=snacks" class="menu-card">
+      <a href="/?view=snacks" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/snacks-inicio.png" alt="Snacks">
         </div>

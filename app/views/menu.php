@@ -36,7 +36,7 @@ if (!isset($_SESSION['id_usuario'])) {
     <section class="menu-grid">
 
       <!-- BEBIDAS -->
-      <a href="/?view=beers" class="menu-card">
+      <a href="/?view=beers" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/arca-iris.jpg" alt="Bebidas y copeo">
         </div>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['id_usuario'])) {
       </a>
 
       <!-- MICHELADAS -->
-      <a href="/?view=micheladas" class="menu-card">
+      <a href="/?view=micheladas" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/micheladas-inicio.png" alt="Micheladas">
         </div>
@@ -58,7 +58,7 @@ if (!isset($_SESSION['id_usuario'])) {
       </a>
 
       <!-- COMIDA -->
-      <a href="/?view=food" class="menu-card">
+      <a href="/?view=food" class="menu-card intro-card">
         <div class="menu-media">
           <img src="/assets/images/tacos-asada-inicio.png" alt="Comida">
         </div>

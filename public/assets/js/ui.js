@@ -86,61 +86,75 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================================
    * 3D CYLINDRICAL CAROUSEL
    * ===================================== */
+  /* =====================================
+   * 3D CYLINDRICAL CAROUSEL (Revised for 6 Items)
+   * ===================================== */
   const carousels = document.querySelectorAll('.carousel-track');
   carousels.forEach(track => {
     const items = Array.from(track.children);
     const count = items.length;
     if (!count) return;
 
-    let currentAngle = 0;
+    // Fixed for 6 items as requested
     const angleStep = 360 / count;
-    // Calculate radius to ensure items roughly touch or have minimal gap
-    // Circumference = width * count. r = C / 2pi.
-    // Approximate card width 300px + gap
-    const radius = Math.round((320 * count) / (2 * Math.PI)) + 50;
+    let currentAngle = 0;
 
-    // Initial positioning of items
+    // Calculate radius. Setup for ~300px width cards with gap.
+    // For 6 items, radius ~ 300-350px works well to show Side-Back items.
+    const itemWidth = 320;
+    const radius = Math.round((itemWidth * count) / (2 * Math.PI)) + 80; // Added spacing
+
+    // Initial positioning
     items.forEach((item, index) => {
       const angle = angleStep * index;
       item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-      // Add index to dataset for click handling if needed
       item.dataset.index = index;
     });
 
     // Rotation function
     function rotateToIndex(index) {
-      // Calculate target angle (negative to rotate correctly)
       currentAngle = -angleStep * index;
-      track.style.transform = `translateZ(-${radius}px) rotateY(${currentAngle}deg)`;
+      updateCarousel();
     }
 
-    // Auto-rotation (just increment angle)
     function rotateNext() {
       currentAngle -= angleStep;
-      track.style.transform = `translateZ(-${radius}px) rotateY(${currentAngle}deg)`;
+      updateCarousel();
     }
 
-    // Set initial depth to center the front item (camera is at 0, scene needs to be pushed back)
-    // We move the track BACK by radius so the front item is at Z=0 (close to camera)
+    function updateCarousel() {
+      // Rotate the track
+      track.style.transform = `translateZ(-${radius}px) rotateY(${currentAngle}deg)`;
+
+      // Update opacity/visibility based on angle relative to front
+      // Front is where (angle + currentAngle) % 360 ~= 0
+      /* 
+         Complex logic to hide back items if requested strictly "3 items visible",
+         but CSS backface-visibility typically handles valid "cylinder" feel.
+         We will leave strict opacity out unless specifically needed to hide the back 3 completely.
+         The prompt asks for "Tres tarjetas visibles", which in a 6-item hex layout, 
+         the front 3 (0, +60, -60) are naturally the ones facing the camera. 
+         The back 3 are facing away.
+      */
+    }
+
+    // Set initial depth
     track.style.transform = `translateZ(-${radius}px) rotateY(0deg)`;
 
-    // Click to bring to front
-    // Note: click logic is complex in cylinder because items rotate away. 
-    // Simplified: Clicking an item opens modal. Auto-rotation continues.
+    // Click handler -> Open Modal OR Rotate to it? Prompt says "Da clic ... para conocer más"
     items.forEach((item) => {
       item.addEventListener('click', () => {
-        // Open modal logic
         const img = item.querySelector('img');
         const caption = item.querySelector('.carousel-caption');
         openModalFromData({
           img: img?.src || '',
-          title: caption?.querySelector('h3')?.textContent || '',
-          desc: caption?.querySelector('p')?.textContent || ''
+          title: item.dataset.name || caption?.querySelector('h3')?.textContent || '',
+          desc: item.dataset.desc || ''
         });
       });
     });
 
-    // Autoplay
+    // Autoplay: 5000ms
     let autoplayId = setInterval(rotateNext, 5000);
 
     // Pause on hover
