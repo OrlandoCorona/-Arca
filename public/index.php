@@ -1,16 +1,20 @@
 <?php
-session_start();
+declare(strict_types=1);
 
 /**
- * DEMO SESSION — SOLO PARA PRUEBAS VISUALES
- * QUITAR ANTES DE PRODUCCIÓN
+ * ======================================
+ * FRONT CONTROLLER ÚNICO
+ * ======================================
+ * - Inicia sesión
+ * - Carga Composer (si existe)
+ * - Carga el router central
+ * - NO contiene lógica de negocio
  */
-if (!isset($_SESSION['id_usuario'])) {
-    $_SESSION['id_usuario'] = [
-        'id_usuario' => 1,
-        'nombre' => 'Demo',
-        'correo' => 'demo@local.test'
-    ];
-}
 
+session_start();
+
+
+/**
+ * Router central
+ */
 require __DIR__ . '/../app/routes.php';

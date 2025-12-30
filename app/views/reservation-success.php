@@ -14,14 +14,16 @@ declare(strict_types=1);
 <body class="auth-page">
 
   <main class="auth-container">
-<div class="mensaje-flotante">
-  <h2>Reservación confirmada</h2>
-  <p>
-    Tu reservación fue registrada correctamente.
-    Te esperamos en Restaurante-Bar El Arca.
-  </p>
-  <a href="/?view=home" class="btn">Volver al inicio</a>
-</div>
+    <div class="glass-panel" style="padding: 3rem; text-align: center; max-width: 500px; margin: 0 auto; border-radius: var(--radius-lg);">
+      <h2 class="text-glow" style="margin-bottom: 1.5rem;">Reservación confirmada</h2>
+      <p style="margin-bottom: 2rem;">
+        Tu reservación fue registrada correctamente.
+        Te esperamos en Restaurante-Bar El Arca.
+      </p>
+      <a href="/?view=home" class="btn btn-animated">
+        <span class="text">Volver al inicio</span>
+      </a>
+    </div>
   </main>
   <footer class="site-footer">
   <div class="footer-inner">

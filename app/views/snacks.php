@@ -46,9 +46,16 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h3>Nachos con Queso</h3>
                     <p>Clásicos y crujientes.</p>
 
-                    <div class="product-footer">
-                        <span class="menu-price">$65</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
+                    <div class="product-footer" style="flex-wrap: wrap; gap: 0.4rem; justify-content: space-between;">
+                        <span class="menu-price" style="width: 100%; margin-bottom: 0.4rem; font-size: 1.1rem; color: var(--primary);">$65</span>
+                        
+                        <button class="btn product-btn open-modal" style="flex: 1; min-width: 45%; background: rgba(0,0,0,0.3); border: 1px solid var(--primary); font-size: 0.75rem;">
+                            Ver detalle
+                        </button>
+                        
+                        <button class="btn product-btn add-to-cart-btn" style="flex: 1; min-width: 45%; font-size: 0.75rem;">
+                            Agregar
+                        </button>
                     </div>
                 </div>
             </article>
@@ -66,9 +73,16 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h3>Aros de Cebolla</h3>
                     <p>Crujientes por fuera, suaves por dentro.</p>
 
-                    <div class="product-footer">
-                        <span class="menu-price">$60</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
+                    <div class="product-footer" style="flex-wrap: wrap; gap: 0.4rem; justify-content: space-between;">
+                        <span class="menu-price" style="width: 100%; margin-bottom: 0.4rem; font-size: 1.1rem; color: var(--primary);">$60</span>
+                        
+                        <button class="btn product-btn open-modal" style="flex: 1; min-width: 45%; background: rgba(0,0,0,0.3); border: 1px solid var(--primary); font-size: 0.75rem;">
+                            Ver detalle
+                        </button>
+                        
+                        <button class="btn product-btn add-to-cart-btn" style="flex: 1; min-width: 45%; font-size: 0.75rem;">
+                            Agregar
+                        </button>
                     </div>
                 </div>
             </article>
@@ -86,9 +100,16 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h3>Palomitas Preparadas</h3>
                     <p>Ideales para compartir.</p>
 
-                    <div class="product-footer">
-                        <span class="menu-price">$50</span>
-                        <button class="btn product-btn open-modal">Ver detalle</button>
+                    <div class="product-footer" style="flex-wrap: wrap; gap: 0.4rem; justify-content: space-between;">
+                        <span class="menu-price" style="width: 100%; margin-bottom: 0.4rem; font-size: 1.1rem; color: var(--primary);">$50</span>
+                        
+                        <button class="btn product-btn open-modal" style="flex: 1; min-width: 45%; background: rgba(0,0,0,0.3); border: 1px solid var(--primary); font-size: 0.75rem;">
+                            Ver detalle
+                        </button>
+                        
+                        <button class="btn product-btn add-to-cart-btn" style="flex: 1; min-width: 45%; font-size: 0.75rem;">
+                            Agregar
+                        </button>
                     </div>
                 </div>
             </article>
