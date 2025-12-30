@@ -12,7 +12,10 @@ if (!isset($_SESSION['id_usuario'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El Arca — Restaurante Bar</title>
-<link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
 </head>
 
 <body>
@@ -109,7 +112,7 @@ if (!isset($_SESSION['id_usuario'])) {
   <footer class="site-footer">
     <div class="footer-inner">
       <img src="/assets/images/logo-footer.jpg" alt="El Arca" class="footer-logo">
-      <p class="footer-text">© 2024 Restaurante Bar El Arca</p>
+      <p class="footer-text">© 2025 Restaurante Bar El Arca — Donde la naturaleza y la gastronomía se encuentran.</p>
     </div>
   </footer>
 

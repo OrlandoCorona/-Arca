@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$correo = trim($_POST['correo'] ?? '');
+$correo = strtolower(trim($_POST['correo'] ?? ''));
 $contrasena = $_POST['contrasena'] ?? '';
 
 if ($correo === '' || $contrasena === '') {

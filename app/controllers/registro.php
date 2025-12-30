@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Datos
-$correo   = trim($_POST['correo'] ?? '');
+$correo   = strtolower(trim($_POST['correo'] ?? ''));
 $nombre   = trim($_POST['nombre'] ?? '');
 $ap       = trim($_POST['apellido_paterno'] ?? '');
 $am       = trim($_POST['apellido_materno'] ?? '');
