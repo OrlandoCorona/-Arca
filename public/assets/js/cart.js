@@ -72,8 +72,8 @@ const Cart = {
     setupListeners() {
         // Global delegation for Add to Cart buttons
         document.addEventListener('click', (e) => {
-            if (e.target.closest('.add-to-cart')) {
-                const btn = e.target.closest('.add-to-cart');
+            if (e.target.closest('.add-to-cart') || e.target.closest('.add-to-cart-btn')) {
+                const btn = e.target.closest('.add-to-cart') || e.target.closest('.add-to-cart-btn');
                 const card = btn.closest('.product-card') || btn.closest('.modal-content');
                 if (!card) return;
 

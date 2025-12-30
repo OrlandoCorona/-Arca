@@ -31,7 +31,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <div class="reservation-container">
 
-      <article class="reservation-card glass-card">
+      <article class="reservation-card glass-panel">
         <div class="reservation-info">
           <h3>Horario de Atención</h3>
           <ul class="schedule-list">

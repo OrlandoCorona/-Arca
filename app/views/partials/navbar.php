@@ -64,4 +64,5 @@
 
 <!-- LOAD GLOBAL SCRIPTS HERE TO ENSURE THEY ARE ON EVERY PAGE -->
 <script src="/assets/js/cart.js"></script>
+<script src="/assets/js/interactions.js"></script>
 <script src="/assets/js/chat.js"></script>

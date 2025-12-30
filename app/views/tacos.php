@@ -52,10 +52,15 @@ if (!isset($_SESSION['id_usuario'])) {
                     <h3><?= htmlspecialchars($p['name']) ?></h3>
                     <p><?= htmlspecialchars($p['name']) ?></p>
 
-                    <div class="product-footer">
-                        <span class="menu-price">$--</span>
-                        <button class="btn product-btn open-modal">
+                    <div class="product-footer" style="flex-wrap: wrap; gap: 0.4rem; justify-content: space-between;">
+                        <span class="menu-price" style="width: 100%; margin-bottom: 0.4rem; font-size: 1.1rem; color: var(--primary);">$--</span>
+                        
+                        <button class="btn product-btn open-modal" style="flex: 1; min-width: 45%; background: rgba(0,0,0,0.3); border: 1px solid var(--primary); font-size: 0.8rem;">
                             Ver detalle
+                        </button>
+                        
+                        <button class="btn product-btn add-to-cart-btn" style="flex: 1; min-width: 45%; font-size: 0.8rem;">
+                            Agregar
                         </button>
                     </div>
                 </div>

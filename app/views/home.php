@@ -27,7 +27,8 @@ if (!isset($_SESSION['id_usuario'])) {
     <section class="hero">
       <img src="/assets/images/logo-home.png" alt="El Arca" class="hero-logo">
       <h1 class="hero-title">
-        Restaurante Bar <span>El Arca</span>
+        Restaurante Bar <br>
+        <span class="text-wave">El Arca</span>
       </h1>
       <p class="hero-subtitle">
         Naturaleza · Gastronomía · Experiencia Premium
@@ -36,24 +37,24 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <section class="section section-intro">
       <header class="section-header">
-        <h2>Una experiencia diferente</h2>
+        <h2 class="text-glow">Una experiencia diferente</h2>
         <p>
           En El Arca combinamos gastronomía, naturaleza y momentos memorables.
         </p>
       </header>
 
       <div class="intro-grid">
-        <article class="intro-card">
+        <article class="intro-card glass-panel">
           <h3>Ambiente natural</h3>
           <p>Espacios abiertos y zonas familiares para disfrutar sin prisas.</p>
         </article>
 
-        <article class="intro-card">
+        <article class="intro-card glass-panel">
           <h3>Cocina de calidad</h3>
           <p>Ingredientes frescos y recetas cuidadosamente preparadas.</p>
         </article>
 
-        <article class="intro-card">
+        <article class="intro-card glass-panel">
           <h3>Momentos especiales</h3>
           <p>Eventos, reuniones y celebraciones en un entorno único.</p>
         </article>
@@ -62,7 +63,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
     <section class="section section-featured">
       <header class="section-header">
-        <h2>Lo más destacado</h2>
+        <h2 class="text-glow">Lo más destacado</h2>
       </header>
 
       <div class="carousel">
@@ -97,9 +98,9 @@ if (!isset($_SESSION['id_usuario'])) {
     </section>
 
     <section class="section section-cta">
-      <div class="cta-box">
-        <h2>¿Listo para visitarnos?</h2>
-        <p>Reserva tu mesa y vive la experiencia El Arca.</p>
+      <div class="cta-box glass-panel" style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto;">
+        <h2 class="text-glow">¿Listo para visitarnos?</h2>
+        <p style="margin-bottom: 2rem;">Reserva tu mesa y vive la experiencia El Arca.</p>
 
         <a href="/?view=reservaciones" class="btn btn-animated">
           <span class="text">Reservar ahora</span>
