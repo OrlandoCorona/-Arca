@@ -76,7 +76,7 @@ if (!isset($_SESSION['id_usuario'])) {
         <p id="modalDesc"></p>
 
         <div class="modal-actions">
-            <button class="btn btn-animated">
+            <button class="btn btn-animated add-to-cart">
                 <span class="text">Añadir al carrito</span>
             </button>
             <button class="btn-back" id="closeModal">Cerrar</button>

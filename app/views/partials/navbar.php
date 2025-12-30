@@ -39,6 +39,15 @@
     <!-- ACCIONES DERECHA -->
     <div class="nav-actions">
 
+      <!-- CART TRIGGER -->
+      <a href="#" class="nav-link nav-cart-trigger">
+        <div style="position: relative;">
+          <img src="/assets/images/cart.png" alt="Carrito">
+          <span id="cart-badge" class="cart-badge" style="display: none;">0</span>
+        </div>
+        <span>Carrito</span>
+      </a>
+
       <a href="/?view=perfil" class="nav-link nav-perfil">
         <img src="/assets/images/perfil.png" alt="Perfil">
         <span>Perfil</span>
@@ -52,3 +61,7 @@
 
   </div>
 </nav>
+
+<!-- LOAD GLOBAL SCRIPTS HERE TO ENSURE THEY ARE ON EVERY PAGE -->
+<script src="/assets/js/cart.js"></script>
+<script src="/assets/js/chat.js"></script>
