@@ -6,8 +6,8 @@
    - Colores por defecto
 ====================================================== */
 
-/* IMPORT NEW FONTS: Kalnia Glaze (Hero), Shrikhand (Titles), Inter (Body) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kalnia+Glaze:wght@100..700&family=Shrikhand&display=swap');
+/* IMPORT NEW FONTS: Shrikhand (Titles), Inter (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Shrikhand&display=swap');
 
 *,
 *::before,
@@ -65,31 +65,33 @@ ol {
 ====================================================== */
 
 :root {
-  /* --- PALETA PREMIUM: DEEP VIOLET / NIGHT / NEON ACCENTS --- */
+  /* --- PALETA REFINED: NAVY / AQUA / SILVER (NO PURPLE) --- */
 
   /* Base Backgrounds */
-  --bg-dark: #050914;
-  /* Night Blue (Main BG) */
-  --bg-card: rgba(26, 11, 46, 0.4);
-  /* Deep Violet Transparent */
-  --bg-glass: rgba(5, 9, 20, 0.7);
+  --bg-dark: #020617;
+  /* Deep Navy */
+  --bg-card: rgba(2, 44, 46, 0.4);
+  /* Dark Turquoise Transparent */
+  --bg-glass: rgba(2, 6, 23, 0.8);
 
   /* Brand Colors */
   --primary: #00f3ff;
-  /* Electric Cyan (Buttons/Highlights) */
+  /* Cyan */
   --primary-dark: #0099a3;
-  --secondary: #bc13fe;
-  /* Neon Purple (Accents) */
-  --accent-deep: #1a0b2e;
-  /* Deep Violet */
+  --secondary: #2dd4bf;
+  /* Aqua Green (Replaces Purple) */
+  --accent-deep: #051024;
+  /* Navy Blue */
+  --silver: #e2e8f0;
 
   /* Text */
   --text-main: #ffffff;
   --text-muted: #94a3b8;
-  --text-highlight: #e2e8f0;
+  --text-highlight: #f8fafc;
 
   /* Fonts */
-  --font-hero: 'Kalnia Glaze', display;
+  --font-hero: 'Shrikhand', display;
+  /* Unified Title Font */
   --font-title: 'Shrikhand', display;
   --font-body: 'Inter', sans-serif;
 
@@ -100,8 +102,8 @@ ol {
 
   /* Shadows & Glows */
   --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-neon: 0 0 15px rgba(188, 19, 254, 0.3);
-  --glow-text: 0 0 12px rgba(0, 243, 255, 0.4);
+  --shadow-neon: 0 0 15px rgba(0, 243, 255, 0.3);
+  --glow-text: 0 0 12px rgba(45, 212, 191, 0.4);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -118,22 +120,23 @@ ol {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  /* Soft Cyan Border */
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* Text Wave Gradient (Multicolor) */
+/* Text Wave Gradient (Aqua/Green/Silver) */
 .text-wave {
   background: linear-gradient(to right,
       #00f3ff 0%,
-      #bc13fe 50%,
-      #00f3ff 100%);
+      #2dd4bf 50%,
+      #e2e8f0 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: waveFlow 4s linear infinite;
-  text-shadow: 0 0 20px rgba(188, 19, 254, 0.25);
+  animation: waveFlow 6s linear infinite;
+  text-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
 }
 
 @keyframes waveFlow {
@@ -173,7 +176,7 @@ ol {
   padding: 0.75rem 1.6rem;
   border-radius: var(--radius-md);
 
-  background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(188, 19, 254, 0.1));
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(45, 212, 191, 0.1));
   border: 1px solid rgba(0, 243, 255, 0.3);
   color: #fff;
   cursor: pointer;
@@ -187,7 +190,7 @@ ol {
 }
 
 .btn:hover {
-  background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(188, 19, 254, 0.2));
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(45, 212, 191, 0.2));
   border-color: var(--primary);
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
   transform: translateY(-2px);
@@ -376,7 +379,7 @@ ol {
   padding: 4rem 1.5rem;
 }
 
-/* Organic Background Elements */
+/* Organic Background Elements (REFINED: Aqua/Green/Navy) */
 .hero::before {
   content: '';
   position: absolute;
@@ -384,7 +387,8 @@ ol {
   left: -10%;
   width: 60%;
   height: 60%;
-  background: radial-gradient(circle, rgba(188, 19, 254, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.15) 0%, transparent 70%);
+  /* Aqua Green */
   filter: blur(60px);
   z-index: -1;
   animation: floatOrganic 10s ease-in-out infinite;
@@ -398,6 +402,7 @@ ol {
   width: 50%;
   height: 50%;
   background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+  /* Cyan */
   filter: blur(60px);
   z-index: -1;
   animation: floatOrganic 12s ease-in-out infinite reverse;
@@ -434,7 +439,7 @@ ol {
 .hero-title span {
   display: block;
   font-size: 4.5rem;
-  background: linear-gradient(to right, #ffffff, #00f3ff, #bc13fe);
+  background: linear-gradient(to right, #ffffff, #00f3ff, #2dd4bf);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -884,23 +889,30 @@ ol {
   transform: translateY(-2px) scale(1.03);
 }
 
-/* CAROUSEL - 3D STYLE */
+/* CAROUSEL - CYLINDRICAL 3D */
 .carousel {
-  padding: 2rem 0;
-  perspective: 1000px;
+  padding: 3rem 0;
+  perspective: 1200px;
+  /* Deeper perspective for cylinder */
   overflow: visible;
-  /* Allow shadows to spill */
+  position: relative;
+  height: 350px;
+  /* Fixed height for cylinder container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-track {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+  /* Smooth rotation */
   display: flex;
-  gap: 2rem;
-  padding: 1rem 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  /* Hide scrollbar Firefox */
+  justify-content: center;
+  align-items: center;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -908,27 +920,41 @@ ol {
 }
 
 .carousel-item {
-  scroll-snap-align: center;
-  min-width: 300px;
+  position: absolute;
+  /* Stacked initially, JS positions them in circle */
+  width: 280px;
+  height: 320px;
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.2);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  position: relative;
-
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
   backdrop-filter: blur(10px);
+  /* Box shadow aqua/green */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  /* Hide back for cleaner look or visible for depth */
+  backface-visibility: visible;
+  opacity: 0.9;
 }
 
 .carousel-item:hover {
-  transform: translateY(-10px) rotateY(5deg) scale(1.02);
-  box-shadow:
-    -10px 10px 20px rgba(0, 0, 0, 0.4),
-    0 0 15px rgba(0, 243, 255, 0.2);
-  /* Neon glow */
-  border-color: rgba(0, 243, 255, 0.4);
-  z-index: 10;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  z-index: 100;
+  /* Bring to front on hover if needed, but cylinder logic handles Z */
+}
+
+/* CTA BACKGROUND */
+.cta-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/images/principal-reservaciones.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0.6;
+  /* Dimmed by overlay div */
 }
 
 .carousel-item img {

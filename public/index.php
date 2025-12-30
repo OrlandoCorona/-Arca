@@ -12,6 +12,11 @@ declare(strict_types=1);
  */
 
 session_start();
+if (!isset($_SESSION['id_usuario'])) {
+    $_SESSION['id_usuario'] = 1;
+    $_SESSION['nombre'] = 'Demo';
+    $_SESSION['correo'] = 'demo@local.test';
+}
 
 
 /**

@@ -83,47 +83,55 @@ document.addEventListener("DOMContentLoaded", () => {
    * - Click to open modal
    * - Subtle 3D transforms
    * ===================================== */
+  /* =====================================
+   * 3D CYLINDRICAL CAROUSEL
+   * ===================================== */
   const carousels = document.querySelectorAll('.carousel-track');
   carousels.forEach(track => {
     const items = Array.from(track.children);
-    if (!items.length) return;
+    const count = items.length;
+    if (!count) return;
 
-    let current = 0;
-    const total = items.length;
-    let autoplayId = null;
+    let currentAngle = 0;
+    const angleStep = 360 / count;
+    // Calculate radius to ensure items roughly touch or have minimal gap
+    // Circumference = width * count. r = C / 2pi.
+    // Approximate card width 300px + gap
+    const radius = Math.round((320 * count) / (2 * Math.PI)) + 50;
 
-    function applyTransforms() {
-      items.forEach((item, i) => {
-        const offset = i - current;
-        const abs = Math.abs(offset);
-        const z = -Math.min(abs * 80, 200);
-        const scale = Math.max(1 - abs * 0.08, 0.78);
-        const rotateY = offset * -12;
-        const tx = offset * 18;
-        item.style.transform = `perspective(1000px) translateX(${tx}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`;
-        item.style.opacity = abs > 2 ? '0.25' : '1';
-        item.style.pointerEvents = abs > 2 ? 'none' : 'auto';
-      });
+    // Initial positioning of items
+    items.forEach((item, index) => {
+      const angle = angleStep * index;
+      item.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+      // Add index to dataset for click handling if needed
+      item.dataset.index = index;
+    });
+
+    // Rotation function
+    function rotateToIndex(index) {
+      // Calculate target angle (negative to rotate correctly)
+      currentAngle = -angleStep * index;
+      track.style.transform = `translateZ(-${radius}px) rotateY(${currentAngle}deg)`;
     }
 
-    function scrollToIndex(idx, smooth = true) {
-      current = (idx + total) % total;
-      const el = items[current];
-      if (el) el.scrollIntoView({behavior: smooth ? 'smooth' : 'auto', inline: 'center', block: 'nearest'});
-      applyTransforms();
+    // Auto-rotation (just increment angle)
+    function rotateNext() {
+      currentAngle -= angleStep;
+      track.style.transform = `translateZ(-${radius}px) rotateY(${currentAngle}deg)`;
     }
 
-    // click item -> open modal
-    items.forEach((it, idx) => {
-      it.addEventListener('click', (e) => {
-        // if item is not central, scroll to it
-        if (idx !== current) {
-          scrollToIndex(idx);
-          return;
-        }
-        // central -> open modal with content
-        const img = it.querySelector('img');
-        const caption = it.querySelector('.carousel-caption');
+    // Set initial depth to center the front item (camera is at 0, scene needs to be pushed back)
+    // We move the track BACK by radius so the front item is at Z=0 (close to camera)
+    track.style.transform = `translateZ(-${radius}px) rotateY(0deg)`;
+
+    // Click to bring to front
+    // Note: click logic is complex in cylinder because items rotate away. 
+    // Simplified: Clicking an item opens modal. Auto-rotation continues.
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        // Open modal logic
+        const img = item.querySelector('img');
+        const caption = item.querySelector('.carousel-caption');
         openModalFromData({
           img: img?.src || '',
           title: caption?.querySelector('h3')?.textContent || '',
@@ -132,31 +140,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // autoplay
-    function startAutoplay() {
-      if (autoplayId) return;
-      autoplayId = setInterval(() => {
-        scrollToIndex(current + 1);
-      }, 6000);
-    }
+    // Autoplay
+    let autoplayId = setInterval(rotateNext, 5000);
 
-    function stopAutoplay() {
-      if (!autoplayId) return;
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoplayId));
+    track.addEventListener('mouseleave', () => {
       clearInterval(autoplayId);
-      autoplayId = null;
-    }
+      autoplayId = setInterval(rotateNext, 5000);
+    });
 
-    // pause on hover/focus
-    track.addEventListener('mouseenter', stopAutoplay);
-    track.addEventListener('mouseleave', startAutoplay);
-    track.addEventListener('focusin', stopAutoplay);
-    track.addEventListener('focusout', startAutoplay);
-
-    // initialize
-    // ensure first item centered
-    items[0].scrollIntoView({inline: 'center'});
-    applyTransforms();
-    startAutoplay();
   });
 
   /* NAVBAR: ensure keyboard shows labels on focus */

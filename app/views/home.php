@@ -98,13 +98,18 @@ if (!isset($_SESSION['id_usuario'])) {
     </section>
 
     <section class="section section-cta">
-      <div class="cta-box glass-panel" style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto;">
-        <h2 class="text-glow">¿Listo para visitarnos?</h2>
-        <p style="margin-bottom: 2rem;">Reserva tu mesa y vive la experiencia El Arca.</p>
+      <div class="cta-box glass-panel cta-background" style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden;">
+        <!-- Overlay for readability -->
+        <div class="cta-overlay" style="position: absolute; inset: 0; background: rgba(2,6,23,0.7); z-index: 1;"></div>
+        
+        <div style="position: relative; z-index: 2;">
+          <h2 class="text-glow">¿Listo para visitarnos?</h2>
+          <p style="margin-bottom: 2rem;">Reserva tu mesa y vive la experiencia El Arca.</p>
 
-        <a href="/?view=reservaciones" class="btn btn-animated">
-          <span class="text">Reservar ahora</span>
-        </a>
+          <a href="/?view=reservaciones" class="btn btn-animated">
+            <span class="text">Reservar ahora</span>
+          </a>
+        </div>
       </div>
     </section>
 
