@@ -128,17 +128,227 @@ ol {
 
 /* Text Wave Gradient (Aqua/Green/Silver) */
 .text-wave {
-  background: linear-gradient(to right,
-      #e2e8f0 0%,
-      #e2e8f0 60%,
-      #2dd4bf 85%,
-      #00f3ff 100%);
-  background-size: 200% auto;
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    rgba(180, 180, 180, 0.15)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: waveFlow 6s linear infinite;
-  text-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+  animation: fadeIn 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Meteorites */
+.meteor-shower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.meteor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  opacity: 0;
+  transform: rotate(-45deg);
+  animation: meteor 3s ease-in-out infinite;
+}
+
+.meteor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes meteor {
+  0% {
+    top: -10vh;
+    transform: translateX(0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;
+    transform: translateX(-100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Border Beam / Animated Outline */
+.border-beam-container {
+    position: relative;
+    overflow: hidden;
+     /* Ensure rounding matches the parent */
+    border-radius: inherit;
+}
+
+/* We use a pseudo-element or a child div to create the moving border effect */
+.border-beam {
+    position: absolute;
+    inset: 0;
+    z-index: 0; /* Behind content but in front of background if handled carefully, actually usually an overlay border */
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.border-beam::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, 
+        rgba(0, 243, 255, 0) 0%, 
+        rgba(0, 243, 255, 0.5) 25%, 
+        #ffffff 50%,
+        rgba(45, 212, 191, 0.5) 75%, 
+        rgba(45, 212, 191, 0) 100%
+    ) border-box;
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) padding-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; 
+            mask-composite: exclude; 
+    
+    background-size: 200% 200%;
+    animation: borderBeamAnim 4s linear infinite;
+}
+
+@keyframes borderBeamAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Vertical Carousel / Slideshow Styles */
+.slideshow {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.zones {
+    position: relative;
+    padding-left: 40px;
+}
+
+.zones::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255,255,255,0.15);
+}
+
+.zone {
+    position: relative;
+    padding: 30px 0;
+    cursor: pointer;
+}
+
+.zone h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    transition: color .3s ease;
+    font-family: var(--font-hero);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.zone p {
+    font-size: .9rem;
+    margin-top: 6px;
+    color: rgba(255,255,255,0.4);
+    font-family: var(--font-body);
+}
+
+.zone.active h3 {
+    color: #3fffd8;
+    text-shadow: 0 0 10px rgba(63, 255, 216, 0.3);
+}
+
+.zone.active p {
+    color: rgba(255,255,255,0.8);
+}
+
+.active-line {
+    position: absolute;
+    left: 14px;
+    width: 2px;
+    background: #3fffd8;
+    box-shadow: 0 0 10px rgba(63, 255, 216, 0.5);
+    transition: top .4s ease, height .4s ease;
+}
+
+.image-box {
+    position: relative;
+    height: 420px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.image-box img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .6s ease;
+}
+
+.image-box img.active {
+    opacity: 1;
+}
+
+@media (max-width: 900px) {
+    .slideshow {
+        grid-template-columns: 1fr;
+    }
+    .image-box {
+        height: 300px;
+    }
+    .zones {
+        padding-left: 20px;
+    }
+    .zones::before {
+        left: 0;
+    }
+    .active-line {
+        left: 0;
+    }
 }
 
 @keyframes waveFlow {

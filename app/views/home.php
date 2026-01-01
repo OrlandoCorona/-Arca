@@ -25,6 +25,17 @@ if (!isset($_SESSION['id_usuario'])) {
   <main class="app-container home">
 
     <section class="hero">
+      <!-- Meteorites Container -->
+      <div class="meteor-shower">
+        <div class="meteor" style="left: 10%; animation-duration: 2s; animation-delay: 0s;"></div>
+        <div class="meteor" style="left: 20%; animation-duration: 3s; animation-delay: 1s;"></div>
+        <div class="meteor" style="left: 30%; animation-duration: 2.5s; animation-delay: 2s;"></div>
+        <div class="meteor" style="left: 45%; animation-duration: 2.8s; animation-delay: 1.5s;"></div>
+        <div class="meteor" style="left: 60%; animation-duration: 3.2s; animation-delay: 0.5s;"></div>
+        <div class="meteor" style="left: 75%; animation-duration: 2.1s; animation-delay: 2.5s;"></div>
+        <div class="meteor" style="left: 90%; animation-duration: 3.5s; animation-delay: 1.2s;"></div>
+      </div>
+
       <img src="/assets/images/logo-home.png" alt="El Arca" class="hero-logo">
       <h1 class="hero-title">
         Restaurante Bar <br>
@@ -48,58 +59,131 @@ if (!isset($_SESSION['id_usuario'])) {
     <section class="section section-featured">
       <header class="section-header">
         <h2 class="text-glow">Explora nuestras zonas</h2>
-        <p>Da clic sobre la imagen para conocer más acerca de la zona</p>
+        <p>Selecciona una zona para conocer más detalles.</p>
       </header>
 
-      <div class="carousel" id="cylinderCarousel">
-        <div class="carousel-track">
-          <!-- 6 Cards: Terraza, Fuente, Camastros, Billar, Zona de niños, Carpas -->
-          
-          <article class="carousel-item" data-name="Terraza" data-desc="Disfruta de la vista y el aire libre en nuestra terraza premium.">
-            <img src="/assets/images/arcairis.jpg" alt="Terraza"> <!-- Placeholder image, reused existing -->
-            <div class="carousel-caption">
-              <h3>Terraza</h3>
+      <!-- New Vertical List Carousel -->
+      <section class="slideshow">
+        <!-- ZONAS -->
+        <div class="zones" id="zones">
+            <div class="active-line" id="activeLine"></div>
+            
+            <div class="zone active" data-image="zona1">
+                <h3>Terraza</h3>
+                <p>Disfruta de la vista y el aire libre en nuestra terraza premium.</p>
             </div>
-          </article>
-
-          <article class="carousel-item" data-name="Fuente" data-desc="Relájate con el sonido del agua en nuestra zona de fuentes.">
-            <img src="/assets/images/tacos-asada-inicio.png" alt="Fuente"> <!-- Placeholder -->
-            <div class="carousel-caption">
-              <h3>Fuente</h3>
+            
+            <div class="zone" data-image="zona2">
+                <h3>Fuente</h3>
+                <p>Relájate con el sonido del agua en nuestra zona de fuentes.</p>
             </div>
-          </article>
-
-          <article class="carousel-item" data-name="Camastros" data-desc="Comodidad y descanso bajo el sol.">
-             <img src="/assets/images/micheladas-inicio.png" alt="Camastros"> <!-- Placeholder -->
-            <div class="carousel-caption">
-              <h3>Camastros</h3>
+            
+            <div class="zone" data-image="zona3">
+                <h3>Camastros</h3>
+                <p>Comodidad y descanso bajo el sol.</p>
             </div>
-          </article>
-
-          <article class="carousel-item" data-name="Billar" data-desc="Diviértete con amigos en nuestras mesas profesionales.">
-             <img src="/assets/images/arcairis.jpg" alt="Billar"> <!-- Placeholder -->
-            <div class="carousel-caption">
-              <h3>Billar</h3>
+            
+            <div class="zone" data-image="zona4">
+                <h3>Billar</h3>
+                <p>Diviértete con amigos en nuestras mesas profesionales.</p>
             </div>
-          </article>
-
-           <article class="carousel-item" data-name="Zona de niños" data-desc="Diversión segura para los más pequeños.">
-             <img src="/assets/images/tacos-asada-inicio.png" alt="Zona de niños"> <!-- Placeholder -->
-            <div class="carousel-caption">
-              <h3>Zona de niños</h3>
+            
+            <div class="zone" data-image="zona5">
+                <h3>Zona de niños</h3>
+                <p>Diversión segura para los más pequeños.</p>
             </div>
-          </article>
-
-           <article class="carousel-item" data-name="Carpas" data-desc="Privacidad y confort para tu grupo.">
-             <img src="/assets/images/micheladas-inicio.png" alt="Carpas"> <!-- Placeholder -->
-            <div class="carousel-caption">
-              <h3>Carpas</h3>
+            
+            <div class="zone" data-image="zona6">
+                <h3>Carpas</h3>
+                <p>Privacidad y confort para tu grupo.</p>
             </div>
-          </article>
-
         </div>
-      </div>
+
+        <!-- IMAGEN -->
+        <div class="image-box">
+            <!-- Replacing placeholders with likely relevant images. 
+                 Using existing images from list if possible or generic placeholders.
+                 I will map them to reasonable existing files. -->
+            <img src="/assets/images/imgTerraza.png" class="active" data-id="zona1">
+            <img src="/assets/images/imagenJardin.png" data-id="zona2"> <!-- Jardin/Fuente approximation -->
+            <img src="/assets/images/imagenInterior.png" data-id="zona3"> <!-- Camastros approximation -->
+            <img src="/assets/images/Ambinte.jpg" data-id="zona4"> <!-- Billar approximation -->
+            <img src="/assets/images/img4.jpg" data-id="zona5"> <!-- Kids approximation -->
+            <img src="/assets/images/of3.jpg" data-id="zona6"> <!-- Carpas approximation -->
+        </div>
+      </section>
     </section>
+
+    <!-- Script for Carousel -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const zones = document.querySelectorAll(".zone");
+          const images = document.querySelectorAll(".image-box img");
+          const activeLine = document.getElementById("activeLine");
+
+          function moveLine(element) {
+              if(!element) return;
+              const rect = element.getBoundingClientRect();
+              const parent = document.getElementById("zones");
+              const parentRect = parent.getBoundingClientRect();
+              
+              // Calculate relative position
+              activeLine.style.top = (rect.top - parentRect.top) + "px";
+              activeLine.style.height = rect.height + "px";
+          }
+
+          function activateZone(zone) {
+              zones.forEach(z => z.classList.remove("active"));
+              zone.classList.add("active");
+              
+              const id = zone.dataset.image;
+              images.forEach(img => {
+                  img.classList.toggle("active", img.dataset.id === id);
+              });
+              
+              moveLine(zone);
+          }
+
+          zones.forEach(zone => {
+              zone.addEventListener("mouseenter", () => activateZone(zone));
+              zone.addEventListener("click", () => activateZone(zone));
+          });
+          
+          // Auto-play feature (optional but requested behavior "Cambia automáticamente al siguiente")
+          let currentIndex = 0;
+          let intervalId;
+
+          function nextSlide() {
+              currentIndex = (currentIndex + 1) % zones.length;
+              activateZone(zones[currentIndex]);
+          }
+
+          function startAutoPlay() {
+             intervalId = setInterval(nextSlide, 3500); // 3.5 seconds per slide
+          }
+          
+          function stopAutoPlay() {
+              clearInterval(intervalId);
+          }
+
+          // Initial position
+          moveLine(document.querySelector(".zone.active"));
+          
+          // Start Autoplay
+          startAutoPlay();
+          
+          // Pause on hover
+          const slideshow = document.querySelector('.slideshow');
+          slideshow.addEventListener('mouseenter', stopAutoPlay);
+          slideshow.addEventListener('mouseleave', startAutoPlay);
+
+          // Update line position on resize
+          window.addEventListener('resize', () => {
+               const active = document.querySelector(".zone.active");
+               moveLine(active);
+          });
+      });
+    </script>
 
     <section class="section section-cta">
       <!-- Image changed to principal_reservaciones.webp, glass only on box -->
