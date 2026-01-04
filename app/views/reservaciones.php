@@ -223,6 +223,7 @@ if (!isset($_SESSION['id_usuario'])) {
     });
   </script>
 
+  <script src="/assets/js/mobile-enhancements.js"></script>
 </body>
 
 </html>
