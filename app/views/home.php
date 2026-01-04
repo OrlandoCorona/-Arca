@@ -72,45 +72,50 @@ if (!isset($_SESSION['id_usuario'])) {
           <div class="zone active" data-image="zona1">
             <h3>Terraza</h3>
             <p>Disfruta de la vista y el aire libre en nuestra terraza premium.</p>
+            <div class="zone-details">
+              <img src="/assets/images/imgTerraza.png" class="zone-img" alt="Terraza">
+            </div>
           </div>
 
           <div class="zone" data-image="zona2">
             <h3>Fuente</h3>
             <p>Relájate con el sonido del agua en nuestra zona de fuentes.</p>
+            <div class="zone-details">
+              <img src="/assets/images/imagenJardin.png" class="zone-img" alt="Fuente">
+            </div>
           </div>
 
           <div class="zone" data-image="zona3">
             <h3>Camastros</h3>
             <p>Comodidad y descanso bajo el sol.</p>
+            <div class="zone-details">
+              <img src="/assets/images/imagenInterior.png" class="zone-img" alt="Camastros">
+            </div>
           </div>
 
           <div class="zone" data-image="zona4">
             <h3>Billar</h3>
             <p>Diviértete con amigos en nuestras mesas profesionales.</p>
+            <div class="zone-details">
+              <img src="/assets/images/Ambinte.jpg" class="zone-img" alt="Billar">
+            </div>
           </div>
 
           <div class="zone" data-image="zona5">
             <h3>Zona de niños</h3>
             <p>Diversión segura para los más pequeños.</p>
+            <div class="zone-details">
+              <img src="/assets/images/img4.jpg" class="zone-img" alt="Zona de niños">
+            </div>
           </div>
 
           <div class="zone" data-image="zona6">
             <h3>Carpas</h3>
             <p>Privacidad y confort para tu grupo.</p>
+            <div class="zone-details">
+              <img src="/assets/images/of3.jpg" class="zone-img" alt="Carpas">
+            </div>
           </div>
-        </div>
-
-        <!-- IMAGEN -->
-        <div class="image-box">
-          <!-- Replacing placeholders with likely relevant images. 
-                 Using existing images from list if possible or generic placeholders.
-                 I will map them to reasonable existing files. -->
-          <img src="/assets/images/imgTerraza.png" class="active" data-id="zona1">
-          <img src="/assets/images/imagenJardin.png" data-id="zona2"> <!-- Jardin/Fuente approximation -->
-          <img src="/assets/images/imagenInterior.png" data-id="zona3"> <!-- Camastros approximation -->
-          <img src="/assets/images/Ambinte.jpg" data-id="zona4"> <!-- Billar approximation -->
-          <img src="/assets/images/img4.jpg" data-id="zona5"> <!-- Kids approximation -->
-          <img src="/assets/images/of3.jpg" data-id="zona6"> <!-- Carpas approximation -->
         </div>
       </section>
     </section>
@@ -119,64 +124,62 @@ if (!isset($_SESSION['id_usuario'])) {
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const zones = document.querySelectorAll(".zone");
-        const images = document.querySelectorAll(".image-box img");
         const activeLine = document.getElementById("activeLine");
 
         function moveLine(element) {
           if (!element) return;
+          // Updates line position based on current element height (including expanded image)
           const rect = element.getBoundingClientRect();
           const parent = document.getElementById("zones");
           const parentRect = parent.getBoundingClientRect();
 
-          // Calculate relative position
           activeLine.style.top = (rect.top - parentRect.top) + "px";
           activeLine.style.height = rect.height + "px";
         }
 
-        function activateZone(zone) {
-          zones.forEach(z => z.classList.remove("active"));
-          zone.classList.add("active");
-
-          const id = zone.dataset.image;
-          images.forEach(img => {
-            img.classList.toggle("active", img.dataset.id === id);
+        function toggleZone(zone) {
+          // Accordion behavior: close others
+          zones.forEach(z => {
+            if (z !== zone) z.classList.remove("active");
           });
 
+          const isActive = zone.classList.contains("active");
+          if (!isActive) {
+            zone.classList.add("active");
+          }
+
+          // Recalculate line after a short delay to allow transition to start/end
+          // or rely on transitionend? For smoothness we update immediately and maybe on transition end.
           moveLine(zone);
+          setTimeout(() => moveLine(zone), 300); // Check again mid-transition
+          setTimeout(() => moveLine(zone), 600); // Check after transition
         }
 
         zones.forEach(zone => {
-          zone.addEventListener("mouseenter", () => activateZone(zone));
-          zone.addEventListener("click", () => activateZone(zone));
+          // Mouseenter only updates line position for hover effect, DOES NOT expand
+          zone.addEventListener("mouseenter", () => {
+            if (window.innerWidth > 768) {
+              // Only move line if not mobile? Or always?
+              // If we move line on hover, it might look weird if we don't click.
+              // Let's keep line on ACTIVE zone only? 
+              // User said: "Hover will preserve the 'active line' indicator"
+              moveLine(zone);
+            }
+          });
+
+          // On mouse leave, return to active zone
+          zone.addEventListener("mouseleave", () => {
+            const active = document.querySelector(".zone.active");
+            if (active) moveLine(active);
+          });
+
+          // Click expands
+          zone.addEventListener("click", () => toggleZone(zone));
         });
 
-        // Auto-play feature (optional but requested behavior "Cambia automáticamente al siguiente")
-        let currentIndex = 0;
-        let intervalId;
-
-        function nextSlide() {
-          currentIndex = (currentIndex + 1) % zones.length;
-          activateZone(zones[currentIndex]);
-        }
-
-        function startAutoPlay() {
-          intervalId = setInterval(nextSlide, 3500); // 3.5 seconds per slide
-        }
-
-        function stopAutoPlay() {
-          clearInterval(intervalId);
-        }
-
         // Initial position
-        moveLine(document.querySelector(".zone.active"));
-
-        // Start Autoplay
-        startAutoPlay();
-
-        // Pause on hover
-        const slideshow = document.querySelector('.slideshow');
-        slideshow.addEventListener('mouseenter', stopAutoPlay);
-        slideshow.addEventListener('mouseleave', startAutoPlay);
+        const active = document.querySelector(".zone.active");
+        if (active) moveLine(active);
 
         // Update line position on resize
         window.addEventListener('resize', () => {
@@ -186,7 +189,7 @@ if (!isset($_SESSION['id_usuario'])) {
       });
     </script>
 
-    <section class="section section-cta reveal-on-scroll">
+    <section class="section section-cta reveal-on-scroll desktop-only">
       <!-- Image changed to principal_reservaciones.webp, glass only on box -->
       <div class="cta-box glass-panel"
         style="padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto; position: relative; overflow: hidden; background: rgba(255,255,255,0.05);">
