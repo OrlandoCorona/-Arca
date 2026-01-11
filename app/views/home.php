@@ -221,11 +221,12 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
   <div id="mobile-floating-cta" class="mobile-only">
-    <div class="floating-cta-text">
-      <span class="top">Reservación Rápida</span>
-      <span class="bot">Reserva tu mesa ahora</span>
-    </div>
-    <a href="/?view=reservaciones" class="floating-cta-btn">Reservar</a>
+    <a href="/?view=menu" class="floating-cta-btn btn-secondary">
+      <span>Ver Menú</span>
+    </a>
+    <a href="/?view=reservaciones" class="floating-cta-btn btn-primary">
+      <span>Reservar</span>
+    </a>
   </div>
 
   <script src="/assets/js/mobile-enhancements.js"></script>
