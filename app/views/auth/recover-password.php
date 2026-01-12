@@ -11,7 +11,7 @@ declare(strict_types=1);
   <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
 </head>
 
-<body class="auth-page">
+<body class="auth-page auth-strict-layout">
 
   <main class="auth-bg">
 

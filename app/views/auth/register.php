@@ -3,58 +3,38 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear cuenta — El Arca</title>
 
   <!-- CSS GLOBAL -->
-<link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
 
   <!-- PRELOAD LCP -->
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/images/login-bg.webp"
-    fetchpriority="high"
-  >
+  <link rel="preload" as="image" href="/assets/images/login-bg.webp" fetchpriority="high">
 </head>
 
-<body class="auth-page">
+<body class="auth-page auth-strict-layout">
 
   <main class="auth-bg">
 
     <!-- IMAGEN DE FONDO (LCP CONTROLADO) -->
-    <img
-      src="/assets/images/login-bg.webp"
-      alt=""
-      class="auth-bg-img"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    >
+    <img src="/assets/images/login-bg.webp" alt="" class="auth-bg-img" loading="eager" fetchpriority="high"
+      decoding="async">
 
     <div class="auth-glass">
 
       <!-- LOGO -->
       <div class="auth-logo-wrapper">
-        <img
-          src="/assets/images/logo-auth-top.jpg"
-          alt="El Arca"
-          class="auth-logo"
-          decoding="async"
-        >
+        <img src="/assets/images/logo-auth-top.jpg" alt="El Arca" class="auth-logo" decoding="async">
 
       </div>
 
       <h2 class="auth-title">Crear cuenta</h2>
 
-      <form
-        method="POST"
-        action="/?action=register"
-        class="auth-form"
-        autocomplete="on"
-      >
+      <form method="POST" action="/?action=register" class="auth-form" autocomplete="on">
 
         <div class="form-group">
           <input type="text" id="nombre" name="nombre" required placeholder=" " autocomplete="given-name">
@@ -62,7 +42,8 @@ declare(strict_types=1);
         </div>
 
         <div class="form-group">
-          <input type="text" id="apellido_paterno" name="apellido_paterno" required placeholder=" " autocomplete="family-name">
+          <input type="text" id="apellido_paterno" name="apellido_paterno" required placeholder=" "
+            autocomplete="family-name">
           <label for="apellido_paterno">Apellido paterno</label>
         </div>
 
@@ -82,12 +63,18 @@ declare(strict_types=1);
         </div>
 
         <div class="form-group">
+          <input type="text" name="domicilio" id="domicilio" placeholder=" " required autocomplete="street-address">
+          <label for="domicilio">Domicilio</label>
+        </div>
+
+        <div class="form-group">
           <input type="password" id="contrasena" name="contrasena" required placeholder=" " autocomplete="new-password">
           <label for="contrasena">Contraseña</label>
         </div>
 
         <div class="form-group">
-          <input type="password" id="repetir_contrasena" name="repetir_contrasena" required placeholder=" " autocomplete="new-password">
+          <input type="password" id="repetir_contrasena" name="repetir_contrasena" required placeholder=" "
+            autocomplete="new-password">
           <label for="repetir_contrasena">Repetir contraseña</label>
         </div>
 
@@ -113,4 +100,5 @@ declare(strict_types=1);
   </footer>
 
 </body>
+
 </html>

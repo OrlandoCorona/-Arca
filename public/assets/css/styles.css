@@ -24,8 +24,9 @@ body {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  /* Global Gradient (Task D) */
-  background: linear-gradient(90deg, #273d51 0.000%, #214973 16.667%, #226098 33.333%, #2b7eb8 50.000%, #399dcd 66.667%, #49b8d1 83.333%, #59c9c4 100.000%);
+  /* Global Gradient (Task 1) */
+  background: #001024;
+  background: linear-gradient(90deg, rgba(0, 16, 36, 1) 0%, rgba(9, 9, 121, 1) 54%, rgba(0, 221, 255, 1) 76%, rgba(9, 9, 121, 1) 86%, rgba(5, 12, 79, 1) 90%, rgba(0, 16, 36, 1) 97%);
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
@@ -470,18 +471,32 @@ ol {
 }
 
 /* Gradient Button Variant (Task E) */
-.btn-grad {
-  background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
+/* Gradient Button Variant (Task 2) */
+.btn-grad,
+.btn,
+.btn-premium {
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
   background-size: 200% auto;
-  color: #fff;
-  text-transform: uppercase;
+  color: white;
+  margin: 10px;
   padding: 15px 45px;
-  /* As requested, though might override .btn padding */
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  /* Modified #eee to dark shadow for premium feel */
+  text-align: center;
+  text-transform: uppercase;
   transition: 0.5s;
-  border: none;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  /* Preserving original border as requested */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-grad:hover,
+.btn:hover,
+.btn-premium:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
 }
 
 .btn-grad:hover {
@@ -769,17 +784,16 @@ ol {
 
 .auth-page {
   min-height: 100vh;
-
-  .auth-page {
-    min-height: 100vh;
-    background: var(--bg-dark);
-    /* Override global gradient */
-    display: flex;
-    flex-direction: column;
-  }
-
+  background: var(--bg-dark);
+  /* Reset background for auth pages (Task 1 Exception) */
   display: flex;
   flex-direction: column;
+}
+
+/* Task 5: Strict layout for purely auth pages (Login, Register, Recover) */
+.auth-strict-layout {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .auth-page main {
@@ -1254,6 +1268,40 @@ ol {
 
 .carousel-item:hover img {
   transform: scale(1.1);
+}
+
+.auth-footer {
+  margin-top: auto;
+  background: linear-gradient(to top, #000 0%, transparent 100%);
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+  /* Default relative for Reservaciones */
+}
+
+/* Task 4: Transparent/Absolute/Centered Footer for Strict Auth Pages */
+.auth-strict-layout .auth-footer {
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+  z-index: 10;
+}
+
+.auth-footer .footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-footer p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .carousel-caption {
