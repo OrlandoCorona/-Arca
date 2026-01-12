@@ -3,11 +3,12 @@ declare(strict_types=1);
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recuperar contraseña — El Arca</title>
-<link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
 </head>
 
 <body class="auth-page">
@@ -15,38 +16,21 @@ declare(strict_types=1);
   <main class="auth-bg">
 
     <!-- IMAGEN DE FONDO (OBLIGATORIA PARA AUTH) -->
-    <img
-      src="/assets/images/login-bg.webp"
-      class="auth-bg-img"
-      alt=""
-      loading="eager"
-    >
+    <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="" loading="eager">
 
     <div class="auth-glass">
 
       <div class="auth-logo-wrapper">
-        <img
-          src="/assets/images/logo-auth-top.jpg"
-          alt="El Arca"
-          class="auth-logo"
-          decoding="async"
-        >
+        <img src="/assets/images/logo-auth-top.jpg" alt="El Arca" class="auth-logo" decoding="async">
 
       </div>
 
       <h2 class="auth-title">Recuperar contraseña</h2>
 
-      <form method="POST" action="/?action=recover-password" class="auth-form">
+      <form method="POST" action="/?action=recover" class="auth-form">
 
         <div class="form-group">
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            required
-            placeholder=" "
-            autocomplete="email"
-          >
+          <input type="email" id="correo" name="correo" required placeholder=" " autocomplete="email">
           <label for="correo">Correo electrónico</label>
         </div>
 
@@ -72,4 +56,5 @@ declare(strict_types=1);
   </footer>
 
 </body>
+
 </html>

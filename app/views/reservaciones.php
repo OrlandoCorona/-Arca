@@ -36,28 +36,34 @@ if (!isset($_SESSION['id_usuario'])) {
         <form method="POST" action="/?action=realizar_reserva" id="reservationForm" class="auth-form"
           style="width: 100%;">
 
-          <div class="form-group">
-            <input type="date" name="fecha" id="fechaInput" required placeholder=" " style="color-scheme: dark;">
-            <label for="fechaInput">Fecha</label>
-            <span class="form-error" id="fechaError"
-              style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
+          <!-- Row: Fecha + Hora -->
+          <div style="display: flex; gap: 1rem; width: 100%;">
+            <div class="form-group" style="flex: 1;">
+              <input type="date" name="fecha" id="fechaInput" required placeholder=" " style="color-scheme: dark;">
+              <label for="fechaInput">Fecha</label>
+              <span class="form-error" id="fechaError"
+                style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
+            </div>
+
+            <div class="form-group" style="flex: 1;">
+              <input type="time" name="hora" id="horaInput" required placeholder=" " style="color-scheme: dark;">
+              <label for="horaInput">Hora</label>
+              <span class="form-error" id="horaError"
+                style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
+            </div>
           </div>
 
-          <div class="form-group">
-            <input type="time" name="hora" id="horaInput" required placeholder=" " style="color-scheme: dark;">
-            <label for="horaInput">Hora</label>
-            <span class="form-error" id="horaError"
-              style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
-          </div>
-
+          <!-- Row: Personas (Full Width) -->
           <div class="form-group">
             <input type="number" name="zona" id="zonaInput" min="1" max="20" required placeholder=" ">
             <label for="zonaInput">Número de personas</label>
             <span class="form-error" id="zonaError"></span>
           </div>
 
-          <button type="submit" class="btn btn-animated" id="submitBtn" style="width: 100%; margin-top: 1rem;">
+          <button type="submit" class="btn btn-premium" id="submitBtn" style="width: 100%; margin-top: 1rem;">
             <span class="text">Confirmar reservación</span>
+            <!-- Preserve border-beam if it was internal, but here it's on the container. 
+                 If the button itself needs a halo, .btn-premium has border styling. -->
           </button>
 
         </form>

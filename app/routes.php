@@ -18,7 +18,9 @@ $viewsMap = [
     'recover-password-success' => __DIR__ . '/views/auth/recover-password-success.php',
     'successful_registration' => __DIR__ . '/views/successful_registration.php',
     'incorrect-password' => __DIR__ . '/views/incorrect-password.php',
+
     'email-already-registered' => __DIR__ . '/views/email-already-registered.php',
+    'reset-password' => __DIR__ . '/views/auth/reset-password.php',
 
     // Públicas
     'menu' => __DIR__ . '/views/menu.php',
@@ -45,7 +47,9 @@ $actionsMap = [
     'register' => __DIR__ . '/controllers/registro.php',
     'recover' => __DIR__ . '/controllers/recuperar_contrasena.php',
     'logout' => __DIR__ . '/controllers/cerrar_sesion.php',
+
     'realizar_reserva' => __DIR__ . '/controllers/realizar_reserva.php',
+    'reset_password' => __DIR__ . '/controllers/reset_password.php',
 ];
 
 /**

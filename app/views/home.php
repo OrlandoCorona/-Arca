@@ -198,7 +198,7 @@ if (!isset($_SESSION['id_usuario'])) {
           <h2 class="text-glow">¿Listo para visitarnos?</h2>
           <p style="margin-bottom: 2rem;">Reserva tu mesa y vive la experiencia El Arca.</p>
 
-          <a href="/?view=reservaciones" class="btn btn-animated">
+          <a href="/?view=reservaciones" class="btn btn-premium">
             <span class="text">Reservar ahora</span>
           </a>
         </div>

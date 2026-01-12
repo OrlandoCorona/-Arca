@@ -24,7 +24,8 @@ body {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg-dark);
+  /* Global Gradient (Task D) */
+  background: linear-gradient(90deg, #273d51 0.000%, #214973 16.667%, #226098 33.333%, #2b7eb8 50.000%, #399dcd 66.667%, #49b8d1 83.333%, #59c9c4 100.000%);
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
@@ -442,6 +443,55 @@ ol {
   box-shadow: 0 0 25px var(--primary);
 }
 
+/* ======================================================
+   TASK A & E — PREMIUM BUTTONS
+   ====================================================== */
+
+/* Base Premium Button (Black + Border Beam support) */
+.btn-premium {
+  background: #000 !important;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  /* For border beam and ripple */
+  transition: all 0.3s ease;
+  z-index: 1;
+  /* Ensure above pseudo elements */
+}
+
+.btn-premium:hover {
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+  transform: translateY(-2px);
+  border-color: rgba(0, 243, 255, 0.6);
+}
+
+/* Gradient Button Variant (Task E) */
+.btn-grad {
+  background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
+  background-size: 200% auto;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px 45px;
+  /* As requested, though might override .btn padding */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  /* Modified #eee to dark shadow for premium feel */
+  transition: 0.5s;
+  border: none;
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
 /* Contenedor principal del botón para iconos de navbar (añadido por petición) */
 .navbar .btn {
   position: relative;
@@ -719,7 +769,15 @@ ol {
 
 .auth-page {
   min-height: 100vh;
-  background: var(--bg-dark);
+
+  .auth-page {
+    min-height: 100vh;
+    background: var(--bg-dark);
+    /* Override global gradient */
+    display: flex;
+    flex-direction: column;
+  }
+
   display: flex;
   flex-direction: column;
 }
