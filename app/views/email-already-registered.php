@@ -21,13 +21,13 @@ declare(strict_types=1);
                 <img src="/assets/images/logo-auth-top.jpg" alt="El Arca" class="auth-logo">
             </div>
 
-            <h2 class="auth-title">Este correo ya está asociado a una cuenta.
-                Puedes iniciar sesión o recuperar tu contraseña.</p>
-                <a href="/?view=recover-password">¿Olvidaste tu contraseña?</a>
+            <h2 class="auth-title">Este correo ya está asociado a una cuenta.</h2>
+            <p>Puedes iniciar sesión o recuperar tu contraseña.</p>
+            <a href="/?view=recover-password">¿Olvidaste tu contraseña?</a>
 
-                <a href="/?view=login" class="btn btn-animated">
-                    <span class="text">Volver</span>
-                </a>
+            <a href="/?view=login" class="btn btn-animated">
+                <span class="text">Volver</span>
+            </a>
 
         </div>
 
