@@ -238,6 +238,9 @@ ol {
   -webkit-mask:
     linear-gradient(#fff 0 0) padding-box,
     linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 
@@ -394,6 +397,10 @@ ol {
    BLOQUE 3 — BOTONES BASE (PREMIUM)
 ====================================================== */
 
+/* ======================================================
+   BLOQUE 3 — BOTONES BASE (UNIFIED & PREMIUM)
+====================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -406,105 +413,42 @@ ol {
   letter-spacing: 0.02em;
 
   padding: 0.75rem 1.6rem;
+  margin: 0.5rem 0;
+  /* Consistent spacing */
   border-radius: var(--radius-md);
 
-  background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(45, 212, 191, 0.1));
+  /* Unified Gradient Style */
+  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
+  background-size: 200% auto;
   border: 1px solid rgba(0, 243, 255, 0.3);
+  /* Preserve premium border */
   color: #fff;
+
   cursor: pointer;
   text-decoration: none;
   position: relative;
   overflow: hidden;
 
   backdrop-filter: blur(4px);
-  transition: all var(--transition-fast);
+  transition: all 0.5s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
-  background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(45, 212, 191, 0.2));
-  border-color: var(--primary);
+  background-position: right center;
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
   transform: translateY(-2px);
   color: #fff;
+  border-color: var(--primary);
 }
 
 .btn:active {
   transform: translateY(1px);
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: #000;
-  border: none;
-}
+/* Alias classes now fully inherit from .btn via unification */
 
-.btn-primary:hover {
-  background: #fff;
-  box-shadow: 0 0 25px var(--primary);
-}
-
-/* ======================================================
-   TASK A & E — PREMIUM BUTTONS
-   ====================================================== */
-
-/* Base Premium Button (Black + Border Beam support) */
-.btn-premium {
-  background: #000 !important;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid rgba(0, 243, 255, 0.3);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  position: relative;
-  overflow: hidden;
-  /* For border beam and ripple */
-  transition: all 0.3s ease;
-  z-index: 1;
-  /* Ensure above pseudo elements */
-}
-
-.btn-premium:hover {
-  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-  transform: translateY(-2px);
-  border-color: rgba(0, 243, 255, 0.6);
-}
-
-/* Gradient Button Variant (Task E) */
-/* Gradient Button Variant (Task 2) */
-.btn-grad,
-.btn,
-.btn-premium {
-  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
-  background-size: 200% auto;
-  color: white;
-  margin: 10px;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 243, 255, 0.3);
-  /* Preserving original border as requested */
-  display: inline-block;
-  cursor: pointer;
-}
-
-.btn-grad:hover,
-.btn:hover,
-.btn-premium:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
-}
-
-.btn-grad:hover {
-  background-position: right center;
-  /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
+/* Redundant button blocks removed - Unified in .btn class above */
 
 
 /* Contenedor principal del botón para iconos de navbar (añadido por petición) */
@@ -1422,11 +1366,7 @@ ol {
 }
 
 /* FOOTER AUTH */
-.auth-footer {
-  background: transparent;
-  border-top: none;
-  padding-bottom: 1.5rem;
-}
+/* Redundant .auth-footer block removed (was causing global transparency issue) */
 
 .auth-footer img {
   width: 42px;
@@ -1790,206 +1730,7 @@ body.cart-open .cart-panel {
   font-style: italic;
 }
 
-/* --- AI CHAT WIDGET --- */
-.ai-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 3000;
-  font-family: 'Inter', sans-serif;
-}
-
-.chat-toggle-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffffff, var(--primary));
-  border: none;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.chat-toggle-btn:hover {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-/* Chat Window */
-.chat-window {
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  width: 340px;
-  height: 480px;
-  background: rgba(12, 18, 36, 0.95);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transform-origin: bottom right;
-  pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.ai-widget.open .chat-window {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-/* Header */
-.chat-header {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(37, 99, 235, 0.1));
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.chat-avatar {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.chat-title h3 {
-  font-size: 1rem;
-  margin: 0;
-  color: var(--text-main);
-}
-
-.chat-title .status {
-  font-size: 0.75rem;
-  color: #4ade80;
-}
-
-.chat-close-btn {
-  margin-left: auto;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-/* Messages */
-.chat-messages {
-  flex: 1;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
-.message {
-  max-width: 85%;
-  padding: 0.8rem 1rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  animation: fadeIn 0.3s ease;
-}
-
-.message.user {
-  align-self: flex-end;
-  background: var(--primary);
-  color: white;
-  border-bottom-right-radius: 2px;
-}
-
-.message.assistant {
-  align-self: flex-start;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
-  border-bottom-left-radius: 2px;
-}
-
-.message.assistant a {
-  color: #38bdf8;
-  text-decoration: underline;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Input Area */
-.chat-input-area {
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.2);
-  display: flex;
-  gap: 0.5rem;
-}
-
-.chat-input-area input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 0.6rem 1rem;
-  color: white;
-  outline: none;
-}
-
-.chat-input-area input:focus {
-  border-color: var(--primary);
-}
-
-.chat-input-area button {
-  background: var(--primary);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-/* Typing Indicator */
-.typing span {
-  display: inline-block;
-  font-size: 1.2rem;
-  animation: bounce 1.4s infinite ease-in-out both;
-  margin: 0 1px;
-}
-
-.typing span:nth-child(1) {
-  animation-delay: -0.32s;
-}
-
-.typing span:nth-child(2) {
-  animation-delay: -0.16s;
-}
+/* OLD AI WIDGET REMOVED - SEE BLOCK 14 FOR NEW WIDGET */
 
 @keyframes bounce {
 
