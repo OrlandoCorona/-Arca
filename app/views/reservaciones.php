@@ -12,225 +12,135 @@ if (!isset($_SESSION['id_usuario'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reservaciones — El Arca</title>
+  <title>Reservar una Mesa — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     rel="stylesheet" />
-  <link rel="preload" as="image" href="/assets/images/login-bg.webp" fetchpriority="high">
 </head>
 
 <body class="auth-page">
 
-  <!-- Include Navbar as requested -->
   <?php require __DIR__ . '/partials/navbar.php'; ?>
 
-  <main class="auth-bg" style="padding-top: 2rem;"> <!-- Additional padding since navbar is fixed/sticky -->
-    <img src="/assets/images/login-bg.webp" class="auth-bg-img" alt="">
+  <!-- Use auth-bg or app-container, here using main container for scrolling booking flow -->
+  <main class="app-container" style="padding-bottom: 6rem;">
 
-    <!-- Glass Container with Animated Border -->
-    <div class="auth-glass border-beam-container" style="max-width: 500px; position: relative;">
-      <div class="border-beam"></div> <!-- Animated Border Element -->
-      <div style="position: relative; z-index: 1; width: 100%;"> <!-- Content Wrapper -->
+    <div class="section-header" style="margin-top: 2rem;">
+      <h2 class="text-glow">Reservar una Mesa</h2>
+      <p>Elige tu lugar ideal rodeado de naturaleza.</p>
+    </div>
 
-        <h2 class="auth-title">Reservaciones</h2>
-        <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">Reserva tu mesa fácilmente</p>
+    <form method="POST" action="/?action=realizar_reserva" id="bookingForm"
+      style="max-width: 600px; margin: 0 auto; padding: 0 1.5rem;">
 
-        <form method="POST" action="/?action=realizar_reserva" id="reservationForm" class="auth-form"
-          style="width: 100%;">
+      <!-- 1. CUÁNDO (Calendar) -->
+      <h3 style="color: white; font-size: 1.1rem; margin-bottom: 1rem;">Cuándo</h3>
 
-          <!-- Row: Fecha + Hora -->
-          <div style="display: flex; gap: 1rem; width: 100%;">
-            <div class="form-group" style="flex: 1;">
-              <input type="date" name="fecha" id="fechaInput" required placeholder=" " style="color-scheme: dark;">
-              <label for="fechaInput">Fecha</label>
-              <span class="form-error" id="fechaError"
-                style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
-            </div>
-
-            <div class="form-group" style="flex: 1;">
-              <input type="time" name="hora" id="horaInput" required placeholder=" " style="color-scheme: dark;">
-              <label for="horaInput">Hora</label>
-              <span class="form-error" id="horaError"
-                style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.2rem;"></span>
-            </div>
-          </div>
-
-          <!-- Row: Personas (Full Width) -->
-          <div class="form-group">
-            <input type="number" name="zona" id="zonaInput" min="1" max="20" required placeholder=" ">
-            <label for="zonaInput">Número de personas</label>
-            <span class="form-error" id="zonaError"></span>
-          </div>
-
-          <button type="submit" class="btn btn-premium" id="submitBtn" style="width: 100%; margin-top: 1rem;">
-            <span class="text">Confirmar reservación</span>
-            <!-- Preserve border-beam if it was internal, but here it's on the container. 
-                 If the button itself needs a halo, .btn-premium has border styling. -->
-          </button>
-
-        </form>
-
-        <!-- Botón Volver - Abajo a la izquierda -->
-        <div style="width: 100%; display: flex; justify-content: flex-start; margin-top: 1.5rem;">
-          <a href="/?view=home" class="btn-back"
-            style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">
-            ← Volver
-          </a>
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button type="button" class="btn-circle" id="prevMonth"><span
+              class="material-symbols-outlined">chevron_left</span></button>
+          <span style="color: white; font-weight: 700;" id="currentMonthLabel">Enero 2024</span>
+          <button type="button" class="btn-circle" id="nextMonth"><span
+              class="material-symbols-outlined">chevron_right</span></button>
         </div>
 
-      </div> <!-- End Content Wrapper -->
-    </div> <!-- End Glass Container -->
+        <div class="calendar-grid">
+          <span class="calendar-day-label">D</span>
+          <span class="calendar-day-label">L</span>
+          <span class="calendar-day-label">M</span>
+          <span class="calendar-day-label">M</span>
+          <span class="calendar-day-label">J</span>
+          <span class="calendar-day-label">V</span>
+          <span class="calendar-day-label">S</span>
+          <!-- Valid days generated by JS -->
+          <div id="calendarDays" style="display: contents;"></div>
+        </div>
+      </div>
 
+      <!-- Hidden Input for Date -->
+      <input type="hidden" name="fecha" id="fechaInput" required>
+
+      <!-- 2. HORARIO (Time Chips) -->
+      <h3 style="color: white; font-size: 1.1rem; margin-bottom: 1rem;">Horario</h3>
+      <div class="time-chips-container" id="timeSlots">
+        <!-- Generated by JS based on date -->
+        <div style="padding: 1rem; color: var(--text-muted); font-size: 0.9rem;">Selecciona una fecha primero</div>
+      </div>
+      <input type="hidden" name="hora" id="horaInput" required>
+
+      <!-- 3. PERSONAS (Counter) -->
+      <h3 style="color: white; font-size: 1.1rem; margin: 1.5rem 0 1rem;">Número de Personas</h3>
+      <div class="guest-counter">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="material-symbols-outlined" style="color: var(--primary);">groups</span>
+          <span style="color: white; font-weight: 700;" id="guestLabel">4 Personas</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button type="button" class="btn-circle" id="decreaseGuests">
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+          <span style="color: white; font-weight: 700; width: 20px; text-align: center;" id="guestCount">4</span>
+          <button type="button" class="btn-circle" id="increaseGuests">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="personas" id="personasInput" value="4">
+
+      <!-- 4. DÓNDE (Area Cards) -->
+      <h3 style="color: white; font-size: 1.1rem; margin: 1.5rem 0 1rem;">Área del Restaurante</h3>
+
+      <label class="area-card" onclick="selectArea('jardin')">
+        <div class="area-icon"><span class="material-symbols-outlined">park</span></div>
+        <div style="flex: 1;">
+          <h4 style="color: white; font-weight: 700; font-size: 1rem;">Jardín Exterior</h4>
+          <p style="color: var(--text-muted); font-size: 0.8rem;">Rodeado de árboles y aire fresco.</p>
+        </div>
+        <div class="area-radio">
+          <div class="area-radio-inner"></div>
+        </div>
+        <input type="radio" name="zona" value="Jardín" style="display: none;" id="radio_jardin">
+      </label>
+
+      <label class="area-card" onclick="selectArea('salon')">
+        <div class="area-icon"><span class="material-symbols-outlined">restaurant</span></div>
+        <div style="flex: 1;">
+          <h4 style="color: white; font-weight: 700; font-size: 1rem;">Salón Principal</h4>
+          <p style="color: var(--text-muted); font-size: 0.8rem;">Ambiente premium y climatizado.</p>
+        </div>
+        <div class="area-radio">
+          <div class="area-radio-inner"></div>
+        </div>
+        <input type="radio" name="zona" value="Salón" style="display: none;" id="radio_salon">
+      </label>
+
+      <label class="area-card" onclick="selectArea('juegos')">
+        <div class="area-icon"><span class="material-symbols-outlined">sports_esports</span></div>
+        <div style="flex: 1;">
+          <h4 style="color: white; font-weight: 700; font-size: 1rem;">Zona de Juegos</h4>
+          <p style="color: var(--text-muted); font-size: 0.8rem;">Ideal para familias con niños.</p>
+        </div>
+        <div class="area-radio">
+          <div class="area-radio-inner"></div>
+        </div>
+        <input type="radio" name="zona" value="Juegos" style="display: none;" id="radio_juegos">
+      </label>
+
+      <!-- 5. NOTES -->
+      <h3 style="color: white; font-size: 1.1rem; margin: 1.5rem 0 1rem;">Notas Adicionales</h3>
+      <textarea name="notas" class="notes-area" placeholder="¿Alguna alergia o requerimiento especial?"></textarea>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="btn btn-premium" style="width: 100%; margin-top: 2rem;">
+        <span class="text">Confirmar Reservación</span>
+        <span class="material-symbols-outlined">check_circle</span>
+      </button>
+
+    </form>
   </main>
-
-  <footer class="site-footer auth-footer">
-    <div class="footer-inner">
-      <img src="/assets/images/iconoB.jpg" alt="El Arca" class="footer-logo">
-      <p class="footer-text">© 2025 Restaurante Bar El Arca</p>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('reservationForm');
-      const fechaInput = document.getElementById('fechaInput');
-      const horaInput = document.getElementById('horaInput');
-      const zonaInput = document.getElementById('zonaInput');
-      const fechaError = document.getElementById('fechaError');
-      const horaError = document.getElementById('horaError');
-      const submitBtn = document.getElementById('submitBtn');
-
-      // Set minimum date to today
-      const today = new Date();
-      const todayStr = today.toISOString().split('T')[0];
-      fechaInput.min = todayStr;
-
-      // Operating hours by day (0=Sunday, 1=Monday, ..., 6=Saturday)
-      const schedule = {
-        0: { open: '12:00', close: '18:00', name: 'Domingo' },      // Sunday
-        1: null,                                                      // Monday - closed
-        2: { open: '12:00', close: '19:00', name: 'Martes' },       // Tuesday
-        3: { open: '12:00', close: '19:00', name: 'Miércoles' },    // Wednesday
-        4: { open: '12:00', close: '19:00', name: 'Jueves' },       // Thursday
-        5: { open: '12:00', close: '19:00', name: 'Viernes' },      // Friday
-        6: { open: '12:00', close: '19:00', name: 'Sábado' }        // Saturday
-      };
-
-      function showError(element, message) {
-        element.textContent = message;
-        element.classList.add('visible');
-        element.previousElementSibling.previousElementSibling.classList.add('input-error');
-      }
-
-      function clearError(element) {
-        element.textContent = '';
-        element.classList.remove('visible');
-        element.previousElementSibling.previousElementSibling.classList.remove('input-error');
-      }
-
-      function validateDate() {
-        const dateValue = fechaInput.value;
-        if (!dateValue) {
-          showError(fechaError, 'Por favor selecciona una fecha');
-          return false;
-        }
-
-        const selectedDate = new Date(dateValue + 'T12:00:00');
-        const todayDate = new Date();
-        todayDate.setHours(0, 0, 0, 0);
-
-        if (selectedDate < todayDate) {
-          showError(fechaError, 'No puedes reservar en fechas pasadas');
-          return false;
-        }
-
-        const dayOfWeek = selectedDate.getDay();
-        if (schedule[dayOfWeek] === null) {
-          showError(fechaError, 'No abrimos los lunes. Por favor elige otro día.');
-          return false;
-        }
-
-        clearError(fechaError);
-        return true;
-      }
-
-      function validateTime() {
-        const dateValue = fechaInput.value;
-        const timeValue = horaInput.value;
-
-        if (!timeValue) {
-          showError(horaError, 'Por favor selecciona una hora');
-          return false;
-        }
-
-        if (!dateValue) {
-          showError(horaError, 'Primero selecciona una fecha');
-          return false;
-        }
-
-        const selectedDate = new Date(dateValue + 'T12:00:00');
-        const dayOfWeek = selectedDate.getDay();
-        const daySchedule = schedule[dayOfWeek];
-
-        if (!daySchedule) {
-          showError(horaError, 'El día seleccionado no está disponible');
-          return false;
-        }
-
-        const [hours, minutes] = timeValue.split(':').map(Number);
-        const timeMinutes = hours * 60 + minutes;
-
-        const [openH, openM] = daySchedule.open.split(':').map(Number);
-        const [closeH, closeM] = daySchedule.close.split(':').map(Number);
-        const openMinutes = openH * 60 + openM;
-        const closeMinutes = closeH * 60 + closeM;
-
-        if (timeMinutes < openMinutes || timeMinutes > closeMinutes) {
-          const openFormatted = daySchedule.open.replace(':', ':') + ' PM';
-          const closeFormatted = (parseInt(daySchedule.close.split(':')[0]) - 12) + ':00 PM';
-          showError(horaError, `Horario: 12:00 PM – ${closeFormatted}`);
-          return false;
-        }
-
-        clearError(horaError);
-        return true;
-      }
-
-      function updateTimeConstraints() {
-        const dateValue = fechaInput.value;
-        if (!dateValue) return;
-
-        const selectedDate = new Date(dateValue + 'T12:00:00');
-        const dayOfWeek = selectedDate.getDay();
-        const daySchedule = schedule[dayOfWeek];
-
-        if (daySchedule) {
-          horaInput.min = daySchedule.open;
-          horaInput.max = daySchedule.close;
-        }
-      }
-
-      fechaInput.addEventListener('change', () => {
-        validateDate();
-        updateTimeConstraints();
-        if (horaInput.value) validateTime();
-      });
-
-      horaInput.addEventListener('change', validateTime);
-
-      form.addEventListener('submit', (e) => {
-        const isDateValid = validateDate();
-        const isTimeValid = validateTime();
-
-        if (!isDateValid || !isTimeValid) {
-          e.preventDefault();
-          submitBtn.classList.add('shake');
-          setTimeout(() => submitBtn.classList.remove('shake'), 500);
-        }
-      });
-    });
-  </script>
 
   <nav class="bottom-nav">
     <a href="/?view=home" class="nav-item">
@@ -252,6 +162,109 @@ if (!isset($_SESSION['id_usuario'])) {
   </nav>
 
   <script src="/assets/js/mobile-enhancements.js"></script>
+  <script>
+    // --- Booking Logic ---
+    function selectArea(id) {
+      document.querySelectorAll('.area-card').forEach(el => el.classList.remove('active'));
+      // Find the card containing the clicked radio and make it active
+      const radio = document.getElementById('radio_' + id);
+      radio.checked = true;
+      radio.closest('.area-card').classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- 1. Calendar Generation (Simplified for Demo) ---
+      const calendarGrid = document.getElementById('calendarDays');
+      const monthLabel = document.getElementById('currentMonthLabel');
+      const dateInput = document.getElementById('fechaInput');
+      const timeContainer = document.getElementById('timeSlots');
+      const timeInput = document.getElementById('horaInput');
+
+      const now = new Date();
+      const currentMonth = now.toLocaleString('es-ES', { month: 'long', year: 'numeric' });
+      monthLabel.textContent = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
+
+      // Generate dummy days for current month view
+      const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+      // Simple offset for starting day (just for visual structure)
+      for (let i = 0; i < now.getDay(); i++) {
+        const empty = document.createElement('div');
+        calendarGrid.appendChild(empty);
+      }
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+        dayEl.textContent = i;
+
+        // Disable past days
+        if (i < now.getDate()) {
+          dayEl.style.opacity = '0.3';
+          dayEl.style.cursor = 'default';
+        } else {
+          dayEl.addEventListener('click', () => {
+            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('active'));
+            dayEl.classList.add('active');
+
+            // Set Date Value (YYYY-MM-DD)
+            const yyyy = now.getFullYear();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(i).padStart(2, '0');
+            dateInput.value = `${yyyy}-${mm}-${dd}`;
+
+            // Generate Hours
+            generateHours();
+          });
+        }
+        calendarGrid.appendChild(dayEl);
+      }
+
+      function generateHours() {
+        timeContainer.innerHTML = '';
+        const hours = ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'];
+
+        hours.forEach(time => {
+          const chip = document.createElement('div');
+          chip.className = 'time-chip';
+          chip.textContent = time;
+          chip.addEventListener('click', () => {
+            document.querySelectorAll('.time-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            timeInput.value = time;
+          });
+          timeContainer.appendChild(chip);
+        });
+      }
+
+
+      // --- 2. Guest Counter ---
+      let count = 4;
+      const countEl = document.getElementById('guestCount');
+      const labelEl = document.getElementById('guestLabel');
+      const inputEl = document.getElementById('personasInput');
+
+      document.getElementById('decreaseGuests').addEventListener('click', () => {
+        if (count > 1) {
+          count--;
+          updateGuests();
+        }
+      });
+
+      document.getElementById('increaseGuests').addEventListener('click', () => {
+        if (count < 20) {
+          count++;
+          updateGuests();
+        }
+      });
+
+      function updateGuests() {
+        countEl.textContent = count;
+        labelEl.textContent = count + ' Personas';
+        inputEl.value = count;
+      }
+    });
+  </script>
 </body>
 
 </html>

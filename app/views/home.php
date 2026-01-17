@@ -122,7 +122,8 @@ if (!isset($_SESSION['id_usuario'])) {
             </div>
             <div>
               <p style="color: white; font-size: 0.8rem; font-weight: 600;">Ubicación</p>
-              <p style="color: var(--text-muted); font-size: 0.75rem;">Valle del Sol</p>
+              <a href="/?view=contacto"
+                style="color: var(--text-muted); font-size: 0.75rem; text-decoration: underline;">Valle del Sol</a>
             </div>
           </div>
         </div>
