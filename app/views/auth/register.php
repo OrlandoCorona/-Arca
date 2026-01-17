@@ -118,6 +118,7 @@ declare(strict_types=1);
           <div class="form-group">
             <input type="email" id="correo" name="correo" required placeholder=" " autocomplete="email">
             <label for="correo">Correo electrónico</label>
+            <div id="emailFeedback" style="display:none; margin-top:5px; font-size:0.8rem; text-align:left;"></div>
           </div>
 
           <div class="form-group">
@@ -234,19 +235,99 @@ declare(strict_types=1);
       document.getElementById('step' + step).classList.add('active');
     }
 
+    // --- Strict Email Validation Logic ---
+    function validateEmail(email) {
+      const feedback = document.getElementById('emailFeedback');
+      feedback.style.display = 'none';
+      feedback.style.color = '#ff6b6b'; // default error red
+      feedback.textContent = '';
+
+      // 1. Basic cleaning
+      if (!email || email.trim() === '') return { valid: false, msg: 'El correo es obligatorio' };
+      if (email.includes(' ')) return { valid: false, msg: 'El correo no puede contener espacios' };
+      if (email.includes('..')) return { valid: false, msg: 'El correo no puede tener puntos consecutivos (..)' };
+      if (email.includes('@@')) return { valid: false, msg: 'El correo no puede tener arrobas consecutivas (@@)' };
+
+      // 2. RFC 5322 - simplified but robust structure
+      // user@domain.tld
+      const parts = email.split('@');
+      if (parts.length !== 2) return { valid: false, msg: 'Formato inválido (debe contener una @)' };
+      
+      const user = parts[0];
+      const domain = parts[1];
+
+      if (user.length < 1) return { valid: false, msg: 'El usuario del correo no puede estar vacío' };
+      if (domain.length < 3 || !domain.includes('.')) return { valid: false, msg: 'El dominio es inválido' };
+
+      // Check for illegal chars in user part (alphanumeric, dot, underscore, dash, plus allowed)
+      const userRegex = /^[a-zA-Z0-9._+-]+$/;
+      if (!userRegex.test(user)) return { valid: false, msg: 'Caracteres no permitidos en el usuario' };
+
+      // Domain check
+      const domainParts = domain.split('.');
+      const tld = domainParts[domainParts.length - 1];
+      
+      if (tld.length < 2) return { valid: false, msg: 'La extensión del dominio (TLD) es muy corta' };
+      if (/\d/.test(tld)) return { valid: false, msg: 'El TLD no puede contener números' }; // simple rule
+
+      // 3. Provider Rules
+      const knownProviders = ['gmail.com', 'outlook.com', 'hotmail.com', 'live.com', 'yahoo.com', 'icloud.com', 'elarca.mx'];
+      const isKnown = knownProviders.includes(domain.toLowerCase());
+
+      // Rule: Gmail specific - prevent excessive numbers at start
+      if (domain.toLowerCase() === 'gmail.com') {
+        // Regex: starts with 4 or more digits?
+        if (/^\d{4,}/.test(user)) {
+           return { valid: false, msg: 'Política de seguridad: No se permiten correos Gmail validos que inicien con una secuencia larga de números (ej. 1234name@gmail.com). Usa el formato name1234@gmail.com' };
+        }
+      }
+
+      // Rule: Unknown domain warning
+      if (!isKnown) {
+        // Not a hard block, but returning a warning state
+        return { 
+          valid: true, 
+          warning: true, 
+          msg: `El dominio "${domain}" no es común. ¿Estás seguro que es correcto?` 
+        };
+      }
+
+      return { valid: true };
+    }
+
     // --- Step 1 Validation & Email Mock ---
     document.getElementById('btnContinue').addEventListener('click', () => {
       const name = document.getElementById('nombre_completo');
-      const email = document.getElementById('correo');
+      const emailInput = document.getElementById('correo');
       const phone = document.getElementById('telefono');
+      const feedback = document.getElementById('emailFeedback');
 
-      if (!name.value || !email.value || !phone.value) {
+      if (!name.value || !emailInput.value || !phone.value) {
         alert("Por favor completa todos los campos de contacto");
         return;
       }
 
+      // Run Email Validation
+      const emailResult = validateEmail(emailInput.value);
+      
+      if (!emailResult.valid) {
+        feedback.textContent = emailResult.msg;
+        feedback.style.color = '#ff6b6b';
+        feedback.style.display = 'block';
+        return; // Stop
+      }
+
+      if (emailResult.warning) {
+        // Use confirm dialog for warning, or show UI message and require second click (simplified: confirm dialog)
+        const proceed = confirm("Aviso: " + emailResult.msg + "\n\nPresiona Aceptar para continuar si es correcto.");
+        if (!proceed) return;
+      }
+
+      // Valid case
+      feedback.style.display = 'none';
+
       // Show Modal
-      document.getElementById('modalEmailDisplay').textContent = email.value;
+      document.getElementById('modalEmailDisplay').textContent = emailInput.value;
       document.getElementById('emailModal').classList.add('active');
     });
 

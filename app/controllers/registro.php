@@ -9,13 +9,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // Datos
-$correo   = strtolower(trim($_POST['correo'] ?? ''));
-$nombre   = trim($_POST['nombre'] ?? '');
-$ap       = trim($_POST['apellido_paterno'] ?? '');
-$am       = trim($_POST['apellido_materno'] ?? '');
+$correo = strtolower(trim($_POST['correo'] ?? ''));
+$nombre = trim($_POST['nombre'] ?? '');
+$ap = trim($_POST['apellido_paterno'] ?? '');
+$am = trim($_POST['apellido_materno'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
-$pass     = $_POST['contrasena'] ?? '';
-$repeat   = $_POST['repetir_contrasena'] ?? '';
+$pass = $_POST['contrasena'] ?? '';
+$repeat = $_POST['repetir_contrasena'] ?? '';
 
 // Validaciones
 if ($correo === '' || $nombre === '' || $ap === '' || $telefono === '' || $pass === '' || $repeat === '') {
@@ -23,7 +23,52 @@ if ($correo === '' || $nombre === '' || $ap === '' || $telefono === '' || $pass 
     exit;
 }
 
-if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+// Helper valida email estricto
+function is_valid_email_strict($str)
+{
+    if (!filter_var($str, FILTER_VALIDATE_EMAIL))
+        return false;
+
+    // Chequeos adicionales
+    if (strpos($str, ' ') !== false)
+        return false;
+    if (strpos($str, '..') !== false)
+        return false;
+    if (strpos($str, '@@') !== false)
+        return false;
+
+    // Desglosar
+    $parts = explode('@', $str);
+    if (count($parts) !== 2)
+        return false;
+    $user = $parts[0];
+    $domain = $parts[1];
+
+    // Dominios
+    if (strpos($domain, '.') === false)
+        return false;
+    $dParts = explode('.', $domain);
+    $tld = end($dParts);
+
+    // TLD reglas
+    if (strlen($tld) < 2)
+        return false;
+    if (preg_match('/\d/', $tld))
+        return false; // sin numeros en TLD
+
+    // Regla Gmail (Anti-Spam / User Preference)
+    if (strtolower($domain) === 'gmail.com') {
+        // Bloquear si empieza con 4+ numeros
+        if (preg_match('/^\d{4,}/', $user)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+if (!is_valid_email_strict($correo)) {
+    // Podríamos pasar un error param, e.g. /?view=register&error=email
     header('Location: /?view=register');
     exit;
 }
@@ -54,10 +99,10 @@ $sql = "
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    'correo'   => $correo,
-    'nombre'   => $nombre,
-    'ap'       => $ap,
-    'am'       => $am,
+    'correo' => $correo,
+    'nombre' => $nombre,
+    'ap' => $ap,
+    'am' => $am,
     'telefono' => $telefono,
     'password' => $hash
 ]);
