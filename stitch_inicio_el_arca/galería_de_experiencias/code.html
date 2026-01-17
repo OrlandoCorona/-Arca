@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galería de Experiencias - El Arca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee4b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102213",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .masonry-grid {
+            columns: 2;
+            column-gap: 0.75rem;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<div class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 justify-between">
+<div class="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Galería</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hero Content -->
+<div class="px-4 pt-4">
+<h1 class="text-[32px] font-bold leading-tight tracking-tight">Galería de Experiencias</h1>
+<p class="text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Descubre la magia de nuestro rincón natural.</p>
+</div>
+<!-- Category Filter (Chips) -->
+<div class="flex gap-3 px-4 py-6 overflow-x-auto no-scrollbar">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-6 shadow-lg shadow-primary/20">
+<p class="text-background-dark text-sm font-semibold">Todos</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 dark:bg-primary/10 px-5 transition-all">
+<p class="text-slate-600 dark:text-white/80 text-sm font-medium">Instalaciones</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 dark:bg-primary/10 px-5 transition-all">
+<p class="text-slate-600 dark:text-white/80 text-sm font-medium">Platillos</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white/5 border border-white/10 dark:bg-primary/10 px-5 transition-all">
+<p class="text-slate-600 dark:text-white/80 text-sm font-medium">Eventos</p>
+</div>
+</div>
+<!-- Masonry Image Grid -->
+<div class="px-4 pb-24">
+<div class="masonry-grid">
+<!-- Item 1: Tall -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-[3/5]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Piscina natural rodeada de vegetación exuberante" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWzNEJV6oTzrc4YnwSCyxgxTarI0u15Tf8xOjYU0G2h7kT7lUoTF9t2i1GwT0MCy_xNLhShrwPaFYzaue2_mfqC4uqZySWpF4a-5R_Q0m4twebtOq2qkEInjPmnnPWZzgrA7fBb9w8vxOWWcB6RUGhk-nspXMWMmiV52BZCys3PUqSQu0LRDHoC_rhA52owuP7hnGiQtYrcqDPjmcG0YtB294TrO-zJ7-UfpSf68X4Pp8a7SXow9Alac4Kfr0Hk7SD8zyOBC8jqBud");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Instalaciones</span>
+<p class="text-white text-base font-bold leading-tight">Piscina Natural</p>
+</div>
+</div>
+<!-- Item 2: Square -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-square">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Corte de carne premium a la parrilla" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQh7qaE083y93hhd0B2SyqoPddD4X92lDLx3OEb05Wq-IHsb6gKWjZ66yi0hku5AM8xpJdO41ANp9iWPWid_i0DzC1p0PlkZ1sXnlkjWBAT_hWRa9LHz_A8GSqDlhqIqmhvWsYf9j-C61907_lNnQCynzAJjJ-k0VoMtpkzRaN_coSxVawq3uQaGMFK1ILhQt2FVbd27Q3XwjdHviLLsgKAr_uhhrLLgrhMMoXnWnQ-7u31H-ZORpPQ44RG1Z16KUZJL97GYe2Vlu_");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Platillos</span>
+<p class="text-white text-base font-bold leading-tight">Corte Premium</p>
+</div>
+</div>
+<!-- Item 3: Tall -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-[4/5]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Mesa de billar en área social de madera" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCJsp1z4E7knwp_UwlDWs1C72Eu-ZdOzrrOh5XbXNGX9zgr7Ccq1nBy2vuF2Rr9qOi1gKziiPFJCjoKtVqtiYkKTHaap3lnINFIUQoCghKloeTyE4oKiYsRpNvcrZe0gD3SVjax25bPSomoXW7YahtwK7uhl1eR-DESoVBHqCwGTM6K7CRixbz_dkxu01yU7yheX2zH7nf9h25yYKmn2YUcg8PWx_9E2CUgU5Lio5Eromy6I6nJG0CqbaV52amjw2tyo_3xGQqZMkP");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Diversión</span>
+<p class="text-white text-base font-bold leading-tight">Zona de Billar</p>
+</div>
+</div>
+<!-- Item 4: Tall -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Celebración familiar con globos y decoración" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCH4bEGPhfFNOjGdVxenkH9Pt6TZWK-D3k1cx0gRdGSoZDhL4IW69_6_1-CY_4-xkcEUkWU3q0SJnfSJO8IE7at1QEnhNULEW226CT8iSkJp58ytRX4zNOShtst7G2cWw_ciDQoMruTzB_yW31_Gjz6qsy-wvUXhjaS2YQ8snkfww2uPt-Xa77jwU608NPZzE2MXTK6vkusfZrjj9DJ-OBMNgaVlAM-M6NeK-1PUq4I5Z26piQhHRe2tz1lybk7i4Ut6HeJQC1NWaM");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Eventos</span>
+<p class="text-white text-base font-bold leading-tight">Momentos Especiales</p>
+</div>
+</div>
+<!-- Item 5: Square -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-square">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Coctel colorido con frutas tropicales" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvtZYiy8EYFZ7w8eMphjR7Iztlk8rb5gr_AF2rqemDyqWTk-xZY5_uwlQvBBUMMuW-9oCcqrxO8iiIPQbz_W6iG_6uhMRKbixhXr4w5_40zGZQOsgrf-2zt0pOPA-vMLzFOq-wH3NPzpFdD7PflqYvkW47uY2nQ5zMom4cBrEae1artPoaiWyLovaPaFBAGMxrQyocWvI2BEpzo8dlgOyLlfdguLi8U-UtqR8TNIzWEqsYsG5S27Ntk8tEUgIiYtRyEfgyy3cY5B6w");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Bar</span>
+<p class="text-white text-base font-bold leading-tight">Coctelería</p>
+</div>
+</div>
+<!-- Item 6: Tall -->
+<div class="masonry-item group relative overflow-hidden rounded-xl bg-slate-200 dark:bg-slate-800 aspect-[9/16]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Área de juegos infantiles en el bosque" style='background-image: linear-gradient(0deg, rgba(16, 34, 19, 0.8) 0%, rgba(0, 0, 0, 0) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-TBlbC7G1nwsxHYXW1YsfeQgatLqRsoA6CK-MQRKFeIsP_iblQSvLbuL91k_Xurlcf5FF-RiyPquG-iWm-lVsGSsd783YM6kaWbWwKwpvNuSWOo3wy1kV42PMqVKVmoePuezBkAhoqGWjWu668en5iCzmArgyY4kIu4NQy-lST4TrTSt8oSbYJNyWKPi24PiBvG2mwNckGobhJMX86OniG3XEEDY0vJn4TN54fF215LeZ3J4TmpX52qL1-jWaKy-fXMzNrDXPRM2q");'>
+</div>
+<div class="absolute bottom-0 left-0 p-4">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Familia</span>
+<p class="text-white text-base font-bold leading-tight">Juegos al Aire Libre</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 left-0 right-0 flex justify-center px-4 pointer-events-none">
+<button class="pointer-events-auto flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 text-background-dark shadow-2xl shadow-primary/40 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined font-bold">calendar_today</span>
+<span class="font-bold text-base tracking-tight">Reservar Ahora</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar (iOS Style) -->
+<div class="fixed bottom-0 w-full h-20 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-white/5 flex items-center justify-around px-6 pb-4">
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium">Inicio</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+<span class="text-[10px] font-medium">Galería</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="text-[10px] font-medium">Menú</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined">location_on</span>
+<span class="text-[10px] font-medium">Ubicación</span>
+</div>
+</div>
+</body></html>

@@ -14,6 +14,9 @@ if (!isset($_SESSION['id_usuario'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservaciones — El Arca</title>
   <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
   <link rel="preload" as="image" href="/assets/images/login-bg.webp" fetchpriority="high">
 </head>
 
@@ -228,6 +231,25 @@ if (!isset($_SESSION['id_usuario'])) {
       });
     });
   </script>
+
+  <nav class="bottom-nav">
+    <a href="/?view=home" class="nav-item">
+      <span class="material-symbols-outlined">home</span>
+      <span>Inicio</span>
+    </a>
+    <a href="/?view=menu" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span>Menú</span>
+    </a>
+    <a href="/?view=galeria" class="nav-item">
+      <span class="material-symbols-outlined">gallery_thumbnail</span>
+      <span>Galería</span>
+    </a>
+    <a href="/?view=reservaciones" class="nav-item active">
+      <span class="material-symbols-outlined">calendar_today</span>
+      <span>Reservas</span>
+    </a>
+  </nav>
 
   <script src="/assets/js/mobile-enhancements.js"></script>
 </body>

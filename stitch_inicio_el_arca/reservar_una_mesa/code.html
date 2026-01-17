@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reservar una Mesa - El Arca</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee4b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glow-active {
+            box-shadow: 0 0 15px rgba(43, 238, 75, 0.4);
+            border-color: #2bee4b !important;
+        }
+        .luminous-border {
+            border: 2px solid #2bee4b;
+            box-shadow: 0 0 10px rgba(43, 238, 75, 0.6), inset 0 0 5px rgba(43, 238, 75, 0.2);
+        }
+        .bg-mesh {
+            background-color: #0A0A0A;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(43, 238, 75, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(43, 238, 75, 0.03) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col bg-mesh overflow-x-hidden max-w-md mx-auto">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Reservar una Mesa</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Hero Section / Headline -->
+<div class="px-4 pt-6 pb-2">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-[32px] font-extrabold leading-tight">Vive la experiencia El Arca</h2>
+<p class="text-slate-600 dark:text-slate-400 text-base font-medium mt-2">Elige tu lugar ideal rodeado de naturaleza y diversión.</p>
+</div>
+<main class="flex-1 pb-24">
+<!-- Cuándo Section -->
+<div class="mt-6">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold px-4 mb-4">Cuándo</h3>
+<!-- Calendar Picker Container -->
+<div class="mx-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 glow-active">
+<div class="flex items-center justify-between mb-4">
+<button class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<p class="text-slate-900 dark:text-white text-base font-bold">Octubre 2023</p>
+<button class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 text-center gap-y-2">
+<span class="text-xs font-bold text-slate-400">D</span>
+<span class="text-xs font-bold text-slate-400">L</span>
+<span class="text-xs font-bold text-slate-400">M</span>
+<span class="text-xs font-bold text-slate-400">M</span>
+<span class="text-xs font-bold text-slate-400">J</span>
+<span class="text-xs font-bold text-slate-400">V</span>
+<span class="text-xs font-bold text-slate-400">S</span>
+<!-- Calendar Days -->
+<div class="h-10 w-full flex items-center justify-center text-sm text-slate-400">28</div>
+<div class="h-10 w-full flex items-center justify-center text-sm text-slate-400">29</div>
+<div class="h-10 w-full flex items-center justify-center text-sm text-slate-400">30</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">1</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">2</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">3</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">4</div>
+<div class="h-10 w-full flex items-center justify-center">
+<div class="size-9 rounded-full bg-primary text-black font-bold flex items-center justify-center">5</div>
+</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">6</div>
+<div class="h-10 w-full flex items-center justify-center text-sm font-medium">7</div>
+</div>
+</div>
+<!-- Time Selection -->
+<div class="mt-6 px-4">
+<p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider">Horario disponible</p>
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="shrink-0 px-6 py-3 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white font-bold">14:00</button>
+<button class="shrink-0 px-6 py-3 rounded-lg border-2 border-primary bg-primary/20 text-primary font-bold">16:00</button>
+<button class="shrink-0 px-6 py-3 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white font-bold">18:00</button>
+<button class="shrink-0 px-6 py-3 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-900 dark:text-white font-bold">20:00</button>
+</div>
+</div>
+</div>
+<!-- Quiénes Section -->
+<div class="mt-8 px-4">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-4">Número de Personas</h3>
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">groups</span>
+<span class="text-lg font-bold">4 Comensales</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="text-xl font-bold w-4 text-center">4</span>
+<button class="size-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dónde Section -->
+<div class="mt-8 px-4">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-4">Área del Restaurante</h3>
+<div class="grid grid-cols-1 gap-3">
+<!-- Area Card -->
+<div class="relative flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border-2 border-primary glow-active cursor-pointer">
+<div class="size-14 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-3xl">park</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-lg">Jardín Exterior</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Rodeado de árboles y aire fresco.</p>
+</div>
+<div class="size-6 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="size-3 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Area Card -->
+<div class="relative flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 cursor-pointer opacity-70">
+<div class="size-14 rounded-lg bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined !text-3xl">restaurant</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-lg">Salón Principal</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Ambiente premium y climatizado.</p>
+</div>
+<div class="size-6 rounded-full border-2 border-slate-300 dark:border-white/20"></div>
+</div>
+<!-- Area Card -->
+<div class="relative flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 cursor-pointer opacity-70">
+<div class="size-14 rounded-lg bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined !text-3xl">sports_esports</span>
+</div>
+<div class="flex-1">
+<h4 class="font-bold text-lg">Zona de Juegos</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Ideal para familias con niños.</p>
+</div>
+<div class="size-6 rounded-full border-2 border-slate-300 dark:border-white/20"></div>
+</div>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="mt-8 px-4">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold mb-4">Notas Adicionales</h3>
+<textarea class="w-full h-32 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-4 text-slate-900 dark:text-white placeholder:text-slate-500 focus:glow-active focus:ring-0 outline-none transition-all" placeholder="¿Alguna alergia o requerimiento especial?"></textarea>
+</div>
+</main>
+<!-- Bottom Action Button -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light dark:via-background-dark to-transparent max-w-md mx-auto">
+<button class="w-full luminous-border bg-primary text-black h-16 rounded-xl flex items-center justify-center gap-2 text-lg font-extrabold tracking-wide uppercase transition-transform active:scale-95">
+                Confirmar Reserva
+                <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Background Decorative Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] opacity-20 dark:opacity-10 overflow-hidden">
+<div class="absolute -top-20 -left-20 w-80 h-80 bg-primary/30 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/2 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
+</div>
+</body></html>

@@ -17,6 +17,9 @@ if (!isset($_SESSION['id_usuario'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css?v=2025-01">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -63,8 +66,70 @@ if (!isset($_SESSION['id_usuario'])) {
         <p>Selecciona una zona para conocer más detalles.</p>
       </header>
 
-      <!-- New Vertical List Carousel -->
-      <section class="slideshow">
+      <!-- MOBILE EXPERIENCE (Horizontal Scroll) -->
+      <div class="mobile-only-section">
+        <div class="horizontal-scroll" style="padding-left: 1.5rem; padding-right: 1.5rem;">
+
+          <!-- Card 1: Atmósfera -->
+          <div class="card-glass-mobile featured">
+            <div class="card-image" style="background-image: url('/assets/images/imgTerraza.png');"></div>
+            <div class="flex items-center gap-2 mb-1"
+              style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span class="material-symbols-outlined" style="color: var(--secondary);">forest</span>
+              <h3 style="color: white; font-size: 1.1rem; font-weight: 700;">Atmósfera</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Rodeado de naturaleza y aire puro.</p>
+          </div>
+
+          <!-- Card 2: Familia -->
+          <div class="card-glass-mobile">
+            <div class="card-image" style="background-image: url('/assets/images/img4.jpg');"></div>
+            <div class="flex items-center gap-2 mb-1"
+              style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span class="material-symbols-outlined" style="color: var(--secondary);">family_restroom</span>
+              <h3 style="color: white; font-size: 1.1rem; font-weight: 700;">Familia</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Diversión segura para los pequeños.</p>
+          </div>
+
+          <!-- Card 3: Gastronomía -->
+          <div class="card-glass-mobile">
+            <div class="card-image" style="background-image: url('/assets/images/of3.jpg');"></div>
+            <div class="flex items-center gap-2 mb-1"
+              style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+              <span class="material-symbols-outlined" style="color: var(--secondary);">restaurant</span>
+              <h3 style="color: white; font-size: 1.1rem; font-weight: 700;">Sabor</h3>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Ingredientes frescos y cortes premium.</p>
+          </div>
+
+        </div>
+
+        <!-- QUICK STATS GRID -->
+        <div class="stats-grid" style="padding: 1.5rem;">
+          <div class="stat-box">
+            <div class="stat-icon">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div>
+              <p style="color: white; font-size: 0.8rem; font-weight: 600;">Horario</p>
+              <p style="color: var(--text-muted); font-size: 0.75rem;">12:00 - 22:00</p>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">
+              <span class="material-symbols-outlined">location_on</span>
+            </div>
+            <div>
+              <p style="color: white; font-size: 0.8rem; font-weight: 600;">Ubicación</p>
+              <p style="color: var(--text-muted); font-size: 0.75rem;">Valle del Sol</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESKTOP EXPERIENCE (Vertical List) -->
+      <section class="slideshow desktop-only-section">
         <!-- ZONAS -->
         <div class="zones reveal-on-scroll reveal-delay-2" id="zones">
           <div class="active-line" id="activeLine"></div>
@@ -220,14 +285,27 @@ if (!isset($_SESSION['id_usuario'])) {
   </footer>
 
 
-  <div id="mobile-floating-cta" class="mobile-only">
-    <a href="/?view=menu" class="floating-cta-btn btn-secondary">
-      <span>Ver Menú</span>
+  <!-- Floating CTA removed in favor of Bottom Nav -->
+
+  <!-- iOS Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="/?view=home" class="nav-item active">
+      <span class="material-symbols-outlined">home</span>
+      <span>Inicio</span>
     </a>
-    <a href="/?view=reservaciones" class="floating-cta-btn btn-primary">
-      <span>Reservar</span>
+    <a href="/?view=menu" class="nav-item">
+      <span class="material-symbols-outlined">menu_book</span>
+      <span>Menú</span>
     </a>
-  </div>
+    <a href="/?view=galeria" class="nav-item">
+      <span class="material-symbols-outlined">gallery_thumbnail</span>
+      <span>Galería</span>
+    </a>
+    <a href="/?view=reservaciones" class="nav-item">
+      <span class="material-symbols-outlined">calendar_today</span>
+      <span>Reservas</span>
+    </a>
+  </nav>
 
   <script src="/assets/js/mobile-enhancements.js"></script>
 </body>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Menú Gastronómico - El Arca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2bee4b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102213",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glow-card:active {
+            box-shadow: 0 0 15px rgba(43, 238, 75, 0.4);
+            transform: scale(0.98);
+            transition: all 0.2s ease-in-out;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Menú Gastronómico</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full pb-24">
+<!-- MetaText / Breadcrumbs -->
+<nav class="px-4 pt-4">
+<p class="text-slate-500 dark:text-primary/70 text-sm font-normal leading-normal underline decoration-primary/30">
+                Inicio &gt; <span class="text-primary font-medium">Menú El Arca</span>
+</p>
+</nav>
+<!-- HeadlineText -->
+<section>
+<h1 class="text-slate-900 dark:text-white tracking-tight text-3xl font-extrabold px-4 pt-6 pb-2">
+                Nuestra Carta
+            </h1>
+<p class="px-4 text-slate-500 dark:text-slate-400 text-sm mb-4">
+                Inspirada en la naturaleza, creada para disfrutar en familia.
+            </p>
+</section>
+<!-- Chips / Filter Categories -->
+<section class="flex gap-3 px-4 py-2 overflow-x-auto custom-scrollbar">
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 shadow-lg shadow-primary/20">
+<p class="text-background-dark text-sm font-bold">Todo</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-white/10 px-5 border border-transparent dark:hover:border-primary/30 transition-colors">
+<p class="text-slate-700 dark:text-white text-sm font-medium">Entradas</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-white/10 px-5 border border-transparent dark:hover:border-primary/30 transition-colors">
+<p class="text-slate-700 dark:text-white text-sm font-medium">Carnes</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-white/10 px-5 border border-transparent dark:hover:border-primary/30 transition-colors">
+<p class="text-slate-700 dark:text-white text-sm font-medium">Coctelería</p>
+</div>
+<div class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-white/10 px-5 border border-transparent dark:hover:border-primary/30 transition-colors">
+<p class="text-slate-700 dark:text-white text-sm font-medium">Postres</p>
+</div>
+</section>
+<!-- ImageGrid / Main Categories -->
+<section class="grid grid-cols-1 gap-4 p-4">
+<!-- Main Category Card 1 -->
+<div class="glow-card group relative h-64 overflow-hidden rounded-xl border border-white/10 transition-all duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Premium grilled steak with fresh herbs in outdoor setting" style='background-image: linear-gradient(180deg, rgba(16,34,19,0) 0%, rgba(16,34,19,0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4n71PzOhr3GnuMauUQ1usNLye9AkwUYaJGlkc1kTCde85tSOiTkHf0KVItinVD1fzKWLyKSNwzLdDYHOt4d3jGVtn_KXYX2KjJMDrws1PgVCPyHXe7vaRwCujblxn3gy0WUut7wBDcQZiHpxrimPvl0Wj2ydZKk6RDAOrFI4M5bWAANX7jznO-sjRPebrKW9PJ_fE-osOT-T66gSqWyCL_3Uss2z52YAEdzAiy6IrGXa4fFGwpBgh2qCc6UEi4fFBiqhLQedVYpEh");'>
+</div>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/40 rounded-xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<span class="inline-block px-2 py-1 bg-primary text-background-dark text-[10px] font-bold uppercase rounded mb-2">Más Popular</span>
+<h3 class="text-white text-2xl font-bold leading-tight">Platillos Principales</h3>
+<p class="text-slate-300 text-xs mt-1 font-medium tracking-wide">EL SABOR DE LA BRASA</p>
+</div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full">
+<span class="material-symbols-outlined text-white text-xl">arrow_forward</span>
+</div>
+</div>
+<!-- Main Category Card 2 -->
+<div class="glow-card group relative h-64 overflow-hidden rounded-xl border border-white/10 transition-all duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Colorful artisanal cocktails with floral garnishes" style='background-image: linear-gradient(180deg, rgba(16,34,19,0) 0%, rgba(16,34,19,0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD2brpJIpJUxweYUE-1jrapwfZn8ppGOYXYQuwgeRwoYb_axwgoHSg8EWX5p661IoAQjURiKz-6QKdXv6ESaMwL62S0L8-DzPLmsaZepZCYx4CdbWzbU4MlxBvysuDscFmDAXyXS3lUj3wIPgXNqP0TciXDSdQ2U4HqrjhwaxQOzcSSRlD3G0S9g9ZBiTQId62STrdt7qO915WixYC9gptmqcyV_Uqkq67379C6W0uVq740bP0nys5gj8ukB7GdM1e5rT796R0d94yQ");'>
+</div>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/40 rounded-xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<h3 class="text-white text-2xl font-bold leading-tight">Bebidas de Autor</h3>
+<p class="text-slate-300 text-xs mt-1 font-medium tracking-wide">MIXOLOGÍA ARTESANAL</p>
+</div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full">
+<span class="material-symbols-outlined text-white text-xl">arrow_forward</span>
+</div>
+</div>
+<!-- Main Category Card 3 -->
+<div class="glow-card group relative h-64 overflow-hidden rounded-xl border border-white/10 transition-all duration-300">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Fun healthy kids meal plate with creative shapes" style='background-image: linear-gradient(180deg, rgba(16,34,19,0) 0%, rgba(16,34,19,0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnJzTkdoEkutC7xvHOdwozTBmdX24IjMhwjAp1xPwpiTj8GeCrn1j6hTiVepQ9OVTVGbsSlNttGcXtY03kb5itoyio5-YafAD_PuiU5gDpD_wUcnF5m3kZttx4AKhYppNQA05Zh1WHTKxgIefoR4WMKBjFfeCimvOpnpJtVy-PrcA_GPXLTIHfXOMD45SsvaHwSrhsZTr-1O7tzfLIH6p48rJTUpyks6uzUwOTrQTIoRwDZm0LBNvyP4uhd-kbF51uLUrPX5rCtzqW");'>
+</div>
+<div class="absolute inset-0 border-2 border-transparent group-hover:border-primary/40 rounded-xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<h3 class="text-white text-2xl font-bold leading-tight">Para los Niños</h3>
+<p class="text-slate-300 text-xs mt-1 font-medium tracking-wide">DIVERSIÓN Y NUTRICIÓN</p>
+</div>
+<div class="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-2 rounded-full">
+<span class="material-symbols-outlined text-white text-xl">arrow_forward</span>
+</div>
+</div>
+</section>
+<!-- Seasonal Highlight (Custom Component) -->
+<section class="mx-4 mt-2 p-4 rounded-xl bg-gradient-to-r from-background-dark to-[#1a3a1f] border border-primary/20 flex items-center gap-4">
+<div class="bg-primary/20 p-3 rounded-lg">
+<span class="material-symbols-outlined text-primary text-3xl">restaurant_menu</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm leading-tight">Sugerencia del Chef</h4>
+<p class="text-primary text-xs">Ver especial de temporada →</p>
+</div>
+</section>
+</main>
+<!-- Navigation / Cart Floating Action (iOS Style) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-xs px-4">
+<div class="bg-white dark:bg-[#1c321d] rounded-full h-16 flex items-center justify-around shadow-2xl border border-white/10 backdrop-blur-xl">
+<button class="flex flex-col items-center justify-center text-primary">
+<span class="material-symbols-outlined filled">home</span>
+<span class="text-[10px] font-bold">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-bold">Menú</span>
+</button>
+<div class="relative -top-6">
+<button class="bg-primary h-14 w-14 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 text-background-dark ring-4 ring-background-dark">
+<span class="material-symbols-outlined text-3xl font-bold">shopping_basket</span>
+<span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-background-dark">2</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-bold">Reserva</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</button>
+</div>
+</div>
+<!-- Padding for bottom nav -->
+<div class="h-20 bg-transparent"></div>
+</body></html>
