@@ -8,6 +8,8 @@
 ![Render](https://img.shields.io/badge/Deployed-Render-46E3B7?logo=render&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?logo=render&logoColor=white)](https://arca-jv4f.onrender.com)
+>
+> *(El plan gratuito de Render puede tardar ~30 s en despertar.)*
 
 ---
 
@@ -114,6 +116,8 @@ psql -U your_user -d your_database -f app/database/migrations/seeds.sql
 The application is containerised and deployed on **Render** as a Web Service.
 
 🔗 **Live:** [https://arca-jv4f.onrender.com](https://arca-jv4f.onrender.com)
+>
+> *(El plan gratuito de Render puede tardar ~30 s en despertar.)*
 
 The `Dockerfile` uses `php:8.2-cli`, installs `pdo_pgsql` via `docker-php-ext-install`, and serves the app on port `10000` using PHP's built-in server (`php -S 0.0.0.0:10000 -t public`). Composer dependencies are installed at build time with `--optimize-autoloader`.
 
